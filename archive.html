@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive & Experiments — Stu Pender</title>
+    <meta name="description" content="Earlier creative-coding experiments by Stu Pender — generative systems music and small music-practice tools built while learning to code.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="index.html" class="wordmark">Stu Pender</a>
+        <nav class="site-nav" aria-label="Primary" style="display:flex">
+            <a href="index.html#work">← Back to portfolio</a>
+        </nav>
+    </header>
+
+    <main id="top">
+
+        <section class="hero" aria-labelledby="archive-heading">
+            <p class="eyebrow">Archive</p>
+            <h1 id="archive-heading" class="hero-title" style="font-size: clamp(2.2rem, 6vw, 3.8rem);">
+                Experiments &amp; early work
+            </h1>
+            <p class="hero-body">
+                Smaller pieces I built for the love of it — mostly while learning to code
+                through The Odin Project around 2020. Generative “systems music” in the
+                browser and a couple of music-practice tools. Rough around the edges, but
+                each one taught me something.
+            </p>
+        </section>
+
+        <section class="section" aria-labelledby="exp-heading">
+            <div class="section-head">
+                <p class="eyebrow">Creative coding</p>
+                <h2 id="exp-heading" class="section-title">Generative music &amp; practice tools</h2>
+            </div>
+
+            <div class="card-grid">
+                <article class="card card--with-media">
+                    <div class="card-media"><img src="images/archive/musicforairports.png" alt="Music for Airports — generative systems music in the browser" loading="lazy"></div>
+                    <h4 class="card-name">Music for Airports</h4>
+                    <p class="card-desc">Generative “systems music” after Brian Eno — many loops of different lengths, rarely realigning, playing endlessly in the browser.</p>
+                    <p class="card-meta">JavaScript · Web Audio</p>
+                    <p class="project-links"><a href="https://stupender.github.io/musicforairports/" target="_blank" rel="noopener">Live →</a> &nbsp; <a href="https://github.com/stupender/musicforairports" target="_blank" rel="noopener">Source →</a></p>
+                </article>
+
+                <article class="card card--with-media">
+                    <div class="card-media"><img src="images/archive/itsgonnarain.png" alt="It's Gonna Rain — phased digital tape loops in JavaScript" loading="lazy"></div>
+                    <h4 class="card-name">It's Gonna Rain</h4>
+                    <p class="card-desc">Phased digital tape loops after Steve Reich — two loops drifting slowly out of sync, written in JavaScript.</p>
+                    <p class="card-meta">JavaScript · Web Audio</p>
+                    <p class="project-links"><a href="https://stupender.github.io/itsgonnarain/" target="_blank" rel="noopener">Live →</a> &nbsp; <a href="https://github.com/stupender/itsgonnarain" target="_blank" rel="noopener">Source →</a></p>
+                </article>
+
+                <article class="card card--with-media">
+                    <div class="card-media"><img src="images/archive/triad-flashcards.png" alt="Triad Flashcards — guitar practice tool" loading="lazy"></div>
+                    <h4 class="card-name">Triad Flashcards</h4>
+                    <p class="card-desc">A practice tool that randomly generates root-position triads — by root, quality, and string set — for drilling the guitar fretboard.</p>
+                    <p class="card-meta">HTML · CSS · JavaScript</p>
+                    <p class="project-links"><a href="https://stupender.github.io/triad-flashcards/" target="_blank" rel="noopener">Live →</a> &nbsp; <a href="https://github.com/stupender/triad-flashcards" target="_blank" rel="noopener">Source →</a></p>
+                </article>
+
+                <article class="card card--with-media">
+                    <div class="card-media"><img src="images/archive/random-interval-generator.png" alt="Random Interval Generator — ear-training tool" loading="lazy"></div>
+                    <h4 class="card-name">Random Interval Generator</h4>
+                    <p class="card-desc">A tiny ear-training tool that calls out random intervals to practice against — one of my first working JavaScript apps.</p>
+                    <p class="card-meta">HTML · CSS · JavaScript</p>
+                    <p class="project-links"><a href="https://stupender.github.io/random-interval-generator/" target="_blank" rel="noopener">Live →</a> &nbsp; <a href="https://github.com/stupender/random-interval-generator" target="_blank" rel="noopener">Source →</a></p>
+                </article>
+            </div>
+
+            <p class="work-more">
+                <a href="index.html#work">← Back to selected work</a>
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="year"></span> Stu Pender · Designed &amp; built in Chicago</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
