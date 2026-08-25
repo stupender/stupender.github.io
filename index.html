@@ -28,16 +28,21 @@
     <!-- ============================================================= -->
     <header class="site-header">
         <a href="#top" class="wordmark">Stu Pender</a>
-        <nav class="site-nav" id="site-nav" aria-label="Primary">
-            <a href="#work">Work</a>
-            <a href="#skills">Skills</a>
-            <a href="#about">About</a>
-            <a href="resume.html">Résumé</a>
-            <a href="#contact">Contact</a>
-        </nav>
-        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
-            <span></span><span></span><span></span>
-        </button>
+        <div class="header-right">
+            <button class="sound-toggle" aria-label="Play ambient sound" aria-pressed="false" title="Ambient sound — Music for Airports">
+                <span class="eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            </button>
+            <nav class="site-nav" id="site-nav" aria-label="Primary">
+                <a href="#work">Work</a>
+                <a href="#skills">Skills</a>
+                <a href="#about">About</a>
+                <a href="resume.html">Résumé</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </header>
 
     <main id="top">
@@ -341,10 +346,10 @@
                 <h2 id="contact-heading" class="section-title">Let's build something.</h2>
             </div>
             <ul class="contact-list">
-                <li><a href="mailto:stu_pender@me.com">stu_pender@me.com</a></li>
-                <li><a href="resume.html">Résumé</a> <span class="contact-tag">view &amp; download</span></li>
-                <li><a href="https://github.com/stupender" target="_blank" rel="noopener">github.com/stupender</a></li>
-                <li><a href="https://beingsound.studio" target="_blank" rel="noopener">beingsound.studio</a> <span class="contact-tag">creative work</span></li>
+                <li><a href="mailto:stu_pender@me.com"><span>stu_pender@me.com</span><span class="contact-arrow" aria-hidden="true">→</span></a></li>
+                <li><a href="resume.html"><span>Résumé <span class="contact-tag">view &amp; download</span></span><span class="contact-arrow" aria-hidden="true">→</span></a></li>
+                <li><a href="https://github.com/stupender" target="_blank" rel="noopener"><span>github.com/stupender</span><span class="contact-arrow" aria-hidden="true">↗</span></a></li>
+                <li><a href="https://beingsound.studio" target="_blank" rel="noopener"><span>beingsound.studio <span class="contact-tag">creative work</span></span><span class="contact-arrow" aria-hidden="true">↗</span></a></li>
             </ul>
         </section>
 
@@ -353,6 +358,13 @@
     <footer class="site-footer">
         <p>© <span id="year"></span> Stu Pender · Designed &amp; built in Chicago</p>
     </footer>
+
+    <!-- Now-playing chip (revealed by script.js when ambient sound is on) -->
+    <a class="now-playing" href="archive.html#music-for-airports" hidden>
+        <span class="np-eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span class="np-text">Music for Airports</span>
+        <span class="np-arrow" aria-hidden="true">→</span>
+    </a>
 
     <script src="script.js"></script>
 </body>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case study — The Ground Beneath Our Feet</title>
+    <meta name="description" content="Case study: The Ground Beneath Our Feet — a music-licensing site for songwriter Jon Adams, taken from research to a shipped front-end. UX, branding, and build by Stu Pender.">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+    <link rel="apple-touch-icon" href="images/favicon-180.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="index.html" class="wordmark">Stu Pender</a>
+        <div class="header-right">
+            <button class="sound-toggle" aria-label="Play ambient sound" aria-pressed="false" title="Ambient sound — Music for Airports">
+                <span class="eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            </button>
+            <nav class="site-nav" aria-label="Primary" style="display:flex">
+                <a href="index.html#work">← Back to portfolio</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="top">
+        <article class="cs">
+
+            <!-- ============ HERO ============ -->
+            <header class="cs-head">
+                <p class="eyebrow">Case study · 2018</p>
+                <h1 class="cs-title">The Ground Beneath Our Feet</h1>
+                <p class="cs-sub">
+                    A music-for-licensing site for songwriter Jon Adams — taken end to end,
+                    from research and personas to brand identity and a shipped front-end.
+                </p>
+                <dl class="cs-meta">
+                    <div><dt>Role</dt><dd>UX · Branding · Front-end build</dd></div>
+                    <div><dt>Timeline</dt><dd>2018</dd></div>
+                    <div><dt>Stack</dt><dd>HTML · CSS · JavaScript · Figma</dd></div>
+                </dl>
+                <p class="project-links process-links cs-toplinks">
+                    <a href="https://www.figma.com/design/aP3HkAxSsng9lA9mhpUNIhWE/J.A.-Website---Personas" target="_blank" rel="noopener">Personas</a>
+                    <a href="https://www.figma.com/design/bLvxME4t2z310cHjwffEpNPS/JA---lofi-wireframe" target="_blank" rel="noopener">Wireframes</a>
+                    <a href="https://www.figma.com/design/I1dzemJoOKmE7YIY4LOV2nLx/Ground-Beneath-Our-Feet---Branding" target="_blank" rel="noopener">Branding</a>
+                    <a href="https://www.figma.com/design/rsXeBbGaRsx1GzvHqdgguL/JA---website-mockups" target="_blank" rel="noopener">Mockups</a>
+                    <a href="https://github.com/stupender/JA" target="_blank" rel="noopener">Source</a>
+                </p>
+            </header>
+
+            <figure class="cs-figure cs-figure--lead">
+                <img src="images/projects/jon-adams.png" alt="The Ground Beneath Our Feet — the shipped music-licensing site">
+                <figcaption class="cs-cap">The shipped site — categorized, streamable playlists for supervisors and listeners.</figcaption>
+            </figure>
+
+            <!-- ============ OVERVIEW ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">Overview</p>
+                <h2 class="cs-h2">Making a songwriter's catalog discoverable and licensable</h2>
+                <p class="cs-p">
+                    “The Ground Beneath Our Feet” is a home for songwriter Jon Adams's catalog —
+                    a place where music supervisors and listeners can browse his work by theme,
+                    stream it, and start a licensing conversation. I owned the project end to
+                    end: user research and personas, information architecture and flows, the
+                    brand identity, and the built, deployed front-end.
+                </p>
+                <!-- DRAFT NOTE — replace with your own words: what are you proudest of here?
+                     One or two sentences that frame the outcome. -->
+                <p class="cs-note">Draft note — add a sentence on the outcome you're proudest of (e.g. what shipped, how it was received, what it enabled Jon to do).</p>
+            </section>
+
+            <!-- ============ CHALLENGE ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">The challenge</p>
+                <h2 class="cs-h2">Help the right person find the right track, fast</h2>
+                <p class="cs-p">
+                    A licensing site lives or dies on discovery. A music supervisor arriving with
+                    a brief and a deadline needs to find a track that fits a mood in seconds; a
+                    listener or fan wants to wander and feel the work. The site had to serve both,
+                    stay out of the way of the music, and feel like the songs themselves.
+                </p>
+                <!-- DRAFT NOTE — replace with the specific problem framing / constraints you set. -->
+                <p class="cs-note">Draft note — add the specific problem you set out to solve and any real constraints (audience, timeline, what Jon needed).</p>
+            </section>
+
+            <!-- ============ RESEARCH / PERSONAS ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">Research</p>
+                <h2 class="cs-h2">Designing for two audiences</h2>
+                <p class="cs-p">
+                    I built personas to hold two distinct users in mind: the <strong>music
+                    supervisor</strong> searching on a deadline, and the <strong>listener</strong>
+                    exploring for pleasure. Their needs pull in different directions — speed and
+                    filtering versus mood and immersion — and the design had to reconcile them.
+                </p>
+                <p class="project-links"><a href="https://www.figma.com/design/aP3HkAxSsng9lA9mhpUNIhWE/J.A.-Website---Personas" target="_blank" rel="noopener">Open the personas in Figma →</a></p>
+                <!-- IMAGE SLOT — export the persona frame from Figma to
+                     images/case-study/ja-personas.png and swap the placeholder below for:
+                     <figure class="cs-figure"><img src="images/case-study/ja-personas.png" alt="Personas"><figcaption class="cs-cap">…</figcaption></figure> -->
+                <div class="cs-figure cs-figure--placeholder">
+                    <span>Personas — drop a Figma export here</span>
+                </div>
+                <!-- DRAFT NOTE — the insight that changed the design. -->
+                <p class="cs-note">Draft note — add the key insight from your persona/research work and how it shaped a decision.</p>
+            </section>
+
+            <!-- ============ IA / FLOWS ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">Structure</p>
+                <h2 class="cs-h2">Organizing the catalog by feel, not just metadata</h2>
+                <p class="cs-p">
+                    I mapped the core flows and structured the catalog around <em>theme</em> —
+                    grouping songs into mood-based, streamable playlists so a supervisor could
+                    scan by feeling and a listener could follow one. The navigation kept the
+                    music one tap away at every step.
+                </p>
+                <!-- DRAFT NOTE — the IA decision that mattered most and why. -->
+                <p class="cs-note">Draft note — add the information-architecture decision you're most confident about and the reasoning behind it.</p>
+            </section>
+
+            <!-- ============ WIREFRAMES ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">Wireframes</p>
+                <h2 class="cs-h2">Layout and hierarchy before visuals</h2>
+                <p class="cs-p">
+                    Lo-fi wireframes let me settle structure, hierarchy, and the streaming
+                    interaction before committing to any visual language — cheap to change,
+                    fast to test.
+                </p>
+                <p class="project-links"><a href="https://www.figma.com/design/bLvxME4t2z310cHjwffEpNPS/JA---lofi-wireframe" target="_blank" rel="noopener">Open the wireframes in Figma →</a></p>
+                <div class="cs-figure cs-figure--placeholder">
+                    <span>Lo-fi wireframes — drop a Figma export here</span>
+                </div>
+            </section>
+
+            <!-- ============ BRAND ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">Brand identity</p>
+                <h2 class="cs-h2">An identity that feels like the ground beneath your feet</h2>
+                <p class="cs-p">
+                    The brand had to feel grounded and human — matching the earthiness of the
+                    name and the songs. I worked through logo and identity iterations to land on
+                    a mark and type system that framed the music without competing with it.
+                </p>
+                <p class="project-links"><a href="https://www.figma.com/design/I1dzemJoOKmE7YIY4LOV2nLx/Ground-Beneath-Our-Feet---Branding" target="_blank" rel="noopener">Open the branding in Figma →</a></p>
+                <div class="cs-figure cs-figure--placeholder">
+                    <span>Branding / logo iterations — drop a Figma export here</span>
+                </div>
+                <!-- DRAFT NOTE — the branding decision or iteration story. -->
+                <p class="cs-note">Draft note — add a line on how the identity evolved (what you tried, what you kept, why).</p>
+            </section>
+
+            <!-- ============ MOCKUPS ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">Hi-fi design</p>
+                <h2 class="cs-h2">Bringing structure and brand together</h2>
+                <p class="cs-p">
+                    The hi-fi mockups resolved layout, brand, and interaction into the final
+                    screens — the reference I then built against.
+                </p>
+                <p class="project-links"><a href="https://www.figma.com/design/rsXeBbGaRsx1GzvHqdgguL/JA---website-mockups" target="_blank" rel="noopener">Open the mockups in Figma →</a></p>
+                <div class="cs-figure cs-figure--placeholder">
+                    <span>Hi-fi mockups — drop a Figma export here</span>
+                </div>
+            </section>
+
+            <!-- ============ BUILD ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">Build</p>
+                <h2 class="cs-h2">Shipping the front-end</h2>
+                <p class="cs-p">
+                    I built and deployed the site in HTML, CSS, and JavaScript — categorized,
+                    streamable playlists with the music always within reach. Designing and
+                    building it myself kept the intent intact from wireframe to production.
+                </p>
+                <p class="project-links"><a href="https://github.com/stupender/JA" target="_blank" rel="noopener">Source on GitHub →</a></p>
+            </section>
+
+            <!-- ============ REFLECTION ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">Reflection</p>
+                <h2 class="cs-h2">What I'd carry forward</h2>
+                <!-- DRAFT NOTE — your reflection. This section reads best in your own voice. -->
+                <p class="cs-note">Draft note — 2–4 sentences in your own voice: what worked, what you learned, what you'd do differently. This is the section hiring managers read most closely.</p>
+            </section>
+
+            <p class="work-more">
+                <a href="index.html#work">← Back to selected work</a>
+            </p>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="year"></span> Stu Pender · Designed &amp; built in Chicago</p>
+    </footer>
+
+    <a class="now-playing" href="archive.html#music-for-airports" hidden>
+        <span class="np-eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span class="np-text">Music for Airports</span>
+        <span class="np-arrow" aria-hidden="true">→</span>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

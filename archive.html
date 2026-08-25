@@ -20,9 +20,14 @@
 
     <header class="site-header">
         <a href="index.html" class="wordmark">Stu Pender</a>
-        <nav class="site-nav" aria-label="Primary" style="display:flex">
-            <a href="index.html#work">← Back to portfolio</a>
-        </nav>
+        <div class="header-right">
+            <button class="sound-toggle" aria-label="Play ambient sound" aria-pressed="false" title="Ambient sound — Music for Airports">
+                <span class="eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            </button>
+            <nav class="site-nav" aria-label="Primary" style="display:flex">
+                <a href="index.html#work">← Back to portfolio</a>
+            </nav>
+        </div>
     </header>
 
     <main id="top">
@@ -47,7 +52,7 @@
             </div>
 
             <div class="card-grid">
-                <article class="card card--with-media">
+                <article class="card card--with-media" id="music-for-airports">
                     <div class="card-media"><img src="images/archive/musicforairports.png" alt="Music for Airports — generative systems music in the browser" loading="lazy"></div>
                     <h4 class="card-name">Music for Airports</h4>
                     <p class="card-desc">Generative “systems music” after Brian Eno — many loops of different lengths, rarely realigning, playing endlessly in the browser.</p>
@@ -90,6 +95,12 @@
     <footer class="site-footer">
         <p>© <span id="year"></span> Stu Pender · Designed &amp; built in Chicago</p>
     </footer>
+
+    <a class="now-playing" href="#music-for-airports" hidden>
+        <span class="np-eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span class="np-text">Music for Airports</span>
+        <span class="np-arrow" aria-hidden="true">→</span>
+    </a>
 
     <script src="script.js"></script>
 </body>

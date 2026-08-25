@@ -20,9 +20,14 @@
 
     <header class="site-header no-print">
         <a href="index.html" class="wordmark">Stu Pender</a>
-        <nav class="site-nav" id="site-nav" style="display:flex" aria-label="Primary">
-            <a href="index.html#work">← Back to portfolio</a>
-        </nav>
+        <div class="header-right">
+            <button class="sound-toggle" aria-label="Play ambient sound" aria-pressed="false" title="Ambient sound — Music for Airports">
+                <span class="eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            </button>
+            <nav class="site-nav" id="site-nav" style="display:flex" aria-label="Primary">
+                <a href="index.html#work">← Back to portfolio</a>
+            </nav>
+        </div>
     </header>
 
     <main id="top">
@@ -201,6 +206,12 @@
     <footer class="site-footer no-print">
         <p>© <span id="year"></span> Stu Pender · Designed &amp; built in Chicago</p>
     </footer>
+
+    <a class="now-playing no-print" href="archive.html#music-for-airports" hidden>
+        <span class="np-eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span class="np-text">Music for Airports</span>
+        <span class="np-arrow" aria-hidden="true">→</span>
+    </a>
 
     <script src="script.js"></script>
 </body>
