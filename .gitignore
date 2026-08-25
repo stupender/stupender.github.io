@@ -1,0 +1,13 @@
+# OS / editor
+.DS_Store
+.vscode/
+
+# Local-only working files (kept on disk, not shipped)
+Samples/
+
+# Legacy / unused images from earlier portfolio versions
+images/about.jpeg
+images/lakefront.jpeg
+images/listening.jpg
+images/studio.jpg
+images/portfolio/

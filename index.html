@@ -1,72 +1,316 @@
-<HTML>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="styles.css">
-        <script src="script.js" defer></script>
-        <title>Stu Pender</title>
-        <link rel="icon" type="image/jpeg" href="images/sig.png"/>
-        <meta property="og:title" content="Stu Pender" />
-        <meta property="og:image" content="http://pender.co/images/stu.jpeg" />
-    
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <header>
-            <h1>Stu Pender</h1>
-            <!-- <h2>Guitarist & Composer</h2> -->
-        </header>
-        <nav>
-            <a href="#" class="about">About</a>
-            <!-- <a href="#" class="expression active">Expression</a>
-            <a href="#">Lessons</a> -->
-            <a href="#" class="contact">Connect</a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stu Pender — Designer & Builder</title>
+    <meta name="description" content="Stu Pender — Chicago-based designer and builder. UX, front-end, and AI-assisted development. I conceive products and build them.">
 
-            <div id="filters">
-                <p class="filter-title">FILTER WORK BY</p>
-                <a href="#" class="filter-item">All</a>
-                <a href="#" class="filter-item">Personal</a>
-                <a href="#" class="filter-item">Collaboration</a>    
-            </div>
+    <!-- Open Graph / social preview -->
+    <meta property="og:title" content="Stu Pender — Designer & Builder">
+    <meta property="og:description" content="UX, front-end, and AI-assisted development. I conceive products and build them.">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ============================================================= -->
+    <!-- HEADER / NAV                                                   -->
+    <!-- ============================================================= -->
+    <header class="site-header">
+        <a href="#top" class="wordmark">Stu Pender</a>
+        <nav class="site-nav" aria-label="Primary">
+            <a href="#work">Work</a>
+            <a href="#skills">Skills</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
         </nav>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
+    </header>
 
-        <div class="contact-container">
-            <div>
-                <p class="contact-title">CONTACT AT</p> 
-                <a href="#" class="contact-link" target="_blank">stu_pender@mac.com</a>    
-            </div>
-            <div>
-                <p class="contact-title">YOUTUBE</p> 
-                <a href="https://www.youtube.com/c/StuPender/" class="contact-link" target="_blank">Filmed Musical Studies & Expressions</a>    
-            </div>
+    <main id="top">
 
-            <div>
-                <p class="contact-title">INSTAGRAM</p> 
-                <a href="https://www.instagram.com/pendergram/" class="contact-link" target="_blank">@pendergram</a>    
-            </div>
-
-        </div>
-
-        <div class="about-container">
-            <img src="images/about.jpeg" id="about-pic">
-            <p id="about-text">
-                Stu Pender is a Brooklyn based guitarist and composer from the suburbs of Chicago, Illinois.
-                A graduate of the Jazz Studies Conservatory at SUNY Purchase, Stu studied under John Abercrombie and Vic Juris. 
-                He has since performed music at notable venues such as the United Nations General Assembly Hall, Beacon Theatre, and Brooklyn Steel 
-                — with musical acts Poetic Thrust, Photay, Elijah Wolf, The Gipsy Kings, Los Lobos, and more.
-                Stu continues his musical studies on the guitar with Fabiano do Nascimento and Derek Gripper.
-                <!-- Stu's debut record Stillness In Motion will be released in Fall 2021 by Youngbloods Records. -->
+        <!-- ========================================================= -->
+        <!-- HERO                                                       -->
+        <!-- ========================================================= -->
+        <section class="hero" aria-labelledby="hero-heading">
+            <p class="eyebrow">Chicago · Designer, builder, musician</p>
+            <h1 id="hero-heading" class="hero-title">
+                I conceive products<br>and build them.
+            </h1>
+            <p class="hero-lede">
+                Designer &amp; builder — UX, front-end, and AI-assisted development.
             </p>
-        </div>
+            <p class="hero-body">
+                A UX/UI and front-end background, a decade in creative production, and a
+                deep music domain — now shipping real web and desktop apps with
+                AI-assisted development. Design literacy, the range to know what to make,
+                and the ability to actually ship it.
+            </p>
+            <div class="hero-actions">
+                <a href="#work" class="btn btn-primary">View the work</a>
+                <a href="https://github.com/stupender" class="btn" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </section>
 
-        <div class="content-grid-container">
-            <div class="grid-item">
-
+        <!-- ========================================================= -->
+        <!-- WORK / PROJECTS                                            -->
+        <!-- ========================================================= -->
+        <section id="work" class="section" aria-labelledby="work-heading">
+            <div class="section-head">
+                <p class="eyebrow">Selected work</p>
+                <h2 id="work-heading" class="section-title">Things I've designed and built</h2>
             </div>
 
-        </div>
+            <!-- ---- Method ---- -->
+            <article class="project">
+                <a class="project-media" href="https://stupender.github.io/method" target="_blank" rel="noopener">
+                    <img src="images/projects/method.png" alt="Method — interactive music-theory and fretboard learning app" loading="lazy">
+                </a>
+                <div class="project-body">
+                    <p class="project-status">Deployed</p>
+                    <h3 class="project-name">Method</h3>
+                    <p class="project-desc">
+                        An interactive music-theory and guitar-fretboard learning web app —
+                        chords, voice-leading, and playback for exploring the instrument.
+                    </p>
+                    <dl class="project-meta">
+                        <div><dt>Role</dt><dd>Product design &amp; build</dd></div>
+                        <div><dt>Stack</dt><dd>JavaScript · AI-assisted development</dd></div>
+                    </dl>
+                    <p class="project-links">
+                        <a href="https://stupender.github.io/method" target="_blank" rel="noopener">Live demo →</a>
+                    </p>
+                </div>
+            </article>
 
-    </body>
-</HTML>
+            <!-- ---- Archive ---- -->
+            <article class="project project--reverse">
+                <a class="project-media" href="https://github.com/stupender/archive" target="_blank" rel="noopener">
+                    <img src="images/projects/archive.png" alt="Archive — local-first macOS app for re-discovering music libraries" loading="lazy">
+                </a>
+                <div class="project-body">
+                    <p class="project-status">In active development</p>
+                    <h3 class="project-name">Archive</h3>
+                    <p class="project-desc">
+                        A local-first macOS desktop app for re-discovering large music
+                        libraries — library scanning and tagging, A–B looping, multi-track
+                        layering, and smart playlists.
+                    </p>
+                    <dl class="project-meta">
+                        <div><dt>Role</dt><dd>Product design &amp; build</dd></div>
+                        <div><dt>Stack</dt><dd>TypeScript · Electron · Vite</dd></div>
+                    </dl>
+                    <p class="project-links">
+                        <a href="https://github.com/stupender/archive" target="_blank" rel="noopener">GitHub →</a>
+                    </p>
+                </div>
+            </article>
+
+            <!-- ---- Vox Mundi ---- -->
+            <article class="project">
+                <a class="project-media" href="https://stupender.github.io/yoga-of-the-voice" target="_blank" rel="noopener">
+                    <img src="images/projects/vox-mundi.png" alt="Vox Mundi — Yoga of the Voice marketing landing page" loading="lazy">
+                </a>
+                <div class="project-body">
+                    <p class="project-status">Live</p>
+                    <h3 class="project-name">Vox Mundi — Yoga of the Voice</h3>
+                    <p class="project-desc">
+                        A responsive marketing landing page designed and built for an
+                        international voice-training program.
+                    </p>
+                    <dl class="project-meta">
+                        <div><dt>Role</dt><dd>Design &amp; front-end build</dd></div>
+                        <div><dt>Stack</dt><dd>HTML · CSS · JavaScript</dd></div>
+                    </dl>
+                    <p class="project-links">
+                        <a href="https://stupender.github.io/yoga-of-the-voice" target="_blank" rel="noopener">Live demo →</a>
+                    </p>
+                </div>
+            </article>
+
+            <!-- ---- Being Sound ---- -->
+            <article class="project project--reverse">
+                <a class="project-media" href="https://beingsound.studio" target="_blank" rel="noopener">
+                    <img src="images/projects/being-sound.png" alt="Being Sound — studio website designed and built by Stu Pender" loading="lazy">
+                </a>
+                <div class="project-body">
+                    <p class="project-status">Live · creative work</p>
+                    <h3 class="project-name">Being Sound</h3>
+                    <p class="project-desc">
+                        My studio site, designed and built end to end — an embedded audio
+                        player, an interactive tools page, and a version-controlled codebase.
+                    </p>
+                    <dl class="project-meta">
+                        <div><dt>Role</dt><dd>Design &amp; build</dd></div>
+                        <div><dt>Stack</dt><dd>HTML · CSS · JavaScript</dd></div>
+                    </dl>
+                    <p class="project-links">
+                        <a href="https://beingsound.studio" target="_blank" rel="noopener">beingsound.studio →</a>
+                    </p>
+                </div>
+            </article>
+
+            <!-- ---- Expressionist ---- -->
+            <article class="project">
+                <div class="project-media project-media--static">
+                    <img src="images/projects/expressionist.png" alt="Expressionist — startup app concept, product design and Figma wireframing" loading="lazy">
+                </div>
+                <div class="project-body">
+                    <p class="project-status">Concept · reached investor interest</p>
+                    <h3 class="project-name">Expressionist</h3>
+                    <p class="project-desc">
+                        An early-stage startup app concept. I led product design and Figma
+                        wireframing; the work reached investor interest.
+                    </p>
+                    <dl class="project-meta">
+                        <div><dt>Role</dt><dd>Product design · wireframing</dd></div>
+                        <div><dt>Stack</dt><dd>Figma</dd></div>
+                    </dl>
+                    <!-- TODO: add Figma prototype link when provided -->
+                    <p class="project-links project-links--muted">Figma prototype available on request</p>
+                </div>
+            </article>
+
+            <!-- ---- Client builds ---- -->
+            <div class="subsection-head">
+                <p class="eyebrow">Client builds</p>
+                <h3 class="subsection-title">Sites designed and shipped for clients</h3>
+            </div>
+            <div class="card-grid">
+                <article class="card card--with-media">
+                    <div class="card-media"><img src="images/projects/seed.png" alt="Seed Worldwide — brand landing page" loading="lazy"></div>
+                    <h4 class="card-name">Seed Worldwide</h4>
+                    <p class="card-desc">A minimal brand landing page for a digital music distribution company — one bold mark, calm typography, still live years on.</p>
+                    <p class="card-meta">Design &amp; front-end build</p>
+                    <p class="project-links"><a href="https://seedworldwide.com" target="_blank" rel="noopener">seedworldwide.com →</a></p>
+                </article>
+                <article class="card card--with-media">
+                    <div class="card-media"><img src="images/projects/jon-adams.png" alt="Jon Adams Music — The Ground Beneath Our Feet, music-licensing site" loading="lazy"></div>
+                    <h4 class="card-name">Jon Adams Music</h4>
+                    <p class="card-desc">“The Ground Beneath Our Feet” — a music-for-licensing site with categorized, streamable playlists.</p>
+                    <p class="card-meta">Design &amp; front-end build</p>
+                    <p class="project-links"><a href="https://github.com/stupender/JA" target="_blank" rel="noopener">Source on GitHub →</a></p>
+                </article>
+            </div>
+
+            <!-- ---- Bootcamp UX case studies ---- -->
+            <div class="subsection-head">
+                <p class="eyebrow">Earlier · UX case studies</p>
+                <h3 class="subsection-title">Bootcamp research &amp; product work</h3>
+                <p class="subsection-note">
+                    From my UX training at Bloc (2017–2018): end-to-end product concepts
+                    shaped through user research, prototyping, and usability testing.
+                </p>
+            </div>
+            <div class="card-grid">
+                <article class="card card--with-media">
+                    <div class="card-media"><img src="images/projects/accordion.png" alt="Accordion — UX case study" loading="lazy"></div>
+                    <h4 class="card-name">Accordion</h4>
+                    <p class="card-desc">A web-based cloud-storage platform built around community and collaboration — bold, human, and workflow-first.</p>
+                    <p class="card-meta">Research · prototyping · usability testing · branding</p>
+                    <p class="project-links project-links--muted">Case study available on request</p>
+                </article>
+                <article class="card card--with-media">
+                    <div class="card-media"><img src="images/projects/capsule.png" alt="Capsule — UX case study" loading="lazy"></div>
+                    <h4 class="card-name">Capsule</h4>
+                    <p class="card-desc">An app for artists to sell and share exclusive content — pairing creators with a designer to keep their vision intact.</p>
+                    <p class="card-meta">Research · prototyping · usability testing · branding</p>
+                    <p class="project-links project-links--muted">Case study available on request</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- SKILLS                                                     -->
+        <!-- ========================================================= -->
+        <section id="skills" class="section" aria-labelledby="skills-heading">
+            <div class="section-head">
+                <p class="eyebrow">How I work</p>
+                <h2 id="skills-heading" class="section-title">Skills &amp; tools</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-col">
+                    <p class="skill-label">Design &amp; research</p>
+                    <ul class="skill-list">
+                        <li>UX / UI design</li>
+                        <li>Wireframing &amp; prototyping</li>
+                        <li>User research</li>
+                        <li>Usability testing</li>
+                    </ul>
+                </div>
+                <div class="skill-col">
+                    <p class="skill-label">Build</p>
+                    <ul class="skill-list">
+                        <li>HTML · CSS · JavaScript</li>
+                        <li>TypeScript</li>
+                        <li>Electron · Vite</li>
+                        <li>Git / GitHub · Figma</li>
+                        <li>AI-assisted development (Claude Code)</li>
+                    </ul>
+                </div>
+                <div class="skill-col">
+                    <p class="skill-label">Production &amp; PM</p>
+                    <ul class="skill-list">
+                        <li>A decade of project management</li>
+                        <li>Production &amp; delivery</li>
+                        <li>Scoping and shipping real work</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- ABOUT (photo-left, frosted-glass text panel)               -->
+        <!-- ========================================================= -->
+        <section id="about" class="about" aria-labelledby="about-heading">
+            <img src="images/portrait.jpeg" class="about-photo" alt="Stu Pender">
+            <div class="about-panel">
+                <p class="eyebrow eyebrow--light">About</p>
+                <h2 id="about-heading" class="about-title">Stu Pender</h2>
+                <p class="about-text">
+                    I'm a Chicago-based designer, builder, and musician. My background runs
+                    from UX/UI design and front-end development to a decade of project
+                    management and creative production.
+                </p>
+                <p class="about-text">
+                    What ties it together is range: I can sit with a problem, design the
+                    thing, and build it. The music background isn't a side note — it's where
+                    I learned taste, craft, and how to finish work worth shipping.
+                </p>
+                <p class="about-text">
+                    Explore the creative side at
+                    <a href="https://beingsound.studio" target="_blank" rel="noopener">Being Sound</a>.
+                </p>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- CONTACT                                                    -->
+        <!-- ========================================================= -->
+        <section id="contact" class="section contact" aria-labelledby="contact-heading">
+            <div class="section-head">
+                <p class="eyebrow">Get in touch</p>
+                <h2 id="contact-heading" class="section-title">Let's build something.</h2>
+            </div>
+            <ul class="contact-list">
+                <li><a href="mailto:stu1992@gmail.com">stu1992@gmail.com</a></li>
+                <li><a href="https://github.com/stupender" target="_blank" rel="noopener">github.com/stupender</a></li>
+                <li><a href="https://beingsound.studio" target="_blank" rel="noopener">beingsound.studio</a> <span class="contact-tag">creative work</span></li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="year"></span> Stu Pender · Designed &amp; built in Chicago</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
