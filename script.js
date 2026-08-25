@@ -13,16 +13,25 @@
     var toggle = document.querySelector('.nav-toggle');
     var nav = document.querySelector('.site-nav');
     if (toggle && nav) {
-        toggle.addEventListener('click', function () {
-            var open = nav.classList.toggle('open');
+        var setOpen = function (open) {
+            nav.classList.toggle('open', open);
             toggle.setAttribute('aria-expanded', String(open));
+            toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        };
+        toggle.addEventListener('click', function () {
+            setOpen(!nav.classList.contains('open'));
         });
-        // Close the menu after tapping a link.
+        // Close after tapping a link.
         nav.addEventListener('click', function (e) {
-            if (e.target.tagName === 'A') {
-                nav.classList.remove('open');
-                toggle.setAttribute('aria-expanded', 'false');
-            }
+            if (e.target.tagName === 'A') { setOpen(false); }
+        });
+        // Close on Escape.
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && nav.classList.contains('open')) { setOpen(false); }
+        });
+        // Close when tapping outside the header.
+        document.addEventListener('click', function (e) {
+            if (nav.classList.contains('open') && !e.target.closest('.site-header')) { setOpen(false); }
         });
     }
 
