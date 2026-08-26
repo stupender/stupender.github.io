@@ -37,6 +37,7 @@ body {
     font-family: var(--font-body);
     font-weight: 300;
     line-height: 1.6;
+    overflow-x: clip; /* contain the full-bleed hero background (100vw) */
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
 }
@@ -217,9 +218,26 @@ button:focus-visible,
    HERO
    ================================================================= */
 .hero {
+    position: relative;
+    isolation: isolate;
     max-width: var(--maxw);
     margin: 0 auto;
     padding: clamp(4rem, 12vh, 9rem) var(--side) clamp(3.5rem, 9vw, 7rem);
+}
+/* Full-bleed, pre-blurred sky/water photo under a heavy paper tint — quiet
+   atmosphere behind the intro; the tint keeps the text fully legible. */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    z-index: -1;
+    background:
+        linear-gradient(to bottom, rgb(224 224 224 / 0.66), rgb(224 224 224 / 0.86)),
+        url("images/hero-bg.jpg") center 38% / cover no-repeat;
 }
 .hero-title {
     font-family: var(--font-display);
@@ -331,6 +349,15 @@ a.project-media:hover img { transform: scale(1.035); }
 }
 .project-links a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 .project-links--muted { color: var(--ink-faint); font-style: italic; font-size: 0.82rem; }
+
+/* Arrow logic: a link that leaves the site (opens a new tab) gets a ↗.
+   Internal/forward links carry an explicit → in markup; back links a ←.
+   Prose links and the résumé stay arrow-free. */
+.project-links a[target="_blank"]::after,
+.cs-cap a[target="_blank"]::after {
+    content: "\00A0↗";
+    font-size: 0.9em;
+}
 
 /* A row of small process links (e.g. Personas · Wireframes · Branding) */
 .process-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.3rem; font-size: 0.84rem; }
