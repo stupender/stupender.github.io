@@ -1,73 +1,20 @@
 /* Stu Pender — Portfolio
-   Small progressive-enhancement layer. The site is fully readable
-   without JS; this adds a mobile menu, a gentle scroll-reveal, and
-   the footer year. */
+   Progressive enhancement: a small client-side router (so the ambient audio
+   survives page-to-page navigation), the ambient "Music for Airports" engine
+   (lives in memory, never restarts), a gentle scroll-reveal, mobile menu, and
+   the footer year. Everything works as plain links if JS is off. */
 
 (function () {
     'use strict';
-
-    // Signals to CSS that JS is on, so reveal animations can apply.
     document.documentElement.classList.add('js');
 
-    /* ---- Mobile nav toggle ---- */
-    var toggle = document.querySelector('.nav-toggle');
-    var nav = document.querySelector('.site-nav');
-    if (toggle && nav) {
-        var setOpen = function (open) {
-            nav.classList.toggle('open', open);
-            toggle.setAttribute('aria-expanded', String(open));
-            toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-        };
-        toggle.addEventListener('click', function () {
-            setOpen(!nav.classList.contains('open'));
-        });
-        // Close after tapping a link.
-        nav.addEventListener('click', function (e) {
-            if (e.target.tagName === 'A') { setOpen(false); }
-        });
-        // Close on Escape.
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && nav.classList.contains('open')) { setOpen(false); }
-        });
-        // Close when tapping outside the header.
-        document.addEventListener('click', function (e) {
-            if (nav.classList.contains('open') && !e.target.closest('.site-header')) { setOpen(false); }
-        });
-    }
-
-    /* ---- Scroll-reveal: fade sections up as they enter view ---- */
-    var targets = document.querySelectorAll('.hero, .project, .subsection-head, .card, .skill-col, .about-panel, .contact-list, .section-head');
-    targets.forEach(function (el) { el.classList.add('reveal'); });
-
-    if ('IntersectionObserver' in window) {
-        var io = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    io.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-        targets.forEach(function (el) { io.observe(el); });
-    } else {
-        targets.forEach(function (el) { el.classList.add('is-visible'); });
-    }
-
-    /* ---- Footer year ---- */
-    var year = document.getElementById('year');
-    if (year) { year.textContent = new Date().getFullYear(); }
-})();
-
-/* =================================================================
-   Ambient sound — a lightweight port of my "Music for Airports"
-   generative piece: many sample loops of different lengths that
-   rarely realign. Samples load only when a visitor turns sound on.
-   ================================================================= */
-(function () {
-    var toggles = document.querySelectorAll('.sound-toggle');
-    if (!toggles.length) { return; }
-    var chip = document.querySelector('.now-playing');
-
+    /* =============================================================
+       AMBIENT AUDIO — a lightweight port of my "Music for Airports"
+       generative piece. The engine is created once and kept alive in
+       this closure, so navigating between pages never restarts it.
+       The toggle mutes/unmutes (smooth fade) while it keeps evolving.
+       ============================================================= */
+    var VOL = 0.45;
     var LIBRARY = {
         'Guitar Sustain': [
             { note: 'A',  octave: 4, file: 'audio/mfa/guitar-sustain/A4.mp3' },
@@ -94,7 +41,7 @@
     ];
     var OCTAVE = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
     var bufferCache = {};
-    var ctx = null, master = null, intervals = [], playing = false;
+    var actx = null, master = null, started = false, muted = false;
 
     function noteValue(n, o) { return o * 12 + OCTAVE.indexOf(n); }
     function distance(n1, o1, n2, o2) { return noteValue(n1, o1) - noteValue(n2, o2); }
@@ -109,7 +56,7 @@
         var url = encodeURI(path).replace(/#/g, '%23');
         return fetch(url)
             .then(function (r) { return r.arrayBuffer(); })
-            .then(function (ab) { return ctx.decodeAudioData(ab); })
+            .then(function (ab) { return actx.decodeAudioData(ab); })
             .then(function (buf) { bufferCache[path] = buf; return buf; });
     }
     function getSample(inst, noteOct) {
@@ -121,49 +68,161 @@
         });
     }
     function playSample(inst, note, delay) {
-        if (!ctx) { return; }
+        if (!actx) { return; }
         getSample(inst, note).then(function (o) {
-            if (!ctx || ctx.state === 'closed') { return; }
-            var src = ctx.createBufferSource();
+            if (!actx || actx.state === 'closed') { return; }
+            var src = actx.createBufferSource();
             src.buffer = o.buffer;
             src.playbackRate.value = Math.pow(2, o.distance / 12);
             src.connect(master);
-            src.start(ctx.currentTime + delay);
+            src.start(actx.currentTime + delay);
         }).catch(function () {});
     }
     function startLoop(inst, note, lenSec, delay) {
         playSample(inst, note, delay);
-        intervals.push(setInterval(function () { playSample(inst, note, delay); }, lenSec * 1000));
+        setInterval(function () { playSample(inst, note, delay); }, lenSec * 1000);
     }
-    function reflect() {
-        toggles.forEach(function (t) {
-            t.setAttribute('aria-pressed', String(playing));
-            t.setAttribute('aria-label', playing ? 'Pause ambient sound' : 'Play ambient sound');
-        });
-        if (chip) {
-            if (playing) { chip.removeAttribute('hidden'); }
-            else { chip.setAttribute('hidden', ''); }
-        }
-    }
-    function start() {
+    function ensureStarted() {
+        if (started) { return; }
         var AC = window.AudioContext || window.webkitAudioContext;
         if (!AC) { return; }
-        ctx = new AC();
-        master = ctx.createGain();
-        master.gain.value = 0.45;
-        master.connect(ctx.destination);
+        actx = new AC();
+        master = actx.createGain();
+        master.gain.value = 0;
+        master.connect(actx.destination);
         LOOPS.forEach(function (l) { startLoop(l[0], l[1], l[2], l[3]); });
-        playing = true;
-        reflect();
+        started = true;
     }
-    function stop() {
-        intervals.forEach(clearInterval);
-        intervals = [];
-        if (ctx) { ctx.close(); ctx = null; master = null; }
-        playing = false;
-        reflect();
+    function ramp(to) {
+        if (!master || !actx) { return; }
+        var t = actx.currentTime;
+        master.gain.cancelScheduledValues(t);
+        master.gain.setValueAtTime(master.gain.value, t);
+        master.gain.linearRampToValueAtTime(to, t + 0.4);
     }
-    toggles.forEach(function (t) {
-        t.addEventListener('click', function () { playing ? stop() : start(); });
+    function toggleSound() {
+        if (!started) {
+            ensureStarted();
+            muted = false;
+        } else {
+            muted = !muted;
+        }
+        if (actx && actx.state === 'suspended') { actx.resume(); }
+        ramp(muted ? 0 : VOL);
+        reflectSound();
+    }
+    function reflectSound() {
+        var on = started && !muted;
+        document.querySelectorAll('.sound-toggle').forEach(function (t) {
+            t.setAttribute('aria-pressed', String(on));
+            t.setAttribute('aria-label', on ? 'Mute ambient sound' : 'Play ambient sound');
+        });
+    }
+
+    /* =============================================================
+       PER-PAGE INIT — runs on first load and after each page swap.
+       (The audio engine above is NOT re-created here.)
+       ============================================================= */
+    var revealObserver = null;
+
+    function setupReveal() {
+        if (revealObserver) { revealObserver.disconnect(); }
+        var targets = document.querySelectorAll(
+            '.hero, .project, .subsection-head, .card, .skill-col, .about-panel, ' +
+            '.contact-list, .section-head, .cs-head, .cs-figure, .cs-section, .work-more'
+        );
+        targets.forEach(function (el) { el.classList.add('reveal'); });
+        if ('IntersectionObserver' in window) {
+            revealObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+            targets.forEach(function (el) {
+                if (!el.classList.contains('is-visible')) { revealObserver.observe(el); }
+            });
+        } else {
+            targets.forEach(function (el) { el.classList.add('is-visible'); });
+        }
+    }
+
+    function initPage() {
+        var year = document.getElementById('year');
+        if (year) { year.textContent = new Date().getFullYear(); }
+
+        var toggle = document.querySelector('.nav-toggle');
+        var nav = document.querySelector('.site-nav');
+        if (toggle && nav && !toggle.dataset.wired) {
+            toggle.dataset.wired = '1';
+            toggle.addEventListener('click', function () {
+                var open = nav.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', String(open));
+            });
+        }
+
+        document.querySelectorAll('.sound-toggle').forEach(function (t) {
+            if (t.dataset.wired) { return; }
+            t.dataset.wired = '1';
+            t.addEventListener('click', toggleSound);
+        });
+        reflectSound();
+
+        setupReveal();
+    }
+
+    /* =============================================================
+       CLIENT-SIDE ROUTER — swaps <header> + <main> for internal page
+       links without a full reload, so the audio keeps playing. Falls
+       back to normal navigation on any error or unsupported case.
+       ============================================================= */
+    function norm(p) { return p.replace(/index\.html$/, '').replace(/(.)\/$/, '$1'); }
+
+    function swapTo(href, doPush) {
+        fetch(href).then(function (r) { return r.text(); }).then(function (html) {
+            var doc = new DOMParser().parseFromString(html, 'text/html');
+            var newMain = doc.querySelector('main');
+            var newHeader = doc.querySelector('.site-header');
+            if (!newMain) { location.href = href; return; }
+            var curHeader = document.querySelector('.site-header');
+            if (newHeader && curHeader) { curHeader.replaceWith(newHeader); }
+            document.querySelector('main').replaceWith(newMain);
+            if (doc.title) { document.title = doc.title; }
+            if (doPush) { history.pushState({}, '', href); }
+            initPage();
+            var hash = new URL(href, location.origin).hash;
+            var target = hash ? document.querySelector(hash) : null;
+            if (target) { target.scrollIntoView(); } else { window.scrollTo(0, 0); }
+        }).catch(function () { location.href = href; });
+    }
+
+    document.addEventListener('click', function (e) {
+        if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) { return; }
+        var a = e.target.closest('a');
+        if (!a) { return; }
+        if (a.target === '_blank' || a.hasAttribute('download')) { return; }
+        var raw = a.getAttribute('href');
+        if (!raw || raw.charAt(0) === '#') { return; }   // in-page hash: let the browser scroll
+        var url;
+        try { url = new URL(a.href); } catch (err) { return; }
+        if (url.origin !== location.origin) { return; }  // external
+        if (!(/\.html$/.test(url.pathname) || norm(url.pathname) === norm(location.pathname) || url.pathname === '/' )) { return; }
+        if (!/\.html$/.test(url.pathname) && url.pathname !== '/' ) { return; } // non-page asset (e.g. PDF)
+
+        e.preventDefault();
+        if (norm(url.pathname) === norm(location.pathname)) {
+            history.pushState({}, '', url.href);
+            var t = url.hash ? document.querySelector(url.hash) : null;
+            if (t) { t.scrollIntoView(); } else { window.scrollTo(0, 0); }
+            return;
+        }
+        swapTo(url.href, true);
     });
+
+    window.addEventListener('popstate', function () { swapTo(location.href, false); });
+
+    /* ---- Boot ---- */
+    initPage();
 })();
