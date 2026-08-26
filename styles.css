@@ -226,7 +226,9 @@ button:focus-visible,
     width: 100vw;
     z-index: -1;
     background:
-        linear-gradient(to bottom, rgb(var(--paper-rgb) / 0.78), rgb(var(--paper-rgb) / 0.92)),
+        linear-gradient(to bottom, rgb(var(--paper-rgb) / 0.50), rgb(var(--paper-rgb) / 0.80)),
+        radial-gradient(135% 105% at 86% 4%, rgba(222, 110, 52, 0.62) 0%, rgba(222, 110, 52, 0) 52%),
+        radial-gradient(85% 80% at 6% 102%, rgba(150, 126, 178, 0.32) 0%, rgba(150, 126, 178, 0) 60%),
         url("images/hero-bg.jpg") center 72% / cover no-repeat;
 }
 .hero-title {
