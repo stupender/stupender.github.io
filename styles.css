@@ -1,8 +1,9 @@
 /* =================================================================
    Stu Pender — Portfolio
-   Design language inherited from Being Sound (beingsound.studio):
-   warm-gray paper, near-black ink, a single soft-coral accent,
-   Chivo (display) + Montserrat (body), generous whitespace.
+   Design system: "Analog Presence" (see the style guide).
+   Warm bone paper, warm ink, a burnt-orange voice with slate + lavender
+   support; Fraunces (display serif) + Chivo (body) + Chivo Mono (specs);
+   film grain + a grainy sunrise gradient. Tokens live in :root below.
 
    Editing tips:
    · Colours, fonts, and rhythm all live in :root below.
@@ -11,20 +12,24 @@
    ================================================================= */
 
 :root {
-    /* Palette — "Clay": warm bone paper, warm near-black ink, muted
-       terracotta accent. Swap these three RGB triples to reskin the site. */
-    --paper-rgb:  236 231 225;          /* warm bone                  */
-    --ink-rgb:    30 26 22;             /* warm near-black            */
+    /* Palette — "Analog Presence": warm bone, warm ink, burnt-orange voice,
+       with slate + lavender as cool support. Swap the RGB triples to reskin. */
+    --paper-rgb:  236 228 214;          /* bone                       */
+    --ink-rgb:    31 25 19;             /* warm ink                   */
 
     --paper:      rgb(var(--paper-rgb));       /* page background     */
+    --cream:      #F4EEE2;              /* raised card surface         */
     --ink:        rgb(var(--ink-rgb));         /* primary text / panels */
-    --ink-soft:   rgb(var(--ink-rgb) / 0.62);  /* secondary text      */
-    --ink-faint:  rgb(var(--ink-rgb) / 0.40);  /* meta / captions     */
-    --accent:     #c15d33;              /* burnt-orange screenprint    */
-    --hair:       rgb(var(--ink-rgb) / 0.14);  /* hairline dividers   */
+    --ink-soft:   rgb(var(--ink-rgb) / 0.66);  /* secondary text      */
+    --ink-faint:  rgb(var(--ink-rgb) / 0.42);  /* meta / captions     */
+    --accent:     #C0512A;              /* burnt-orange screenprint    */
+    --slate:      #6E8CA0;              /* cool accent (batik blue)    */
+    --lav:        #AC9CC8;              /* gradient lavender           */
+    --hair:       rgb(var(--ink-rgb) / 0.15);  /* hairline dividers   */
 
-    --font-display: 'Chivo', sans-serif;
-    --font-body:    'Montserrat', sans-serif;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body:    'Chivo', 'Helvetica Neue', sans-serif;
+    --font-mono:    'Chivo Mono', ui-monospace, monospace;
 
     --side:  5%;                        /* left/right page margin     */
     --maxw:  1180px;                    /* content max width          */
@@ -34,6 +39,9 @@
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
+
+/* Offset anchor jumps so section titles clear the sticky header. */
+[id] { scroll-margin-top: clamp(5.5rem, 9vw, 7rem); }
 
 body {
     margin: 0;
@@ -244,7 +252,7 @@ button:focus-visible,
 }
 .hero-title {
     font-family: var(--font-display);
-    font-weight: 100;
+    font-weight: 330;
     font-size: clamp(2.6rem, 8vw, 5.2rem);
     line-height: 1.05;
     letter-spacing: -0.01em;
@@ -307,8 +315,9 @@ button:focus-visible,
 a.project-media:hover img { transform: scale(1.035); }
 
 .project-status {
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--accent);
     margin: 0 0 0.7rem;
@@ -413,8 +422,10 @@ a.project-media:hover img { transform: scale(1.035); }
 .card {
     border: 1px solid var(--hair);
     padding: 1.6rem;
-    background: rgb(var(--ink-rgb) / 0.015);
+    background: var(--cream);
 }
+/* Secondary sections take the cool slate voice; primary sections stay orange */
+.subsection-head .eyebrow { color: var(--slate); }
 .card-media {
     margin: -1.6rem -1.6rem 1.3rem;
     border-bottom: 1px solid var(--hair);
@@ -591,7 +602,7 @@ a.project-media:hover img { transform: scale(1.035); }
 }
 .resume-name {
     font-family: var(--font-display);
-    font-weight: 200;
+    font-weight: 340;
     font-size: clamp(2.2rem, 6vw, 3.4rem);
     line-height: 1;
     margin: 0 0 0.9rem;
@@ -701,7 +712,7 @@ a.project-media:hover img { transform: scale(1.035); }
 .cs-head { margin-bottom: clamp(2rem, 5vw, 3rem); }
 .cs-title {
     font-family: var(--font-display);
-    font-weight: 200;
+    font-weight: 340;
     font-size: clamp(2.1rem, 5.5vw, 3.4rem);
     line-height: 1.05;
     margin: 0 0 1rem;
