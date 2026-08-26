@@ -11,12 +11,17 @@
    ================================================================= */
 
 :root {
-    --paper:      #e0e0e0;              /* page background            */
-    --ink:        rgb(24 24 24);        /* primary text / dark panels */
-    --ink-soft:   rgb(24 24 24 / 0.62); /* secondary text            */
-    --ink-faint:  rgb(24 24 24 / 0.40); /* meta / captions           */
-    --accent:     rgb(228 107 108);     /* coral — eyebrows & links   */
-    --hair:       rgb(24 24 24 / 0.14); /* hairline dividers          */
+    /* Palette — "Clay": warm bone paper, warm near-black ink, muted
+       terracotta accent. Swap these three RGB triples to reskin the site. */
+    --paper-rgb:  236 231 225;          /* warm bone                  */
+    --ink-rgb:    30 26 22;             /* warm near-black            */
+
+    --paper:      rgb(var(--paper-rgb));       /* page background     */
+    --ink:        rgb(var(--ink-rgb));         /* primary text / panels */
+    --ink-soft:   rgb(var(--ink-rgb) / 0.62);  /* secondary text      */
+    --ink-faint:  rgb(var(--ink-rgb) / 0.40);  /* meta / captions     */
+    --accent:     #a9765c;              /* muted terracotta           */
+    --hair:       rgb(var(--ink-rgb) / 0.14);  /* hairline dividers   */
 
     --font-display: 'Chivo', sans-serif;
     --font-body:    'Montserrat', sans-serif;
@@ -207,7 +212,7 @@ button:focus-visible,
     width: 100vw;
     z-index: -1;
     background:
-        linear-gradient(to bottom, rgb(224 224 224 / 0.78), rgb(224 224 224 / 0.92)),
+        linear-gradient(to bottom, rgb(var(--paper-rgb) / 0.78), rgb(var(--paper-rgb) / 0.92)),
         url("images/hero-bg.jpg") center 72% / cover no-repeat;
 }
 .hero-title {
@@ -267,7 +272,7 @@ button:focus-visible,
 .project-media {
     display: block;
     overflow: hidden;
-    background: rgb(24 24 24 / 0.04);
+    background: rgb(var(--ink-rgb) / 0.04);
     border: 1px solid var(--hair);
 }
 .project-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
@@ -381,14 +386,14 @@ a.project-media:hover img { transform: scale(1.035); }
 .card {
     border: 1px solid var(--hair);
     padding: 1.6rem;
-    background: rgb(24 24 24 / 0.015);
+    background: rgb(var(--ink-rgb) / 0.015);
 }
 .card-media {
     margin: -1.6rem -1.6rem 1.3rem;
     border-bottom: 1px solid var(--hair);
     overflow: hidden;
     aspect-ratio: 16 / 10;
-    background: rgb(24 24 24 / 0.04);
+    background: rgb(var(--ink-rgb) / 0.04);
 }
 .card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
 .card:hover .card-media img { transform: scale(1.03); }
@@ -457,7 +462,7 @@ a.project-media:hover img { transform: scale(1.035); }
     grid-column: 2;
     position: relative;
     z-index: 1;
-    background: rgb(24 24 24 / 0.55);
+    background: rgb(var(--ink-rgb) / 0.55);
     -webkit-backdrop-filter: blur(22px) saturate(115%);
     backdrop-filter: blur(22px) saturate(115%);
     padding: clamp(2.4rem, 5vw, 4rem);
@@ -474,13 +479,13 @@ a.project-media:hover img { transform: scale(1.035); }
 .about-text {
     font-size: 0.94rem;
     line-height: 1.7;
-    color: rgb(224 224 224 / 0.9);
+    color: rgb(var(--paper-rgb) / 0.9);
     margin: 0 0 1.1rem;
     max-width: 44ch;
 }
 .about-text a {
     color: var(--paper);
-    border-bottom: 1px solid rgb(224 224 224 / 0.5);
+    border-bottom: 1px solid rgb(var(--paper-rgb) / 0.5);
     text-decoration: none;
     transition: color 0.2s, border-color 0.2s;
 }
@@ -507,7 +512,7 @@ a.project-media:hover img { transform: scale(1.035); }
     transition: background 0.2s, color 0.2s;
 }
 .contact-list a:hover,
-.contact-list a:focus-visible { background: rgb(24 24 24 / 0.04); color: var(--accent); }
+.contact-list a:focus-visible { background: rgb(var(--ink-rgb) / 0.04); color: var(--accent); }
 .contact-list a:focus-visible { outline-offset: -2px; }
 .contact-arrow {
     color: var(--ink-faint);
@@ -718,8 +723,8 @@ a.project-media:hover img { transform: scale(1.035); }
     align-items: center;
     justify-content: center;
     min-height: 9rem;
-    border: 1px dashed rgb(24 24 24 / 0.28);
-    background: rgb(24 24 24 / 0.02);
+    border: 1px dashed rgb(var(--ink-rgb) / 0.28);
+    background: rgb(var(--ink-rgb) / 0.02);
     color: var(--ink-faint);
     font-size: 0.82rem;
     letter-spacing: 0.02em;
@@ -774,7 +779,7 @@ a.project-media:hover img { transform: scale(1.035); }
         right: 0;
         background: var(--paper);
         border-bottom: 1px solid var(--hair);
-        box-shadow: 0 12px 24px -18px rgb(24 24 24 / 0.5);
+        box-shadow: 0 12px 24px -18px rgb(var(--ink-rgb) / 0.5);
         padding: 0.4rem var(--side) 1rem;
     }
     .site-nav.open a {
