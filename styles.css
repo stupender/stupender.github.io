@@ -172,15 +172,19 @@ button:focus-visible,
 .sound-toggle .ring { fill: none; stroke: currentColor; stroke-width: 1.5; opacity: 0.3; }
 .sound-toggle .dot { fill: currentColor; }
 .sound-toggle .orb { transform-box: view-box; transform-origin: 20px 20px; }
-/* Playing: accent + orbiting dots at different speeds */
+/* The orbit animation is always applied but paused, so pausing the music
+   freezes the dots wherever they are instead of snapping them home. */
+.sound-toggle .orb1 { animation: orbit 7s linear infinite; animation-play-state: paused; }
+.sound-toggle .orb2 { animation: orbit 12s linear infinite; animation-play-state: paused; }
+/* Playing: accent, brighter rings, and the dots actually orbit */
 .sound-toggle[aria-pressed="true"] { color: var(--accent); }
 .sound-toggle[aria-pressed="true"] .ring { opacity: 0.42; }
-.sound-toggle[aria-pressed="true"] .orb1 { animation: orbit 7s linear infinite; }
-.sound-toggle[aria-pressed="true"] .orb2 { animation: orbit 12s linear infinite; }
+.sound-toggle[aria-pressed="true"] .orb1,
+.sound-toggle[aria-pressed="true"] .orb2 { animation-play-state: running; }
 @keyframes orbit { to { transform: rotate(360deg); } }
 
 @media (prefers-reduced-motion: reduce) {
-    .sound-toggle[aria-pressed="true"] .orb { animation: none; }
+    .sound-toggle .orb { animation: none; }
 }
 
 /* =================================================================
@@ -220,7 +224,7 @@ button:focus-visible,
     top: 0;
     bottom: 0;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, 0) scale(1.06);
     width: 100vw;
     z-index: -1;
     background:
@@ -228,6 +232,15 @@ button:focus-visible,
         radial-gradient(135% 105% at 86% 4%, rgba(222, 110, 52, 0.62) 0%, rgba(222, 110, 52, 0) 52%),
         radial-gradient(85% 80% at 6% 102%, rgba(150, 126, 178, 0.32) 0%, rgba(150, 126, 178, 0) 60%),
         url("images/hero-bg.jpg") center 72% / cover no-repeat;
+    /* Slow, calm drift — the light and water shift like a real sunset. */
+    animation: hero-drift 48s ease-in-out infinite alternate;
+}
+@keyframes hero-drift {
+    from { transform: translate(-50%, 0)      scale(1.06); }
+    to   { transform: translate(-50%, -3.5%)  scale(1.16); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero::before { animation: none; }
 }
 .hero-title {
     font-family: var(--font-display);
