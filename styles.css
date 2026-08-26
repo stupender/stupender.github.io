@@ -20,7 +20,7 @@
     --ink:        rgb(var(--ink-rgb));         /* primary text / panels */
     --ink-soft:   rgb(var(--ink-rgb) / 0.62);  /* secondary text      */
     --ink-faint:  rgb(var(--ink-rgb) / 0.40);  /* meta / captions     */
-    --accent:     #a9765c;              /* muted terracotta           */
+    --accent:     #c15d33;              /* burnt-orange screenprint    */
     --hair:       rgb(var(--ink-rgb) / 0.14);  /* hairline dividers   */
 
     --font-display: 'Chivo', sans-serif;
@@ -49,6 +49,20 @@ body {
 
 img { max-width: 100%; display: block; }
 a { color: inherit; }
+
+/* Film grain — a fixed, desaturated noise wash over everything for an analog
+   texture (from the moodboards). pointer-events:none so it never intercepts. */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+}
+@media print { body::after { display: none; } }
 
 /* Visible keyboard focus (mouse clicks don't trigger :focus-visible) */
 a:focus-visible,
