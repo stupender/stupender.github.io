@@ -150,14 +150,16 @@ button:focus-visible,
 .header-right { display: flex; align-items: center; gap: clamp(1.2rem, 3vw, 2.2rem); }
 
 /* =================================================================
-   AMBIENT SOUND — equalizer toggle + now-playing chip
+   AMBIENT SOUND — "orbits" toggle. Two rings with dots that, while
+   playing, orbit at different speeds and slowly fall out of phase —
+   a small picture of the generative piece (loops rarely realigning).
    ================================================================= */
 .sound-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 22px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     padding: 0;
     background: none;
     border: none;
@@ -166,23 +168,19 @@ button:focus-visible,
     transition: color 0.2s;
 }
 .sound-toggle:hover { color: var(--accent); }
-.sound-toggle .eq { display: flex; align-items: flex-end; gap: 2px; height: 14px; }
-.sound-toggle .eq span { width: 2px; background: currentColor; transition: height 0.2s; }
-/* Paused: a small, calm static glyph */
-.sound-toggle .eq span:nth-child(1) { height: 6px; }
-.sound-toggle .eq span:nth-child(2) { height: 11px; }
-.sound-toggle .eq span:nth-child(3) { height: 7px; }
-.sound-toggle .eq span:nth-child(4) { height: 13px; }
-/* Playing: coral + animated bars */
+.sound-toggle .orbits { display: block; width: 100%; height: 100%; overflow: visible; }
+.sound-toggle .ring { fill: none; stroke: currentColor; stroke-width: 1.5; opacity: 0.3; }
+.sound-toggle .dot { fill: currentColor; }
+.sound-toggle .orb { transform-box: view-box; transform-origin: 20px 20px; }
+/* Playing: accent + orbiting dots at different speeds */
 .sound-toggle[aria-pressed="true"] { color: var(--accent); }
-.sound-toggle[aria-pressed="true"] .eq span { animation: eq 0.9s ease-in-out infinite; }
-.sound-toggle[aria-pressed="true"] .eq span:nth-child(2) { animation-delay: 0.18s; }
-.sound-toggle[aria-pressed="true"] .eq span:nth-child(3) { animation-delay: 0.36s; }
-.sound-toggle[aria-pressed="true"] .eq span:nth-child(4) { animation-delay: 0.5s; }
-@keyframes eq { 0%, 100% { height: 4px; } 50% { height: 14px; } }
+.sound-toggle[aria-pressed="true"] .ring { opacity: 0.42; }
+.sound-toggle[aria-pressed="true"] .orb1 { animation: orbit 7s linear infinite; }
+.sound-toggle[aria-pressed="true"] .orb2 { animation: orbit 12s linear infinite; }
+@keyframes orbit { to { transform: rotate(360deg); } }
 
 @media (prefers-reduced-motion: reduce) {
-    .sound-toggle[aria-pressed="true"] .eq span { animation: none; }
+    .sound-toggle[aria-pressed="true"] .orb { animation: none; }
 }
 
 /* =================================================================
