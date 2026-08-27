@@ -224,31 +224,35 @@ button:focus-visible,
     margin: 0 auto;
     padding: clamp(4rem, 12vh, 9rem) var(--side) clamp(3.5rem, 9vw, 7rem);
 }
-/* Full-bleed, pre-blurred sky/water photo under a heavy paper tint — quiet
-   atmosphere behind the intro; the tint keeps the text fully legible. */
+/* Live rippling water behind the intro. The poster (a still frame) shows until
+   the video loads, or if it's paused for reduced-motion. */
+.hero-video {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -2;
+}
+/* Warm sunrise gradient + paper tint washed over the water — sunset-on-lake,
+   and the tint keeps the text fully legible. */
 .hero::before {
     content: "";
     position: absolute;
     top: 0;
     bottom: 0;
     left: 50%;
-    transform: translate(-50%, 0) scale(1.06);
+    transform: translateX(-50%);
     width: 100vw;
     z-index: -1;
     background:
         linear-gradient(to bottom, rgb(var(--paper-rgb) / 0.50), rgb(var(--paper-rgb) / 0.80)),
         radial-gradient(135% 105% at 86% 4%, rgba(222, 110, 52, 0.62) 0%, rgba(222, 110, 52, 0) 52%),
-        radial-gradient(85% 80% at 6% 102%, rgba(150, 126, 178, 0.32) 0%, rgba(150, 126, 178, 0) 60%),
-        url("images/hero-bg.jpg") center 72% / cover no-repeat;
-    /* Slow, calm drift — the light and water shift like a real sunset. */
-    animation: hero-drift 48s ease-in-out infinite alternate;
-}
-@keyframes hero-drift {
-    from { transform: translate(-50%, 0)      scale(1.06); }
-    to   { transform: translate(-50%, -3.5%)  scale(1.16); }
-}
-@media (prefers-reduced-motion: reduce) {
-    .hero::before { animation: none; }
+        radial-gradient(85% 80% at 6% 102%, rgba(150, 126, 178, 0.32) 0%, rgba(150, 126, 178, 0) 60%);
 }
 .hero-title {
     font-family: var(--font-display);
