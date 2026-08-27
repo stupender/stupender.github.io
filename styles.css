@@ -215,6 +215,16 @@ button:focus-visible,
     margin: 0;
     max-width: 20ch;
 }
+/* An editorial statement under a section title (the "how I work" philosophy). */
+.section-lede {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(1.05rem, 2.3vw, 1.32rem);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 52ch;
+    margin: 1.4rem 0 0;
+}
 
 /* =================================================================
    HERO
