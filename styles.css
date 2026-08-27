@@ -217,28 +217,34 @@ button:focus-visible,
 /* =================================================================
    HERO
    ================================================================= */
+/* The hero is a full-bleed clipping mask: its background layers (video +
+   gradient) fill it and are clipped to its bounds on every side, so the
+   blurred water never bleeds past the hero. Content sits in .hero-inner. */
 .hero {
     position: relative;
     isolation: isolate;
+    overflow: clip;
+    padding: clamp(4rem, 12vh, 9rem) 0 clamp(3.5rem, 9vw, 7rem);
+}
+.hero-inner {
     max-width: var(--maxw);
     margin: 0 auto;
-    padding: clamp(4rem, 12vh, 9rem) var(--side) clamp(3.5rem, 9vw, 7rem);
+    padding: 0 var(--side);
 }
 /* Live rippling water behind the intro. The poster (a still frame) shows until
    the video loads, or if it's paused for reduced-motion. */
 .hero-video {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    /* Soft blur turns the ripples into gentle glisten, not busy detail; the
-       slight scale hides the blurred edges. */
-    transform: translateX(-50%) scale(1.08);
-    width: 100vw;
+    inset: 0;
+    width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
+    /* Soft blur turns the ripples into gentle glisten, not busy detail; the
+       slight scale pushes the blur's faded edges past the hero, where its
+       overflow:clip masks them — solid glisten, no bleed on any side. */
     filter: blur(7px);
+    transform: scale(1.08);
     z-index: -2;
 }
 /* Warm sunrise gradient + paper tint washed over the water — sunset-on-lake,
@@ -246,11 +252,7 @@ button:focus-visible,
 .hero::before {
     content: "";
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
+    inset: 0;
     z-index: -1;
     background:
         linear-gradient(to bottom, rgb(var(--paper-rgb) / 0.46), rgb(var(--paper-rgb) / 0.80)),
