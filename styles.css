@@ -127,6 +127,8 @@ button:focus-visible,
     transition: color 0.2s, border-color 0.2s;
 }
 .site-nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+/* Arrow logic in the nav: an item that leaves the page carries a → */
+.site-nav a.nav-page::after { content: "\00A0\2192"; color: var(--accent); }
 
 /* Hamburger toggle — three thin lines that animate to an X */
 .nav-toggle {
@@ -358,7 +360,7 @@ a.project-media:hover img { transform: scale(1.035); }
     color: var(--ink-faint);
     margin-bottom: 0.2rem;
 }
-.project-meta dd { margin: 0; font-size: 0.86rem; }
+.project-meta dd { margin: 0; font-family: var(--font-mono); font-size: 0.8rem; }
 
 .project-links { margin: 0; font-size: 0.9rem; }
 .project-links a {
@@ -452,11 +454,56 @@ a.project-media:hover img { transform: scale(1.035); }
 }
 .card-desc { font-size: 0.9rem; color: var(--ink-soft); margin: 0 0 0.9rem; }
 .card-meta {
-    font-size: 0.68rem;
-    letter-spacing: 0.08em;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--ink-faint);
     margin: 0 0 0.6rem;
+}
+
+/* ---- Compact density — a dense list (archive experiments): the same
+   project anatomy (name · one-line · stack · links) at its smallest ---- */
+.compact-list { border-top: 1px solid var(--hair); }
+.compact-item {
+    display: grid;
+    grid-template-columns: 76px 1fr auto;
+    gap: clamp(1rem, 3vw, 1.8rem);
+    align-items: center;
+    padding: 1.15rem 0;
+    border-bottom: 1px solid var(--hair);
+}
+.compact-thumb {
+    display: block;
+    width: 76px;
+    height: 54px;
+    overflow: hidden;
+    border: 1px solid var(--hair);
+    background: rgb(var(--ink-rgb) / 0.04);
+}
+.compact-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.compact-thumb:hover img { transform: scale(1.06); }
+.compact-name {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.15;
+    margin: 0 0 0.15rem;
+}
+.compact-one { font-size: 0.86rem; color: var(--ink-soft); margin: 0; max-width: 52ch; }
+.compact-stack {
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0.35rem 0 0;
+}
+.compact-links { margin: 0; white-space: nowrap; }
+@media (max-width: 620px) {
+    .compact-item { grid-template-columns: 60px 1fr; }
+    .compact-thumb { width: 60px; height: 44px; }
+    .compact-links { grid-column: 2; margin-top: 0.5rem; white-space: normal; }
 }
 
 /* =================================================================
@@ -751,7 +798,7 @@ a.project-media:hover img { transform: scale(1.035); }
     color: var(--ink-faint);
     margin-bottom: 0.25rem;
 }
-.cs-meta dd { margin: 0; font-size: 0.9rem; }
+.cs-meta dd { margin: 0; font-family: var(--font-mono); font-size: 0.82rem; }
 .cs-toplinks { margin: 0; }
 
 .cs-figure { margin: 2rem 0; }
