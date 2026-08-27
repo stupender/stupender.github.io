@@ -386,22 +386,51 @@ a.project-media:hover img { transform: scale(1.035); }
 .process-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.3rem; font-size: 0.84rem; }
 
 /* Quiet link to the archive page at the end of the work section */
-.work-more {
+/* =================================================================
+   .linkrow — the ONE destination-row pattern. Anything that navigates
+   you somewhere (contact links, the "all work" expander, page links)
+   is a full-width row: label left, arrow right, hover-highlight.
+   ================================================================= */
+.linkrow {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+    font-weight: 400;
+    color: var(--ink);
+    border-top: 1px solid var(--hair);
+    transition: background 0.2s, color 0.2s;
+}
+.linkrow:hover,
+.linkrow:focus-visible { background: rgb(var(--ink-rgb) / 0.04); color: var(--accent); }
+.linkrow:focus-visible { outline-offset: -2px; }
+.row-arrow { color: var(--ink-faint); font-size: 0.85em; flex-shrink: 0; transition: transform 0.2s, color 0.2s; }
+.linkrow:hover .row-arrow { color: var(--accent); transform: translateX(5px); }
+
+/* The "all work" expander at the end of the work section — a single linkrow. */
+.work-more { margin: clamp(2.5rem, 6vw, 4rem) -1rem 0; }
+.work-more .linkrow { border-bottom: 1px solid var(--hair); }
+
+/* Back navigation — quieter than a destination row. */
+.back-link {
     margin: clamp(2.5rem, 6vw, 4rem) 0 0;
     padding-top: clamp(2rem, 5vw, 3.5rem);
     border-top: 1px solid var(--hair);
     text-align: center;
 }
-.work-more a {
+.back-link a {
     font-family: var(--font-display);
-    font-size: clamp(1.05rem, 2.4vw, 1.3rem);
-    font-weight: 300;
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+    font-weight: 400;
     text-decoration: none;
-    border-bottom: 1px solid var(--ink);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
+    color: var(--ink-soft);
+    transition: color 0.2s;
 }
-.work-more a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.back-link a:hover { color: var(--accent); }
 /* Balance the space below the archive link with the space above it, so it sits
    evenly between its own hairline and the section's closing hairline. */
 #work { padding-bottom: clamp(2rem, 5vw, 3.5rem); }
@@ -589,32 +618,9 @@ a.project-media:hover img { transform: scale(1.035); }
    CONTACT + FOOTER
    ================================================================= */
 /* Full-width rows: the whole strip between the hairlines is hoverable + clickable */
+/* Contact is just a list of .linkrow destination rows. */
 .contact-list { list-style: none; margin: 0 -1rem; padding: 0; }
-.contact-list li { border-top: 1px solid var(--hair); }
-.contact-list li:last-child { border-bottom: 1px solid var(--hair); }
-.contact-list a {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1rem;
-    text-decoration: none;
-    font-family: var(--font-display);
-    font-size: clamp(1.05rem, 2.4vw, 1.35rem);
-    font-weight: 300;
-    color: var(--ink);
-    transition: background 0.2s, color 0.2s;
-}
-.contact-list a:hover,
-.contact-list a:focus-visible { background: rgb(var(--ink-rgb) / 0.04); color: var(--accent); }
-.contact-list a:focus-visible { outline-offset: -2px; }
-.contact-arrow {
-    color: var(--ink-faint);
-    font-size: 0.85em;
-    transition: transform 0.2s, color 0.2s;
-    flex-shrink: 0;
-}
-.contact-list a:hover .contact-arrow { color: var(--accent); transform: translateX(5px); }
+.contact-list li:last-child .linkrow { border-bottom: 1px solid var(--hair); }
 .contact-tag {
     font-family: var(--font-body);
     font-size: 0.62rem;
