@@ -243,8 +243,8 @@ button:focus-visible,
     /* Soft blur turns the ripples into gentle glisten, not busy detail; the
        slight scale pushes the blur's faded edges past the hero, where its
        overflow:clip masks them — solid glisten, no bleed on any side. */
-    filter: blur(7px);
-    transform: scale(1.08);
+    filter: blur(10px);
+    transform: scale(1.1);
     z-index: -2;
 }
 /* Warm sunrise gradient + paper tint washed over the water — sunset-on-lake,
