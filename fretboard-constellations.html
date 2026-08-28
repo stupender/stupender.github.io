@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case study — Fretboard Constellations</title>
+    <meta name="description" content="Case study: Fretboard Constellations — an interactive guitar-theory instrument designed for the teaching room. Product design and build by Stu Pender.">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+    <link rel="apple-touch-icon" href="images/favicon-180.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300..600;1,300..600&family=Chivo+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="index.html" class="wordmark">Stu Pender</a>
+        <div class="header-right">
+            <button class="sound-toggle" aria-label="Play ambient sound" aria-pressed="false" title="Ambient sound — Music for Airports">
+                <svg class="orbits" viewBox="0 0 40 40" aria-hidden="true"><circle class="ring" cx="20" cy="20" r="8.5"/><circle class="ring" cx="20" cy="20" r="15"/><g class="orb orb1"><circle class="dot" cx="20" cy="11.5" r="2.8"/></g><g class="orb orb2"><circle class="dot" cx="20" cy="5" r="2.8"/></g></svg>
+            </button>
+            <nav class="site-nav" aria-label="Primary" style="display:flex">
+                <a href="index.html#work">← Back to portfolio</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="top">
+        <article class="cs">
+
+            <!-- ============ HERO ============ -->
+            <header class="cs-head">
+                <p class="eyebrow">Case study · 2025 – present</p>
+                <h1 class="cs-title">Fretboard Constellations</h1>
+                <p class="cs-sub">
+                    An interactive theory instrument for guitar — built to teach the way an
+                    expert actually teaches: by seeing, hearing, and playing, not by reading.
+                </p>
+                <dl class="cs-meta">
+                    <div><dt>Role</dt><dd>Product design &amp; build</dd></div>
+                    <div><dt>Timeline</dt><dd>2025 – present</dd></div>
+                    <div><dt>Stack</dt><dd>TypeScript · React · Vite · Web Audio · VexFlow</dd></div>
+                </dl>
+                <p class="project-links process-links cs-toplinks">
+                    <a href="https://stupender.github.io/method" target="_blank" rel="noopener">Live demo</a>
+                    <a href="https://github.com/stupender/method" target="_blank" rel="noopener">Source</a>
+                </p>
+            </header>
+
+            <figure class="cs-figure cs-figure--lead">
+                <img src="images/projects/fretboard-constellations.png" alt="Fretboard Constellations — the colour-coded neck">
+                <figcaption class="cs-cap">The neck as a field of colour-coded “constellations” — every scale degree its own colour, playable, with notation and TAB.</figcaption>
+            </figure>
+
+            <!-- ============ OVERVIEW ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">Overview</p>
+                <h2 class="cs-h2">A living textbook for the guitar</h2>
+                <p class="cs-p">
+                    Fretboard Constellations renders music theory — scales, chords, harmony — as
+                    colour-coded shapes across the neck that you can <em>see</em>, <em>hear</em>,
+                    and <em>play</em>. I own it end to end: the product thinking, the UX, the
+                    visual system, and the TypeScript/React build. It grew out of a decade of
+                    teaching, rebuilt as software.
+                </p>
+                <p class="cs-note">Draft note — add the outcome you're proudest of: what it changed in your own lessons, how students or peers responded, what it let you do that a whiteboard couldn't.</p>
+            </section>
+
+            <!-- ============ THESIS ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">The thesis</p>
+                <h2 class="cs-h2">Theory exists to free expression, not to be studied</h2>
+                <p class="cs-p">
+                    Most theory tools <em>explain</em>. This one lets you <em>do</em>. The idea
+                    underneath: technique and theory exist to free expression — one transferable
+                    pattern, applied across the instrument. The less you have to think, the more
+                    you can play. So the app never lectures; it shows the pattern and hands you
+                    back the instrument.
+                </p>
+            </section>
+
+            <!-- ============ WHO IT'S FOR ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">The defining decision</p>
+                <h2 class="cs-h2">Designed for the teaching room, not the lone learner</h2>
+                <p class="cs-p">
+                    The hardest and most clarifying decision came first: who is the primary user?
+                    Not the self-directed learner most theory apps assume — but an
+                    <strong>expert teaching live, on a shared screen.</strong> That single choice
+                    cascaded through everything. An expert drives, so nothing is skill-gated —
+                    everything stays reachable. A student is watching, so the screen has to stay
+                    calm and legible. And disclosure happens by <em>relevance</em>, not by
+                    <em>level</em>.
+                </p>
+                <p class="cs-p">
+                    It's why the app splits into a <strong>Lesson Mode</strong> — calm, the
+                    neck and score at maximum size, minimal chrome, the real primary state — and a
+                    <strong>Studio Mode</strong> with every control visible, for preparing alone.
+                    Designing for the room where teaching happens decluttered more than any amount
+                    of control-tidying could.
+                </p>
+            </section>
+
+            <!-- ============ ARCHITECTURE ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">The core architecture</p>
+                <h2 class="cs-h2">Theory as data, not code</h2>
+                <p class="cs-p">
+                    Under the UX is a product decision: Fretboard Constellations is an
+                    <strong>engine that renders theory data.</strong> Scales, chords, voicings,
+                    tunings — even whole instruments — live as plain data files; the engine reads
+                    them and draws and plays them. Adding a scale, a chord, or a new tuning means
+                    adding a data file, not touching the engine. Small surface area, limitless
+                    content — and the reason the app can keep growing without collapsing under its
+                    own features.
+                </p>
+            </section>
+
+            <!-- ============ THE SEARCH MADE VISIBLE ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">The load-bearing idea</p>
+                <h2 class="cs-h2">The app is a search tool, not a display</h2>
+                <p class="cs-p">
+                    Here's a chord → here are the keys it could live in → watch the space narrow as
+                    you add the melody note, the next chord, the mode. That's how theory actually
+                    gets used in a lesson — as reverse-engineering — and the app makes the search
+                    <em>visible</em>: a thin context band shows the current key hypotheses, the
+                    candidates still in play, and what just narrowed them. The student watches the
+                    engine run. It's the thing that makes it <em>this</em> app and not a chord chart.
+                </p>
+                <div class="cs-figure cs-figure--placeholder">
+                    <span>Harmony view / the context strip — drop an app screenshot here</span>
+                </div>
+                <p class="cs-note">Draft note — a line on how the “search” interaction landed with students: did watching the space narrow change how they understood a progression?</p>
+            </section>
+
+            <!-- ============ CONSTELLATIONS ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">The signature view</p>
+                <h2 class="cs-h2">Externalizing the map an expert carries</h2>
+                <p class="cs-p">
+                    An experienced player holds a mental image of the neck — where the notes live,
+                    how shapes connect. Fretboard Constellations <strong>externalizes that
+                    image.</strong> Each scale degree gets a colour; every shape appears in all its
+                    positions across the neck as hoverable constellations, with standard notation
+                    and TAB, and all of it is playable — click a chord to strum it, a scale box to
+                    run it. When the harmonic context is ambiguous, overlapping constellations are
+                    colour-coded so the candidate keys read at a glance.
+                </p>
+                <figure class="cs-figure">
+                    <img src="images/case-study/fc-full.png" alt="The full anatomy — controls, the colour-coded neck, and notation with TAB for each mode">
+                    <figcaption class="cs-cap">The full anatomy: mode / key / scale / gravity controls, the colour-coded neck with its position box, and notation + TAB for each mode of the scale.</figcaption>
+                </figure>
+            </section>
+
+            <!-- ============ VISUAL DIRECTION ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">The look — “Paper &amp; Night”</p>
+                <h2 class="cs-h2">An art-book, not a dashboard</h2>
+                <p class="cs-p">
+                    The visual direction is literary, not utilitarian: a serif (Newsreader) for
+                    display, a clean grotesque (Karla) for everything operational, and a warm paper
+                    ground that stays calm and legible projected on a wall in a lesson. A
+                    <strong>Night</strong> mode carries the same system into the dark. It's the
+                    same analog-serif sensibility this portfolio runs on — the two arrived there
+                    independently.
+                </p>
+                <div class="cs-figure cs-figure--placeholder">
+                    <span>Night mode — drop a dark-theme screenshot here</span>
+                </div>
+            </section>
+
+            <!-- ============ STATUS / NEXT ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">Where it is · what's next</p>
+                <h2 class="cs-h2">Deployed, and still growing</h2>
+                <p class="cs-p">
+                    Live and in active use. Today it renders scales as their seven playable
+                    position boxes, chords as voicing shapes with independent structure and
+                    inversion, and a Harmony view of a key's diatonic chords with Roman numerals —
+                    every shape playable, across the neck, with TAB. Next: the context strip as a
+                    persistent band, and a self-guided course mode — in the spirit of Ableton's
+                    <em>Learning Synths</em> — that reuses the same engine.
+                </p>
+                <p class="project-links process-links">
+                    <a href="https://stupender.github.io/method" target="_blank" rel="noopener">Try it live</a>
+                    <a href="https://github.com/stupender/method" target="_blank" rel="noopener">Source on GitHub</a>
+                </p>
+            </section>
+
+            <!-- ============ REFLECTION ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">Reflection</p>
+                <h2 class="cs-h2">What I'd carry forward</h2>
+                <p class="cs-note">Draft note — 2–4 sentences in your voice: the hardest trade-off, what building it taught you about designing for experts vs. learners, what you'd do differently. This section reads closest.</p>
+            </section>
+
+            <p class="back-link">
+                <a href="index.html#work">← Back to selected work</a>
+            </p>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="year"></span> Stu Pender · Designed &amp; built in Chicago</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
