@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case study — Archive</title>
+    <meta name="description" content="Case study: Archive — a local-first macOS app for re-discovering large music libraries. Product design and build by Stu Pender.">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+    <link rel="apple-touch-icon" href="images/favicon-180.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300..600;1,300..600&family=Chivo+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="index.html" class="wordmark">Stu Pender</a>
+        <div class="header-right">
+            <button class="sound-toggle" aria-label="Play ambient sound" aria-pressed="false" title="Ambient sound — Music for Airports">
+                <svg class="orbits" viewBox="0 0 40 40" aria-hidden="true"><circle class="ring" cx="20" cy="20" r="8.5"/><circle class="ring" cx="20" cy="20" r="15"/><g class="orb orb1"><circle class="dot" cx="20" cy="11.5" r="2.8"/></g><g class="orb orb2"><circle class="dot" cx="20" cy="5" r="2.8"/></g></svg>
+            </button>
+            <nav class="site-nav" aria-label="Primary" style="display:flex">
+                <a href="index.html#work">← Back to portfolio</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="top">
+        <article class="cs">
+
+            <!-- ============ HERO ============ -->
+            <header class="cs-head">
+                <p class="eyebrow">Case study · 2025 – present</p>
+                <h1 class="cs-title">Archive</h1>
+                <p class="cs-sub">
+                    A local-first macOS app for re-discovering large music libraries —
+                    turning a collection you play into one you can actually explore.
+                </p>
+                <dl class="cs-meta">
+                    <div><dt>Role</dt><dd>Product design &amp; build</dd></div>
+                    <div><dt>Timeline</dt><dd>2025 – present · in development</dd></div>
+                    <div><dt>Stack</dt><dd>TypeScript · Electron · Vite · Web Audio</dd></div>
+                </dl>
+                <p class="project-links process-links cs-toplinks">
+                    <a href="https://github.com/stupender/archive" target="_blank" rel="noopener">Source</a>
+                </p>
+            </header>
+
+            <figure class="cs-figure cs-figure--lead">
+                <img src="images/projects/archive.png" alt="Archive — a local-first macOS audio tool">
+                <figcaption class="cs-cap">A personal audio archive for macOS — scan a library, and re-encounter what's in it.</figcaption>
+            </figure>
+
+            <!-- ============ OVERVIEW ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">Overview</p>
+                <h2 class="cs-h2">A tool for re-discovering your own music</h2>
+                <p class="cs-p">
+                    Archive is a personal, local-first audio tool for macOS. It scans a large
+                    music library and helps you re-encounter what's in it — play a random slice to
+                    jog your memory, loop a region, or layer up to five tracks into a collage. I own
+                    the product, the UX, and the TypeScript/Electron build. It's inspired by the
+                    archive-review tool Peter Chilvers built for Brian Eno.
+                </p>
+                <p class="cs-note">Draft note — add the outcome: what re-surfaced when you used it on your own decades of material, and whether it changed how you work.</p>
+            </section>
+
+            <!-- ============ PROBLEM ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">The problem</p>
+                <h2 class="cs-h2">Every player plays. None help you rediscover.</h2>
+                <p class="cs-p">
+                    Streaming made libraries feel infinite and made your own collection invisible.
+                    If you've made or collected music for years, you have decades of material you've
+                    forgotten you have — and every music player is built to <em>play what you already
+                    know</em>, not to help you find what you don't. I kept my own music in folders by
+                    stage — seed, experimentation, crafting, complete — and most of it had gone quiet.
+                    Archive is built for the opposite of a player: discovery.
+                </p>
+            </section>
+
+            <!-- ============ REFRAME ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">The reframe</p>
+                <h2 class="cs-h2">A library isn't a list to play — it's an archive to explore</h2>
+                <p class="cs-p">
+                    That single shift drives every feature. The guiding line, borrowed from how Eno
+                    works: <strong>stay embodied while moving fast</strong> — re-encounter your own
+                    material by shuffling the whole archive, hearing short slices, and layering pieces
+                    to find combinations you'd never have planned.
+                </p>
+            </section>
+
+            <!-- ============ SIGNATURE INTERACTIONS ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">The core interactions</p>
+                <h2 class="cs-h2">Three ways back into the material</h2>
+                <p class="cs-p">
+                    <strong>Random Review</strong> is the heart of it — pull a random track, or a
+                    random five-second slice from a random track, to break the habit of searching for
+                    what you already know. <strong>A-B loop</strong> loops any region, at variable
+                    speed, forwards or reversed — for study, or for turning a fragment into a texture.
+                    <strong>Multi-Track collage</strong> layers up to five tracks at once, each with
+                    its own loop, speed, and direction, saved as a <em>Scene</em> you can recall —
+                    where discovery becomes composition.
+                </p>
+                <div class="cs-figure cs-figure--placeholder">
+                    <span>Random Review / Multi-Track collage — drop app screenshots here</span>
+                </div>
+                <p class="cs-note">Draft note — which interaction surprised you most in use? A concrete moment (a forgotten track, an accidental layering) makes this land.</p>
+            </section>
+
+            <!-- ============ PRODUCT DECISIONS ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">Product decisions</p>
+                <h2 class="cs-h2">Local-first, and keyboard-first</h2>
+                <p class="cs-p">
+                    <strong>Local-first, on purpose.</strong> No accounts, no uploads — your music
+                    never leaves your Mac. For an archive of personal, often unreleased work,
+                    ownership and privacy aren't features; they're the premise.
+                </p>
+                <p class="cs-p">
+                    <strong>Keyboard-first, for flow.</strong> Tag the playing track with a keystroke
+                    without leaving what you're doing; set loop points, reverse, and shuffle from the
+                    keys. The tool should disappear into the listening.
+                </p>
+                <div class="cs-figure cs-figure--placeholder">
+                    <span>Songs view / tagging — drop an app screenshot here</span>
+                </div>
+            </section>
+
+            <!-- ============ BUILD ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">The build</p>
+                <h2 class="cs-h2">A real, shipping desktop app</h2>
+                <p class="cs-p">
+                    Archive is a genuine macOS desktop application — TypeScript, Electron, Vite, and
+                    the Web Audio API — with recursive library scanning, ID3 and embedded-artwork
+                    parsing, macOS Finder colour-tag pickup, a tagging system, and Smart Playlists:
+                    saved queries that re-evaluate live (“tracks rated 4+ tagged <em>seed</em>, in WAV
+                    or AIFF”). It's the project where I've gone deepest on engineering, built with
+                    AI-assisted development.
+                </p>
+                <p class="cs-note">Draft note — the learning story is a strength here: a sentence in your voice on building a real desktop app with AI-assisted development, and what you can now do that you couldn't a year ago.</p>
+            </section>
+
+            <!-- ============ STATUS ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">Where it is · what's next</p>
+                <h2 class="cs-h2">Toward v0.1</h2>
+                <p class="cs-p">
+                    In active development toward a first release — a signed, notarized <code>.dmg</code>.
+                    The roadmap deliberately keeps the larger vision separate from what ships, so the
+                    build stays small, real, and out the door.
+                </p>
+                <p class="project-links process-links">
+                    <a href="https://github.com/stupender/archive" target="_blank" rel="noopener">Source on GitHub</a>
+                </p>
+            </section>
+
+            <!-- ============ REFLECTION ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">Reflection</p>
+                <h2 class="cs-h2">What I'd carry forward</h2>
+                <p class="cs-note">Draft note — 2–4 sentences in your voice: designing a tool for yourself vs. for others, the hardest scoping call (what you cut to ship), what building it taught you.</p>
+            </section>
+
+            <p class="back-link">
+                <a href="index.html#work">← Back to selected work</a>
+            </p>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="year"></span> Stu Pender · Designed &amp; built in Chicago</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
