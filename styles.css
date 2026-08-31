@@ -159,24 +159,42 @@ button:focus-visible,
 /* Right-side header cluster (sound toggle + nav + hamburger) */
 .header-right { display: flex; align-items: center; gap: clamp(1.2rem, 3vw, 2.2rem); }
 
-/* Close control on a sub-page (case study, résumé) — an ✕ in the top-right
-   that returns to the portfolio, the way you'd close a detail view. Always
-   visible (these pages have no hamburger to hide behind). */
+/* Close control on a sub-page — an ✕ at the top-left of the content, below
+   the header nav, representing THIS page: closing it returns to the work
+   grid, as if a temporary page opened over the portfolio (or a project card
+   flipped over) were being flipped back. The header keeps its full nav. */
+.cs-closebar { max-width: 860px; margin: 0 auto; padding: clamp(1.4rem, 3.5vw, 2rem) var(--side) 0; }
+/* When a close bar precedes the content, it owns the top space — trim the
+   content's own top padding so the two don't stack into a large gap. */
+.cs-closebar + .cs,
+.cs-closebar + .resume { padding-top: clamp(1.1rem, 2.5vw, 1.7rem); }
 .cs-close {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    font-size: 1.05rem;
-    line-height: 1;
+    gap: 0.6rem;
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
     text-decoration: none;
-    color: var(--ink-soft);
+    color: var(--ink-faint);
+    transition: color 0.2s;
+}
+.cs-close-x {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    font-size: 0.95rem;
+    line-height: 1;
     border: 1px solid var(--hair);
     border-radius: 50%;
-    transition: color 0.2s, border-color 0.2s, transform 0.3s ease;
+    transition: color 0.2s, border-color 0.2s, transform 0.35s ease;
 }
-.cs-close:hover { color: var(--accent); border-color: var(--accent); transform: rotate(90deg); }
+.cs-close:hover { color: var(--accent); }
+.cs-close:hover .cs-close-x { color: var(--accent); border-color: var(--accent); transform: rotate(90deg); }
 
 /* =================================================================
    AMBIENT SOUND — "orbits" toggle. Two rings with dots that, while
@@ -407,8 +425,15 @@ a.project-media:hover img { transform: scale(1.035); }
    Prose links and the résumé stay arrow-free. */
 .project-links a[target="_blank"]::after,
 .cs-cap a[target="_blank"]::after {
-    content: "\00A0↗";
-    font-size: 0.9em;
+    content: "";
+    display: inline-block;
+    width: 0.78em;
+    height: 0.78em;
+    margin-left: 0.36em;
+    vertical-align: -0.04em;
+    background-color: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 /* A row of small process links (e.g. Personas · Wireframes · Branding) */

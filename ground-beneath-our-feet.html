@@ -24,11 +24,26 @@
             <button class="sound-toggle" aria-label="Play ambient sound" aria-pressed="false" title="Ambient sound — Music for Airports">
                 <svg class="orbits" viewBox="0 0 40 40" aria-hidden="true"><circle class="ring" cx="20" cy="20" r="8.5"/><circle class="ring" cx="20" cy="20" r="15"/><g class="orb orb1"><circle class="dot" cx="20" cy="11.5" r="2.8"/></g><g class="orb orb2"><circle class="dot" cx="20" cy="5" r="2.8"/></g></svg>
             </button>
-            <a class="cs-close" href="index.html#work" aria-label="Back to portfolio" title="Back to portfolio">&#10005;</a>
+            <nav class="site-nav" id="site-nav" aria-label="Primary">
+                <a href="index.html#work">Work</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="index.html#about">About</a>
+                <a href="resume.html" class="nav-page">Résumé</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
 
     <main id="top">
+        <div class="cs-closebar no-print">
+            <a class="cs-close" href="index.html#work" aria-label="Close — back to portfolio" title="Close — back to portfolio">
+                <span class="cs-close-x" aria-hidden="true">&#10005;</span>
+                <span>Close</span>
+            </a>
+        </div>
         <article class="cs">
 
             <!-- ============ HERO ============ -->
