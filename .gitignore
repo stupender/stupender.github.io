@@ -4,6 +4,7 @@
 
 # Local-only working files (kept on disk, not shipped)
 Samples/
+DRAFT-NOTES.md
 
 # Legacy / unused images from earlier portfolio versions
 images/about.jpeg
