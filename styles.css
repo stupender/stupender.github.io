@@ -159,6 +159,25 @@ button:focus-visible,
 /* Right-side header cluster (sound toggle + nav + hamburger) */
 .header-right { display: flex; align-items: center; gap: clamp(1.2rem, 3vw, 2.2rem); }
 
+/* Close control on a sub-page (case study, résumé) — an ✕ in the top-right
+   that returns to the portfolio, the way you'd close a detail view. Always
+   visible (these pages have no hamburger to hide behind). */
+.cs-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    font-size: 1.05rem;
+    line-height: 1;
+    text-decoration: none;
+    color: var(--ink-soft);
+    border: 1px solid var(--hair);
+    border-radius: 50%;
+    transition: color 0.2s, border-color 0.2s, transform 0.3s ease;
+}
+.cs-close:hover { color: var(--accent); border-color: var(--accent); transform: rotate(90deg); }
+
 /* =================================================================
    AMBIENT SOUND — "orbits" toggle. Two rings with dots that, while
    playing, orbit at different speeds and slowly fall out of phase —
@@ -897,6 +916,35 @@ a.project-media:hover img { transform: scale(1.035); }
     color: var(--ink-faint);
     margin-top: 1.1rem;
 }
+
+/* "In short" — a scannable executive summary above the fold, for the
+   60-second read: the problem, the role, the constraint, the outcome. */
+.cs-tldr {
+    margin: clamp(2rem, 5vw, 3rem) 0;
+    padding: clamp(1.3rem, 3vw, 1.8rem) clamp(1.4rem, 3.5vw, 2rem);
+    border: 1px solid var(--hair);
+    border-left: 2px solid var(--accent);
+    background: rgb(var(--ink-rgb) / 0.02);
+}
+.cs-tldr .eyebrow { margin-bottom: 0.9rem; }
+.cs-tldr dl { margin: 0; display: grid; gap: 0.7rem; }
+.cs-tldr div { display: block; }
+.cs-tldr dt {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.15rem;
+}
+.cs-tldr dd {
+    margin: 0;
+    font-size: 0.96rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 68ch;
+}
+.cs-tldr dd strong { color: var(--ink); font-weight: 500; }
 
 /* =================================================================
    RESPONSIVE

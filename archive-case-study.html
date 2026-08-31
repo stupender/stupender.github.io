@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Case study — Archive</title>
-    <meta name="description" content="Case study: Archive — a local-first macOS app for re-discovering large music libraries. Product design and build by Stu Pender.">
+    <meta name="description" content="Case study: Archive — a local-first macOS app for re-discovering large music libraries, built with a real-time Web Audio engine and designed to stay maintainable by a small offline AI model. Product design and build by Stu Pender.">
 
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
@@ -24,9 +24,7 @@
             <button class="sound-toggle" aria-label="Play ambient sound" aria-pressed="false" title="Ambient sound — Music for Airports">
                 <svg class="orbits" viewBox="0 0 40 40" aria-hidden="true"><circle class="ring" cx="20" cy="20" r="8.5"/><circle class="ring" cx="20" cy="20" r="15"/><g class="orb orb1"><circle class="dot" cx="20" cy="11.5" r="2.8"/></g><g class="orb orb2"><circle class="dot" cx="20" cy="5" r="2.8"/></g></svg>
             </button>
-            <nav class="site-nav" aria-label="Primary" style="display:flex">
-                <a href="index.html#work">← Back to portfolio</a>
-            </nav>
+            <a class="cs-close" href="index.html#work" aria-label="Back to portfolio" title="Back to portfolio">&#10005;</a>
         </div>
     </header>
 
@@ -42,14 +40,38 @@
                     turning a collection you play into one you can actually explore.
                 </p>
                 <dl class="cs-meta">
-                    <div><dt>Role</dt><dd>Product design &amp; build</dd></div>
-                    <div><dt>Timeline</dt><dd>2025 – present · in development</dd></div>
+                    <div><dt>Role</dt><dd>Product design &amp; build (solo)</dd></div>
+                    <div><dt>Timeline</dt><dd>2025 – present · v0.1.0 shipped</dd></div>
                     <div><dt>Stack</dt><dd>TypeScript · Electron · Vite · Web Audio</dd></div>
                 </dl>
                 <p class="project-links process-links cs-toplinks">
                     <a href="https://github.com/stupender/archive" target="_blank" rel="noopener">Source</a>
+                    <a href="https://github.com/stupender/archive/releases" target="_blank" rel="noopener">v0.1.0 release</a>
                 </p>
             </header>
+
+            <!-- ============ TL;DR ============ -->
+            <div class="cs-tldr">
+                <p class="eyebrow">In short</p>
+                <dl>
+                    <div>
+                        <dt>The problem</dt>
+                        <dd>Every music player is built to <strong>play what you already know</strong>. None help a musician re-encounter decades of their own forgotten material.</dd>
+                    </div>
+                    <div>
+                        <dt>My role</dt>
+                        <dd>Sole product designer and developer — a novice coder pair-working with AI, owning the UX, the audio engine, and the ship.</dd>
+                    </div>
+                    <div>
+                        <dt>The core constraint</dt>
+                        <dd>Design toward one felt principle — <strong>“stay embodied while moving fast”</strong> — and keep the code simple enough to be maintained by a small offline AI model. That ruled out cleverness.</dd>
+                    </div>
+                    <div>
+                        <dt>The outcome</dt>
+                        <dd>A shipped, tagged <strong>v0.1.0</strong> with an installable <code>.dmg</code> and written architecture docs — a real desktop app I use daily, with two hard-won engineering pivots and a couple of edges still honestly rough.</dd>
+                    </div>
+                </dl>
+            </div>
 
             <figure class="cs-figure cs-figure--lead">
                 <img src="images/projects/archive.png" alt="Archive — a local-first macOS audio tool">
@@ -61,13 +83,15 @@
                 <p class="eyebrow">Overview</p>
                 <h2 class="cs-h2">A tool for re-discovering your own music</h2>
                 <p class="cs-p">
-                    Archive is a personal, local-first audio tool for macOS. It scans a large
-                    music library and helps you re-encounter what's in it — play a random slice to
-                    jog your memory, loop a region, or layer up to five tracks into a collage. I own
-                    the product, the UX, and the TypeScript/Electron build. It's inspired by the
-                    archive-review tool Peter Chilvers built for Brian Eno.
+                    Archive is a personal, local-first audio tool for macOS. It scans a large music
+                    library and helps you re-encounter what's in it — pull a random slice to jog your
+                    memory, loop a region and slow it down to learn it, or layer up to five tracks and
+                    hear what collides. The first user is me: a composer sitting on decades of audio
+                    scattered across an external drive, most of it forgotten. The deeper “who” is any
+                    musician — and eventually wellness practitioners — with more material than they can
+                    hold in their head. It's inspired by the archive-review tool Peter Chilvers built
+                    for Brian Eno.
                 </p>
-                <p class="cs-note">Draft note — add the outcome: what re-surfaced when you used it on your own decades of material, and whether it changed how you work.</p>
             </section>
 
             <!-- ============ PROBLEM ============ -->
@@ -75,12 +99,17 @@
                 <p class="eyebrow">The problem</p>
                 <h2 class="cs-h2">Every player plays. None help you rediscover.</h2>
                 <p class="cs-p">
-                    Streaming made libraries feel infinite and made your own collection invisible.
-                    If you've made or collected music for years, you have decades of material you've
-                    forgotten you have — and every music player is built to <em>play what you already
-                    know</em>, not to help you find what you don't. I kept my own music in folders by
-                    stage — seed, experimentation, crafting, complete — and most of it had gone quiet.
-                    Archive is built for the opposite of a player: discovery.
+                    A music player treats a library as a <em>queue to play</em>, never an archive to
+                    re-encounter. There's no “surprise me with a forgotten track,” no “loop these eight
+                    bars and slow them down to learn them,” no “layer three pieces and hear what
+                    collides.” If you've made or collected music for years, you have more than you can
+                    remember — and every tool is pointed at what you already know.
+                </p>
+                <p class="cs-p">
+                    What made this genuinely hard is that the design goal was never a feature list — it
+                    was a <em>feeling</em>. The app should reduce screen-friction so your body stays in
+                    the music. That reframes every interaction question into one test: <strong>does
+                    this pull the user out of the music, or keep them in it?</strong>
                 </p>
             </section>
 
@@ -89,77 +118,129 @@
                 <p class="eyebrow">The reframe</p>
                 <h2 class="cs-h2">A library isn't a list to play — it's an archive to explore</h2>
                 <p class="cs-p">
-                    That single shift drives every feature. The guiding line, borrowed from how Eno
-                    works: <strong>stay embodied while moving fast</strong> — re-encounter your own
-                    material by shuffling the whole archive, hearing short slices, and layering pieces
-                    to find combinations you'd never have planned.
+                    That single shift drove every feature. And one line did more real design work than
+                    any requirements doc, because it could actually resolve a decision at 2am. When
+                    naming a Scene, the obvious move is a modal dialog — but a modal yanks you out of
+                    flow (and Electron silently disables <code>window.prompt()</code> anyway), so the
+                    control became an inline text input right where you clicked: Enter to commit, Esc to
+                    cancel. The same logic drove keyboard-first transport, one-keystroke tagging
+                    (<code>T</code>), and per-track “loop chips” — intro / verse / chorus / solo saved
+                    onto a track like metadata and recalled in a click. Every one was a “fewer clicks,
+                    stay in the music” call.
                 </p>
+                <blockquote class="cs-quote">
+                    <p>“Stay embodied while moving fast.”</p>
+                    <cite>— the design principle that settled every argument</cite>
+                </blockquote>
             </section>
 
             <!-- ============ SIGNATURE INTERACTIONS ============ -->
             <section class="cs-section">
                 <p class="eyebrow">The core interactions</p>
-                <h2 class="cs-h2">Three ways back into the material</h2>
+                <h2 class="cs-h2">Ways back into the material</h2>
                 <p class="cs-p">
-                    <strong>Random Review</strong> is the heart of it — pull a random track, or a
-                    random five-second slice from a random track, to break the habit of searching for
-                    what you already know. <strong>A-B loop</strong> loops any region, at variable
-                    speed, forwards or reversed — for study, or for turning a fragment into a texture.
-                    <strong>Multi-Track collage</strong> layers up to five tracks at once, each with
-                    its own loop, speed, and direction, saved as a <em>Scene</em> you can recall —
-                    where discovery becomes composition.
+                    <strong>Random Review</strong> is the heart of it — pull a random track, or a random
+                    1–60&nbsp;second slice from a random track, to break the habit of reaching for what
+                    you already know. <strong>A-B loop</strong> loops any region at variable speed,
+                    forwards or reversed — for study, or for turning a fragment into a texture.
+                    <strong>Multi-Track</strong> layers up to five tracks at once, each with its own
+                    loop, speed, and direction, saved as a <em>Scene</em> you can recall — where
+                    discovery quietly becomes composition. Plus in-tune semitone re-pitching (snapped to
+                    real piano pitches, not by ear) and Smart Playlists that re-evaluate live.
                 </p>
                 <div class="cs-figure cs-figure--placeholder">
-                    <span>Random Review / Multi-Track collage — drop app screenshots here</span>
-                </div>
-                <p class="cs-note">Draft note — which interaction surprised you most in use? A concrete moment (a forgotten track, an accidental layering) makes this land.</p>
-            </section>
-
-            <!-- ============ PRODUCT DECISIONS ============ -->
-            <section class="cs-section">
-                <p class="eyebrow">Product decisions</p>
-                <h2 class="cs-h2">Local-first, and keyboard-first</h2>
-                <p class="cs-p">
-                    <strong>Local-first, on purpose.</strong> No accounts, no uploads — your music
-                    never leaves your Mac. For an archive of personal, often unreleased work,
-                    ownership and privacy aren't features; they're the premise.
-                </p>
-                <p class="cs-p">
-                    <strong>Keyboard-first, for flow.</strong> Tag the playing track with a keystroke
-                    without leaving what you're doing; set loop points, reverse, and shuffle from the
-                    keys. The tool should disappear into the listening.
-                </p>
-                <div class="cs-figure cs-figure--placeholder">
-                    <span>Songs view / tagging — drop an app screenshot here</span>
+                    <span>Screenshot slot — Random Review &amp; Multi-Track collage. Caption to add: how a whole-archive shuffle plus five-track layering turns a browse into an accident worth keeping.</span>
                 </div>
             </section>
 
-            <!-- ============ BUILD ============ -->
+            <!-- ============ TECHNICAL ARCHITECTURE ============ -->
             <section class="cs-section">
-                <p class="eyebrow">The build</p>
-                <h2 class="cs-h2">A real, shipping desktop app</h2>
+                <p class="eyebrow">Technical architecture</p>
+                <h2 class="cs-h2">Built to be maintained by a small, offline AI</h2>
                 <p class="cs-p">
-                    Archive is a genuine macOS desktop application — TypeScript, Electron, Vite, and
-                    the Web Audio API — with recursive library scanning, ID3 and embedded-artwork
-                    parsing, macOS Finder colour-tag pickup, a tagging system, and Smart Playlists:
-                    saved queries that re-evaluate live (“tracks rated 4+ tagged <em>seed</em>, in WAV
-                    or AIFF”). It's the project where I've gone deepest on engineering, built with
-                    AI-assisted development.
+                    <strong>A real, shipping desktop app.</strong> TypeScript, Electron, Vite, and the
+                    Web Audio API, with recursive library scanning, ID3 and embedded-artwork parsing,
+                    macOS Finder colour-tag pickup, a tagging system, and Smart Playlists — saved
+                    queries that re-evaluate live (“tracks rated 4+ tagged <em>seed</em>, in WAV or
+                    AIFF”).
                 </p>
-                <p class="cs-note">Draft note — the learning story is a strength here: a sentence in your voice on building a real desktop app with AI-assisted development, and what you can now do that you couldn't a year ago.</p>
+                <p class="cs-p">
+                    <strong>The constraint that shaped the whole codebase.</strong> The long-term plan is
+                    to maintain Archive with a small local AI model — a 7–14B coder running offline. That
+                    one decision became real engineering rules: files under ~300 lines, boring and
+                    conventional patterns only, no exotic dependencies, no WASM, and heavy plain-English
+                    comments. Elegance-by-cleverness was <em>disallowed</em>. Designing for a future
+                    maintainer with a small context window is a discipline most codebases never impose on
+                    themselves — and it made this one far calmer to reason about.
+                </p>
+                <p class="cs-p">
+                    <strong>Local-first, on purpose.</strong> No accounts, no uploads — your music never
+                    leaves your Mac. For an archive of personal, often unreleased work, ownership and
+                    privacy aren't features; they're the premise. Libraries live on external drives, and
+                    the app ships unsigned (zero budget, no Apple Developer account) — which turned
+                    macOS's permission system, Gatekeeper and Full Disk Access, into a real design
+                    problem rather than a footnote.
+                </p>
+                <div class="cs-figure cs-figure--placeholder">
+                    <span>Screenshot slot — Songs view &amp; keyboard tagging. Caption to add: why tagging the playing track with one keystroke — no dialog, no mouse — is the whole “stay in the music” thesis in a single control.</span>
+                </div>
             </section>
 
-            <!-- ============ STATUS ============ -->
+            <!-- ============ THE MESSY MIDDLE ============ -->
             <section class="cs-section">
-                <p class="eyebrow">Where it is · what's next</p>
-                <h2 class="cs-h2">Toward v0.1</h2>
+                <p class="eyebrow">The messy middle</p>
+                <h2 class="cs-h2">Two pivots I had to make in the open</h2>
                 <p class="cs-p">
-                    In active development toward a first release — a signed, notarized <code>.dmg</code>.
-                    The roadmap deliberately keeps the larger vision separate from what ships, so the
-                    build stays small, real, and out the door.
+                    <strong>Pivot 1 — real-time, not pre-rendered.</strong> My first version of “slow a
+                    loop down without dropping its pitch” pre-rendered the audio: it baked the stretched
+                    region into a new buffer before playing. It worked, but it forced a loading delay and
+                    required you to set a loop first. Then I asked the blunt question that broke it open:
+                    <em>YouTube does 1.5× on a podcast instantly — why does mine need a pause, and why is
+                    it gated behind loop mode at all?</em> I'd optimized for the niche (transcription) and
+                    missed the universal mental model. The right foundation was real-time processing,
+                    available anytime — so I tore the pre-render out and rebuilt it.
                 </p>
-                <p class="project-links process-links">
-                    <a href="https://github.com/stupender/archive" target="_blank" rel="noopener">Source on GitHub</a>
+                <p class="cs-p">
+                    <strong>Pivot 2 — fix the model, not the pixels.</strong> The hardest bug: while
+                    looping, dragging the loop's start past the playhead made the playhead visually run
+                    backwards. The instinct is to patch the visual. But after studying how Ableton,
+                    Logic, and Serato actually behave, the real fix was to treat the audio as the source
+                    of truth and make the drawn playhead <em>mirror what the audio is really doing</em> —
+                    including a brief “settling” period before it enters the loop. The bug wasn't a nudge
+                    to a number; it was three different clocks — audio-sample time, wall-clock time, and
+                    drawn time — that I finally had to model correctly.
+                </p>
+                <p class="cs-p">
+                    A smaller but telling detail: users don't think “transcription mode,” they think
+                    “make it slower but keep the pitch” — the podcast gesture. So the control borrowed the
+                    musician-native word the CDJs and Serato already use: a <strong>keylock</strong>
+                    padlock, not a bespoke label I'd invented.
+                </p>
+            </section>
+
+            <!-- ============ OUTCOME ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">Outcome</p>
+                <h2 class="cs-h2">Shipped v0.1 — told straight</h2>
+                <p class="cs-p">
+                    v0.1.0 shipped as a real, tagged GitHub release with an installable <code>.dmg</code>,
+                    a proper README, and — unusually — a written <code>STUDY_GUIDE.md</code> and a running
+                    <code>LEARNED.md</code> concept log, because a second goal was understanding the
+                    codebase well enough to defend it in an interview. Today it does the whole loop: add
+                    folders as libraries; browse, search, rate, and tag; Random Review; A-B looping with
+                    variable speed and reverse; Multi-Track layering with saveable Scenes; smart
+                    playlists; per-track saved loops; in-tune re-pitching; and a first Transcribe /
+                    keylock mode.
+                </p>
+                <p class="cs-p">
+                    The honest reception: it's early, and the user base is essentially
+                    <em>n&nbsp;=&nbsp;1</em> — me — with the clear intent to widen to musicians and
+                    practitioners. I'm not going to invent adoption numbers. The truthful outcome is
+                    threefold: a working tool I actually use to re-encounter my own archive and practice
+                    transcription; a shipped, documented artifact that took a sprawling experiment to a
+                    disciplined v0.1; and a couple of things still visibly rough — the unsigned-build
+                    permission dance, and a click-to-seek interaction on the timeline still being debugged
+                    as of this writing. Leaving that in is the honest version.
                 </p>
             </section>
 
@@ -167,7 +248,28 @@
             <section class="cs-section">
                 <p class="eyebrow">Reflection</p>
                 <h2 class="cs-h2">What I'd carry forward</h2>
-                <p class="cs-note">Draft note — 2–4 sentences in your voice: designing a tool for yourself vs. for others, the hardest scoping call (what you cut to ship), what building it taught you.</p>
+                <p class="cs-p">
+                    <strong>Test in the real, packaged environment far earlier.</strong> The two nastiest
+                    problems — audio that played fine in development but was silently blocked in the
+                    installed app, and the timeline-seek bug — both lived in the gap between “it
+                    type-checks and works in my head” and “it works on the user's actual machine.” That's
+                    a design lesson, not just an engineering one: an abstraction clean on paper can still
+                    be broken in the hand, and the only way to know is to put it in the hand.
+                </p>
+                <p class="cs-p">
+                    <strong>Build the right foundation, not the convenient one</strong> when the
+                    difference is architectural — the pre-render shortcut had to be torn out. <strong>A
+                    single quotable principle beats a spec</strong> — “stay embodied while moving fast”
+                    resolved real decisions a requirements doc never could. And <strong>scope discipline
+                    via a ROADMAP genuinely worked</strong>: every tempting idea went into
+                    <code>ROADMAP.md</code> instead of the code, which is the only reason a v0.1 exists at
+                    all. Small and excellent beats big and unfinished.
+                </p>
+                <p class="cs-p">
+                    The quiet meta-lesson: on this project the hard questions were rarely “can we build
+                    it?” They were “does it actually feel right?” — and embodiment is almost impossible to
+                    verify by reading code. You have to use it.
+                </p>
             </section>
 
             <p class="back-link">
