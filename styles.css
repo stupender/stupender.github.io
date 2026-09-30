@@ -723,6 +723,30 @@ a[download]::after {
 }
 .about-text a:hover { color: var(--accent); }
 
+/* A client's words about how the work goes — set apart, never louder than the text. */
+.about-quote {
+    margin: 1.8rem 0 0;
+    padding-left: 1rem;
+    border-left: 1px solid var(--accent-line);
+    max-width: 50ch;
+}
+.about-text .about-quote p {
+    font-family: var(--lede-font);
+    font-weight: var(--lede-wght);
+    font-style: italic;
+    font-size: var(--t-lede);
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0 0 0.6rem;
+    max-width: none;
+}
+.about-quote cite {
+    display: block;
+    font-style: normal;
+    font-size: var(--t-small);
+    color: var(--ink-faint);
+}
+
 /* =================================================================
    CONTACT — the back cover: dark, full-bleed, on the same rail.
    ================================================================= */
