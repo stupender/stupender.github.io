@@ -19,8 +19,7 @@ right — so the page reads as one piece rather than a stack of layouts.
   number and year in the rail, a mat in the project's own colour, name, a
   **For** line (who it's for and the moment they're in), one sentence, the key
   **Decision**, and links.
-- **05–11** are the *index*: the same catalogue at list density. Hovering a row on
-  desktop shows a small preview.
+- **05–11** are the *index*: the same catalogue at list density.
 - Each case study carries its number, its For line, and a **Next** link, so the
   studies read as a sequence (01 → 05 → back to 01).
 - Contact is the dark "back cover": the address, documents, elsewhere, and a colophon.
@@ -42,13 +41,13 @@ Both marks are drawn as CSS masks, so they look the same on every machine.
 | `archive.html` | No. 11 — experiments and early work. |
 | `resume.html` | Résumé; its print styles produce `Stu-Pender-Resume.pdf`. |
 | `styles.css` | All styling. Tokens (colour, type, rail width) live in `:root`. |
-| `script.js` | Page router (keeps the ambient audio playing), reveal, menu, copy-email, index preview. |
+| `script.js` | Page router (keeps the ambient audio playing), scroll reveal, menu, copy-email. |
 
 ## Editing
 
 - **Add a selected project:** copy an `<article class="plate">`, set its
   `style="--mat:#……"` to a colour from the project itself, and renumber.
-- **Add to the index:** copy an `<li>` in `.index-list`; `data-thumb` is the preview image.
+- **Add to the index:** copy an `<li>` in `.index-list`.
 - **Résumé PDF:** open `resume.html` and print to PDF (Letter), or regenerate it headlessly.
 
 ## Local preview

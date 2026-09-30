@@ -179,7 +179,6 @@ a[target="_blank"]:not(.index-row)::after,
     text-decoration: none;
     border: 0;
     white-space: nowrap;
-    transition: background 0.2s, color 0.2s;
 }
 .blk:hover,
 .plate-links a.go:hover,
@@ -221,7 +220,6 @@ a[download]::after {
     font-size: var(--t-h3);
     line-height: 1;
     text-decoration: none;
-    transition: color 0.2s;
 }
 .wordmark:hover { color: var(--accent); }
 .header-right { display: flex; align-items: center; gap: clamp(1.2rem, 3vw, 2.2rem); }
@@ -231,7 +229,6 @@ a[download]::after {
     font-weight: 500;
     text-decoration: none;
     color: var(--ink-soft);
-    transition: color 0.2s;
 }
 .site-nav a:hover { color: var(--accent); }
 .site-nav a.nav-page { background: var(--accent); color: var(--paper); padding: 0.42em 0.8em; margin: -0.42em 0; }
@@ -277,7 +274,6 @@ a[download]::after {
     text-transform: uppercase;
     text-decoration: none;
     color: var(--ink-faint);
-    transition: color 0.2s;
 }
 .cs-close-x {
     display: inline-flex;
@@ -289,10 +285,9 @@ a[download]::after {
     line-height: 1;
     border: 1px solid var(--hair);
     border-radius: 50%;
-    transition: color 0.2s, border-color 0.2s, transform 0.35s ease;
 }
 .cs-close:hover { color: var(--accent); }
-.cs-close:hover .cs-close-x { color: var(--accent); border-color: var(--accent); transform: rotate(90deg); }
+.cs-close:hover .cs-close-x { color: var(--accent); border-color: var(--accent); }
 
 /* ---- Ambient sound: the "orbits" toggle -------------------------- */
 .sound-toggle {
@@ -306,7 +301,6 @@ a[download]::after {
     border: none;
     cursor: pointer;
     color: var(--ink-soft);
-    transition: color 0.2s;
 }
 .sound-toggle:hover { color: var(--accent); }
 .sound-toggle .orbits { display: block; width: 100%; height: 100%; overflow: visible; }
@@ -333,7 +327,6 @@ a[download]::after {
     border-radius: var(--btn-radius);
     color: var(--ink);
     background: transparent;
-    transition: background 0.2s, color 0.2s;
 }
 .btn:hover { background: var(--ink); color: var(--paper); }
 .btn-primary { background: var(--ink); color: var(--paper); }
@@ -453,10 +446,8 @@ a[download]::after {
     height: auto;
     border-radius: 2px;
     box-shadow: 0 12px 24px -12px rgb(20 12 6 / 0.55);
-    transition: transform 0.5s cubic-bezier(.2,.7,.2,1);
 }
 .c-thumb--window img { border-radius: 0; box-shadow: none; filter: drop-shadow(0 12px 14px rgb(0 0 0 / 0.45)); }
-.contents-list a:hover .c-thumb img { transform: translateY(-4px); }
 .c-no {
     font-family: var(--font-num);
     display: block;
@@ -471,7 +462,6 @@ a[download]::after {
     font-family: var(--font-display); font-weight: var(--display-wght);
     font-size: var(--t-lede);
     line-height: 1.15;
-    transition: color 0.2s;
 }
 .c-for { display: block; margin-top: 0.15rem; font-size: var(--t-small); color: var(--ink-soft); }
 .contents-list a:hover .c-name { color: var(--accent); }
@@ -528,7 +518,6 @@ a[download]::after {
     max-height: 100%;
     border-radius: 3px;
     box-shadow: 0 1px 2px rgb(20 12 6 / 0.12), 0 28px 56px -24px rgb(20 12 6 / 0.55);
-    transition: transform 0.6s cubic-bezier(.2,.7,.2,1);
 }
 /* A desktop window keeps its own rounded corners: shadow the shape. */
 .plate-media--window img {
@@ -536,7 +525,6 @@ a[download]::after {
     box-shadow: none;
     filter: drop-shadow(0 26px 30px rgb(0 0 0 / 0.45)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.3));
 }
-.plate-media:hover img { transform: translateY(-6px); }
 
 .plate-head,
 .plate-detail { margin-top: clamp(1.4rem, 3vw, 2.1rem); min-width: 0; }
@@ -551,7 +539,7 @@ a[download]::after {
     letter-spacing: -0.015em;
     margin: 0 0 0.8rem;
 }
-.plate-name a { text-decoration: none; transition: color 0.2s; }
+.plate-name a { text-decoration: none; }
 .plate-name a:hover { color: var(--accent); }
 
 /* The throughline, stated once per project — a quiet caption under
@@ -604,7 +592,6 @@ a[download]::after {
     text-transform: uppercase;
     text-decoration: none;
     color: var(--ink-soft);
-    transition: color 0.2s;
 }
 .plate-links a:hover,
 .project-links a:hover { color: var(--accent); }
@@ -629,7 +616,6 @@ a[download]::after {
     padding: 1rem 0.4rem;
     border-bottom: 1px solid var(--hair);
     text-decoration: none;
-    transition: background 0.2s;
 }
 .index-list li:first-child .index-row { padding-top: 0.3rem; }
 .index-row:hover,
@@ -641,7 +627,6 @@ a[download]::after {
     font-family: var(--font-display); font-weight: var(--display-wght);
     font-size: var(--t-h3);
     line-height: 1.1;
-    transition: color 0.2s;
 }
 .ix-kind { font-size: var(--t-small); color: var(--ink-soft); }
 .ix-go {
@@ -652,29 +637,11 @@ a[download]::after {
     text-transform: uppercase;
     color: var(--ink-soft);
     white-space: nowrap;
-    transition: color 0.2s;
 }
 .ix-go.blk { color: var(--paper); }
 .index-row:hover .ix-name,
 .index-row:hover .ix-go { color: var(--accent); }
-.index-row:hover .ix-go span { transform: translateX(3px); }
 
-/* Hover preview — a small print that follows the pointer (fine pointers). */
-.ix-preview {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 60;
-    width: 240px;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    box-shadow: 0 22px 44px -22px rgb(20 12 6 / 0.55);
-    pointer-events: none;
-    opacity: 0;
-    transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(0.94);
-    transition: opacity 0.2s, transform 0.2s;
-}
-.ix-preview.is-on { opacity: 1; transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(1); }
 
 /* =================================================================
    PRACTICE — listen, design, build
@@ -748,7 +715,6 @@ a[download]::after {
     text-decoration: underline;
     text-decoration-color: var(--accent-line);
     text-underline-offset: 3px;
-    transition: color 0.2s;
 }
 .about-text a:hover { color: var(--accent); }
 
@@ -788,7 +754,6 @@ a[download]::after {
     text-decoration: none;
     color: var(--paper);
     border-bottom: 1px solid rgb(var(--paper-rgb) / 0.35);
-    transition: color 0.2s, border-color 0.2s;
 }
 .contact-mail a:hover { color: var(--accent-dark); border-bottom-color: var(--accent-dark); }
 .copy-mail {
@@ -803,7 +768,6 @@ a[download]::after {
     border-radius: 999px;
     padding: 0.35rem 0.85rem;
     cursor: pointer;
-    transition: color 0.2s, border-color 0.2s;
 }
 .copy-mail:hover { color: var(--paper); border-color: var(--paper); }
 .copy-mail.is-done { color: var(--accent-dark); border-color: var(--accent-dark); }
@@ -831,9 +795,8 @@ a[download]::after {
     font-size: var(--t-h3);
     text-decoration: none;
     color: var(--paper);
-    transition: color 0.2s;
 }
-.contact-cols li a span { color: var(--on-dark-2); transition: color 0.2s; }
+.contact-cols li a span { color: var(--on-dark-2); }
 .contact-cols li a:hover,
 .contact-cols li a:hover span { color: var(--accent-dark); }
 .contact .contact-cols li a.blk {
@@ -983,7 +946,6 @@ a[download]::after {
     font-family: var(--font-display); font-weight: var(--display-wght);
     font-size: var(--t-h2);
     line-height: 1;
-    transition: color 0.2s;
 }
 .cs-next-for {
     grid-column: 1;
@@ -1001,7 +963,6 @@ a[download]::after {
     text-transform: uppercase;
     text-decoration: none;
     color: var(--ink-soft);
-    transition: color 0.2s;
 }
 .cs-next-all:hover { color: var(--accent); }
 
@@ -1017,8 +978,7 @@ a[download]::after {
 }
 .compact-thumb { display: block; width: 76px; height: 54px; overflow: hidden; background: var(--raised); }
 .compact-thumb::after { display: none !important; }
-.compact-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-.compact-thumb:hover img { transform: scale(1.06); }
+.compact-thumb img { width: 100%; height: 100%; object-fit: cover; }
 .compact-name { font-family: var(--font-display); font-weight: var(--display-wght); font-size: var(--t-h3); line-height: 1.1; margin: 0 0 0.2rem; }
 .compact-one { font-size: var(--t-small); color: var(--ink-soft); margin: 0; max-width: 52ch; }
 .compact-stack { font-size: var(--t-label); font-weight: var(--label-wght); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-faint); margin: 0.35rem 0 0; }
@@ -1090,7 +1050,6 @@ a[download]::after {
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .js .reveal { opacity: 1; transform: none; transition: none; }
-    .plate-media:hover img, .contents-list a:hover .c-thumb img, .compact-thumb:hover img { transform: none; }
     .sound-toggle .orb { animation: none; }
 }
 

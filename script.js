@@ -165,34 +165,6 @@
         });
     }
 
-    /* Index hover preview — a small print of the project follows the
-       pointer over the index rows. Fine pointers only; purely decorative. */
-    var preview = null;
-    function setupPreview() {
-        var rows = document.querySelectorAll('.index-row[data-thumb]');
-        if (!rows.length || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) { return; }
-        if (!preview) {
-            preview = document.createElement('img');
-            preview.className = 'ix-preview';
-            preview.alt = '';
-            preview.setAttribute('aria-hidden', 'true');
-            document.body.appendChild(preview);
-        }
-        rows.forEach(function (row) {
-            if (row.dataset.wired) { return; }
-            row.dataset.wired = '1';
-            row.addEventListener('mouseenter', function () {
-                preview.src = row.dataset.thumb;
-                preview.classList.add('is-on');
-            });
-            row.addEventListener('mouseleave', function () { preview.classList.remove('is-on'); });
-            row.addEventListener('mousemove', function (e) {
-                preview.style.setProperty('--x', (e.clientX + 28) + 'px');
-                preview.style.setProperty('--y', (e.clientY - 90) + 'px');
-            });
-        });
-    }
-
     function initPage() {
         var year = document.getElementById('year');
         if (year) { year.textContent = new Date().getFullYear(); }
@@ -215,8 +187,6 @@
         reflectSound();
 
         setupCopy();
-        setupPreview();
-        if (preview) { preview.classList.remove('is-on'); }
         setupReveal();
     }
 
