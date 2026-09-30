@@ -25,9 +25,13 @@ right — so the page reads as one piece rather than a stack of layouts.
   studies read as a sequence (01 → 05 → back to 01).
 - Contact is the dark "back cover": the address, documents, elsewhere, and a colophon.
 
-One link language throughout: the primary destination is serif with an accent
-underline and →; secondary links are small caps. Every link that leaves the site gets
-the boxed outbound arrow from Being Sound, drawn in CSS (no ↗ characters in the markup).
+One link language throughout, with no arrow characters in the markup:
+- **Inside the site** (case studies, the résumé, "See all", "Next") — a solid colour
+  block (`.blk`).
+- **Leaves the site** — a small-caps label with the boxed outbound arrow from Being Sound.
+- **A file to save** — the matching download mark (`a[download]`).
+
+Both marks are drawn as CSS masks, so they look the same on every machine.
 
 ## Files
 
