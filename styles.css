@@ -159,8 +159,9 @@ a[target="_blank"]:not(.index-row)::after,
 
 /* =================================================================
    LINK LANGUAGE
-   · Inside the site  → a solid colour block (.blk). No arrow needed:
-                        the block itself says "this opens something".
+   · Inside the site  → a solid black block (.blk) that turns to the
+                        accent on hover. No arrow needed: the block
+                        itself says "this opens something".
    · Leaves the site  → a label with the boxed arrow (above).
    · A file to save   → the download mark (below).
    ================================================================= */
@@ -174,7 +175,7 @@ a[target="_blank"]:not(.index-row)::after,
     text-transform: uppercase;
     line-height: 1;
     padding: 0.66em 0.95em 0.6em;
-    background: var(--accent);
+    background: var(--ink);
     color: var(--paper);
     text-decoration: none;
     border: 0;
@@ -183,7 +184,7 @@ a[target="_blank"]:not(.index-row)::after,
 .blk:hover,
 .plate-links a.go:hover,
 .index-row:hover .ix-go.blk,
-.cs-next-link:hover .blk { background: var(--ink); color: var(--paper); }
+.cs-next-link:hover .blk { background: var(--accent); color: var(--paper); }
 
 /* Download mark — a tray with an arrow into it, drawn to match the
    boxed outbound arrow (same stroke, same size, same stillness). */
@@ -231,8 +232,8 @@ a[download]::after {
     color: var(--ink-soft);
 }
 .site-nav a:hover { color: var(--accent); }
-.site-nav a.nav-page { background: var(--accent); color: var(--paper); padding: 0.42em 0.8em; margin: -0.42em 0; }
-.site-nav a.nav-page:hover { background: var(--ink); color: var(--paper); }
+.site-nav a.nav-page { background: var(--ink); color: var(--paper); padding: 0.42em 0.8em; margin: -0.42em 0; }
+.site-nav a.nav-page:hover { background: var(--accent); color: var(--paper); }
 
 /* Hamburger — three thin lines that animate to an X */
 .nav-toggle {
@@ -328,9 +329,9 @@ a[download]::after {
     color: var(--ink);
     background: transparent;
 }
-.btn:hover { background: var(--ink); color: var(--paper); }
+.btn:hover,
+.btn-primary:hover { background: var(--accent); border-color: var(--accent); color: var(--paper); }
 .btn-primary { background: var(--ink); color: var(--paper); }
-.btn-primary:hover { background: transparent; color: var(--ink); }
 
 /* =================================================================
    THE GRID — every section hangs off one rail: labels, numbers and
@@ -800,13 +801,14 @@ a[download]::after {
 .contact-cols li a span { color: var(--on-dark-2); }
 .contact-cols li a:hover,
 .contact-cols li a:hover span { color: var(--accent-dark); }
+/* On the dark back cover the block inverts to paper; hover is the accent. */
 .contact .contact-cols li a.blk {
     font-family: var(--font-body);
     font-size: var(--t-label);
-    background: var(--accent-dark);
+    background: var(--paper);
     color: var(--ink);
 }
-.contact .contact-cols li a.blk:hover { background: var(--paper); color: var(--ink); }
+.contact .contact-cols li a.blk:hover { background: var(--accent); color: var(--paper); }
 .contact-cols li { margin-bottom: 0.7rem; }
 .colophon p:not(.contact-label) { font-size: var(--t-small); line-height: 1.65; color: var(--on-dark); margin: 0; max-width: 46ch; }
 .colophon em { color: var(--paper); }

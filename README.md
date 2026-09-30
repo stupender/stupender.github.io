@@ -25,8 +25,8 @@ right — so the page reads as one piece rather than a stack of layouts.
 - Contact is the dark "back cover": the address, documents, elsewhere, and a colophon.
 
 One link language throughout, with no arrow characters in the markup:
-- **Inside the site** (case studies, the résumé, "See all", "Next") — a solid colour
-  block (`.blk`).
+- **Inside the site** (case studies, the résumé, "See all", "Next") — a solid black
+  block (`.blk`) that turns to the accent colour on hover.
 - **Leaves the site** — a small-caps label with the boxed outbound arrow from Being Sound.
 - **A file to save** — the matching download mark (`a[download]`).
 
