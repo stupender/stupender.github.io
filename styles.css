@@ -7,8 +7,9 @@
 
    Editing tips:
    · Colours, fonts, and rhythm all live in :root below.
-   · Each project is one <article class="project"> in index.html —
-     copy one to add another; add project--reverse to flip the image side.
+   · The homepage is one numbered catalogue: 01–04 are <article class="plate">
+     (set the project's own mat colour with style="--mat:…"), 05 onward are
+     rows in the .index-list. Copy one to add another; keep the numbers going.
    ================================================================= */
 
 :root {
@@ -32,7 +33,9 @@
     --font-mono:    'Chivo Mono', ui-monospace, monospace;
 
     --side:  5%;                        /* left/right page margin     */
-    --maxw:  1180px;                    /* content max width          */
+    --maxw:  1240px;                    /* content max width          */
+    --rail:  clamp(5rem, 15vw, 12.5rem);/* the left rail: labels, numbers */
+    --colgap: clamp(1.5rem, 3.5vw, 3rem); /* rail-to-content gutter     */
     --gap:   clamp(3.5rem, 8vw, 7rem);  /* vertical section rhythm    */
 }
 
@@ -235,31 +238,72 @@ button:focus-visible,
 }
 
 /* =================================================================
-   LAYOUT PRIMITIVES
+   THE GRID — one rule holds the whole site together.
+   Every section is two columns: a narrow RAIL on the left (labels,
+   numbers, dates) and the CONTENT on the right. Plates, the index,
+   practice, about and contact all hang off the same rail, so the page
+   reads as one catalogue rather than a stack of different layouts.
    ================================================================= */
 .section {
     max-width: var(--maxw);
     margin: 0 auto;
     padding: var(--gap) var(--side);
-    border-bottom: 1px solid var(--hair);
+    display: grid;
+    grid-template-columns: var(--rail) minmax(0, 1fr);
+    column-gap: var(--colgap);
 }
-.section-head { margin-bottom: clamp(2.2rem, 5vw, 3.4rem); }
+.section > * { grid-column: 2; }
+.section + .section { border-top: 1px solid var(--hair); }
+
+/* Section head spans both columns; its label sits in the rail. */
+.section-head {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    margin-bottom: clamp(2.4rem, 6vw, 4rem);
+}
+.section-head > * { grid-column: 2; }
+.section-head > .rail-label { grid-column: 1; grid-row: 1 / span 3; }
+
+/* The rail's voice: a small uppercase label, with an optional range
+   ("01–04") set beneath it in mono. */
+.rail-label {
+    grid-column: 1;
+    margin: 0;
+    padding-top: 0.5rem;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    align-self: start;
+}
+.rail-label span {
+    display: block;
+    margin-top: 0.35rem;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--ink-faint);
+}
+
 .section-title {
     font-family: var(--font-display);
     font-weight: 300;
-    font-size: clamp(1.7rem, 4vw, 2.5rem);
-    line-height: 1.15;
+    font-size: clamp(1.8rem, 4.2vw, 2.9rem);
+    line-height: 1.1;
+    letter-spacing: -0.005em;
     margin: 0;
-    max-width: 20ch;
+    max-width: 21ch;
 }
-/* An editorial statement under a section title (the "how I work" philosophy). */
 .section-lede {
     font-family: var(--font-display);
     font-weight: 300;
-    font-size: clamp(1.05rem, 2.3vw, 1.32rem);
+    font-size: clamp(1.05rem, 2.2vw, 1.3rem);
     line-height: 1.5;
     color: var(--ink-soft);
-    max-width: 52ch;
+    max-width: 50ch;
     margin: 1.4rem 0 0;
 }
 
@@ -273,7 +317,7 @@ button:focus-visible,
     position: relative;
     isolation: isolate;
     overflow: clip;
-    padding: clamp(4rem, 12vh, 9rem) 0 clamp(3.5rem, 9vw, 7rem);
+    padding: clamp(4rem, 13vh, 9rem) 0 0;
 }
 .hero-inner {
     max-width: var(--maxw);
@@ -304,24 +348,25 @@ button:focus-visible,
     inset: 0;
     z-index: -1;
     background:
-        linear-gradient(to bottom, rgb(var(--paper-rgb) / 0.46), rgb(var(--paper-rgb) / 0.80)),
+        linear-gradient(to bottom, rgb(var(--paper-rgb) / 0.46), rgb(var(--paper-rgb) / 0.86)),
         radial-gradient(140% 110% at 84% 2%, rgba(222, 110, 52, 0.78) 0%, rgba(222, 110, 52, 0) 56%),
         radial-gradient(95% 90% at 6% 104%, rgba(150, 126, 178, 0.46) 0%, rgba(150, 126, 178, 0) 62%);
 }
 .hero-title {
     font-family: var(--font-display);
     font-weight: 330;
-    font-size: clamp(2.6rem, 8vw, 5.2rem);
-    line-height: 1.05;
-    letter-spacing: -0.01em;
+    font-size: clamp(2.7rem, 8.4vw, 6rem);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
     margin: 0 0 1.6rem;
 }
 .hero-lede {
     font-family: var(--font-display);
     font-weight: 300;
-    font-size: clamp(1.05rem, 2.4vw, 1.4rem);
-    margin: 0 0 1.4rem;
-    max-width: 34ch;
+    font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+    line-height: 1.45;
+    margin: 0 0 2.2rem;
+    max-width: 36ch;
 }
 .hero-body {
     font-size: 0.98rem;
@@ -330,6 +375,56 @@ button:focus-visible,
     margin: 0 0 2.4rem;
 }
 .hero-actions { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+
+/* Contents — the first four catalogue numbers, set along the hero's foot
+   like a table of contents. Hover lifts an accent bar over the entry. */
+.contents {
+    max-width: var(--maxw);
+    margin: clamp(3.5rem, 10vh, 6.5rem) auto 0;
+    padding: 0 var(--side);
+}
+.contents-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-top: 1px solid rgb(var(--ink-rgb) / 0.22);
+}
+.contents-list a {
+    display: block;
+    height: 100%;
+    margin-top: -1px;
+    padding: 1.05rem 1.2rem 1.6rem 0;
+    border-top: 2px solid transparent;
+    text-decoration: none;
+    transition: border-color 0.25s;
+}
+.contents-list a:hover,
+.contents-list a:focus-visible { border-top-color: var(--accent); }
+.c-no {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    margin-bottom: 0.45rem;
+}
+.c-name {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.08rem;
+    font-weight: 400;
+    line-height: 1.2;
+    transition: color 0.2s;
+}
+.c-for {
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+}
+.contents-list a:hover .c-name { color: var(--accent); }
 
 /* ---- Buttons ---- */
 .btn {
@@ -349,200 +444,538 @@ button:focus-visible,
 .btn-primary:hover { background: transparent; color: var(--ink); }
 
 /* =================================================================
-   PROJECTS
+   PLATES — the four selected projects. Identical anatomy:
+   rail (number, year, status) · a mat in the project's own colour
+   (--mat, set inline) holding the work · name + "For" · detail.
+   Same frame, a different world inside each.
    ================================================================= */
-.project {
+.plate {
+    grid-column: 1 / -1;
     display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: clamp(2rem, 5vw, 4.5rem);
-    align-items: center;
-    padding: clamp(2.6rem, 6vw, 4.5rem) 0;
+    grid-template-columns: var(--rail) minmax(0, 5fr) minmax(0, 6fr);
+    column-gap: var(--colgap);
+    margin-top: clamp(3.5rem, 8vw, 6.5rem);
+    padding-top: clamp(1.2rem, 2.5vw, 1.7rem);
     border-top: 1px solid var(--hair);
 }
-.project:first-of-type { border-top: none; padding-top: 0; }
-.project--reverse .project-media { order: 2; }
+.section-head + .plate { margin-top: 0; }
 
-.project-media {
-    display: block;
-    overflow: hidden;
-    background: rgb(var(--ink-rgb) / 0.04);
-    border: 1px solid var(--hair);
+.plate-rail {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-self: start;
+    position: sticky;
+    top: 7.5rem;
 }
-.project-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-/* Subtle zoom within the fixed frame — the image never shifts the layout */
-a.project-media:hover img { transform: scale(1.035); }
-
-.project-status {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin: 0 0 0.7rem;
-}
-.project-name {
+.plate-no {
     font-family: var(--font-display);
     font-weight: 300;
-    font-size: clamp(1.4rem, 3vw, 2rem);
-    margin: 0 0 0.8rem;
-    line-height: 1.1;
+    font-size: clamp(2.6rem, 5.4vw, 4.4rem);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    margin: 0 0 1rem;
+    font-variant-numeric: lining-nums;
 }
-.project-desc {
-    font-size: 0.95rem;
+.plate-when {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    line-height: 1.6;
     color: var(--ink-soft);
-    margin: 0 0 1.4rem;
-    max-width: 42ch;
+    margin: 0;
 }
-.project-meta {
+.plate-when span { color: var(--accent); }
+
+.plate-media {
+    grid-column: 2 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 16 / 10;
+    padding: clamp(1.4rem, 5.5vw, 4.6rem);
+    background: var(--mat, var(--cream));
+    overflow: hidden;
+}
+.plate-media img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 3px;
+    box-shadow:
+        0 1px 2px rgb(20 12 6 / 0.12),
+        0 28px 56px -24px rgb(20 12 6 / 0.55);
+    transition: transform 0.6s cubic-bezier(.2,.7,.2,1), box-shadow 0.6s;
+}
+/* A desktop app window keeps its own rounded, transparent corners — shadow
+   the shape, not the bounding box. */
+.plate-media--window img {
+    border-radius: 0;
+    box-shadow: none;
+    filter: drop-shadow(0 26px 30px rgb(0 0 0 / 0.45)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.3));
+}
+.plate-media:hover img { transform: translateY(-6px); }
+
+.plate-head,
+.plate-detail { margin-top: clamp(1.4rem, 3vw, 2.1rem); }
+.plate-head { grid-column: 2; }
+.plate-detail { grid-column: 3; }
+
+.plate-name {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.7rem;
+}
+.plate-name a { text-decoration: none; transition: color 0.2s; }
+.plate-name a:hover { color: var(--accent); }
+
+/* The throughline, stated once per project. */
+.plate-for {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+    line-height: 1.35;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 24ch;
+}
+.plate-for span,
+.plate-decision span {
+    display: block;
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+}
+
+.plate-desc {
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+    margin: 0 0 1.2rem;
+    max-width: 50ch;
+}
+.plate-decision {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--ink);
+    margin: 0 0 1.2rem;
+    padding-left: 0.95rem;
+    border-left: 1px solid var(--accent);
+    max-width: 50ch;
+}
+.plate-meta {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    color: var(--ink-faint);
+    margin: 0 0 1.3rem;
+}
+
+/* Links under a plate: one primary (the case study), the rest quiet. */
+.plate-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem 2.2rem;
-    margin: 0 0 1.4rem;
-}
-.project-meta div { min-width: 0; }
-.project-meta dt {
-    font-size: 0.66rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    margin-bottom: 0.2rem;
-}
-.project-meta dd { margin: 0; font-family: var(--font-mono); font-size: 0.8rem; }
-
-.project-links { margin: 0; font-size: 0.9rem; }
-.project-links a {
-    font-family: var(--font-display);
-    text-decoration: none;
-    border-bottom: 1px solid var(--ink);
-    padding-bottom: 1px;
-    transition: color 0.2s, border-color 0.2s;
-}
-.project-links a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-.project-links--muted { color: var(--ink-faint); font-style: italic; font-size: 0.82rem; }
-
-/* Arrow logic: a link that leaves the site (opens a new tab) gets a ↗.
-   Internal/forward links carry an explicit → in markup; back links a ←.
-   Prose links and the résumé stay arrow-free. */
-.project-links a[target="_blank"]::after,
-.cs-cap a[target="_blank"]::after {
-    content: "";
-    display: inline-block;
-    width: 0.78em;
-    height: 0.78em;
-    margin-left: 0.36em;
-    vertical-align: -0.04em;
-    background-color: currentColor;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E") center / contain no-repeat;
-            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E") center / contain no-repeat;
-}
-
-/* A row of small process links (e.g. Personas · Wireframes · Branding) */
-.process-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.3rem; font-size: 0.84rem; }
-
-/* Quiet link to the archive page at the end of the work section */
-/* =================================================================
-   .linkrow — the ONE destination-row pattern. Anything that navigates
-   you somewhere (contact links, the "all work" expander, page links)
-   is a full-width row: label left, arrow right, hover-highlight.
-   ================================================================= */
-.linkrow {
-    display: flex;
     align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1rem;
-    text-decoration: none;
-    font-family: var(--font-display);
-    font-size: clamp(1.05rem, 2.4vw, 1.3rem);
-    font-weight: 400;
-    color: var(--ink);
-    border-top: 1px solid var(--hair);
-    transition: background 0.2s, color 0.2s;
+    gap: 0.6rem 1.5rem;
+    margin: 0;
 }
-.linkrow:hover,
-.linkrow:focus-visible { background: rgb(var(--ink-rgb) / 0.04); color: var(--accent); }
-.linkrow:focus-visible { outline-offset: -2px; }
-.row-arrow { color: var(--ink-faint); font-size: 0.85em; flex-shrink: 0; transition: transform 0.2s, color 0.2s; }
-.linkrow:hover .row-arrow { color: var(--accent); transform: translateX(5px); }
-
-/* The "all work" expander at the end of the work section — a single linkrow. */
-.work-more { margin: clamp(2.5rem, 6vw, 4rem) -1rem 0; }
-.work-more .linkrow { border-bottom: 1px solid var(--hair); }
-
-/* Back navigation — quieter than a destination row. */
-.back-link {
-    margin: clamp(2.5rem, 6vw, 4rem) 0 0;
-    padding-top: clamp(2rem, 5vw, 3.5rem);
-    border-top: 1px solid var(--hair);
-    text-align: center;
-}
-.back-link a {
-    font-family: var(--font-display);
-    font-size: clamp(1rem, 2.2vw, 1.2rem);
-    font-weight: 400;
+.plate-links a {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     text-decoration: none;
     color: var(--ink-soft);
     transition: color 0.2s;
 }
-.back-link a:hover { color: var(--accent); }
-/* Balance the space below the archive link with the space above it, so it sits
-   evenly between its own hairline and the section's closing hairline. */
-#work { padding-bottom: clamp(2rem, 5vw, 3.5rem); }
-
-/* ---- Sub-sections (client builds, bootcamp) ---- */
-.subsection-head {
-    margin: clamp(3rem, 7vw, 5rem) 0 1.8rem;
-    padding-top: clamp(2rem, 5vw, 3.5rem);
-    border-top: 1px solid var(--hair);
-}
-.subsection-title {
+.plate-links a[target="_blank"]::after { content: "\00A0\2197"; }
+.plate-links a:hover { color: var(--accent); }
+.plate-links a.go {
     font-family: var(--font-display);
-    font-weight: 300;
-    font-size: clamp(1.2rem, 2.6vw, 1.6rem);
-    margin: 0;
+    font-size: 1.08rem;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--accent);
 }
-.subsection-note {
-    font-size: 0.9rem;
-    color: var(--ink-soft);
-    max-width: 60ch;
-    margin: 0.9rem 0 0;
-}
+.plate-links a.go span { display: inline-block; transition: transform 0.2s; }
+.plate-links a.go:hover { color: var(--accent); }
+.plate-links a.go:hover span { transform: translateX(4px); }
 
-.card-grid {
+/* =================================================================
+   INDEX — the same catalogue at list density (05 onward).
+   ================================================================= */
+.index {
+    grid-column: 1 / -1;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: clamp(1.2rem, 3vw, 2rem);
+    grid-template-columns: subgrid;
+    margin-top: clamp(4.5rem, 10vw, 8rem);
+    padding-top: clamp(1.2rem, 2.5vw, 1.7rem);
+    border-top: 1px solid var(--ink);
 }
-.card {
-    border: 1px solid var(--hair);
-    padding: 1.6rem;
-    background: var(--cream);
+.index > .rail-label { grid-column: 1; }
+.index-list {
+    grid-column: 2;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
-/* Secondary sections take the cool slate voice; primary sections stay orange */
-.subsection-head .eyebrow { color: var(--slate); }
-.card-media {
-    margin: -1.6rem -1.6rem 1.3rem;
+.index-row {
+    display: grid;
+    grid-template-columns: 2.4rem minmax(0, 1.3fr) minmax(0, 1.35fr) 5rem 6.8rem;
+    column-gap: 1.2rem;
+    align-items: baseline;
+    padding: 1.05rem 0.4rem;
     border-bottom: 1px solid var(--hair);
-    overflow: hidden;
-    aspect-ratio: 16 / 10;
-    background: rgb(var(--ink-rgb) / 0.04);
+    text-decoration: none;
+    transition: background 0.2s;
 }
-.card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-.card:hover .card-media img { transform: scale(1.03); }
-.card-name {
+.index-list li:first-child .index-row { padding-top: 0.4rem; }
+.index-row:hover,
+.index-row:focus-visible { background: rgb(var(--ink-rgb) / 0.035); }
+.index-row:focus-visible { outline-offset: -2px; }
+.ix-no,
+.ix-year {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+}
+.ix-name {
     font-family: var(--font-display);
+    font-size: 1.22rem;
     font-weight: 400;
-    font-size: 1.15rem;
+    line-height: 1.2;
+    transition: color 0.2s;
+}
+.ix-kind { font-size: 0.86rem; color: var(--ink-soft); }
+.ix-go {
+    justify-self: end;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+    transition: color 0.2s;
+}
+.ix-go span { display: inline-block; transition: transform 0.2s; }
+.index-row:hover .ix-name,
+.index-row:hover .ix-go { color: var(--accent); }
+.index-row:hover .ix-go span { transform: translateX(3px); }
+
+/* Hover preview — a small print of the project follows the pointer
+   (added by script.js on fine-pointer devices only). */
+.ix-preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 60;
+    width: 240px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border: 1px solid var(--hair);
+    box-shadow: 0 22px 44px -22px rgb(20 12 6 / 0.55);
+    pointer-events: none;
+    opacity: 0;
+    transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(0.94);
+    transition: opacity 0.2s, transform 0.2s;
+}
+.ix-preview.is-on { opacity: 1; transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(1); }
+
+/* =================================================================
+   PRACTICE — listen, design, build
+   ================================================================= */
+.practice-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1.6rem, 4vw, 3rem);
+}
+.practice-col { border-top: 1px solid var(--ink); padding-top: 1rem; }
+.practice-no {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--accent);
     margin: 0 0 0.5rem;
 }
-.card-desc { font-size: 0.9rem; color: var(--ink-soft); margin: 0 0 0.9rem; }
-.card-meta {
+.practice-name {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(1.4rem, 2.6vw, 1.8rem);
+    margin: 0 0 0.9rem;
+}
+.practice-list { list-style: none; margin: 0; padding: 0; }
+.practice-list li {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    padding: 0.42rem 0;
+    border-top: 1px solid var(--hair);
+}
+
+/* =================================================================
+   ABOUT
+   ================================================================= */
+.about-body {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    column-gap: var(--colgap);
+    align-items: start;
+}
+.about-photo {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 50% 40%;
+}
+.about-title {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+    line-height: 1.1;
+    margin: 0 0 1.4rem;
+}
+.about-text p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0 0 1.1rem;
+    max-width: 46ch;
+}
+.about-text p:first-of-type {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(1.15rem, 2vw, 1.35rem);
+    line-height: 1.5;
+    color: var(--ink);
+}
+.about-text a {
+    text-decoration: none;
+    color: var(--ink);
+    border-bottom: 1px solid var(--accent);
+    transition: color 0.2s;
+}
+.about-text a:hover { color: var(--accent); }
+
+/* =================================================================
+   CONTACT — the back cover. Dark, full-bleed, on the same rail.
+   ================================================================= */
+.contact { background: var(--ink); color: var(--paper); }
+.contact-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: var(--gap) var(--side) clamp(3rem, 7vw, 5rem);
+    display: grid;
+    grid-template-columns: var(--rail) minmax(0, 1fr);
+    column-gap: var(--colgap);
+}
+.contact-main { grid-column: 2; }
+.contact-title {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(2.8rem, 8vw, 5.6rem);
+    line-height: 1;
+    letter-spacing: -0.015em;
+    margin: 0 0 1.4rem;
+}
+.contact-mail {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.6rem 1.2rem;
+    margin: 0;
+}
+.contact-mail a {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(1.35rem, 3.4vw, 2.3rem);
+    text-decoration: none;
+    color: var(--paper);
+    border-bottom: 1px solid rgb(var(--paper-rgb) / 0.35);
+    transition: color 0.2s, border-color 0.2s;
+}
+.contact-mail a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.copy-mail {
     font-family: var(--font-mono);
     font-size: 0.66rem;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
+    color: rgb(var(--paper-rgb) / 0.7);
+    background: none;
+    border: 1px solid rgb(var(--paper-rgb) / 0.3);
+    border-radius: 999px;
+    padding: 0.35rem 0.8rem;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+}
+.copy-mail:hover { color: var(--paper); border-color: var(--paper); }
+.copy-mail.is-done { color: var(--accent); border-color: var(--accent); }
+
+.contact-cols {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
+    gap: clamp(1.6rem, 4vw, 3rem);
+    margin-top: clamp(3rem, 7vw, 5rem);
+    padding-top: 1.2rem;
+    border-top: 1px solid rgb(var(--paper-rgb) / 0.18);
+}
+.contact-label {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgb(var(--paper-rgb) / 0.5);
+    margin: 0 0 0.8rem;
+}
+.contact-cols ul { list-style: none; margin: 0; padding: 0; }
+.contact-cols li { margin-bottom: 0.45rem; }
+.contact-cols li a {
+    font-family: var(--font-display);
+    font-size: 1.12rem;
+    text-decoration: none;
+    color: var(--paper);
+    transition: color 0.2s;
+}
+.contact-cols li a span { color: rgb(var(--paper-rgb) / 0.45); transition: color 0.2s; }
+.contact-cols li a:hover,
+.contact-cols li a:hover span { color: var(--accent); }
+.colophon p:not(.contact-label) {
+    font-size: 0.86rem;
+    line-height: 1.65;
+    color: rgb(var(--paper-rgb) / 0.66);
+    margin: 0;
+    max-width: 46ch;
+}
+.colophon em { font-style: italic; color: rgb(var(--paper-rgb) / 0.85); }
+.contact .rail-label,
+.contact a:focus-visible,
+.contact button:focus-visible { outline-color: var(--accent); }
+
+/* Footer — the spine of the back cover, the same on every page. */
+.site-footer {
+    background: var(--ink);
+    padding: 1.4rem var(--side);
+    border-top: 1px solid rgb(var(--paper-rgb) / 0.1);
+    text-align: center;
+}
+.site-footer p {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    color: rgb(var(--paper-rgb) / 0.45);
+}
+
+/* =================================================================
+   SHARED LINK STYLES (case studies, experiments page)
+   ================================================================= */
+/* One link language across the site:
+   · primary destination — serif, accent underline, → (see .plate-links a.go)
+   · secondary / outbound — small mono caps; ↗ when it leaves the site. */
+.project-links { margin: 0; }
+.project-links a {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink-soft);
+    transition: color 0.2s;
+}
+.project-links a:hover { color: var(--accent); }
+.project-links--muted { color: var(--ink-faint); font-style: italic; font-size: 0.82rem; }
+.project-links a[target="_blank"]::after,
+.cs-cap a[target="_blank"]::after { content: "\00A0\2197"; }
+
+/* A row of small links (Live · Source · Personas · Wireframes …) */
+.process-links { display: flex; flex-wrap: wrap; gap: 0.6rem 1.5rem; }
+
+
+/* Next-project navigation at the foot of a case study — the catalogue
+   continues: a big "next" row, and a quiet way back to the whole list. */
+.cs-next {
+    margin-top: clamp(3rem, 7vw, 5rem);
+    border-top: 1px solid var(--ink);
+}
+.cs-next-link {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 1.5rem;
+    padding: 1.3rem 0 1.6rem;
+    text-decoration: none;
+    border-bottom: 1px solid var(--hair);
+}
+.cs-next-label {
+    grid-column: 1;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+}
+.cs-next-name {
+    grid-column: 1;
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+    line-height: 1.05;
+    transition: color 0.2s;
+}
+.cs-next-for {
+    grid-column: 1;
+    margin-top: 0.4rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+}
+.cs-next-arrow {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: center;
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
     color: var(--ink-faint);
-    margin: 0 0 0.6rem;
+    transition: transform 0.25s, color 0.2s;
+}
+.cs-next-link:hover .cs-next-name,
+.cs-next-link:hover .cs-next-arrow { color: var(--accent); }
+.cs-next-link:hover .cs-next-arrow { transform: translateX(8px); }
+.cs-next-all {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink-soft);
+    transition: color 0.2s;
+}
+.cs-next-all:hover { color: var(--accent); }
+
+/* The catalogue number on a case study's eyebrow. */
+.cs-no {
+    font-family: var(--font-mono);
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    margin-right: 0.5rem;
+}
+.cs-meta .cs-meta-for dd {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1rem;
 }
 
 /* ---- Compact density — a dense list (archive experiments): the same
@@ -587,113 +1020,6 @@ a.project-media:hover img { transform: scale(1.035); }
     .compact-item { grid-template-columns: 60px 1fr; }
     .compact-thumb { width: 60px; height: 44px; }
     .compact-links { grid-column: 2; margin-top: 0.5rem; white-space: normal; }
-}
-
-/* =================================================================
-   SKILLS
-   ================================================================= */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: clamp(2rem, 5vw, 3.5rem);
-}
-.skill-label {
-    font-family: var(--font-display);
-    font-weight: 400;
-    font-size: 1rem;
-    margin: 0 0 1.1rem;
-    padding-bottom: 0.7rem;
-    border-bottom: 1px solid var(--hair);
-}
-.skill-list { list-style: none; margin: 0; padding: 0; }
-.skill-list li {
-    font-size: 0.9rem;
-    color: var(--ink-soft);
-    padding: 0.32rem 0;
-}
-
-/* =================================================================
-   ABOUT — photo fills the left half, text sits on frosted glass
-   (the pattern from Being Sound's About page)
-   ================================================================= */
-.about {
-    position: relative;
-    overflow: hidden;
-    margin: 0 var(--side);
-    background: var(--ink);
-    color: var(--paper);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 30rem;
-}
-.about-photo {
-    position: absolute;
-    top: 0; left: 0;
-    width: 50%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: 0;
-}
-.about-panel {
-    grid-column: 2;
-    position: relative;
-    z-index: 1;
-    background: rgb(var(--ink-rgb) / 0.55);
-    -webkit-backdrop-filter: blur(22px) saturate(115%);
-    backdrop-filter: blur(22px) saturate(115%);
-    padding: clamp(2.4rem, 5vw, 4rem);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.about-title {
-    font-family: var(--font-display);
-    font-weight: 300;
-    font-size: clamp(1.6rem, 3.5vw, 2.3rem);
-    margin: 0 0 1.3rem;
-}
-.about-text {
-    font-size: 0.94rem;
-    line-height: 1.7;
-    color: rgb(var(--paper-rgb) / 0.9);
-    margin: 0 0 1.1rem;
-    max-width: 44ch;
-}
-.about-text a {
-    color: var(--paper);
-    border-bottom: 1px solid rgb(var(--paper-rgb) / 0.5);
-    text-decoration: none;
-    transition: color 0.2s, border-color 0.2s;
-}
-.about-text a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-
-/* =================================================================
-   CONTACT + FOOTER
-   ================================================================= */
-/* Full-width rows: the whole strip between the hairlines is hoverable + clickable */
-/* Contact is just a list of .linkrow destination rows. */
-.contact-list { list-style: none; margin: 0 -1rem; padding: 0; }
-.contact-list li:last-child .linkrow { border-bottom: 1px solid var(--hair); }
-.contact-tag {
-    font-family: var(--font-body);
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    margin-left: 0.6rem;
-    vertical-align: middle;
-}
-
-.site-footer {
-    padding: 2.4rem var(--side);
-    text-align: center;
-}
-.site-footer p {
-    margin: 0;
-    font-size: 0.76rem;
-    letter-spacing: 0.04em;
-    color: var(--ink-faint);
 }
 
 /* =================================================================
@@ -775,6 +1101,14 @@ a.project-media:hover img { transform: scale(1.035); }
     color: var(--ink-soft);
     margin: 0.15rem 0 0.5rem;
 }
+.resume-summary {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 70ch;
+    margin: 0;
+}
+.resume-entry ul li strong { color: var(--ink); font-weight: 500; }
 .resume-entry-meta a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--hair); }
 .resume-entry-meta a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 .resume-entry ul {
@@ -806,13 +1140,14 @@ a.project-media:hover img { transform: scale(1.035); }
     .resume-contact { font-size: 0.8rem; margin-bottom: 0.7rem; }
     .resume-tagline { font-size: 0.98rem; margin-bottom: 0; }
     .resume-section { margin-top: 1.05rem; }
-    .resume-section > .eyebrow { break-after: avoid; margin-bottom: 0.7rem; padding-bottom: 0.35rem; }
+    .resume-section > .eyebrow { break-after: avoid; margin-bottom: 0.7rem; padding-bottom: 0.35rem; letter-spacing: 0.03em; }
     .resume-entry { margin-bottom: 0.62rem; break-inside: avoid; }
     .resume-entry-title { font-size: 0.96rem; }
     .resume-entry-meta { font-size: 0.8rem; margin-bottom: 0.35rem; }
     .resume-entry ul { font-size: 0.82rem; line-height: 1.42; }
     .resume-entry ul li { margin-bottom: 0.18rem; }
     .resume-skill { font-size: 0.82rem; line-height: 1.4; margin-bottom: 0.42rem; }
+    .resume-summary { font-size: 0.84rem; line-height: 1.45; }
     .site-footer { display: none; }
     a { border-bottom: none !important; }
 }
@@ -974,6 +1309,17 @@ a.project-media:hover img { transform: scale(1.035); }
 /* =================================================================
    RESPONSIVE
    ================================================================= */
+@media (max-width: 980px) {
+    /* The plate text drops to one column under the image. */
+    .plate { grid-template-columns: var(--rail) minmax(0, 1fr); }
+    .plate-media { grid-column: 2; }
+    .plate-head,
+    .plate-detail { grid-column: 2; }
+    .plate-detail { margin-top: 1.2rem; }
+    .plate-rail { grid-row: 1 / span 3; }
+    .contents-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 @media (max-width: 820px) {
     .site-nav { display: none; }
     /* Full-width dropdown panel: calm, generous rows in the display face,
@@ -1005,18 +1351,61 @@ a.project-media:hover img { transform: scale(1.035); }
     .nav-toggle { display: inline-block; }
     .site-header { align-items: center; }
 
-    .project,
-    .project--reverse { grid-template-columns: 1fr; gap: 1.6rem; }
-    .project--reverse .project-media { order: 0; }
+    /* One column: the rail becomes a line above the content. */
+    .section,
+    .contact-inner { grid-template-columns: minmax(0, 1fr); }
+    .section > *,
+    .section-head > *,
+    .section-head > .rail-label,
+    .contact-main { grid-column: 1; }
+    .section-head { grid-template-columns: minmax(0, 1fr); }
+    .section-head > .rail-label { grid-row: auto; }
+    .rail-label { padding-top: 0; margin-bottom: 1rem; }
+    .rail-label span { display: inline; margin: 0 0 0 0.6rem; }
 
-    .skills-grid { grid-template-columns: 1fr; gap: 2.2rem; }
+    .plate { grid-template-columns: minmax(0, 1fr); }
+    .plate-rail {
+        grid-row: auto;
+        position: static;
+        display: flex;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+    .plate-no { font-size: 2.2rem; margin: 0; }
+    .plate-when br { display: none; }
+    .plate-when span::before { content: " · "; color: var(--ink-faint); }
+    .plate-media,
+    .plate-head,
+    .plate-detail { grid-column: 1; }
+    .plate-media { aspect-ratio: 4 / 3; }
 
-    .about { grid-template-columns: 1fr; }
-    .about-photo { position: relative; width: 100%; height: 16rem; }
-    .about-panel { grid-column: 1; backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--ink); }
+    .index { grid-template-columns: minmax(0, 1fr); }
+    .index > .rail-label,
+    .index-list { grid-column: 1; }
+
+    .practice-grid { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+    .about-body { grid-template-columns: minmax(0, 1fr); row-gap: 1.8rem; }
+    .about-photo { max-width: 420px; aspect-ratio: 1 / 1; }
+    .contact-cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .colophon { grid-column: 1 / -1; }
 }
 
-@media (max-width: 540px) {
-    .card-grid { grid-template-columns: 1fr; }
-    .project-meta { gap: 0.9rem 0; flex-direction: column; }
+@media (max-width: 620px) {
+    .contents-list { grid-template-columns: minmax(0, 1fr); }
+    .contents-list a { padding: 0.8rem 0; display: grid; grid-template-columns: 2.2rem 1fr; }
+    .c-no { margin: 0.2rem 0 0; grid-row: 1 / span 2; }
+    .c-name, .c-for { grid-column: 2; }
+    .contents-list li + li a { border-top-color: var(--hair); border-top-width: 1px; }
+
+    .index-row {
+        grid-template-columns: 2rem minmax(0, 1fr) auto;
+        row-gap: 0.15rem;
+        padding: 0.95rem 0.2rem;
+    }
+    .ix-no { grid-row: 1 / span 2; }
+    .ix-name { grid-column: 2; }
+    .ix-year { grid-column: 3; grid-row: 1; justify-self: end; }
+    .ix-kind { grid-column: 2 / -1; }
+    .ix-go { display: none; }
 }

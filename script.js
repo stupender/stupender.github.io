@@ -128,8 +128,8 @@
     function setupReveal() {
         if (revealObserver) { revealObserver.disconnect(); }
         var targets = document.querySelectorAll(
-            '.hero, .project, .subsection-head, .card, .skill-col, .about-panel, ' +
-            '.contact-list, .section-head, .cs-head, .cs-figure, .cs-section, .work-more'
+            '.hero-inner, .contents, .section-head, .plate, .index, .practice-col, ' +
+            '.about-body, .contact-main, .compact-item, .cs-head, .cs-figure, .cs-section, .cs-next'
         );
         targets.forEach(function (el) { el.classList.add('reveal'); });
         if ('IntersectionObserver' in window) {
@@ -147,6 +147,50 @@
         } else {
             targets.forEach(function (el) { el.classList.add('is-visible'); });
         }
+    }
+
+    /* Copy the email address, with a quiet "Copied" confirmation. */
+    function setupCopy() {
+        document.querySelectorAll('.copy-mail').forEach(function (btn) {
+            if (btn.dataset.wired) { return; }
+            btn.dataset.wired = '1';
+            if (!navigator.clipboard) { btn.hidden = true; return; }
+            btn.addEventListener('click', function () {
+                navigator.clipboard.writeText(btn.dataset.copy).then(function () {
+                    btn.textContent = 'Copied';
+                    btn.classList.add('is-done');
+                    setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('is-done'); }, 1800);
+                });
+            });
+        });
+    }
+
+    /* Index hover preview — a small print of the project follows the
+       pointer over the index rows. Fine pointers only; purely decorative. */
+    var preview = null;
+    function setupPreview() {
+        var rows = document.querySelectorAll('.index-row[data-thumb]');
+        if (!rows.length || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) { return; }
+        if (!preview) {
+            preview = document.createElement('img');
+            preview.className = 'ix-preview';
+            preview.alt = '';
+            preview.setAttribute('aria-hidden', 'true');
+            document.body.appendChild(preview);
+        }
+        rows.forEach(function (row) {
+            if (row.dataset.wired) { return; }
+            row.dataset.wired = '1';
+            row.addEventListener('mouseenter', function () {
+                preview.src = row.dataset.thumb;
+                preview.classList.add('is-on');
+            });
+            row.addEventListener('mouseleave', function () { preview.classList.remove('is-on'); });
+            row.addEventListener('mousemove', function (e) {
+                preview.style.setProperty('--x', (e.clientX + 28) + 'px');
+                preview.style.setProperty('--y', (e.clientY - 90) + 'px');
+            });
+        });
     }
 
     function initPage() {
@@ -177,6 +221,9 @@
             try { hv.pause(); } catch (e) {}
         }
 
+        setupCopy();
+        setupPreview();
+        if (preview) { preview.classList.remove('is-on'); }
         setupReveal();
     }
 
