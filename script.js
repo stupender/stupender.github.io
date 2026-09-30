@@ -214,13 +214,6 @@
         });
         reflectSound();
 
-        // Respect reduced-motion: hold the hero water on its still poster frame.
-        var hv = document.querySelector('.hero-video');
-        if (hv && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            hv.removeAttribute('autoplay');
-            try { hv.pause(); } catch (e) {}
-        }
-
         setupCopy();
         setupPreview();
         if (preview) { preview.classList.remove('is-on'); }

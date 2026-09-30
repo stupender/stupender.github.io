@@ -4,10 +4,17 @@ Plain HTML/CSS/JS — no build step, no framework. Deploys as-is to GitHub Pages
 
 ## The design idea
 
+**Gallery**: a neutral, art-book frame so each project's own colour carries the page.
+Near-white paper, near-black ink, one ultramarine accent; Instrument Serif for display
+and Instrument Sans for everything else, on an eight-step type scale (`--t-*` in
+`styles.css`). Every text colour passes WCAG AA.
+
 The site is **one numbered catalogue**. Every section hangs off the same two-column
 grid — a narrow *rail* on the left (labels, numbers, dates) and the content on the
 right — so the page reads as one piece rather than a stack of layouts.
 
+- The hero is the statement plus the first four entries as small matted thumbnails
+  (`images/thumbs/`), so real work is visible in the first screen.
 - **01–04** are *plates*: the selected projects, each with identical anatomy —
   number and year in the rail, a mat in the project's own colour, name, a
   **For** line (who it's for and the moment they're in), one sentence, the key
@@ -19,7 +26,8 @@ right — so the page reads as one piece rather than a stack of layouts.
 - Contact is the dark "back cover": the address, documents, elsewhere, and a colophon.
 
 One link language throughout: the primary destination is serif with an accent
-underline and →; secondary links are small mono caps, with ↗ when they leave the site.
+underline and →; secondary links are small caps. Every link that leaves the site gets
+the boxed outbound arrow from Being Sound, drawn in CSS (no ↗ characters in the markup).
 
 ## Files
 
