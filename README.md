@@ -4,10 +4,13 @@ Plain HTML/CSS/JS — no build step, no framework. Deploys as-is to GitHub Pages
 
 ## The design idea
 
-**Gallery**: a neutral, art-book frame so each project's own colour carries the page.
-Near-white paper, near-black ink, one ultramarine accent; Instrument Serif for display
-and Instrument Sans for everything else, on an eight-step type scale (`--t-*` in
-`styles.css`). Every text colour passes WCAG AA.
+**Analog Presence** (live): bone paper, warm ink and a burnt-orange accent; Fraunces
+for display and intros, Chivo for text, Chivo Mono for numbers, on an eight-step type
+scale (`--t-*` in `styles.css`). Every text colour passes WCAG AA.
+
+Each page sets `data-style="analog"` on `<html>`. The stylesheet's base `:root` values
+are an alternative, **Gallery** (near-white, ultramarine, Instrument Serif + Sans): to
+switch, remove that attribute and load the Instrument fonts instead.
 
 The site is **one numbered catalogue**. Every section hangs off the same two-column
 grid — a narrow *rail* on the left (labels, numbers, dates) and the content on the

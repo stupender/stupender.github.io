@@ -1,7 +1,10 @@
 /* =================================================================
    Stu Pender — Portfolio
-   Design system: "Gallery" (default). An alternative, "Analog
-   Presence", is one block of token values below the :root block.
+   Design system: "Analog Presence" is live — every page sets
+   data-style="analog" on <html> and loads Fraunces, Chivo and Chivo Mono.
+   The :root values below are the "Gallery" alternative (Instrument
+   Serif + Sans, ultramarine); remove the attribute and swap the font
+   link to use it.
    A neutral, art-book frame so each project's own colour carries the
    page: near-white paper, near-black ink, one ultramarine accent;
    Instrument Serif for display, Instrument Sans for everything else.
