@@ -128,8 +128,8 @@
     function setupReveal() {
         if (revealObserver) { revealObserver.disconnect(); }
         var targets = document.querySelectorAll(
-            '.hero, .project, .subsection-head, .card, .skill-col, .about-panel, ' +
-            '.contact-list, .section-head, .cs-head, .cs-figure, .cs-section, .work-more'
+            '.hero-inner, .contents, .section-head, .plate, .index, .practice-col, ' +
+            '.about-body, .contact-main, .compact-item, .cs-head, .cs-figure, .cs-section, .cs-next'
         );
         targets.forEach(function (el) { el.classList.add('reveal'); });
         if ('IntersectionObserver' in window) {
@@ -147,6 +147,22 @@
         } else {
             targets.forEach(function (el) { el.classList.add('is-visible'); });
         }
+    }
+
+    /* Copy the email address, with a quiet "Copied" confirmation. */
+    function setupCopy() {
+        document.querySelectorAll('.copy-mail').forEach(function (btn) {
+            if (btn.dataset.wired) { return; }
+            btn.dataset.wired = '1';
+            if (!navigator.clipboard) { btn.hidden = true; return; }
+            btn.addEventListener('click', function () {
+                navigator.clipboard.writeText(btn.dataset.copy).then(function () {
+                    btn.textContent = 'Copied';
+                    btn.classList.add('is-done');
+                    setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('is-done'); }, 1800);
+                });
+            });
+        });
     }
 
     function initPage() {
@@ -170,13 +186,7 @@
         });
         reflectSound();
 
-        // Respect reduced-motion: hold the hero water on its still poster frame.
-        var hv = document.querySelector('.hero-video');
-        if (hv && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            hv.removeAttribute('autoplay');
-            try { hv.pause(); } catch (e) {}
-        }
-
+        setupCopy();
         setupReveal();
     }
 

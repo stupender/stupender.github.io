@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-style="analog">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +26,7 @@
             </button>
             <nav class="site-nav" id="site-nav" aria-label="Primary">
                 <a href="index.html#work">Work</a>
-                <a href="index.html#skills">Skills</a>
+                <a href="index.html#practice">Practice</a>
                 <a href="index.html#about">About</a>
                 <a href="resume.html" class="nav-page">Résumé</a>
                 <a href="index.html#contact">Contact</a>
@@ -48,13 +48,14 @@
 
             <!-- ============ HERO ============ -->
             <header class="cs-head">
-                <p class="eyebrow">Case study · 2026 · client</p>
+                <p class="eyebrow"><span class="cs-no">No. 04</span> Case study · 2026 · client</p>
                 <h1 class="cs-title">Joan Gutiérrez</h1>
                 <p class="cs-sub">
                     A brand and marketing site for an intimacy, embodiment, and nervous-system
                     educator — warm, calm, and editorial, built to carry the tone of the practice.
                 </p>
                 <dl class="cs-meta">
+                    <div class="cs-meta-for"><dt>For</dt><dd>A visitor who arrives tender</dd></div>
                     <div><dt>Role</dt><dd>Design &amp; front-end build</dd></div>
                     <div><dt>Timeline</dt><dd>2026</dd></div>
                     <div><dt>Stack</dt><dd>HTML · CSS · JavaScript</dd></div>
@@ -157,9 +158,15 @@
             </section>
 
 
-            <p class="back-link">
-                <a href="index.html#work">← Back to selected work</a>
-            </p>
+            <nav class="cs-next no-print" aria-label="More work">
+                <a class="cs-next-link" href="ground-beneath-our-feet.html">
+                    <span class="cs-next-label">No. 05</span>
+                    <span class="cs-next-name">The Ground Beneath Our Feet</span>
+                    <span class="cs-next-for">For a music supervisor, on deadline</span>
+                    <span class="cs-next-go blk">Next</span>
+                </a>
+                <a class="cs-next-all" href="index.html#work">All work <span aria-hidden="true">↑</span></a>
+            </nav>
         </article>
     </main>
 
