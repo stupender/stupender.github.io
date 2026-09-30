@@ -416,7 +416,8 @@ a[download]::after {
     line-height: 1.45;
     color: var(--ink-soft);
     margin: 0 0 0.5rem;
-    max-width: 32ch;
+    max-width: 34ch;
+    text-wrap: pretty;
 }
 
 .contents { margin-top: clamp(2.8rem, 7vh, 4.5rem); }
