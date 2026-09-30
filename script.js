@@ -128,7 +128,7 @@
     function setupReveal() {
         if (revealObserver) { revealObserver.disconnect(); }
         var targets = document.querySelectorAll(
-            '.hero-inner, .contents, .section-head, .plate, .index, .practice-col, ' +
+            '.hero-inner, .cards, .section-head, .cover, .index, .practice-col, ' +
             '.about-body, .contact-main, .compact-item, .cs-head, .cs-figure, .cs-section, .cs-next'
         );
         targets.forEach(function (el) { el.classList.add('reveal'); });
