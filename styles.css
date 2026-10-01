@@ -60,6 +60,16 @@
     --f-sage:     #9ABE87;
     --f-teal:     #70C3B3;
     --f-sky:      #86B8DA;
+    /* Pairs — each case study's lower panels (the summary, the client's
+       words) take a counterpart to its card colour, the way the 1971
+       catalogue pairs an orange cover with a khaki one. Same rules: ink
+       ≥ 6.9 : 1, ink at 78% ≥ 4.6 : 1. */
+    --p-khaki:    #ABA884;                 /* with orange  (01) */
+    --p-sand:     #D9BC86;                 /* with sky     (02) */
+    --p-clay:     #DE9F86;                 /* with teal    (03) */
+    --p-sage2:    #A5BC92;                 /* with coral   (04) */
+    --p-mauve:    #CDA3AE;                 /* with sage    (05) */
+    --p-slate:    #99AACB;                 /* with mustard (11) */
     --on-field:   rgb(var(--ink-rgb) / 0.78);
     --field-rule: rgb(var(--ink-rgb) / 0.3);
 
@@ -812,7 +822,7 @@ a[download]::after {
     margin: 0 auto;
     padding: clamp(2.6rem, 6vw, 4.5rem) var(--side) 4rem;
 }
-.cs > :not(.cs-head):not(.cs-next) { max-width: 820px; }
+.cs > :not(.cs-head):not(.cs-next):not(.cs-tldr):not(.cs-quote) { max-width: 820px; }
 .cs-head {
     display: flex;
     flex-direction: column;
@@ -882,6 +892,25 @@ a[download]::after {
 .cs-tldr dt { text-align: right; font-size: var(--t-label); padding-top: 0.2rem; color: var(--ink-faint); }
 .cs-tldr dd { margin: 0; line-height: 1.55; color: var(--ink-soft); max-width: 66ch; }
 .cs-tldr dd strong { color: var(--ink); }
+
+/* The lower panels: on a case study with a pair colour, the summary
+   and the client's words sit on that counterpart, full width, set like
+   the header above them — a rule, then the words, all in black. */
+.cs[style] .cs-tldr,
+.cs[style] .cs-quote {
+    background: var(--pair, transparent);
+    padding: clamp(1.2rem, 3vw, 2rem) clamp(1.2rem, 3.5vw, 2.6rem) clamp(1.4rem, 3.5vw, 2.4rem);
+    border-top: 0;
+}
+.cs[style] .cs-head + .cs-tldr { margin-top: calc(-1 * clamp(2rem, 5vw, 3rem) + clamp(0.8rem, 1.8vw, 1.25rem)); }
+.cs[style] .cs-tldr .eyebrow { color: var(--ink); padding-top: 0.6rem; border-top: 1px solid var(--ink); margin-bottom: 1.2rem; }
+.cs[style] .cs-tldr dl { border-top: 0; }
+.cs[style] .cs-tldr dl > div { border-bottom-color: var(--field-rule); }
+.cs[style] .cs-tldr dl > div:last-child { border-bottom: 0; padding-bottom: 0; }
+.cs[style] .cs-tldr dt { color: var(--on-field); }
+.cs[style] .cs-tldr dd { color: var(--ink); }
+.cs[style] .cs-quote p { color: var(--ink); padding-top: 0.6rem; border-top: 1px solid var(--ink); }
+.cs[style] .cs-quote cite { color: var(--on-field); }
 
 /* Next — the next project's card, in its colour. */
 .cs-next { margin-top: clamp(3rem, 7vw, 5rem); }

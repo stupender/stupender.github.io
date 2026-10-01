@@ -23,6 +23,9 @@ Transient Senses programme:
 - **Back** — the case study opens on the card's colour, flat, like the back of the
   card, and ends on the next project's card (01 → 05 → back to 01).
 - The colours (`--f-*`) share one lightness and a low chroma, so they read as one set.
+- **Pairs** — below the header, a case study's summary ("In short") and pull-quote sit on
+  a counterpart colour (`--pair`, from `--p-*`), the way the 1971 catalogue pairs an
+  orange cover with a khaki one: orange/khaki, sky/sand, teal/clay, coral/sage.
 - The hero picture is cut paper: a red sun rising behind a cobalt wave (inline SVG).
   The red is used nowhere else.
 - Anything you can press is cobalt and turns black on hover. On a colour card,
