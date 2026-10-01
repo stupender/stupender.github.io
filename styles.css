@@ -673,28 +673,32 @@ a[download]::after {
    ABOUT — the portrait printed in one ink, like the gallery poster.
    ================================================================= */
 .about > .section-head { grid-row: 1; margin-bottom: 0; }
+/* The portrait is cropped to the height of the words beside it: its top
+   meets the name, its bottom the last line. */
 .about-body {
     grid-row: 1;
     display: grid;
-    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    grid-template-columns: minmax(0, 3fr) minmax(0, 8fr);
     column-gap: var(--colgap);
-    align-items: start;
+    align-items: stretch;
 }
 /* Duotone in CSS: grey the photo, screen it over cobalt (shadows turn
    blue, lights stay light), then multiply by paper to warm the lights. */
 .duo {
     position: relative;
-    margin: 0;
-    aspect-ratio: 4 / 5;
+    margin: 0.5rem 0 0.35rem;    /* to the cap height of the name, the baseline of the last line */
+    min-height: 16rem;
     overflow: hidden;
     background: var(--cobalt);
     isolation: isolate;
 }
 .duo img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 50% 40%;
+    object-position: 46% 40%;
     filter: grayscale(1) contrast(1.3) brightness(1.12);
     mix-blend-mode: screen;
 }
@@ -708,18 +712,20 @@ a[download]::after {
 }
 .about-title { font-size: var(--t-h2); line-height: 1.05; letter-spacing: -0.015em; color: var(--cobalt); margin: 0 0 1.3rem; }
 .about-text p { line-height: 1.7; color: var(--ink-soft); margin: 0 0 1.1rem; max-width: 62ch; }
-.about-text p:first-of-type { font-size: var(--t-lede); line-height: 1.5; color: var(--ink); max-width: none; }
+.about-text p:first-of-type { font-size: var(--t-lede); line-height: 1.5; color: var(--ink); max-width: none; text-wrap: pretty; }
+.nobr { white-space: nowrap; }
 .about-text a { color: var(--cobalt); text-decoration: underline; text-underline-offset: 3px; }
 .about-text a:hover { color: var(--ink); }
+.about-text > :last-child { margin-bottom: 0; }
 
-/* A client's words — in the second ink, under a rule. */
-.about-quote { margin: 2rem 0 0; padding: 1.1rem 0 0; border-top: 1px solid var(--cobalt); }
-.about-text .about-quote p {
-    font-size: var(--t-lede);
-    line-height: 1.45;
+/* A client's words — the full width beneath, in cobalt, under a rule. */
+.about-quote { margin: clamp(2.6rem, 6vw, 4rem) 0 0; padding: 1.2rem 0 0; border-top: 1px solid var(--cobalt); }
+.about-quote p {
+    font-size: var(--t-h3);
+    line-height: 1.35;
+    letter-spacing: -0.01em;
     color: var(--cobalt);
-    margin: 0 0 0.7rem;
-    max-width: none;
+    margin: 0 0 0.8rem;
 }
 .about-quote cite { display: block; font-style: normal; font-size: var(--t-small); color: var(--ink-faint); }
 
@@ -1089,7 +1095,8 @@ a[download]::after {
     .practice-grid { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
     .about-body { grid-template-columns: minmax(0, 1fr); row-gap: 1.8rem; }
     .about > .section-head, .about-body { grid-row: auto; }
-    .duo { max-width: 420px; aspect-ratio: 1 / 1; }
+    .duo { max-width: 420px; aspect-ratio: 1 / 1; min-height: 0; margin: 0; }
+    .about-quote p { font-size: var(--t-lede); }
 
     .contact-cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
     .colophon { grid-column: 1 / -1; }
