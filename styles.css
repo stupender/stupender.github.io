@@ -14,7 +14,7 @@
      everything else stay on paper and white.
    · The picture in the hero is cut paper: a red sun rising behind a
      cobalt wave. The red is used nowhere else.
-   · Cobalt is the only interaction colour: links, blocks and pills
+   · Cobalt is the only interaction colour: links and buttons
      turn cobalt on hover (on the cobalt back cover, they turn black).
    · Sentence case throughout. Nothing moves on hover.
 
@@ -25,7 +25,7 @@
      and an <article class="cover">; its case study sets the same
      --field on <article class="cs">.
    · Links: inside the site is a solid block (.blk); leaving the site is
-     a pill with the boxed arrow; a file is the download mark.
+     an outlined box with the boxed arrow; a file is the download mark.
    ================================================================= */
 
 :root {
@@ -118,7 +118,8 @@ button:focus-visible {
 /* =================================================================
    LINK LANGUAGE
    · Inside the site  → a solid black block (.blk). Hover: cobalt.
-   · Leaves the site  → a pill with the boxed arrow. Hover: cobalt.
+   · Leaves the site  → the same box, outlined, with the boxed arrow.
+                        Hover: cobalt. Every button is square.
    · A file to save   → the download mark.
    ================================================================= */
 .blk,
@@ -145,21 +146,21 @@ button:focus-visible {
 .btn:not(.btn-primary) { background: transparent; color: var(--ink); }
 .btn:not(.btn-primary):hover { background: var(--cobalt); color: var(--paper); }
 
-.pill,
+.out,
 .cover-links a:not(.blk),
 .project-links a {
     display: inline-block;
     font-size: var(--t-label);
     font-weight: 500;
     line-height: 1;
-    padding: 0.68em 1em 0.66em;
+    padding: 0.75em 1.05em 0.72em;
     border: 1px solid currentColor;
-    border-radius: 999px;
+    border-radius: 0;
     color: var(--ink);
     text-decoration: none;
     white-space: nowrap;
 }
-.pill:hover,
+.out:hover,
 .cover-links a:not(.blk):hover,
 .project-links a:hover { background: var(--cobalt); border-color: var(--cobalt); color: var(--paper); }
 
