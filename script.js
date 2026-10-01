@@ -1,8 +1,8 @@
 /* Stu Pender — Portfolio
    Progressive enhancement: a small client-side router (so the ambient audio
    survives page-to-page navigation), the ambient "Music for Airports" engine
-   (lives in memory, never restarts), a gentle scroll-reveal, mobile menu, and
-   the footer year. Everything works as plain links if JS is off. */
+   (lives in memory, never restarts) and the rings in the hero that follow
+   it, a gentle scroll-reveal, mobile menu, and the footer year. Everything works as plain links if JS is off. */
 
 (function () {
     'use strict';
@@ -42,6 +42,7 @@
     var OCTAVE = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
     var bufferCache = {};
     var actx = null, master = null, started = false, muted = false;
+    var voices = [];   // one per LOOPS entry: its analyser and running level
 
     function noteValue(n, o) { return o * 12 + OCTAVE.indexOf(n); }
     function distance(n1, o1, n2, o2) { return noteValue(n1, o1) - noteValue(n2, o2); }
@@ -67,20 +68,20 @@
             return { buffer: buf, distance: distance(note, oct, s.note, s.octave) };
         });
     }
-    function playSample(inst, note, delay) {
+    function playSample(inst, note, delay, dest) {
         if (!actx) { return; }
         getSample(inst, note).then(function (o) {
             if (!actx || actx.state === 'closed') { return; }
             var src = actx.createBufferSource();
             src.buffer = o.buffer;
             src.playbackRate.value = Math.pow(2, o.distance / 12);
-            src.connect(master);
+            src.connect(dest || master);
             src.start(actx.currentTime + delay);
         }).catch(function () {});
     }
-    function startLoop(inst, note, lenSec, delay) {
-        playSample(inst, note, delay);
-        setInterval(function () { playSample(inst, note, delay); }, lenSec * 1000);
+    function startLoop(inst, note, lenSec, delay, dest) {
+        playSample(inst, note, delay, dest);
+        setInterval(function () { playSample(inst, note, delay, dest); }, lenSec * 1000);
     }
     function ensureStarted() {
         if (started) { return; }
@@ -90,7 +91,15 @@
         master = actx.createGain();
         master.gain.value = 0;
         master.connect(actx.destination);
-        LOOPS.forEach(function (l) { startLoop(l[0], l[1], l[2], l[3]); });
+        // Each loop plays through its own analyser (which passes the sound
+        // on unchanged), so its ring in the hero can follow it exactly.
+        LOOPS.forEach(function (l, i) {
+            var an = actx.createAnalyser();
+            an.fftSize = 1024;
+            an.connect(master);
+            voices[i] = { an: an, data: new Float32Array(an.fftSize), peak: 0.02 };
+            startLoop(l[0], l[1], l[2], l[3], an);
+        });
         started = true;
     }
     function ramp(to) {
@@ -110,6 +119,7 @@
         if (actx && actx.state === 'suspended') { actx.resume(); }
         ramp(muted ? 0 : VOL);
         reflectSound();
+        kickRings();
     }
     function reflectSound() {
         var on = started && !muted;
@@ -117,6 +127,65 @@
             t.setAttribute('aria-pressed', String(on));
             t.setAttribute('aria-label', on ? 'Mute ambient sound' : 'Play ambient sound');
         });
+        document.querySelectorAll('.art-listen').forEach(function (b) {
+            b.setAttribute('aria-pressed', String(on));
+            b.textContent = on ? 'Mute' : 'Listen';
+        });
+    }
+
+    /* =============================================================
+       THE RINGS — the hero picture is the piece. Nine rings, one per
+       loop (inner = fastest, outer = the two slow drones). Each ring
+       reads its own loop's analyser and swells with that loop's actual
+       loudness: it peaks the moment the note sounds and relaxes as it
+       fades, so every ring keeps its loop's exact time. Still when
+       muted, and always still for reduced motion.
+       ============================================================= */
+    var rings = null, ringsRaf = 0, ringsVisible = true, ringsObserver = null;
+    var stillMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function setupRings() {
+        if (ringsObserver) { ringsObserver.disconnect(); ringsObserver = null; }
+        var els = document.querySelectorAll('.art-rings .ring[data-voice]');
+        rings = els.length ? Array.prototype.map.call(els, function (c) {
+            return { el: c, v: +c.getAttribute('data-voice'), outer: +c.getAttribute('data-outer'),
+                     w: +c.getAttribute('data-w'), span: +c.getAttribute('data-span'), shown: 0 };
+        }) : null;
+        if (rings && 'IntersectionObserver' in window) {
+            ringsObserver = new IntersectionObserver(function (entries) {
+                ringsVisible = entries[0].isIntersecting;
+                kickRings();
+            });
+            ringsObserver.observe(els[0].ownerSVGElement);
+        }
+        kickRings();
+    }
+    function kickRings() {
+        if (rings && ringsVisible && !ringsRaf && !stillMotion) { ringsRaf = requestAnimationFrame(drawRings); }
+    }
+    function levelOf(v) {
+        var d = v.data, sum = 0, i;
+        v.an.getFloatTimeDomainData(d);
+        for (i = 0; i < d.length; i++) { sum += d[i] * d[i]; }
+        var rms = Math.sqrt(sum / d.length);
+        v.peak = Math.max(v.peak * 0.9995, rms, 0.02);   // each ring scales to its own loop
+        return Math.min(1, rms / v.peak);
+    }
+    function drawRings() {
+        ringsRaf = 0;
+        if (!rings || !ringsVisible || !document.body.contains(rings[0].el)) { return; }
+        var mix = master && VOL ? Math.min(1, master.gain.value / VOL) : 0;   // follows the mute fade
+        var busy = false;
+        rings.forEach(function (r) {
+            var v = voices[r.v];
+            var target = (v && mix > 0.002 && v.an.getFloatTimeDomainData) ? levelOf(v) * mix : 0;
+            r.shown += (target - r.shown) * (target > r.shown ? 0.3 : 0.05);   // quick swell, slow release
+            if (r.shown < 0.002) { r.shown = 0; } else { busy = true; }
+            var w = r.w + (r.span - r.w) * 0.82 * r.shown;   // grows inward, never touching the next ring
+            r.el.setAttribute('stroke-width', w.toFixed(2));
+            r.el.setAttribute('r', (r.outer - w / 2).toFixed(2));
+        });
+        if ((started && !muted) || busy) { ringsRaf = requestAnimationFrame(drawRings); }
     }
 
     /* =============================================================
@@ -195,7 +264,7 @@
         }
         setMenu(false);
 
-        document.querySelectorAll('.sound-toggle').forEach(function (t) {
+        document.querySelectorAll('.sound-toggle, .art-listen').forEach(function (t) {
             if (t.dataset.wired) { return; }
             t.dataset.wired = '1';
             t.addEventListener('click', toggleSound);
@@ -204,6 +273,7 @@
 
         setupCopy();
         setupReveal();
+        setupRings();
     }
 
     /* =============================================================

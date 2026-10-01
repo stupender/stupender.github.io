@@ -32,8 +32,12 @@ Transient Senses programme:
 - **Pairs** — below the header, a case study's summary ("In short") and pull-quote sit on
   a counterpart colour (`--pair`, from `--p-*`), the way the 1971 catalogue pairs an
   orange cover with a khaki one: cobalt/butter, saffron/slate, terracotta/teal, sage/mauve.
-- The hero picture is cut paper: a red sun rising behind a cobalt wave (inline SVG).
-  The red is used nowhere else.
+- The hero picture is a zone plate (after two plates of concentric rings): a still coral
+  centre and nine rings, one per loop of the ambient *Music for Airports* piece —
+  fastest loop innermost, the two slow drones outermost. With the sound on, each ring
+  reads its own loop through an analyser and swells with that loop's loudness, so it
+  keeps the loop's exact time. "Listen" under the intro starts it; reduced motion keeps
+  the rings still.
 - Anything you can press is cobalt and turns black on hover. On a colour card,
   buttons print in black, since cobalt type is too faint there.
 - On small screens the menu is a page of its own: solid cobalt, links ruled off and
