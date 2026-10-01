@@ -8,14 +8,14 @@ Plain HTML/CSS/JS — no build step, no framework. Deploys as-is to GitHub Pages
 Indoek Gallery poster), two inks (black and cobalt), cream paper, sentence case, and a
 set of cards after the Transient Senses programme:
 
-- **Front** — each selected project is a white card: a rule, the title, who it's for,
-  and its "sound" (a field of thin lines, `wave-mark`) in its colour. The four fronts
-  sit under the hero; 01–04 repeat as larger *covers* with their contents and a
-  picture of the work.
-- **Back** — the case study opens on that colour, flat, like the back of the card,
-  and ends on the front of the next project's card (01 → 05 → back to 01).
-- The colours (`--f-*`) share one lightness and chroma, so they read as one set.
-- The hero picture is cut paper: a cobalt wave breaking round a red sun (inline SVG).
+- **Cards** — each selected project is one flat colour card with the same anatomy:
+  number and year over a rule, the title (always two lines tall), who it's for, and
+  the work rising from the bottom edge in an identical frame (`images/thumbs/`).
+  01–04 repeat below as white *covers* with their contents and a picture of the work.
+- **Back** — the case study opens on the card's colour, flat, like the back of the
+  card, and ends on the next project's card (01 → 05 → back to 01).
+- The colours (`--f-*`) share one lightness and a low chroma, so they read as one set.
+- The hero picture is cut paper: a red sun rising behind a cobalt wave (inline SVG).
   The red is used nowhere else.
 - Cobalt is the only interaction colour: links, blocks and pills turn cobalt on hover
   (on the cobalt-on-grey back cover, they turn black).
@@ -49,9 +49,9 @@ moves on hover. Every text colour passes WCAG AA.
 ## Editing
 
 - **Add a selected project:** copy a card in `.cards-list` and an
-  `<article class="cover">`, renumber, and give its case study's `<article class="cs">`
-  `style="--field:var(--f-…)"`. Card fronts carry `style="--field:…"` too, for the
-  colour of their sound mark.
+  `<article class="cover">`, renumber, add a 640px thumbnail to `images/thumbs/`, and
+  give the card and its case study's `<article class="cs">` the same
+  `style="--field:var(--f-…)"`.
 - **Add to the contents:** copy an `<li>` in `.toc`.
 - **Résumé PDF:** open `resume.html` and print to PDF (Letter), or regenerate it headlessly.
 
