@@ -48,6 +48,9 @@
     --cobalt-rgb: 31 75 160;
     --cobalt:     rgb(var(--cobalt-rgb));  /* 6.4 on the page, 7.8 on white */
     --hair:       rgb(var(--cobalt-rgb) / 0.26);
+    --label:      var(--cobalt);           /* section names, numbers       */
+    --hover:      var(--ink);              /* anything you touch, on paper */
+    --hover-dark: var(--ink);              /* …on the cobalt menu page     */
     --sun:        #E24A2B;                 /* the sun in the picture only  */
 
     /* Fields — one colour per project, chosen against its screenshot
@@ -105,6 +108,45 @@
     --gap:    clamp(3.5rem, 8vw, 7rem);          /* vertical section rhythm  */
 }
 
+/* ---- Neutral (data-palette="neutral" on <html>) -------------------
+   The same site in Being Sound's colours, so the work speaks for
+   itself: a neutral grey ground, near-black ink, charcoal panels, and
+   one coral — bright on charcoal and in the sun, deeper on the grey
+   where it has to pass contrast (labels, hovers). Every card and every
+   case-study top is charcoal; the panels beneath are stone. */
+:root[data-palette="neutral"] {
+    --paper-rgb:  224 224 224;             /* #E0E0E0, Being Sound's ground */
+    --ink-rgb:    24 24 24;                /* #181818                13.5 : 1 */
+    --ink-soft:   #444444;                 /*                         7.4 : 1 */
+    --ink-faint:  #5C5C5C;                 /*                         5.1 : 1 */
+    --card:       #EBEBEB;
+    --cobalt-rgb: 24 24 24;                /* the frame prints in ink        */
+    --hair:       rgb(var(--ink-rgb) / 0.2);
+    --sun:        #E46B6C;                 /* Being Sound's coral            */
+    --label:      #A9423F;                 /* coral, deep enough: 4.5 : 1    */
+    --hover:      #A9423F;
+    --hover-dark: #E46B6C;                 /* coral on charcoal: 5.3 : 1     */
+    --charcoal:   #1E1E1E;
+    --stone:      #CBCBCB;                 /* ink 10.9 : 1                   */
+    --f-sky: var(--charcoal); --f-cobalt: var(--charcoal); --f-saffron: var(--charcoal);
+    --f-terracotta: var(--charcoal); --f-sage: var(--charcoal); --f-khaki: var(--charcoal); --f-slate: var(--charcoal);
+    --p-sand: var(--stone); --p-butter: var(--stone); --p-slate: var(--stone);
+    --p-teal: var(--stone); --p-mauve: var(--stone); --p-orange: var(--stone);
+}
+/* Every card, case-study top and next card is charcoal: light type. */
+:root[data-palette="neutral"] .card,
+:root[data-palette="neutral"] .cs-head,
+:root[data-palette="neutral"] .cs-next-link {
+    --on:      var(--paper);
+    --on-soft: rgb(var(--paper-rgb) / 0.82);
+    --on-rule: rgb(var(--paper-rgb) / 0.4);
+}
+:root[data-palette="neutral"] .cs-head .eyebrow { color: var(--sun); }
+:root[data-palette="neutral"] .cs-next-link .blk { background: var(--paper); border-color: var(--paper); color: var(--ink); }
+:root[data-palette="neutral"] .cs-next-link:hover .blk { background: var(--sun); border-color: var(--sun); color: var(--ink); }
+:root[data-palette="neutral"] .card-img--window,
+:root[data-palette="neutral"] .cs-next-img--window { outline: 1px solid rgb(var(--paper-rgb) / 0.18); }
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 [id] { scroll-margin-top: clamp(5rem, 8vw, 6.5rem); }
@@ -140,7 +182,7 @@ button:focus-visible {
 .rail-label {
     font-size: var(--t-small);
     font-weight: 500;
-    color: var(--cobalt);
+    color: var(--label);
     margin: 0 0 1.1rem;
 }
 
@@ -170,10 +212,10 @@ button:focus-visible {
 .blk:hover,
 .btn:hover,
 .toc-row:hover .toc-go.blk,
-.cs-next-link:hover .blk { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.cs-next-link:hover .blk { background: var(--hover); border-color: var(--hover); color: var(--paper); }
 /* A second, quieter action beside a block. */
 .btn:not(.btn-primary) { background: transparent; color: var(--cobalt); }
-.btn:not(.btn-primary):hover { background: var(--ink); color: var(--paper); }
+.btn:not(.btn-primary):hover { background: var(--hover); color: var(--paper); }
 
 .out,
 .cover-links a:not(.blk),
@@ -191,7 +233,7 @@ button:focus-visible {
 }
 .out:hover,
 .cover-links a:not(.blk):hover,
-.project-links a:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.project-links a:hover { background: var(--hover); border-color: var(--hover); color: var(--paper); }
 
 /* The boxed outbound arrow from Being Sound, after every link that
    leaves the site — drawn as a mask so it is the same everywhere. */
@@ -245,13 +287,13 @@ a[download]::after {
     line-height: 1;
     text-decoration: none;
 }
-.wordmark:hover { color: var(--ink); }
+.wordmark:hover { color: var(--hover); }
 .header-right { display: flex; align-items: center; gap: clamp(1.2rem, 3vw, 2.2rem); }
 .site-nav { display: flex; align-items: center; gap: clamp(1.2rem, 3vw, 2.2rem); }
 .site-nav a { font-size: var(--t-body); text-decoration: none; color: var(--cobalt); }
-.site-nav a:hover { color: var(--ink); }
+.site-nav a:hover { color: var(--hover); }
 .site-nav a.nav-page { background: var(--cobalt); color: var(--paper); padding: 0.38em 0.72em 0.42em; margin: -0.38em 0; }
-.site-nav a.nav-page:hover { background: var(--ink); color: var(--paper); }
+.site-nav a.nav-page:hover { background: var(--hover); color: var(--paper); }
 
 /* Menu button — three thin lines that turn to an X */
 .nav-toggle {
@@ -293,7 +335,7 @@ a[download]::after {
     cursor: pointer;
     color: inherit;
 }
-.sound-toggle:hover { color: var(--ink); }
+.sound-toggle:hover { color: var(--hover); }
 .sound-toggle .orbits { display: block; width: 100%; height: 100%; overflow: visible; }
 .sound-toggle .ring { fill: none; stroke: currentColor; stroke-width: 1.5; opacity: 0.3; }
 .sound-toggle .dot { fill: currentColor; }
@@ -331,8 +373,8 @@ a[download]::after {
     background: var(--cobalt);
     color: var(--paper);
 }
-.cs-close:hover { color: var(--ink); }
-.cs-close:hover .cs-close-x { background: var(--ink); }
+.cs-close:hover { color: var(--hover); }
+.cs-close:hover .cs-close-x { background: var(--hover); }
 
 /* =================================================================
    THE GRID — every section hangs off one rail: labels, numbers and
@@ -396,7 +438,7 @@ a[download]::after {
     font-weight: 400;
     line-height: 1;
     letter-spacing: -0.01em;
-    color: var(--cobalt);
+    color: var(--label);
 }
 .rail-label span {
     margin-block-start: 0;
@@ -568,7 +610,7 @@ a[download]::after {
     font-size: var(--t-small);
     color: var(--ink-faint);
 }
-.cover-no { font-weight: 500; color: var(--cobalt); }
+.cover-no { font-weight: 500; color: var(--label); }
 
 /* The title and its line run across the whole card; the contents and
    the picture sit side by side beneath. */
@@ -582,7 +624,7 @@ a[download]::after {
     margin: 0 0 0.6rem;
 }
 .cover-title a { text-decoration: none; }
-.cover-title a:hover { color: var(--ink); }
+.cover-title a:hover { color: var(--hover); }
 .cover-toc { grid-column: 1; grid-row: 4; align-self: start; }
 .cover-links { grid-column: 1; grid-row: 5; align-self: start; }
 .cover-for {
@@ -663,9 +705,9 @@ a[download]::after {
 .toc-year { font-size: var(--t-small); color: var(--ink-faint); white-space: nowrap; }
 .toc-go { justify-self: start; font-size: var(--t-label); font-weight: 500; color: var(--ink-soft); white-space: nowrap; }
 .toc-go.blk { color: var(--paper); }
-.toc-no { justify-self: end; font-size: var(--t-small); font-weight: 500; color: var(--cobalt); }
+.toc-no { justify-self: end; font-size: var(--t-small); font-weight: 500; color: var(--label); }
 .toc-row:hover .toc-name,
-.toc-row:hover .toc-go:not(.blk) { color: var(--ink); }
+.toc-row:hover .toc-go:not(.blk) { color: var(--hover); }
 
 /* =================================================================
    PRACTICE — listen, design, build
@@ -679,7 +721,7 @@ a[download]::after {
     gap: clamp(1.6rem, 4vw, 3rem);
 }
 .practice-col { border-top: 1px solid var(--cobalt); padding-top: 0.8rem; }
-.practice-no { font-size: var(--t-small); font-weight: 500; color: var(--cobalt); margin: 0 0 0.2rem; }
+.practice-no { font-size: var(--t-small); font-weight: 500; color: var(--label); margin: 0 0 0.2rem; }
 .practice-name { font-size: var(--t-h3); line-height: 1.2; letter-spacing: -0.01em; color: var(--cobalt); margin: 0 0 1.1rem; }
 .practice-list { list-style: none; margin: 0; padding: 0; }
 .practice-list li { font-size: var(--t-small); color: var(--ink-soft); padding: 0.5rem 0; border-top: 1px solid var(--hair); }
@@ -734,7 +776,7 @@ a[download]::after {
 .about-text p:first-of-type { font-size: var(--t-lede); line-height: 1.5; color: var(--ink); max-width: none; text-wrap: pretty; }
 .nobr { white-space: nowrap; }
 .about-text a { color: var(--cobalt); text-decoration: underline; text-underline-offset: 3px; }
-.about-text a:hover { color: var(--ink); }
+.about-text a:hover { color: var(--hover); }
 .about-text > :last-child { margin-bottom: 0; }
 
 /* A client's words — the full width beneath, in cobalt, under a rule. */
@@ -763,7 +805,7 @@ a[download]::after {
     column-gap: var(--colgap);
 }
 .contact-edge { grid-column: 1; align-self: start; }
-.contact .rail-label { color: var(--cobalt); margin-bottom: 1.2rem; padding-top: 0; }
+.contact .rail-label { color: var(--label); margin-bottom: 1.2rem; padding-top: 0; }
 .contact-main { grid-column: 2; min-width: 0; }
 .contact-title { font-size: var(--t-h1); line-height: 1.02; letter-spacing: -0.025em; margin: 0 0 1.6rem; }
 .contact-mail {
@@ -781,7 +823,7 @@ a[download]::after {
     color: var(--cobalt);
     border-bottom: 1px solid var(--cobalt);
 }
-.contact-mail a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+.contact-mail a:hover { color: var(--hover); border-bottom-color: var(--hover); }
 .copy-mail {
     font-family: var(--font);
     font-size: var(--t-label);
@@ -793,7 +835,7 @@ a[download]::after {
     padding: 0.75em 1.05em 0.72em;
     cursor: pointer;
 }
-.copy-mail:hover { background: var(--ink); }
+.copy-mail:hover { background: var(--hover); }
 .copy-mail.is-done { background: var(--ink); color: var(--grey); }
 
 .contact-cols {
@@ -808,9 +850,9 @@ a[download]::after {
 .contact-cols ul { list-style: none; margin: 0; padding: 0; }
 .contact-cols li { margin-bottom: 0.7rem; }
 .contact-cols li a { font-size: var(--t-h3); line-height: 1.2; text-decoration: none; color: var(--cobalt); }
-.contact-cols li a:hover { color: var(--ink); }
+.contact-cols li a:hover { color: var(--hover); }
 .contact .contact-cols li a.blk { font-size: var(--t-label); line-height: 1; background: var(--cobalt); border-color: var(--cobalt); color: var(--grey); }
-.contact .contact-cols li a.blk:hover { background: var(--ink); border-color: var(--ink); color: var(--grey); }
+.contact .contact-cols li a.blk:hover { background: var(--hover); border-color: var(--hover); color: var(--grey); }
 .colophon p:not(.contact-label) { font-size: var(--t-small); line-height: 1.65; margin: 0; max-width: 46ch; }
 .contact a:focus-visible,
 .contact button:focus-visible { outline-color: var(--ink); }
@@ -877,7 +919,7 @@ a[download]::after {
 .cs-figure--lead { margin: clamp(1.5rem, 4vw, 2.5rem) 0 0; }
 .cs-cap { font-size: var(--t-small); color: var(--ink-faint); margin: 0.7rem 0 0; }
 .cs-cap a { color: var(--ink-soft); text-decoration: underline; text-decoration-color: var(--hair); text-underline-offset: 3px; }
-.cs-cap a:hover { color: var(--ink); }
+.cs-cap a:hover { color: var(--hover); }
 
 .cs-section { margin-top: clamp(2.6rem, 6vw, 4rem); }
 .cs-section > .eyebrow { margin-bottom: 0.8rem; }
@@ -964,7 +1006,7 @@ a[download]::after {
 .cs-next-go { justify-self: start; margin: 1.4rem 0 clamp(1rem, 2.4vw, 1.6rem); }
 .cs-next-img { grid-column: 2; grid-row: 1 / span 4; align-self: end; margin-top: 1.2rem; transform: translateY(10%); }
 .cs-next-all { display: inline-block; margin-top: 1rem; font-size: var(--t-small); text-decoration: none; color: var(--cobalt); }
-.cs-next-all:hover { color: var(--ink); }
+.cs-next-all:hover { color: var(--hover); }
 
 /* ---- Compact list (No. 11, experiments) ------------------------- */
 .compact-list { border-top: 1px solid var(--cobalt); }
@@ -992,7 +1034,7 @@ a[download]::after {
 .resume-contact { font-size: var(--t-small); color: var(--ink-soft); margin: 0 0 1.1rem; }
 .resume-contact a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--hair); }
 .resume-contact a::after { display: none !important; }
-.resume-contact a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+.resume-contact a:hover { color: var(--hover); border-bottom-color: var(--hover); }
 .resume-contact .sep { color: var(--ink-faint); margin: 0 0.5rem; }
 .resume-tagline { font-size: var(--t-lede); line-height: 1.45; margin: 0 0 1.6rem; }
 .resume-actions { display: flex; gap: 0.6rem; margin: 0 0 0.5rem; }
@@ -1007,7 +1049,7 @@ a[download]::after {
 .resume-entry-meta { font-size: var(--t-small); color: var(--ink-soft); margin: 0.15rem 0 0.5rem; }
 .resume-entry-meta a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--hair); }
 .resume-entry-meta a::after { display: none !important; }
-.resume-entry-meta a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+.resume-entry-meta a:hover { color: var(--hover); border-bottom-color: var(--hover); }
 .resume-entry ul { margin: 0; padding-left: 1.1rem; font-size: var(--t-small); color: var(--ink-soft); line-height: 1.6; }
 .resume-entry ul li { margin-bottom: 0.3rem; }
 .resume-entry ul li::marker { color: var(--cobalt); }
@@ -1112,13 +1154,13 @@ a[download]::after {
         letter-spacing: 0;
         color: var(--grey);
     }
-    .site-nav.open a:hover { color: var(--ink); background: none; }
-    .site-nav.open a:hover::before { color: var(--ink); }
+    .site-nav.open a:hover { color: var(--hover-dark); background: none; }
+    .site-nav.open a:hover::before { color: var(--hover-dark); }
     /* The header joins the menu page while it is open. */
     .menu-open, .menu-open body { overflow: hidden; }
     .menu-open .site-header { background: var(--cobalt); color: var(--grey); border-bottom-color: rgb(228 227 232 / 0.55); }
     .menu-open .wordmark:hover,
-    .menu-open .sound-toggle:hover { color: var(--ink); }
+    .menu-open .sound-toggle:hover { color: var(--hover-dark); }
     .menu-open .sound-toggle[aria-pressed="true"] { color: var(--grey); }
 
     /* One column: the edge names lie down over a rule, and the rule

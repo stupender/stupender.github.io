@@ -53,6 +53,14 @@ One link language throughout, with no arrow characters in the markup:
 Both marks are drawn as CSS masks, so they look the same on every machine. Nothing
 moves on hover, and nothing casts a shadow. Every text colour passes WCAG AA.
 
+## Neutral version
+
+`styles.css` also holds a neutral theme in Being Sound's colours: a #E0E0E0 ground,
+#181818 ink, charcoal cards and case-study tops, stone panels beneath, and coral
+(#E46B6C on charcoal and in the sun; #A9423F on the grey, where it must pass
+contrast). To switch the site to it, add `data-palette="neutral"` to `<html>` on
+every page. Nothing else changes: same layout, same type, same rules.
+
 ## Files
 
 | File | What it holds |
