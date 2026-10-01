@@ -2,72 +2,69 @@
    Stu Pender — Portfolio
    Design system: "Programme"
 
-   Printed matter, not an app. The page borrows from five pieces of
-   print: a 1971 exhibition catalogue (lowercase grotesk, hairline
-   rules, a table of contents), a set of flat colour event cards
-   (serif titles on one colour each), a surf-shop panel (pill tags),
-   a 1959 film-festival poster (cut-paper waves and a red sun, spaced
-   serif capitals), and a one-colour gallery poster (cobalt only, type
-   running up the edge, a duotone photograph).
+   Printed matter, not an app. One typeface (Host Grotesk, after the
+   Indoek Gallery poster), two inks (black and cobalt), cream paper,
+   and a set of cards after the Transient Senses programme:
 
-   · Paper and ink for the frame; cobalt as a second printing ink.
-   · Each selected project owns one flat colour (--field), used for its
-     card, its cover and its case-study header.
-   · Archivo (grotesk) sets the frame, in lowercase. Newsreader (serif)
-     sets project titles and running quotes. Labels are spaced serif
-     capitals.
-   · Nothing moves on hover. Colour changes only.
+   · FRONT — every project is a white card: a rule, the title, who it
+     is for, and its "sound" (a field of thin lines) in its colour.
+   · BACK  — the case study opens on that colour, flat, like the back
+     of the card. Colour lives there, not on the homepage.
+   · The picture in the hero is cut paper: a cobalt wave breaking round
+     a red sun. The red is used nowhere else.
+   · Cobalt is the only interaction colour: links, blocks and pills
+     turn cobalt on hover (on the cobalt back cover, they turn black).
+   · Sentence case throughout. Nothing moves on hover.
 
    Editing tips:
    · Colour, type and rhythm live in :root. Sizes come ONLY from the
      --t-* scale; don't add new font sizes.
-   · A selected project is an <article class="cover"> with
-     style="--field:var(--f-…)"; its card in the hero uses the same
-     field. 05 onward are rows in .toc.
+   · A selected project is a card in .cards-list and an
+     <article class="cover">; its case study sets
+     style="--field:var(--f-…)" on <article class="cs">.
    · Links: inside the site is a solid block (.blk); leaving the site is
-     a pill or label with the boxed arrow; a file is the download mark.
+     a pill with the boxed arrow; a file is the download mark.
    ================================================================= */
 
 :root {
-    /* Paper and ink — every text colour passes WCAG AA on its ground. */
+    /* Paper, card and ink — every text colour passes WCAG AA. */
     --paper-rgb:  242 238 228;
     --ink-rgb:    27 26 23;
-    --paper:      rgb(var(--paper-rgb));   /* page                          */
-    --raised:     #F9F7F1;                 /* the odd raised surface        */
-    --ink:        rgb(var(--ink-rgb));     /* text, rules, blocks  15.0 : 1 */
-    --ink-soft:   #45423C;                 /* secondary text        8.6 : 1 */
-    --ink-faint:  #66625A;                 /* meta, numbers         5.2 : 1 */
+    --paper:      rgb(var(--paper-rgb));   /* the page                     */
+    --card:       #FDFCF9;                 /* card fronts                  */
+    --ink:        rgb(var(--ink-rgb));     /* text, rules, blocks  15 : 1  */
+    --ink-soft:   #45423C;                 /* secondary text      8.6 : 1  */
+    --ink-faint:  #66625A;                 /* meta, numbers       5.2 : 1  */
     --hair:       rgb(var(--ink-rgb) / 0.16);
 
-    /* The second ink, and the colour of anything you touch. */
-    --cobalt:     #1F4BA0;                 /* labels, rules    7.1 on paper */
-    --hover:      #B83D1C;                 /* terracotta       4.9 on paper */
-    --sun:        #E24A2B;                 /* the sun in the picture only   */
-    --grey:       #E3E3E6;                 /* the back cover  cobalt 6.4 : 1 */
+    /* The second ink. Labels, quotes, and anything you touch. */
+    --cobalt:     #1F4BA0;                 /* 7.1 on paper · 6.4 on grey   */
+    --grey:       #E4E3E8;                 /* the back cover               */
+    --sun:        #E24A2B;                 /* the sun in the picture only  */
 
-    /* Fields — one flat colour per project. Ink on all of them is
-       ≥ 6.8 : 1; secondary text is ink at 78% (≥ 4.6 : 1). */
-    --f-orange:   #F3A03E;
-    --f-khaki:    #A8A386;
-    --f-teal:     #72C2B1;
-    --f-coral:    #F08C7C;
-    --f-sky:      #8DB7DD;
-    --f-mustard:  #E6AC35;
+    /* Fields — the backs of the cards. One lightness, one chroma, six
+       hues (OKLCH 0.76 / 0.105), so they read as one set. Ink on each
+       is ≥ 7.7 : 1; secondary text is ink at 78% (≥ 5 : 1). */
+    --f-coral:    #EC9789;
+    --f-orange:   #E1A269;
+    --f-mustard:  #D0AC5F;
+    --f-sage:     #94C07C;
+    --f-teal:     #59C7B4;
+    --f-sky:      #6FBAED;
     --on-field:   rgb(var(--ink-rgb) / 0.78);
-    --field-rule: rgb(var(--ink-rgb) / 0.32);
+    --field-rule: rgb(var(--ink-rgb) / 0.3);
 
-    --font-sans:  'Archivo', 'Helvetica Neue', Arial, sans-serif;
-    --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+    --font: 'Host Grotesk', 'Helvetica Neue', Arial, sans-serif;
 
     /* Type scale — eight steps, nothing else. */
-    --t-label: 0.75rem;                          /* 12  labels, meta         */
-    --t-small: 0.875rem;                         /* 14  secondary text       */
-    --t-body:  1rem;                             /* 16  body                 */
-    --t-lede:  1.25rem;                          /* 20  ledes, list names    */
-    --t-h3:    1.5625rem;                        /* 25  sub-heads            */
+    --t-label: 0.8125rem;                        /* 13  meta                 */
+    --t-small: 0.9375rem;                        /* 15  secondary text       */
+    --t-body:  1.0625rem;                        /* 17  body                 */
+    --t-lede:  1.3125rem;                        /* 21  ledes, list names    */
+    --t-h3:    1.625rem;                         /* 26  sub-heads            */
     --t-h2:    clamp(1.9rem, 3.6vw, 2.6rem);     /* 30–42 section titles     */
     --t-d2:    clamp(2.3rem, 4.8vw, 3.5rem);     /* 37–56 cover titles       */
-    --t-h1:    clamp(2.7rem, 7.4vw, 6rem);       /* 43–96 hero, contact      */
+    --t-h1:    clamp(2.7rem, 6.6vw, 5.4rem);     /* 43–86 hero, contact      */
 
     --side:   5vw;                               /* page margin              */
     --maxw:   1240px;                            /* content width            */
@@ -84,111 +81,75 @@ body {
     margin: 0;
     background: var(--paper);
     color: var(--ink);
-    font-family: var(--font-sans);
+    font-family: var(--font);
     font-size: var(--t-body);
     font-weight: 400;
     line-height: 1.6;
-    font-variant-numeric: tabular-nums;
     overflow-x: clip;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
-h1, h2, h3, h4 { text-wrap: balance; }
+h1, h2, h3, h4 { text-wrap: balance; font-weight: 400; }
+strong { font-weight: 600; }
+/* Figures line up in columns; only where they are columns (tabular
+   figures would also widen this face's hyphen). */
+.toc-year, .toc-no, .cover-top, .card-meta, .rail-label span, .resume-entry-date { font-variant-numeric: tabular-nums; }
 
 a:focus-visible,
 button:focus-visible {
     outline: 2px solid var(--cobalt);
     outline-offset: 3px;
-    border-radius: 1px;
 }
 
-/* ---- Labels: spaced serif capitals, like the festival poster ----- */
+/* ---- Labels: small, cobalt, sentence case ----------------------- */
 .eyebrow,
 .rail-label {
-    font-family: var(--font-serif);
     font-size: var(--t-small);
     font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
     color: var(--cobalt);
     margin: 0 0 1.1rem;
 }
 
-/* ---- Small grotesk label (meta, dt, pills) ----------------------- */
-.lbl,
-.cover-top,
-.cover-toc dt,
-.cs-meta dt,
-.cs-tldr dt,
-.contact-label,
-.card-no {
-    font-family: var(--font-sans);
-    font-size: var(--t-label);
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: lowercase;
-}
-
-/* =================================================================
-   OUTBOUND MARKER — the boxed arrow from Being Sound, after every link
-   that leaves the site. Drawn as an SVG mask (not a ↗ character, which
-   each machine's fonts render differently), sized in em so it tracks
-   the text, painted in currentColor, and still on hover.
-   ================================================================= */
-a[target="_blank"]:not(.toc-row)::after,
-.toc-row[target="_blank"] .toc-go::after {
-    content: "";
-    display: inline-block;
-    width: 0.72em;
-    height: 0.72em;
-    margin-left: 0.36em;
-    vertical-align: -0.04em;
-    background-color: currentColor;
-    opacity: 0.6;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E") center / contain no-repeat;
-            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E") center / contain no-repeat;
-}
-
 /* =================================================================
    LINK LANGUAGE
-   · Inside the site  → a solid ink block (.blk) that turns terracotta
-                        on hover. No arrow: the block says "opens".
-   · Leaves the site  → a pill (or a label) with the boxed arrow.
-   · A file to save   → the download mark (below).
+   · Inside the site  → a solid black block (.blk). Hover: cobalt.
+   · Leaves the site  → a pill with the boxed arrow. Hover: cobalt.
+   · A file to save   → the download mark.
    ================================================================= */
-.blk {
+.blk,
+.btn {
     display: inline-block;
-    font-family: var(--font-sans);
+    font-family: var(--font);
     font-size: var(--t-label);
     font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: lowercase;
     line-height: 1;
-    padding: 0.72em 1em 0.7em;
+    padding: 0.75em 1.05em 0.72em;
     background: var(--ink);
     color: var(--paper);
+    border: 1px solid var(--ink);
+    border-radius: 0;
     text-decoration: none;
-    border: 0;
     white-space: nowrap;
+    cursor: pointer;
 }
 .blk:hover,
+.btn:hover,
 .toc-row:hover .toc-go.blk,
-.cs-next-link:hover .blk { background: var(--hover); color: var(--paper); }
+.cs-next-link:hover .blk { background: var(--cobalt); border-color: var(--cobalt); color: var(--paper); }
+/* A second, quieter action beside a block. */
+.btn:not(.btn-primary) { background: transparent; color: var(--ink); }
+.btn:not(.btn-primary):hover { background: var(--cobalt); color: var(--paper); }
 
-/* Pill — the outbound tag, after the surf-shop panel. */
 .pill,
 .cover-links a:not(.blk),
 .project-links a {
     display: inline-block;
-    font-family: var(--font-sans);
     font-size: var(--t-label);
     font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: lowercase;
     line-height: 1;
-    padding: 0.62em 0.95em 0.6em;
+    padding: 0.68em 1em 0.66em;
     border: 1px solid currentColor;
     border-radius: 999px;
     color: var(--ink);
@@ -197,32 +158,46 @@ a[target="_blank"]:not(.toc-row)::after,
 }
 .pill:hover,
 .cover-links a:not(.blk):hover,
-.project-links a:hover { background: var(--hover); border-color: var(--hover); color: var(--paper); }
+.project-links a:hover { background: var(--cobalt); border-color: var(--cobalt); color: var(--paper); }
 
-/* Download mark — a tray with an arrow into it, drawn to match the
-   boxed outbound arrow (same stroke, same size, same stillness). */
+/* The boxed outbound arrow from Being Sound, after every link that
+   leaves the site — drawn as a mask so it is the same everywhere. */
+a[target="_blank"]:not(.toc-row)::after,
+.toc-row[target="_blank"] .toc-go::after {
+    content: "";
+    display: inline-block;
+    width: 0.72em;
+    height: 0.72em;
+    margin-left: 0.4em;
+    vertical-align: -0.04em;
+    background-color: currentColor;
+    opacity: 0.65;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+/* The download mark — a tray with an arrow into it, drawn to match. */
 a[download]::after {
     content: "";
     display: inline-block;
     width: 0.78em;
     height: 0.78em;
-    margin-left: 0.4em;
+    margin-left: 0.45em;
     vertical-align: -0.05em;
     background-color: currentColor;
-    opacity: 0.6;
+    opacity: 0.65;
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='12' y1='15' x2='12' y2='3'/%3E%3C/svg%3E") center / contain no-repeat;
             mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='12' y1='15' x2='12' y2='3'/%3E%3C/svg%3E") center / contain no-repeat;
 }
-.btn[download]::after { opacity: 0.85; }
+.btn-primary[download]::after { opacity: 0.9; }
 
 /* =================================================================
-   HEADER / NAV — lowercase grotesk over a single hairline.
+   HEADER / NAV
    ================================================================= */
 .site-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: clamp(1rem, 2.2vw, 1.5rem) var(--side);
+    padding: clamp(1rem, 2.2vw, 1.45rem) var(--side);
     border-bottom: 1px solid var(--ink);
     position: sticky;
     top: 0;
@@ -230,29 +205,21 @@ a[download]::after {
     z-index: 50;
 }
 .wordmark {
-    font-family: var(--font-sans);
-    font-weight: 600;
+    font-weight: 500;
     font-size: var(--t-lede);
-    letter-spacing: -0.02em;
-    text-transform: lowercase;
+    letter-spacing: -0.01em;
     line-height: 1;
     text-decoration: none;
 }
-.wordmark:hover { color: var(--hover); }
+.wordmark:hover { color: var(--cobalt); }
 .header-right { display: flex; align-items: center; gap: clamp(1.2rem, 3vw, 2.2rem); }
 .site-nav { display: flex; align-items: center; gap: clamp(1.2rem, 3vw, 2.2rem); }
-.site-nav a {
-    font-size: var(--t-body);
-    font-weight: 400;
-    text-transform: lowercase;
-    text-decoration: none;
-    color: var(--ink);
-}
-.site-nav a:hover { color: var(--hover); }
-.site-nav a.nav-page { background: var(--ink); color: var(--paper); padding: 0.36em 0.7em 0.4em; margin: -0.36em 0; }
-.site-nav a.nav-page:hover { background: var(--hover); color: var(--paper); }
+.site-nav a { font-size: var(--t-body); text-decoration: none; color: var(--ink); }
+.site-nav a:hover { color: var(--cobalt); }
+.site-nav a.nav-page { background: var(--ink); color: var(--paper); padding: 0.38em 0.72em 0.42em; margin: -0.38em 0; }
+.site-nav a.nav-page:hover { background: var(--cobalt); color: var(--paper); }
 
-/* Hamburger — three thin lines that animate to an X */
+/* Menu button — three thin lines that turn to an X */
 .nav-toggle {
     display: none;
     position: relative;
@@ -261,6 +228,7 @@ a[download]::after {
     padding: 0;
     background: none;
     border: none;
+    color: inherit;
     cursor: pointer;
 }
 .nav-toggle span {
@@ -268,7 +236,7 @@ a[download]::after {
     left: 0;
     right: 0;
     height: 1.5px;
-    background: var(--ink);
+    background: currentColor;
     transition: transform 0.3s ease, opacity 0.2s ease;
 }
 .nav-toggle span:nth-child(1) { top: 2px; }
@@ -277,34 +245,6 @@ a[download]::after {
 .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
 .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-
-/* Close control on a sub-page: an ✕ that returns to the catalogue. */
-.cs-closebar { max-width: 960px; margin: 0 auto; padding: clamp(1.4rem, 3.5vw, 2rem) var(--side) 0; }
-.cs-closebar:has(+ .resume) { max-width: 820px; }
-.cs-closebar + .cs,
-.cs-closebar + .resume { padding-top: clamp(1.1rem, 2.5vw, 1.7rem); }
-.cs-close {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-size: var(--t-small);
-    text-transform: lowercase;
-    text-decoration: none;
-    color: var(--ink-soft);
-}
-.cs-close-x {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    font-size: var(--t-small);
-    line-height: 1;
-    border: 1px solid var(--ink);
-    border-radius: 50%;
-}
-.cs-close:hover { color: var(--hover); }
-.cs-close:hover .cs-close-x { color: var(--hover); border-color: var(--hover); }
 
 /* ---- Ambient sound: the "orbits" toggle -------------------------- */
 .sound-toggle {
@@ -317,9 +257,9 @@ a[download]::after {
     background: none;
     border: none;
     cursor: pointer;
-    color: var(--ink);
+    color: inherit;
 }
-.sound-toggle:hover { color: var(--hover); }
+.sound-toggle:hover { color: var(--cobalt); }
 .sound-toggle .orbits { display: block; width: 100%; height: 100%; overflow: visible; }
 .sound-toggle .ring { fill: none; stroke: currentColor; stroke-width: 1.5; opacity: 0.3; }
 .sound-toggle .dot { fill: currentColor; }
@@ -333,28 +273,39 @@ a[download]::after {
 .sound-toggle[aria-pressed="true"] .orb2 { animation-play-state: running; }
 @keyframes orbit { to { transform: rotate(360deg); } }
 
-/* ---- Buttons ----------------------------------------------------- */
-.btn {
-    display: inline-block;
+/* ---- Close (sub-pages): a square ✕ block, back to the catalogue --- */
+.cs-closebar { max-width: 960px; margin: 0 auto; padding: clamp(1.4rem, 3.5vw, 2rem) var(--side) 0; }
+.cs-closebar:has(+ .resume) { max-width: 820px; }
+.cs-closebar + .cs,
+.cs-closebar + .resume { padding-top: clamp(1.1rem, 2.5vw, 1.7rem); }
+.cs-close {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
     font-size: var(--t-small);
-    font-weight: 500;
-    text-transform: lowercase;
     text-decoration: none;
-    padding: 0.62rem 1.25rem;
-    border: 1px solid var(--ink);
-    border-radius: 999px;
     color: var(--ink);
-    background: transparent;
 }
-.btn:hover,
-.btn-primary:hover { background: var(--hover); border-color: var(--hover); color: var(--paper); }
-.btn-primary { background: var(--ink); color: var(--paper); }
+.cs-close-x {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    font-size: var(--t-small);
+    line-height: 1;
+    background: var(--ink);
+    color: var(--paper);
+}
+.cs-close:hover { color: var(--cobalt); }
+.cs-close:hover .cs-close-x { background: var(--cobalt); }
 
 /* =================================================================
    THE GRID — every section hangs off one rail: labels, numbers and
    dates on the left, content on the right.
    ================================================================= */
 .section {
+    position: relative;
     max-width: var(--maxw);
     margin: 0 auto;
     padding: var(--gap) var(--side);
@@ -363,8 +314,7 @@ a[download]::after {
     column-gap: var(--colgap);
 }
 .section > * { grid-column: 2; min-width: 0; }
-/* Hairline between sections, the width of the type, not the page. */
-.section { position: relative; }
+/* A hairline between sections, the width of the type. */
 .hero + .section::before,
 .section + .section::before {
     content: "";
@@ -384,40 +334,33 @@ a[download]::after {
 .section-head > * { grid-column: 2; }
 .section-head > .rail-label { grid-column: 1; grid-row: 1 / span 3; }
 
-.rail-label { grid-column: 1; margin: 0; padding-top: 0.7rem; align-self: start; }
+.rail-label { grid-column: 1; margin: 0; padding-top: 0.6rem; align-self: start; }
 .rail-label span {
     display: block;
-    font-family: var(--font-sans);
     font-size: var(--t-label);
-    margin-top: 0.3rem;
     font-weight: 400;
-    letter-spacing: 0.02em;
+    margin-top: 0.2rem;
     color: var(--ink-faint);
 }
 
-/* Section titles: lowercase grotesk, like the catalogue's cover. */
 .section-title {
-    font-family: var(--font-sans);
-    font-weight: 500;
     font-size: var(--t-h2);
-    line-height: 1.04;
-    letter-spacing: -0.025em;
-    text-transform: lowercase;
+    line-height: 1.08;
+    letter-spacing: -0.015em;
     margin: 0;
     max-width: 22ch;
 }
 .section-lede {
-    font-family: var(--font-serif);
     font-size: var(--t-lede);
     line-height: 1.5;
     color: var(--ink-soft);
-    max-width: 46ch;
-    margin: 1.4rem 0 0;
+    max-width: 44ch;
+    margin: 1.3rem 0 0;
 }
 
 /* =================================================================
-   HERO — the statement beside a cut-paper picture (blue water, red
-   sun), then the programme: one flat card per selected project.
+   HERO — the statement beside the cut-paper picture, then one card
+   front per selected project.
    ================================================================= */
 .hero {
     max-width: var(--maxw);
@@ -431,29 +374,28 @@ a[download]::after {
     align-items: center;
 }
 .hero-title {
-    font-family: var(--font-sans);
-    font-weight: 500;
     font-size: var(--t-h1);
-    line-height: 0.95;
-    letter-spacing: -0.04em;
-    text-transform: lowercase;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
     margin: 0;
 }
 .hero-lede {
-    font-family: var(--font-serif);
     font-size: var(--t-lede);
     line-height: 1.5;
     color: var(--ink-soft);
     margin: clamp(1.4rem, 3vw, 2rem) 0 0;
-    max-width: 40ch;
+    max-width: 38ch;
     text-wrap: pretty;
 }
 .hero-art { margin: 0; }
-.waves { display: block; width: 100%; height: auto; }
-.waves .wave { fill: var(--cobalt); }
-.waves .sun { fill: var(--sun); }
+.art { display: block; width: 100%; height: auto; }
+.art .wave { fill: var(--cobalt); }
+.art .sun { fill: var(--sun); }
 
-/* The programme — four flat cards, a colour each. */
+/* ---- Card fronts --------------------------------------------------
+   After the Transient Senses programme: a white card, a rule at the
+   top, the title, a line about who it's for, and the project's
+   "sound" — a field of thin lines in its colour. */
 .cards { margin-top: clamp(3rem, 8vh, 5rem); }
 .cards-list {
     list-style: none;
@@ -467,59 +409,43 @@ a[download]::after {
     display: flex;
     flex-direction: column;
     height: 100%;
-    aspect-ratio: 4 / 5;
-    padding: clamp(0.9rem, 1.6vw, 1.25rem) clamp(0.9rem, 1.6vw, 1.25rem) 0;
-    background: var(--field, var(--raised));
+    aspect-ratio: 3 / 4;
+    padding: clamp(1rem, 1.8vw, 1.4rem);
+    background: var(--card);
     color: var(--ink);
     text-decoration: none;
-    overflow: hidden;
-}
-.card-no {
-    display: block;
-    padding-bottom: 0.55rem;
-    border-bottom: 1px solid var(--ink);
+    box-shadow: 0 1px 0 rgb(var(--ink-rgb) / 0.06);
 }
 .card-title {
     display: block;
-    font-family: var(--font-serif);
-    font-size: var(--t-h3);
-    line-height: 1.08;
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--ink);
+    font-size: var(--t-lede);
+    font-weight: 500;
+    line-height: 1.15;
     letter-spacing: -0.01em;
-    margin-top: 0.8rem;
 }
 .card-for {
     display: block;
-    margin-top: 0.4rem;
+    margin-top: 0.3rem;
     font-size: var(--t-small);
-    line-height: 1.4;
-    color: var(--on-field);
+    line-height: 1.35;
+    color: var(--ink-soft);
 }
-/* The screenshot rises from the bottom edge of the card. */
-.card-img {
+.card-meta {
     display: block;
-    margin-top: auto;
-    padding-top: 1rem;
-    min-height: 0;
+    margin-top: 0.5rem;
+    font-size: var(--t-label);
+    color: var(--ink-faint);
 }
-.card-img img {
-    width: 100%;
-    height: auto;
-    border-radius: 3px 3px 0 0;
-    box-shadow: 0 -1px 0 rgb(var(--ink-rgb) / 0.08), 0 -10px 26px -14px rgb(var(--ink-rgb) / 0.45);
-    transform: translateY(12%);
-}
-.card-img--window img {
-    border-radius: 0;
-    box-shadow: none;
-    filter: drop-shadow(0 -6px 12px rgb(0 0 0 / 0.28));
-}
-.card:hover .card-title { color: var(--hover); }
-.card:hover .card-no { border-bottom-color: var(--hover); }
+.wave-mark { display: block; width: 100%; height: auto; }
+.card .wave-mark { margin-top: auto; aspect-ratio: 3 / 2; }
+.card:hover .card-title { color: var(--cobalt); }
 
 /* =================================================================
-   COVERS — the selected projects, 01–04. Each is one flat field
-   of the project's colour, set like a catalogue cover: number and
-   year over a hairline, a serif title, then its contents.
+   COVERS — the selected projects, 01–04, as larger card fronts:
+   number and year over a rule, the title, who it's for, then its
+   contents and a picture of the work.
    ================================================================= */
 .cover {
     grid-column: 1 / -1;
@@ -527,8 +453,8 @@ a[download]::after {
     grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
     column-gap: clamp(1.5rem, 4vw, 3.5rem);
     padding: clamp(1.1rem, 2.4vw, 1.8rem) clamp(1.1rem, 3vw, 2.4rem) clamp(1.6rem, 3.5vw, 2.6rem);
-    background: var(--field, var(--raised));
-    color: var(--ink);
+    background: var(--card);
+    box-shadow: 0 1px 0 rgb(var(--ink-rgb) / 0.06);
 }
 .cover + .cover { margin-top: clamp(0.9rem, 2vw, 1.4rem); }
 
@@ -538,44 +464,41 @@ a[download]::after {
     justify-content: space-between;
     align-items: baseline;
     gap: 1rem;
-    padding-bottom: 0.6rem;
-    border-bottom: 1px solid var(--ink);
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--ink);
     margin-bottom: clamp(1.6rem, 4vw, 3rem);
     font-size: var(--t-small);
+    color: var(--ink-faint);
 }
-.cover-no { font-weight: 600; }
+.cover-no { font-weight: 500; color: var(--ink); }
 
 .cover-text { grid-column: 1; min-width: 0; }
 .cover-title {
-    font-family: var(--font-serif);
-    font-weight: 400;
     font-size: var(--t-d2);
-    line-height: 1;
+    line-height: 1.02;
     letter-spacing: -0.02em;
     margin: 0 0 0.6rem;
 }
 .cover-title a { text-decoration: none; }
-.cover-title a:hover { color: var(--hover); }
+.cover-title a:hover { color: var(--cobalt); }
 .cover-for {
-    font-family: var(--font-serif);
-    font-style: italic;
     font-size: var(--t-lede);
     line-height: 1.35;
-    color: var(--on-field);
+    color: var(--ink-soft);
     margin: 0 0 clamp(1.4rem, 3vw, 2rem);
 }
 
-/* The project's contents — labels right-aligned against a hairline,
-   the way the catalogue sets its table of contents. */
-.cover-toc { margin: 0 0 1.6rem; border-top: 1px solid var(--field-rule); }
+/* The project's contents — labels right-aligned against a rule, the
+   way the catalogue sets its table of contents. */
+.cover-toc { margin: 0 0 1.6rem; border-top: 1px solid var(--hair); }
 .cover-toc > div {
     display: grid;
     grid-template-columns: 5.2rem minmax(0, 1fr);
     column-gap: 1rem;
     padding: 0.7rem 0;
-    border-bottom: 1px solid var(--field-rule);
+    border-bottom: 1px solid var(--hair);
 }
-.cover-toc dt { text-align: right; padding-top: 0.2rem; color: var(--on-field); }
+.cover-toc dt { text-align: right; font-size: var(--t-label); padding-top: 0.15rem; color: var(--ink-faint); }
 .cover-toc dd { margin: 0; font-size: var(--t-small); line-height: 1.55; max-width: 52ch; }
 
 .cover-links,
@@ -597,15 +520,15 @@ a[download]::after {
     width: 100%;
     height: auto;
     border-radius: 3px;
-    outline: 1px solid rgb(var(--ink-rgb) / 0.14);
-    box-shadow: 0 1px 2px rgb(var(--ink-rgb) / 0.14), 0 26px 50px -26px rgb(var(--ink-rgb) / 0.6);
+    outline: 1px solid rgb(var(--ink-rgb) / 0.1);
+    box-shadow: 0 24px 46px -28px rgb(var(--ink-rgb) / 0.55);
 }
 /* A desktop window keeps its own rounded corners: shadow the shape. */
 .cover-media--window img {
     border-radius: 0;
     outline: 0;
     box-shadow: none;
-    filter: drop-shadow(0 22px 26px rgb(0 0 0 / 0.38)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.25));
+    filter: drop-shadow(0 20px 22px rgb(0 0 0 / 0.3)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.2));
 }
 
 /* =================================================================
@@ -628,7 +551,7 @@ a[download]::after {
 }
 .toc-row {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) 4.6rem 6.4rem 2rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) 5.6rem 6.4rem 2rem;
     column-gap: clamp(0.9rem, 2vw, 1.5rem);
     align-items: baseline;
     padding: 0.95rem 0;
@@ -637,26 +560,13 @@ a[download]::after {
 }
 .toc-row:focus-visible { outline-offset: -2px; }
 .toc-kind { text-align: right; font-size: var(--t-small); line-height: 1.4; color: var(--ink-soft); }
-.toc-name {
-    font-family: var(--font-serif);
-    font-size: var(--t-h3);
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-}
-.toc-year { font-size: var(--t-small); color: var(--ink-faint); }
-.toc-go {
-    justify-self: start;
-    font-size: var(--t-label);
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: lowercase;
-    color: var(--ink-soft);
-    white-space: nowrap;
-}
-.toc-no { justify-self: end; font-size: var(--t-small); font-weight: 600; color: var(--cobalt); }
+.toc-name { font-size: var(--t-h3); line-height: 1.12; letter-spacing: -0.01em; }
+.toc-year { font-size: var(--t-small); color: var(--ink-faint); white-space: nowrap; }
+.toc-go { justify-self: start; font-size: var(--t-label); font-weight: 500; color: var(--ink-soft); white-space: nowrap; }
 .toc-go.blk { color: var(--paper); }
+.toc-no { justify-self: end; font-size: var(--t-small); font-weight: 500; color: var(--cobalt); }
 .toc-row:hover .toc-name,
-.toc-row:hover .toc-go:not(.blk) { color: var(--hover); }
+.toc-row:hover .toc-go:not(.blk) { color: var(--cobalt); }
 
 /* =================================================================
    PRACTICE — listen, design, build
@@ -669,34 +579,15 @@ a[download]::after {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: clamp(1.6rem, 4vw, 3rem);
 }
-.practice-col { border-top: 1px solid var(--ink); padding-top: 0.9rem; }
-.practice-no {
-    font-size: var(--t-small);
-    font-weight: 600;
-    color: var(--cobalt);
-    margin: 0 0 0.3rem;
-}
-.practice-name {
-    font-family: var(--font-sans);
-    font-weight: 500;
-    font-size: var(--t-h2);
-    line-height: 1;
-    letter-spacing: -0.025em;
-    text-transform: lowercase;
-    margin: 0 0 1.1rem;
-}
+.practice-col { border-top: 1px solid var(--ink); padding-top: 0.8rem; }
+.practice-no { font-size: var(--t-small); font-weight: 500; color: var(--cobalt); margin: 0 0 0.2rem; }
+.practice-name { font-size: var(--t-h2); line-height: 1.05; letter-spacing: -0.015em; margin: 0 0 1.1rem; }
 .practice-list { list-style: none; margin: 0; padding: 0; }
-.practice-list li {
-    font-size: var(--t-small);
-    color: var(--ink-soft);
-    padding: 0.5rem 0;
-    border-top: 1px solid var(--hair);
-}
+.practice-list li { font-size: var(--t-small); color: var(--ink-soft); padding: 0.5rem 0; border-top: 1px solid var(--hair); }
 
 /* =================================================================
    ABOUT — the portrait printed in one ink, like the gallery poster.
    ================================================================= */
-/* The label sits level with the portrait, not above it. */
 .about > .section-head { grid-row: 1; margin-bottom: 0; }
 .about-body {
     grid-row: 1;
@@ -731,57 +622,26 @@ a[download]::after {
     mix-blend-mode: multiply;
     pointer-events: none;
 }
-.about-title {
-    font-family: var(--font-sans);
-    font-weight: 500;
-    font-size: var(--t-h2);
-    line-height: 1;
-    letter-spacing: -0.025em;
-    text-transform: lowercase;
-    margin: 0 0 1.4rem;
-}
+.about-title { font-size: var(--t-h2); line-height: 1.05; letter-spacing: -0.015em; margin: 0 0 1.3rem; }
 .about-text p { line-height: 1.7; color: var(--ink-soft); margin: 0 0 1.1rem; max-width: 50ch; }
-.about-text p:first-of-type {
-    font-family: var(--font-serif);
-    font-size: var(--t-lede);
-    line-height: 1.5;
-    color: var(--ink);
-    max-width: 40ch;
-}
-.about-text a {
-    color: var(--ink);
-    text-decoration: underline;
-    text-decoration-color: var(--cobalt);
-    text-underline-offset: 3px;
-}
-.about-text a:hover { color: var(--hover); text-decoration-color: var(--hover); }
+.about-text p:first-of-type { font-size: var(--t-lede); line-height: 1.5; color: var(--ink); max-width: 40ch; }
+.about-text a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--cobalt); text-underline-offset: 3px; }
+.about-text a:hover { color: var(--cobalt); }
 
-/* A client's words about how the work goes — set apart, never louder than the text. */
-.about-quote {
-    margin: 2rem 0 0;
-    padding: 1.1rem 0 0;
-    border-top: 1px solid var(--ink);
-    max-width: 50ch;
-}
+/* A client's words — in the second ink, under a rule. */
+.about-quote { margin: 2rem 0 0; padding: 1.1rem 0 0; border-top: 1px solid var(--ink); max-width: 50ch; }
 .about-text .about-quote p {
-    font-family: var(--font-serif);
-    font-style: italic;
     font-size: var(--t-lede);
     line-height: 1.45;
     color: var(--cobalt);
     margin: 0 0 0.7rem;
     max-width: none;
 }
-.about-quote cite {
-    display: block;
-    font-style: normal;
-    font-size: var(--t-small);
-    color: var(--ink-faint);
-}
+.about-quote cite { display: block; font-style: normal; font-size: var(--t-small); color: var(--ink-faint); }
 
 /* =================================================================
-   CONTACT — the back cover, printed in one colour: cobalt on grey,
-   with a line of type running up the edge.
+   CONTACT — the back cover, printed in one ink: cobalt on grey, with
+   a line of type running up the edge. Hover here turns black.
    ================================================================= */
 .contact { background: var(--grey); color: var(--cobalt); }
 .contact-inner {
@@ -799,27 +659,14 @@ a[download]::after {
     margin: 0;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    font-family: var(--font-sans);
-    font-weight: 500;
     font-size: var(--t-h3);
-    letter-spacing: -0.01em;
-    text-transform: lowercase;
     line-height: 1;
-    padding-bottom: 0.2rem;
+    padding: 0 0.8rem 0.2rem 0;
     border-right: 1px solid var(--cobalt);
-    padding-right: 0.8rem;
 }
 .contact .rail-label { color: var(--cobalt); margin-bottom: 1.2rem; padding-top: 0; }
 .contact-main { grid-column: 2; min-width: 0; }
-.contact-title {
-    font-family: var(--font-sans);
-    font-weight: 500;
-    font-size: var(--t-h1);
-    line-height: 0.95;
-    letter-spacing: -0.04em;
-    text-transform: lowercase;
-    margin: 0 0 1.6rem;
-}
+.contact-title { font-size: var(--t-h1); line-height: 1; letter-spacing: -0.025em; margin: 0 0 1.6rem; }
 .contact-mail {
     display: flex;
     flex-wrap: wrap;
@@ -828,30 +675,27 @@ a[download]::after {
     margin: 0;
 }
 .contact-mail a {
-    font-family: var(--font-serif);
     font-size: var(--t-h2);
-    line-height: 1.1;
-    letter-spacing: -0.01em;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
     text-decoration: none;
     color: var(--cobalt);
     border-bottom: 1px solid var(--cobalt);
 }
-.contact-mail a:hover { color: var(--hover); border-bottom-color: var(--hover); }
+.contact-mail a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 .copy-mail {
-    font-family: var(--font-sans);
+    font-family: var(--font);
     font-size: var(--t-label);
     font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: lowercase;
-    color: var(--cobalt);
-    background: none;
-    border: 1px solid var(--cobalt);
-    border-radius: 999px;
-    padding: 0.4rem 0.9rem;
+    line-height: 1;
+    color: var(--grey);
+    background: var(--cobalt);
+    border: 0;
+    padding: 0.75em 1.05em 0.72em;
     cursor: pointer;
 }
-.copy-mail:hover { background: var(--hover); border-color: var(--hover); color: var(--paper); }
-.copy-mail.is-done { background: var(--cobalt); color: var(--grey); }
+.copy-mail:hover { background: var(--ink); }
+.copy-mail.is-done { background: var(--ink); color: var(--grey); }
 
 .contact-cols {
     display: grid;
@@ -861,29 +705,16 @@ a[download]::after {
     padding-top: 1.1rem;
     border-top: 1px solid var(--cobalt);
 }
-.contact-label { color: var(--cobalt); margin: 0 0 0.8rem; }
+.contact-label { font-size: var(--t-label); font-weight: 500; margin: 0 0 0.8rem; }
 .contact-cols ul { list-style: none; margin: 0; padding: 0; }
 .contact-cols li { margin-bottom: 0.7rem; }
-.contact-cols li a {
-    font-family: var(--font-serif);
-    font-size: var(--t-h3);
-    line-height: 1.2;
-    text-decoration: none;
-    color: var(--cobalt);
-}
-.contact-cols li a:hover { color: var(--hover); }
-/* On the back cover the block is printed in cobalt; hover is terracotta. */
-.contact .contact-cols li a.blk {
-    font-family: var(--font-sans);
-    font-size: var(--t-label);
-    line-height: 1;
-    background: var(--cobalt);
-    color: var(--grey);
-}
-.contact .contact-cols li a.blk:hover { background: var(--hover); color: var(--paper); }
+.contact-cols li a { font-size: var(--t-h3); line-height: 1.2; text-decoration: none; color: var(--cobalt); }
+.contact-cols li a:hover { color: var(--ink); }
+.contact .contact-cols li a.blk { font-size: var(--t-label); line-height: 1; background: var(--cobalt); border-color: var(--cobalt); color: var(--grey); }
+.contact .contact-cols li a.blk:hover { background: var(--ink); border-color: var(--ink); color: var(--grey); }
 .colophon p:not(.contact-label) { font-size: var(--t-small); line-height: 1.65; margin: 0; max-width: 46ch; }
 .contact a:focus-visible,
-.contact button:focus-visible { outline-color: var(--cobalt); }
+.contact button:focus-visible { outline-color: var(--ink); }
 
 /* Footer — the spine of the back cover, the same on every page. */
 .site-footer {
@@ -893,168 +724,106 @@ a[download]::after {
     border-top: 1px solid var(--cobalt);
     text-align: center;
 }
-.site-footer p { margin: 0; font-size: var(--t-label); letter-spacing: 0.02em; text-transform: lowercase; }
+.site-footer p { margin: 0; font-size: var(--t-label); }
 
 /* =================================================================
-   CASE STUDY (long-form reading page). The header is the project's
-   cover: the same field colour as its card and its cover at home.
+   CASE STUDY — the back of the card. The header is the project's
+   colour, flat, set like the back of a programme card: a rule at the
+   top, the words, and the particulars along the bottom.
    ================================================================= */
 .cs {
     max-width: 960px;
     margin: 0 auto;
     padding: clamp(2.6rem, 6vw, 4.5rem) var(--side) 4rem;
 }
-.cs > :not(.cs-head) { max-width: 820px; }
+.cs > :not(.cs-head):not(.cs-next) { max-width: 820px; }
 .cs-head {
+    display: flex;
+    flex-direction: column;
+    min-height: min(78vh, 46rem);
     margin-bottom: clamp(2rem, 5vw, 3rem);
     padding: clamp(1.2rem, 3vw, 2rem) clamp(1.2rem, 3.5vw, 2.6rem) clamp(1.4rem, 3.5vw, 2.4rem);
-    background: var(--field, var(--raised));
+    background: var(--field, var(--card));
     color: var(--ink);
 }
 .cs-head .eyebrow {
-    font-family: var(--font-sans);
     font-size: var(--t-small);
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    text-transform: lowercase;
+    font-weight: 400;
     color: var(--ink);
-    padding-bottom: 0.6rem;
-    border-bottom: 1px solid var(--ink);
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--ink);
     margin-bottom: clamp(1.8rem, 5vw, 3.2rem);
 }
-.cs-no { font-weight: 600; margin-right: 0.6rem; }
-.cs-title {
-    font-family: var(--font-serif);
-    font-weight: 400;
-    font-size: var(--t-h1);
-    line-height: 0.98;
-    letter-spacing: -0.025em;
-    margin: 0 0 1rem;
-}
-.cs-sub {
-    font-family: var(--font-serif);
-    font-size: var(--t-lede);
-    line-height: 1.5;
-    color: var(--on-field);
-    max-width: 50ch;
-    margin: 0 0 1.8rem;
-}
+.cs-no { font-weight: 500; margin-right: 0.6rem; }
+.cs-title { font-size: var(--t-h1); line-height: 1.02; letter-spacing: -0.025em; margin: 0 0 1rem; }
+.cs-sub { font-size: var(--t-lede); line-height: 1.5; color: var(--on-field); max-width: 48ch; margin: 0 0 1.8rem; }
 .cs-meta {
     display: flex;
     flex-wrap: wrap;
     gap: 0.8rem 2.6rem;
-    margin: 0 0 1.6rem;
-    padding: 1.1rem 0;
+    margin: auto 0 1.4rem;
+    padding: 1rem 0;
     border-top: 1px solid var(--field-rule);
     border-bottom: 1px solid var(--field-rule);
 }
-.cs-meta dt { color: var(--on-field); margin-bottom: 0.2rem; }
+.cs-meta dt { font-size: var(--t-label); color: var(--on-field); margin-bottom: 0.15rem; }
 .cs-meta dd { margin: 0; font-size: var(--t-small); }
 .cs-toplinks { margin: 0; }
-/* A page without a field keeps its header on the paper. */
-.cs:not([style]) .cs-head { background: none; padding-left: 0; padding-right: 0; }
 
 .cs-figure { margin: 2rem 0; }
-.cs-figure img { width: 100%; border: 1px solid var(--hair); }
+.cs-figure img { width: 100%; outline: 1px solid var(--hair); }
 .cs-figure--lead { margin: clamp(1.5rem, 4vw, 2.5rem) 0 0; }
 .cs-cap { font-size: var(--t-small); color: var(--ink-faint); margin: 0.7rem 0 0; }
 .cs-cap a { color: var(--ink-soft); text-decoration: underline; text-decoration-color: var(--hair); text-underline-offset: 3px; }
-.cs-cap a:hover { color: var(--hover); }
+.cs-cap a:hover { color: var(--cobalt); }
 
 .cs-section { margin-top: clamp(2.6rem, 6vw, 4rem); }
 .cs-section > .eyebrow { margin-bottom: 0.8rem; }
-.cs-h2 {
-    font-family: var(--font-sans);
-    font-weight: 500;
-    font-size: var(--t-h2);
-    line-height: 1.06;
-    letter-spacing: -0.025em;
-    margin: 0 0 1rem;
-    max-width: 24ch;
-}
+.cs-h2 { font-size: var(--t-h2); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 1rem; max-width: 24ch; }
 .cs-p { line-height: 1.75; color: var(--ink-soft); max-width: 66ch; margin: 0 0 1.1rem; }
 .cs-p strong, .cs-p em { color: var(--ink); font-weight: 600; font-style: normal; }
 .cs-section .project-links { margin-top: 0.3rem; }
 
-/* Pull-quote — a client's words, given room, in the second ink. */
+/* Pull-quote — a client's words, in the second ink, under a rule. */
 .cs-quote { margin: 2.6rem 0; padding-top: 1.2rem; border-top: 1px solid var(--ink); }
-.cs-quote p {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: var(--t-h2);
-    line-height: 1.12;
-    color: var(--cobalt);
-    margin: 0;
-    max-width: 24ch;
-}
+.cs-quote p { font-size: var(--t-h2); line-height: 1.15; letter-spacing: -0.015em; color: var(--cobalt); margin: 0; max-width: 24ch; }
 .cs-quote cite { display: block; font-style: normal; font-size: var(--t-small); color: var(--ink-faint); margin-top: 1.1rem; }
 
-/* "In short" — the 60-second read: problem, role, constraint, outcome. */
-.cs-tldr {
-    margin: clamp(2rem, 5vw, 3rem) 0;
-    padding: clamp(1.3rem, 3vw, 1.8rem) clamp(1.4rem, 3.5vw, 2rem);
-    background: var(--raised);
-    border-top: 2px solid var(--cobalt);
-}
-.cs-tldr .eyebrow { margin-bottom: 1rem; }
-.cs-tldr dl { margin: 0; display: grid; gap: 0.9rem; }
-.cs-tldr dl > div { display: grid; grid-template-columns: 9rem minmax(0, 1fr); column-gap: 1.2rem; }
-.cs-tldr dt { text-align: right; padding-top: 0.2rem; color: var(--ink-faint); }
-.cs-tldr dd { margin: 0; line-height: 1.55; color: var(--ink-soft); max-width: 68ch; }
-.cs-tldr dd strong { color: var(--ink); font-weight: 600; }
-
-/* Next-project navigation — the catalogue continues. */
-.cs-next { margin-top: clamp(3rem, 7vw, 5rem); border-top: 1px solid var(--ink); }
-.cs-next-link {
+/* "In short" — the 60-second read, set as a table of contents. */
+.cs-tldr { margin: clamp(2rem, 5vw, 3rem) 0; }
+.cs-tldr .eyebrow { margin-bottom: 0.9rem; }
+.cs-tldr dl { margin: 0; border-top: 1px solid var(--ink); }
+.cs-tldr dl > div {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    column-gap: 1.5rem;
-    padding: 1.2rem 0 1.5rem;
-    text-decoration: none;
+    grid-template-columns: 9rem minmax(0, 1fr);
+    column-gap: 1.2rem;
+    padding: 0.85rem 0;
     border-bottom: 1px solid var(--hair);
 }
-.cs-next-label {
-    grid-column: 1;
-    font-family: var(--font-serif);
-    font-size: var(--t-small);
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--cobalt);
-    margin-bottom: 0.5rem;
-}
-.cs-next-name {
-    grid-column: 1;
-    font-family: var(--font-serif);
-    font-size: var(--t-h2);
-    line-height: 1;
-    letter-spacing: -0.015em;
-}
-.cs-next-for {
-    grid-column: 1;
-    margin-top: 0.5rem;
-    color: var(--ink-soft);
-}
-.cs-next-go { grid-column: 2; grid-row: 1 / span 3; align-self: center; }
-/* The next project arrives in its own colour, like its card at home. */
-.cs-next-link[style] {
-    margin-top: 1.2rem;
-    padding: 1.1rem clamp(1.1rem, 3vw, 1.6rem) 1.4rem;
-    background: var(--field);
-    border-bottom: 0;
-}
-.cs-next-link[style] .cs-next-label { color: var(--ink); }
-.cs-next-link[style] .cs-next-for { color: var(--on-field); }
-.cs-next-link:hover .cs-next-name { color: var(--hover); }
-.cs-next-all {
-    display: inline-block;
-    margin-top: 1rem;
-    font-size: var(--t-small);
-    text-transform: lowercase;
+.cs-tldr dt { text-align: right; font-size: var(--t-label); padding-top: 0.2rem; color: var(--ink-faint); }
+.cs-tldr dd { margin: 0; line-height: 1.55; color: var(--ink-soft); max-width: 66ch; }
+.cs-tldr dd strong { color: var(--ink); }
+
+/* Next — the front of the next project's card. */
+.cs-next { margin-top: clamp(3rem, 7vw, 5rem); }
+.cs-next-link {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+    column-gap: clamp(1.2rem, 4vw, 3rem);
+    padding: clamp(1rem, 2.4vw, 1.6rem);
+    background: var(--card);
     text-decoration: none;
-    color: var(--ink-soft);
+    box-shadow: 0 1px 0 rgb(var(--ink-rgb) / 0.06);
 }
-.cs-next-all:hover { color: var(--hover); }
+.cs-next-link > span { grid-column: 1; }
+.cs-next-label { padding-top: 0.6rem; border-top: 1px solid var(--ink); font-size: var(--t-small); color: var(--ink-faint); margin-bottom: 0.5rem; }
+.cs-next-name { font-size: var(--t-h2); line-height: 1.05; letter-spacing: -0.015em; }
+.cs-next-for { margin-top: 0.4rem; color: var(--ink-soft); }
+.cs-next-go { justify-self: start; margin-top: 1.4rem; }
+.cs-next-wave { grid-column: 2; grid-row: 1 / span 4; align-self: center; }
+.cs-next-link:hover .cs-next-name { color: var(--cobalt); }
+.cs-next-all { display: inline-block; margin-top: 1rem; font-size: var(--t-small); text-decoration: none; color: var(--ink-soft); }
+.cs-next-all:hover { color: var(--cobalt); }
 
 /* ---- Compact list (No. 11, experiments) ------------------------- */
 .compact-list { border-top: 1px solid var(--ink); }
@@ -1066,28 +835,28 @@ a[download]::after {
     padding: 1.15rem 0;
     border-bottom: 1px solid var(--hair);
 }
-.compact-thumb { display: block; width: 76px; height: 54px; overflow: hidden; background: var(--raised); }
+.compact-thumb { display: block; width: 76px; height: 54px; overflow: hidden; background: var(--card); }
 .compact-thumb::after { display: none !important; }
 .compact-thumb img { width: 100%; height: 100%; object-fit: cover; }
-.compact-name { font-family: var(--font-serif); font-weight: 400; font-size: var(--t-h3); line-height: 1.1; margin: 0 0 0.2rem; }
+.compact-name { font-size: var(--t-h3); line-height: 1.12; margin: 0 0 0.2rem; }
 .compact-one { font-size: var(--t-small); color: var(--ink-soft); margin: 0; max-width: 52ch; }
-.compact-stack { font-size: var(--t-label); font-weight: 500; letter-spacing: 0.04em; text-transform: lowercase; color: var(--ink-faint); margin: 0.35rem 0 0; }
+.compact-stack { font-size: var(--t-label); color: var(--ink-faint); margin: 0.35rem 0 0; }
 .compact-links { margin: 0; white-space: nowrap; }
 
 /* =================================================================
    RÉSUMÉ (screen matches the site; print renders clean on white)
    ================================================================= */
 .resume { max-width: 820px; margin: 0 auto; padding: clamp(2.6rem, 6vw, 4.5rem) var(--side) 4rem; }
-.resume-name { font-family: var(--font-serif); font-weight: 400; font-size: var(--t-d2); line-height: 1; letter-spacing: -0.02em; margin: 0 0 0.9rem; }
+.resume-name { font-size: var(--t-d2); line-height: 1; letter-spacing: -0.02em; margin: 0 0 0.9rem; }
 .resume-contact { font-size: var(--t-small); color: var(--ink-soft); margin: 0 0 1.1rem; }
 .resume-contact a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--hair); }
 .resume-contact a::after { display: none !important; }
-.resume-contact a:hover { color: var(--hover); border-bottom-color: var(--hover); }
+.resume-contact a:hover { color: var(--cobalt); border-bottom-color: var(--cobalt); }
 .resume-contact .sep { color: var(--ink-faint); margin: 0 0.5rem; }
-.resume-tagline { font-family: var(--font-serif); font-size: var(--t-lede); line-height: 1.45; max-width: 46ch; margin: 0 0 1.6rem; }
-.resume-actions { display: flex; gap: 0.8rem; margin: 0 0 0.5rem; }
+.resume-tagline { font-size: var(--t-lede); line-height: 1.45; max-width: 44ch; margin: 0 0 1.6rem; }
+.resume-actions { display: flex; gap: 0.6rem; margin: 0 0 0.5rem; }
 .resume-section { margin-top: clamp(2rem, 4vw, 2.8rem); }
-.resume-section > .eyebrow { padding-bottom: 0.6rem; margin-bottom: 1.3rem; border-bottom: 1px solid var(--ink); }
+.resume-section > .eyebrow { padding-top: 0.6rem; margin-bottom: 1.2rem; border-top: 1px solid var(--ink); }
 .resume-summary { font-size: var(--t-small); line-height: 1.6; color: var(--ink-soft); max-width: 70ch; margin: 0; }
 .resume-entry { margin-bottom: 1.3rem; }
 .resume-entry:last-child { margin-bottom: 0; }
@@ -1097,11 +866,11 @@ a[download]::after {
 .resume-entry-meta { font-size: var(--t-small); color: var(--ink-soft); margin: 0.15rem 0 0.5rem; }
 .resume-entry-meta a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--hair); }
 .resume-entry-meta a::after { display: none !important; }
-.resume-entry-meta a:hover { color: var(--hover); border-bottom-color: var(--hover); }
+.resume-entry-meta a:hover { color: var(--cobalt); border-bottom-color: var(--cobalt); }
 .resume-entry ul { margin: 0; padding-left: 1.1rem; font-size: var(--t-small); color: var(--ink-soft); line-height: 1.6; }
 .resume-entry ul li { margin-bottom: 0.3rem; }
 .resume-entry ul li::marker { color: var(--cobalt); }
-.resume-entry ul li strong { color: var(--ink); font-weight: 600; }
+.resume-entry ul li strong { color: var(--ink); }
 .resume-skill { margin-bottom: 0.6rem; font-size: var(--t-small); line-height: 1.55; }
 .resume-skill-label { font-weight: 600; color: var(--ink); margin-right: 0.4rem; }
 .resume-skill span:last-child { color: var(--ink-soft); }
@@ -1117,7 +886,7 @@ a[download]::after {
     .resume-contact { font-size: 0.8rem; margin-bottom: 0.6rem; }
     .resume-tagline { font-size: 1rem; margin-bottom: 0; }
     .resume-section { margin-top: 1.05rem; }
-    .resume-section > .eyebrow { break-after: avoid; margin-bottom: 0.7rem; padding-bottom: 0.35rem; font-size: 0.72rem; letter-spacing: 0.06em; }
+    .resume-section > .eyebrow { break-after: avoid; margin-bottom: 0.7rem; padding-top: 0.35rem; font-size: 0.8rem; }
     .resume-summary { font-size: 0.84rem; line-height: 1.45; }
     .resume-entry { margin-bottom: 0.62rem; break-inside: avoid; }
     .resume-entry-title { font-size: 0.9rem; }
@@ -1149,43 +918,65 @@ a[download]::after {
 @media (max-width: 980px) {
     .hero-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 0.7fr); }
     .cards-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .card { aspect-ratio: 5 / 4; }
-    .card-img { width: 72%; margin-left: auto; }
+    .card { aspect-ratio: 4 / 4; }
+    .card .wave-mark { width: 82%; margin-left: auto; margin-right: auto; }
     .cover { grid-template-columns: minmax(0, 1fr); }
     /* Stacked: number, then the picture, then the words. */
     .cover-media { grid-column: 1; grid-row: auto; order: 1; margin-bottom: clamp(1.4rem, 4vw, 2rem); }
     .cover-text { grid-row: auto; order: 2; }
-    .toc-row { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.3fr) 4.4rem 1.8rem; }
+    .toc-row { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.3fr) 5.4rem 1.8rem; }
     .toc-go { display: none; }
 }
 
 @media (max-width: 820px) {
+    /* The menu is a page of its own: one solid colour (cobalt), the
+       links ruled off like a table of contents, numbered. */
+    .nav-toggle { display: inline-block; }
     .site-nav { display: none; }
     .site-nav.open {
         display: flex;
         flex-direction: column;
         align-items: stretch;
         gap: 0;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--paper);
-        border-bottom: 1px solid var(--ink);
-        padding: 0.4rem var(--side) 1rem;
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        padding: 6rem var(--side) 2rem;
+        background: var(--cobalt);
+        counter-reset: menu;
+        overflow-y: auto;
     }
-    .site-nav.open a {
-        font-size: var(--t-h3);
-        font-weight: 500;
-        letter-spacing: -0.02em;
-        color: var(--ink);
-        padding: 0.8rem 0;
-        border-top: 1px solid var(--hair);
+    .site-nav.open a,
+    .site-nav.open a.nav-page {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin: 0;
+        padding: 0.9rem 0 0.95rem;
+        border-top: 1px solid rgb(228 227 232 / 0.55);
+        background: none;
+        font-size: var(--t-h2);
+        line-height: 1.1;
+        letter-spacing: -0.015em;
+        color: var(--grey);
+        counter-increment: menu;
     }
-    .site-nav.open a:first-child { border-top: none; }
-    .site-nav.open a.nav-page { background: none; color: var(--ink); padding: 0.8rem 0; margin: 0; }
-    .site-nav.open a:hover { color: var(--hover); }
-    .nav-toggle { display: inline-block; }
+    .site-nav.open a:last-child { border-bottom: 1px solid rgb(228 227 232 / 0.55); }
+    .site-nav.open a::before {
+        content: "0" counter(menu);
+        order: 2;
+        font-size: var(--t-small);
+        letter-spacing: 0;
+        color: var(--grey);
+    }
+    .site-nav.open a:hover { color: var(--ink); background: none; }
+    .site-nav.open a:hover::before { color: var(--ink); }
+    /* The header joins the menu page while it is open. */
+    .menu-open, .menu-open body { overflow: hidden; }
+    .menu-open .site-header { background: var(--cobalt); color: var(--grey); border-bottom-color: rgb(228 227 232 / 0.55); }
+    .menu-open .wordmark:hover,
+    .menu-open .sound-toggle:hover { color: var(--ink); }
+    .menu-open .sound-toggle[aria-pressed="true"] { color: var(--grey); }
 
     /* One column: the rail becomes a line above the content. */
     .section, .contact-inner { grid-template-columns: minmax(0, 1fr); }
@@ -1196,15 +987,15 @@ a[download]::after {
     .rail-label span { display: inline; margin: 0 0 0 0.6rem; }
 
     .hero-inner { grid-template-columns: minmax(0, 1fr); }
-    .hero-art { order: -1; width: min(58%, 300px); margin: 0 0 clamp(1.6rem, 5vw, 2.4rem) auto; }
+    .hero-art { order: -1; width: min(62%, 320px); margin: 0 0 clamp(1.6rem, 5vw, 2.4rem) auto; }
 
     .index { grid-template-columns: minmax(0, 1fr); }
     .index > .rail-label, .toc { grid-column: 1; }
 
     .practice-grid { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
     .about-body { grid-template-columns: minmax(0, 1fr); row-gap: 1.8rem; }
-    .duo { max-width: 420px; aspect-ratio: 1 / 1; }
     .about > .section-head, .about-body { grid-row: auto; }
+    .duo { max-width: 420px; aspect-ratio: 1 / 1; }
 
     .contact-edge {
         grid-column: 1;
@@ -1219,16 +1010,18 @@ a[download]::after {
     }
     .contact-cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
     .colophon { grid-column: 1 / -1; }
+    .cs-head { min-height: 0; }
+    .cs-meta { margin-top: 0.4rem; }
     .cs-tldr dl > div { grid-template-columns: minmax(0, 1fr); }
     .cs-tldr dt { text-align: left; }
+    .cs-next-link { grid-template-columns: minmax(0, 1fr); }
+    .cs-next-wave { grid-column: 1; grid-row: auto; order: 5; margin-top: 1rem; max-height: 140px; }
 }
 
 @media (max-width: 620px) {
     .cards-list { grid-template-columns: minmax(0, 1fr); }
-    .card { aspect-ratio: auto; min-height: 0; flex-direction: row; flex-wrap: wrap; padding-bottom: 0; }
-    .card-no { flex: 1 0 100%; }
-    .card-title, .card-for { flex: 1 0 100%; }
-    .card-img { width: 64%; margin-left: auto; padding-top: 1rem; }
+    .card { aspect-ratio: auto; }
+    .card .wave-mark { width: 100%; margin-top: 1rem; aspect-ratio: 3 / 1; }
     .cover-toc > div { grid-template-columns: minmax(0, 1fr); row-gap: 0.15rem; }
     .cover-toc dt { text-align: left; padding-top: 0; }
     .toc-row { grid-template-columns: minmax(0, 1fr) auto; row-gap: 0.2rem; padding: 0.9rem 0; }
