@@ -128,7 +128,7 @@
     function setupReveal() {
         if (revealObserver) { revealObserver.disconnect(); }
         var targets = document.querySelectorAll(
-            '.hero-inner, .contents, .section-head, .plate, .index, .practice-col, ' +
+            '.hero-inner, .cards, .section-head, .cover, .index, .practice-col, ' +
             '.about-body, .contact-main, .compact-item, .cs-head, .cs-figure, .cs-section, .cs-next'
         );
         targets.forEach(function (el) { el.classList.add('reveal'); });
@@ -165,6 +165,18 @@
         });
     }
 
+    /* The small-screen menu is a page of its own: one solid colour,
+       the links ruled off like a table of contents. */
+    function setMenu(open) {
+        var toggle = document.querySelector('.nav-toggle');
+        var nav = document.querySelector('.site-nav');
+        if (!toggle || !nav) { return; }
+        nav.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        document.documentElement.classList.toggle('menu-open', open);
+    }
+
     function initPage() {
         var year = document.getElementById('year');
         if (year) { year.textContent = new Date().getFullYear(); }
@@ -174,10 +186,14 @@
         if (toggle && nav && !toggle.dataset.wired) {
             toggle.dataset.wired = '1';
             toggle.addEventListener('click', function () {
-                var open = nav.classList.toggle('open');
-                toggle.setAttribute('aria-expanded', String(open));
+                setMenu(!nav.classList.contains('open'));
+            });
+            // Any link in the open menu page closes it on the way out.
+            nav.addEventListener('click', function (e) {
+                if (e.target.closest('a')) { setMenu(false); }
             });
         }
+        setMenu(false);
 
         document.querySelectorAll('.sound-toggle').forEach(function (t) {
             if (t.dataset.wired) { return; }

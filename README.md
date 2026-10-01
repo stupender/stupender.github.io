@@ -4,42 +4,51 @@ Plain HTML/CSS/JS — no build step, no framework. Deploys as-is to GitHub Pages
 
 ## The design idea
 
-**Analog Presence** (live): bone paper, warm ink and a burnt-orange accent; Fraunces
-for display and intros, Chivo for text, Chivo Mono for numbers, on an eight-step type
-scale (`--t-*` in `styles.css`). Every text colour passes WCAG AA.
+**Programme** — printed matter, not an app, and printed like the back cover
+throughout: cobalt on a cool grey. One typeface (**Host Grotesk**, after the Indoek
+Gallery poster), two inks (cobalt for the frame — titles, labels, rules, links,
+buttons — and black for reading), sentence case, and colour cards after the
+Transient Senses programme:
 
-Each page sets `data-style="analog"` on `<html>`. The stylesheet's base `:root` values
-are an alternative, **Gallery** (near-white, ultramarine, Instrument Serif + Sans): to
-switch, remove that attribute and load the Instrument fonts instead.
+- **The frame** — one cobalt rule runs down the left edge from the header to the
+  footer; each section's name runs up beside it, as on the poster, and a cobalt rule
+  crosses the top of each section. On small screens the names lie down over a rule.
+- **Full-width lines** — titles and intros run the width of their column instead of
+  breaking early; the hero line holds one line on a laptop.
+- **Cards** — each selected project is one flat colour card with the same anatomy:
+  number and year over a rule, the title (always two lines tall), who it's for, and
+  the work rising from the bottom edge in an identical frame (`images/thumbs/`).
+  01–04 repeat below as *covers* set straight on the page (no box, no shadow) with
+  their contents and a picture of the work.
+- **Back** — the case study opens on the card's colour, flat, like the back of the
+  card, and ends on the next project's card (01 → 05 → back to 01).
+- The colours (`--f-*`) share one lightness and a low chroma, so they read as one set.
+- The hero picture is cut paper: a red sun rising behind a cobalt wave (inline SVG).
+  The red is used nowhere else.
+- Anything you can press is cobalt and turns black on hover. On a colour card,
+  buttons print in black, since cobalt type is too faint there.
+- On small screens the menu is a page of its own: solid cobalt, links ruled off and
+  numbered like a table of contents.
 
-The site is **one numbered catalogue**. Every section hangs off the same two-column
-grid — a narrow *rail* on the left (labels, numbers, dates) and the content on the
-right — so the page reads as one piece rather than a stack of layouts.
-
-- The hero is the statement plus the first four entries as small matted thumbnails
-  (`images/thumbs/`), so real work is visible in the first screen.
-- **01–04** are *plates*: the selected projects, each with identical anatomy —
-  number and year in the rail, a mat in the project's own colour, name, a
-  **For** line (who it's for and the moment they're in), one sentence, the key
-  **Decision**, and links.
-- **05–11** are the *index*: the same catalogue at list density.
-- Each case study carries its number, its For line, and a **Next** link, so the
-  studies read as a sequence (01 → 05 → back to 01).
-- Contact is the dark "back cover": the address, documents, elsewhere, and a colophon.
+The site is **one numbered catalogue** on one rail (labels left, content right):
+hero and card fronts, covers 01–04, contents 05–11 (kind, title, year, number),
+practice, about (a cobalt duotone portrait), and contact.
 
 One link language throughout, with no arrow characters in the markup:
-- **Inside the site** (case studies, the résumé, "See all", "Next") — a solid black
-  block (`.blk`) that turns to the accent colour on hover.
-- **Leaves the site** — a small-caps label with the boxed outbound arrow from Being Sound.
+- **Inside the site** (case studies, the résumé, "See all", "Next") — a solid cobalt
+  block (`.blk`).
+- **Leaves the site** — the same square box, outlined, with the boxed outbound arrow
+  from Being Sound.
 - **A file to save** — the matching download mark (`a[download]`).
 
-Both marks are drawn as CSS masks, so they look the same on every machine.
+Both marks are drawn as CSS masks, so they look the same on every machine. Nothing
+moves on hover, and nothing casts a shadow. Every text colour passes WCAG AA.
 
 ## Files
 
 | File | What it holds |
 |------|---------------|
-| `index.html` | Hero, the catalogue (plates + index), practice, about, contact. |
+| `index.html` | Hero + card fronts, the catalogue (covers + contents), practice, about, contact. |
 | `*-case-study.html`, `fretboard-constellations.html`, … | Case studies 01–05. |
 | `archive.html` | No. 11 — experiments and early work. |
 | `resume.html` | Résumé; its print styles produce `Stu-Pender-Resume.pdf`. |
@@ -48,9 +57,11 @@ Both marks are drawn as CSS masks, so they look the same on every machine.
 
 ## Editing
 
-- **Add a selected project:** copy an `<article class="plate">`, set its
-  `style="--mat:#……"` to a colour from the project itself, and renumber.
-- **Add to the index:** copy an `<li>` in `.index-list`.
+- **Add a selected project:** copy a card in `.cards-list` and an
+  `<article class="cover">`, renumber, add a 640px thumbnail to `images/thumbs/`, and
+  give the card and its case study's `<article class="cs">` the same
+  `style="--field:var(--f-…)"`.
+- **Add to the contents:** copy an `<li>` in `.toc`.
 - **Résumé PDF:** open `resume.html` and print to PDF (Letter), or regenerate it headlessly.
 
 ## Local preview
