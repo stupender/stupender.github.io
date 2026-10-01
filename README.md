@@ -13,6 +13,10 @@ Transient Senses programme:
 - **The frame** — one cobalt rule runs down the left edge from the header to the
   footer; each section's name runs up beside it, as on the poster, and a cobalt rule
   crosses the top of each section. On small screens the names lie down over a rule.
+- **Type** — seven sizes, one per role (`--t-*` in `styles.css`): *h1* the one big line on a
+  page (hero, case-study title, résumé name, "Say hello."); *h2* a section or a project;
+  *h3* an item in a list, or a quote; *lede* the paragraph under a title; *body*; *small*
+  for secondary notes and section names; *label* for table labels, card numbers, buttons.
 - **Full-width lines** — titles and intros run the width of their column instead of
   breaking early; the hero line holds one line on a laptop.
 - **Cards** — each selected project is one flat colour card with the same anatomy:

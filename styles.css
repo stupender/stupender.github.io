@@ -75,15 +75,25 @@
 
     --font: 'Host Grotesk', 'Helvetica Neue', Arial, sans-serif;
 
-    /* Type scale — eight steps, nothing else. */
-    --t-label: 0.8125rem;                        /* 13  meta                 */
-    --t-small: 0.9375rem;                        /* 15  secondary text       */
-    --t-body:  1.0625rem;                        /* 17  body                 */
-    --t-lede:  1.3125rem;                        /* 21  ledes, list names    */
-    --t-h3:    1.625rem;                         /* 26  sub-heads            */
-    --t-h2:    clamp(1.9rem, 3.6vw, 2.6rem);     /* 30–42 section titles     */
-    --t-d2:    clamp(2.3rem, 4.8vw, 3.5rem);     /* 37–56 cover titles       */
-    --t-h1:    clamp(2.7rem, 6.6vw, 5.4rem);     /* 43–86 hero, contact      */
+    /* Type scale — seven tiers, one per role, nothing in between.
+       phone → desktop
+       h1     42 → 70   the one big line on a page: hero, case-study
+                        title, résumé name, "Say hello."
+       h2     30 → 42   a section or a project: section titles, the
+                        Work covers, case-study headings, the email
+       h3     22 → 26   an item in a list, or a quote: contents names,
+                        practice names, experiments, quotes, links
+       lede   19 → 21   the paragraph under a title; card titles (500)
+       body       17    reading text, nav, the contents of a table
+       small      15    secondary: section names, notes, captions, years
+       label      13    labels on tables, numbers on cards, buttons */
+    --t-label: 0.8125rem;
+    --t-small: 0.9375rem;
+    --t-body:  1.0625rem;
+    --t-lede:  clamp(1.1875rem, 1.6vw, 1.3125rem);
+    --t-h3:    clamp(1.4rem, 2.2vw, 1.625rem);
+    --t-h2:    clamp(1.9rem, 3.6vw, 2.6rem);
+    --t-h1:    clamp(2.6rem, 5vw, 4.4rem);
 
     --side:   5vw;                               /* page margin              */
     --maxw:   1240px;                            /* content width            */
@@ -379,7 +389,7 @@ a[download]::after {
     justify-self: start;
     padding: 0 0 0 0;
     margin: 0 0 0 0.85rem;
-    font-size: var(--t-h3);
+    font-size: var(--t-lede);
     font-weight: 400;
     line-height: 1;
     letter-spacing: -0.01em;
@@ -437,7 +447,7 @@ a[download]::after {
 .hero-title {
     /* Sized to hold the line on one line on a laptop; if it must
        break (tablet, phone), it breaks into even halves. */
-    font-size: clamp(2.6rem, 5vw, 4.4rem);
+    font-size: var(--t-h1);
     text-wrap: balance;
     line-height: 1.02;
     letter-spacing: -0.025em;
@@ -487,7 +497,7 @@ a[download]::after {
     justify-content: space-between;
     padding-bottom: 0.55rem;
     border-bottom: 1px solid var(--ink);
-    font-size: var(--t-label);
+    font-size: var(--t-small);
     font-variant-numeric: tabular-nums;
 }
 .card-no { font-weight: 500; }
@@ -562,9 +572,9 @@ a[download]::after {
 .cover-text { display: contents; }
 .cover-title {
     grid-column: 1 / -1;
-    font-size: var(--t-d2);
-    line-height: 1.02;
-    letter-spacing: -0.02em;
+    font-size: var(--t-h2);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
     color: var(--cobalt);
     margin: 0 0 0.6rem;
 }
@@ -591,7 +601,7 @@ a[download]::after {
     border-bottom: 1px solid var(--hair);
 }
 .cover-toc dt { text-align: right; font-size: var(--t-label); padding-top: 0.15rem; color: var(--ink-faint); }
-.cover-toc dd { margin: 0; font-size: var(--t-small); line-height: 1.55; max-width: 52ch; }
+.cover-toc dd { margin: 0; font-size: var(--t-body); line-height: 1.6; max-width: 56ch; }
 
 .cover-links,
 .project-links {
@@ -646,7 +656,7 @@ a[download]::after {
 /* The list closes on the next section's rule, not one of its own. */
 .toc li:last-child .toc-row { border-bottom: 0; }
 .toc-kind { text-align: right; font-size: var(--t-small); line-height: 1.4; color: var(--ink-soft); }
-.toc-name { font-size: var(--t-h3); line-height: 1.12; letter-spacing: -0.01em; color: var(--cobalt); }
+.toc-name { font-size: var(--t-h3); line-height: 1.2; letter-spacing: -0.01em; color: var(--cobalt); }
 .toc-year { font-size: var(--t-small); color: var(--ink-faint); white-space: nowrap; }
 .toc-go { justify-self: start; font-size: var(--t-label); font-weight: 500; color: var(--ink-soft); white-space: nowrap; }
 .toc-go.blk { color: var(--paper); }
@@ -667,7 +677,7 @@ a[download]::after {
 }
 .practice-col { border-top: 1px solid var(--cobalt); padding-top: 0.8rem; }
 .practice-no { font-size: var(--t-small); font-weight: 500; color: var(--cobalt); margin: 0 0 0.2rem; }
-.practice-name { font-size: var(--t-h2); line-height: 1.05; letter-spacing: -0.015em; color: var(--cobalt); margin: 0 0 1.1rem; }
+.practice-name { font-size: var(--t-h3); line-height: 1.2; letter-spacing: -0.01em; color: var(--cobalt); margin: 0 0 1.1rem; }
 .practice-list { list-style: none; margin: 0; padding: 0; }
 .practice-list li { font-size: var(--t-small); color: var(--ink-soft); padding: 0.5rem 0; border-top: 1px solid var(--hair); }
 
@@ -716,7 +726,7 @@ a[download]::after {
     mix-blend-mode: multiply;
     pointer-events: none;
 }
-.about-title { font-size: var(--t-h2); line-height: 1.05; letter-spacing: -0.015em; color: var(--cobalt); margin: 0 0 1.3rem; }
+.about-title { font-size: var(--t-h2); line-height: 1.08; letter-spacing: -0.015em; color: var(--cobalt); margin: 0 0 1.3rem; }
 .about-text p { line-height: 1.7; color: var(--ink-soft); margin: 0 0 1.1rem; max-width: 62ch; }
 .about-text p:first-of-type { font-size: var(--t-lede); line-height: 1.5; color: var(--ink); max-width: none; text-wrap: pretty; }
 .nobr { white-space: nowrap; }
@@ -752,7 +762,7 @@ a[download]::after {
 .contact-edge { grid-column: 1; align-self: start; }
 .contact .rail-label { color: var(--cobalt); margin-bottom: 1.2rem; padding-top: 0; }
 .contact-main { grid-column: 2; min-width: 0; }
-.contact-title { font-size: var(--t-h1); line-height: 1; letter-spacing: -0.025em; margin: 0 0 1.6rem; }
+.contact-title { font-size: var(--t-h1); line-height: 1.02; letter-spacing: -0.025em; margin: 0 0 1.6rem; }
 .contact-mail {
     display: flex;
     flex-wrap: wrap;
@@ -875,7 +885,7 @@ a[download]::after {
 
 /* Pull-quote — a client's words, in the second ink, under a rule. */
 .cs-quote { margin: 2.6rem 0; padding-top: 1.2rem; border-top: 1px solid var(--cobalt); }
-.cs-quote p { font-size: var(--t-h2); line-height: 1.15; letter-spacing: -0.015em; color: var(--cobalt); margin: 0; }
+.cs-quote p { font-size: var(--t-h3); line-height: 1.35; letter-spacing: -0.01em; color: var(--cobalt); margin: 0; }
 .cs-quote cite { display: block; font-style: normal; font-size: var(--t-small); color: var(--ink-faint); margin-top: 1.1rem; }
 
 /* "In short" — the 60-second read, set as a table of contents. */
@@ -926,7 +936,7 @@ a[download]::after {
 }
 .cs-next-link > span:not(.cs-next-img) { grid-column: 1; }
 .cs-next-label { padding-bottom: 0.55rem; border-bottom: 1px solid var(--ink); font-size: var(--t-small); margin-bottom: 0.7rem; }
-.cs-next-name { font-size: var(--t-h2); line-height: 1.05; letter-spacing: -0.015em; }
+.cs-next-name { font-size: var(--t-h3); line-height: 1.2; letter-spacing: -0.01em; }
 .cs-next-for { margin-top: 0.4rem; color: var(--on-field); }
 .cs-next-go { justify-self: start; margin: 1.4rem 0 clamp(1rem, 2.4vw, 1.6rem); }
 .cs-next-img { grid-column: 2; grid-row: 1 / span 4; align-self: end; margin-top: 1.2rem; transform: translateY(10%); }
@@ -946,7 +956,7 @@ a[download]::after {
 .compact-thumb { display: block; width: 76px; height: 54px; overflow: hidden; background: var(--card); }
 .compact-thumb::after { display: none !important; }
 .compact-thumb img { width: 100%; height: 100%; object-fit: cover; }
-.compact-name { font-size: var(--t-h3); line-height: 1.12; color: var(--cobalt); margin: 0 0 0.2rem; }
+.compact-name { font-size: var(--t-h3); line-height: 1.2; color: var(--cobalt); margin: 0 0 0.2rem; }
 .compact-one { font-size: var(--t-small); color: var(--ink-soft); margin: 0; max-width: 52ch; }
 .compact-stack { font-size: var(--t-label); color: var(--ink-faint); margin: 0.35rem 0 0; }
 .compact-links { margin: 0; white-space: nowrap; }
@@ -955,7 +965,7 @@ a[download]::after {
    RÉSUMÉ (screen matches the site; print renders clean on white)
    ================================================================= */
 .resume { max-width: 820px; margin: 0 auto; padding: clamp(2.6rem, 6vw, 4.5rem) var(--side) 4rem; }
-.resume-name { font-size: var(--t-d2); line-height: 1; letter-spacing: -0.02em; color: var(--cobalt); margin: 0 0 0.9rem; }
+.resume-name { font-size: var(--t-h1); line-height: 1.02; letter-spacing: -0.025em; color: var(--cobalt); margin: 0 0 0.9rem; }
 .resume-contact { font-size: var(--t-small); color: var(--ink-soft); margin: 0 0 1.1rem; }
 .resume-contact a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--hair); }
 .resume-contact a::after { display: none !important; }
@@ -1121,7 +1131,6 @@ a[download]::after {
     .about > .section-head, .about-body { grid-row: auto; }
     #work > .section-head { grid-row: auto; }
     .duo { max-width: 420px; aspect-ratio: 1 / 1; min-height: 0; margin: 0; }
-    .about-quote p { font-size: var(--t-lede); }
 
     .contact-cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
     /* On a phone the edge line would sit right on top of "Contact". */
