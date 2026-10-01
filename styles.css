@@ -633,6 +633,8 @@ a[download]::after {
     text-decoration: none;
 }
 .toc-row:focus-visible { outline-offset: -2px; }
+/* The list closes on the next section's rule, not one of its own. */
+.toc li:last-child .toc-row { border-bottom: 0; }
 .toc-kind { text-align: right; font-size: var(--t-small); line-height: 1.4; color: var(--ink-soft); }
 .toc-name { font-size: var(--t-h3); line-height: 1.12; letter-spacing: -0.01em; color: var(--cobalt); }
 .toc-year { font-size: var(--t-small); color: var(--ink-faint); white-space: nowrap; }
@@ -1073,11 +1075,10 @@ a[download]::after {
         writing-mode: horizontal-tb;
         transform: none;
         justify-self: stretch;
-        margin: 0 0 1.4rem;
-        padding: 0 0 0.6rem;
-        border-bottom: 1px solid var(--cobalt);
+        margin: 0 0 1.2rem;
+        padding: 0;
         font-size: var(--t-lede);
-    }
+    }   /* no underline: the section's own top rule already frames the name */
 
     .hero-inner { grid-template-columns: minmax(0, 1fr); }
     .hero-title, .hero-lede, .hero-art { grid-column: 1; grid-row: auto; }
@@ -1094,6 +1095,9 @@ a[download]::after {
     .about-quote p { font-size: var(--t-lede); }
 
     .contact-cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    /* On a phone the edge line would sit right on top of "Contact". */
+    .contact-edge { display: none; }
+    .contact-cols li a { font-size: var(--t-lede); white-space: nowrap; }
     .colophon { grid-column: 1 / -1; }
     .cs-head { min-height: 0; }
     .cs-meta { margin-top: 0.4rem; }
