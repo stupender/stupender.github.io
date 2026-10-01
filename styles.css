@@ -40,6 +40,9 @@
     --paper:      rgb(var(--paper-rgb));   /* the page (#E4E3E8)           */
     --grey:       var(--paper);
     --card:       #FAFAFC;                 /* white covers                 */
+    --back:       #D8D7DE;                 /* the back cover: contact and
+                                              footer, a shade down; cobalt
+                                              on it 5.7 : 1                 */
     --ink:        rgb(var(--ink-rgb));     /* reading text        13 : 1   */
     --ink-soft:   #43444C;                 /* secondary text     7.6 : 1   */
     --ink-faint:  #5C5D66;                 /* meta, numbers      5.1 : 1   */
@@ -123,8 +126,10 @@
     --cobalt-rgb: 24 24 24;                /* the frame prints in ink        */
     --hair:       rgb(var(--ink-rgb) / 0.2);
     --sun:        #E46B6C;                 /* Being Sound's coral            */
-    --label:      #A9423F;                 /* coral, deep enough: 4.5 : 1    */
-    --hover:      #A9423F;
+    --label:      #9E3C39;                 /* coral, deep enough: 5.0 : 1,
+                                              4.6 : 1 on the back cover     */
+    --hover:      #9E3C39;
+    --back:       #D6D6D6;                 /* the back cover, a shade down  */
     --hover-dark: #E46B6C;                 /* coral on charcoal: 5.3 : 1     */
     --charcoal:   #1E1E1E;
     --stone:      #CBCBCB;                 /* ink 10.9 : 1                   */
@@ -794,7 +799,7 @@ a[download]::after {
    CONTACT — the back cover, printed in one ink: cobalt on grey, with
    a line of type running up the edge. Hover here turns black.
    ================================================================= */
-.contact { color: var(--cobalt); }
+.contact { background: var(--back); color: var(--cobalt); }
 .contact-inner {
     position: relative;
     max-width: var(--maxw);
@@ -859,7 +864,7 @@ a[download]::after {
 
 /* Footer — the spine of the back cover, the same on every page. */
 .site-footer {
-    background: var(--grey);
+    background: var(--back);
     color: var(--cobalt);
     padding: 1.3rem var(--side);
     border-top: 1px solid var(--cobalt);
