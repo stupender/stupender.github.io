@@ -32,8 +32,8 @@ Transient Senses programme:
 - **Pairs** — below the header, a case study's summary ("In short") and pull-quote sit on
   a counterpart colour (`--pair`, from `--p-*`), the way the 1971 catalogue pairs an
   orange cover with a khaki one: cobalt/butter, saffron/slate, terracotta/teal, sage/mauve.
-- The hero picture is cut paper: a red sun rising behind a cobalt wave (inline SVG).
-  The red is used nowhere else.
+- The hero is the statement alone for now; its right-hand column is held for a photo
+  (the comment in `index.html` shows where it goes).
 - Anything you can press is cobalt and turns black on hover. On a colour card,
   buttons print in black, since cobalt type is too faint there.
 - On small screens the menu is a page of its own: solid cobalt, links ruled off and

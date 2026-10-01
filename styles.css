@@ -16,8 +16,7 @@
      for, and the work rising from the bottom edge.
    · BACK  — the case study opens on that same colour, like the back of
      the card, and ends on the next project's card.
-   · The picture in the hero is cut paper: a red sun rising behind a
-     cobalt wave. The red is used nowhere else.
+   · The hero's right-hand column is held for a photo.
    · Anything you can press is cobalt and turns black on hover.
    · Titles run the full width of their column. Sentence case. Nothing
      moves on hover.
@@ -54,7 +53,7 @@
     --label:      var(--cobalt);           /* section names, numbers       */
     --hover:      var(--ink);              /* anything you touch, on paper */
     --hover-dark: var(--ink);              /* …on the cobalt menu page     */
-    --sun:        #E24A2B;                 /* the sun in the picture only  */
+    --sun:        #E24A2B;                 /* the one warm accent          */
 
     /* Fields — one colour per project, chosen against its screenshot
        so the work stands out: the colour of its card and of the top of
@@ -468,8 +467,8 @@ a[download]::after {
 }
 
 /* =================================================================
-   HERO — the statement beside the cut-paper picture, then one card
-   front per selected project.
+   HERO — the statement, with its right-hand column held for a photo,
+   then one card per selected project.
    ================================================================= */
 .hero {
     position: relative;
@@ -512,9 +511,8 @@ a[download]::after {
     text-wrap: pretty;
 }
 .hero-art { margin: clamp(1.4rem, 3vw, 2rem) 0 0; }
-.art { display: block; width: 100%; height: auto; }
-.art .wave { fill: var(--cobalt); }
-.art .sun { fill: var(--sun); }
+/* Held for a photo (see the comment in index.html). */
+.hero-art img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
 
 /* ---- The cards ------------------------------------------------------
    One flat colour per project, after the Transient Senses programme,
