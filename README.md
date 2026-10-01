@@ -53,13 +53,17 @@ One link language throughout, with no arrow characters in the markup:
 Both marks are drawn as CSS masks, so they look the same on every machine. Nothing
 moves on hover, and nothing casts a shadow. Every text colour passes WCAG AA.
 
-## Neutral version
+## Neutral version (live)
 
-`styles.css` also holds a neutral theme in Being Sound's colours: a #E0E0E0 ground,
-#181818 ink, charcoal cards and case-study tops, stone panels beneath, and coral
-(#E46B6C on charcoal and in the sun; #A9423F on the grey, where it must pass
-contrast). To switch the site to it, add `data-palette="neutral"` to `<html>` on
-every page. Nothing else changes: same layout, same type, same rules.
+The live site runs the neutral theme: every page sets `data-palette="neutral"` on
+`<html>`. It is Being Sound's colours, so the work speaks for itself: a #E0E0E0 ground,
+#181818 ink, charcoal cards and case-study tops, stone panels beneath, the back cover a
+shade down (#D6D6D6), and coral (#E46B6C on charcoal and in the sun; #9E3C39 on the
+grey, where it must pass contrast). Everything described above as cobalt prints in ink.
+
+To return to the colour version (cobalt, saffron, terracotta, sage), remove the
+attribute from each page. The link-preview card and résumé PDF are generated from the
+neutral pages; regenerate them if you switch.
 
 ## Files
 
