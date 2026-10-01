@@ -505,7 +505,6 @@ a[download]::after {
     overflow: hidden;
     border-radius: 4px 4px 0 0;
     transform: translateY(14%);
-    box-shadow: 0 -10px 26px -16px rgb(var(--ink-rgb) / 0.5);
 }
 .card-img img,
 .cs-next-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
@@ -521,20 +520,18 @@ a[download]::after {
 }
 
 /* =================================================================
-   COVERS — the selected projects, 01–04, as larger card fronts:
-   number and year over a rule, the title, who it's for, then its
-   contents and a picture of the work.
+   COVERS — the selected projects, 01–04, set straight on the page
+   like the back cover, with no box and no shadow: number and year
+   over a cobalt rule, the title, who it's for, then its contents and
+   a picture of the work.
    ================================================================= */
 .cover {
     grid-column: 2;
     display: grid;
     grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
     column-gap: clamp(1.5rem, 4vw, 3.5rem);
-    padding: clamp(1.1rem, 2.4vw, 1.8rem) clamp(1.1rem, 3vw, 2.4rem) clamp(1.6rem, 3.5vw, 2.6rem);
-    background: var(--card);
-    box-shadow: 0 1px 0 rgb(var(--ink-rgb) / 0.06);
 }
-.cover + .cover { margin-top: clamp(0.9rem, 2vw, 1.4rem); }
+.cover + .cover { margin-top: clamp(3.5rem, 8vw, 6rem); }
 
 .cover-top {
     grid-column: 1 / -1;
@@ -604,17 +601,10 @@ a[download]::after {
 .cover-media img {
     width: 100%;
     height: auto;
-    border-radius: 3px;
     outline: 1px solid var(--hair);
-    box-shadow: 0 24px 46px -28px rgb(var(--ink-rgb) / 0.55);
 }
-/* A desktop window keeps its own rounded corners: shadow the shape. */
-.cover-media--window img {
-    border-radius: 0;
-    outline: 0;
-    box-shadow: none;
-    filter: drop-shadow(0 20px 22px rgb(0 0 0 / 0.3)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.2));
-}
+/* A desktop window keeps its own rounded corners and dark edge. */
+.cover-media--window img { outline: 0; }
 
 /* =================================================================
    CONTENTS 05–11 — the catalogue's table of contents: what it is,
@@ -672,6 +662,10 @@ a[download]::after {
 /* =================================================================
    ABOUT — the portrait printed in one ink, like the gallery poster.
    ================================================================= */
+/* The section name sits level with what follows, not above it. In Work
+   it runs up the edge beside the covers, with no title of its own. */
+#work > .section-head { grid-column: 1; grid-row: 1 / span 4; margin-bottom: 0; }
+#work > .section-head > .rail-label { grid-row: auto; }
 .about > .section-head { grid-row: 1; margin-bottom: 0; }
 /* The portrait is cropped to the height of the words beside it: its top
    meets the name, its bottom the last line. */
@@ -1095,6 +1089,7 @@ a[download]::after {
     .practice-grid { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
     .about-body { grid-template-columns: minmax(0, 1fr); row-gap: 1.8rem; }
     .about > .section-head, .about-body { grid-row: auto; }
+    #work > .section-head { grid-row: auto; }
     .duo { max-width: 420px; aspect-ratio: 1 / 1; min-height: 0; margin: 0; }
     .about-quote p { font-size: var(--t-lede); }
 

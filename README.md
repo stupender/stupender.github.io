@@ -18,7 +18,8 @@ Transient Senses programme:
 - **Cards** — each selected project is one flat colour card with the same anatomy:
   number and year over a rule, the title (always two lines tall), who it's for, and
   the work rising from the bottom edge in an identical frame (`images/thumbs/`).
-  01–04 repeat below as white *covers* with their contents and a picture of the work.
+  01–04 repeat below as *covers* set straight on the page (no box, no shadow) with
+  their contents and a picture of the work.
 - **Back** — the case study opens on the card's colour, flat, like the back of the
   card, and ends on the next project's card (01 → 05 → back to 01).
 - The colours (`--f-*`) share one lightness and a low chroma, so they read as one set.
@@ -41,7 +42,7 @@ One link language throughout, with no arrow characters in the markup:
 - **A file to save** — the matching download mark (`a[download]`).
 
 Both marks are drawn as CSS masks, so they look the same on every machine. Nothing
-moves on hover. Every text colour passes WCAG AA.
+moves on hover, and nothing casts a shadow. Every text colour passes WCAG AA.
 
 ## Files
 
