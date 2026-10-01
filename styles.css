@@ -40,6 +40,9 @@
     --paper:      rgb(var(--paper-rgb));   /* the page (#E4E3E8)           */
     --grey:       var(--paper);
     --card:       #FAFAFC;                 /* white covers                 */
+    --back:       #D8D7DE;                 /* the back cover: contact and
+                                              footer, a shade down; cobalt
+                                              on it 5.7 : 1                 */
     --ink:        rgb(var(--ink-rgb));     /* reading text        13 : 1   */
     --ink-soft:   #43444C;                 /* secondary text     7.6 : 1   */
     --ink-faint:  #5C5D66;                 /* meta, numbers      5.1 : 1   */
@@ -48,32 +51,58 @@
     --cobalt-rgb: 31 75 160;
     --cobalt:     rgb(var(--cobalt-rgb));  /* 6.4 on the page, 7.8 on white */
     --hair:       rgb(var(--cobalt-rgb) / 0.26);
+    --label:      var(--cobalt);           /* section names, numbers       */
+    --hover:      var(--ink);              /* anything you touch, on paper */
+    --hover-dark: var(--ink);              /* …on the cobalt menu page     */
     --sun:        #E24A2B;                 /* the sun in the picture only  */
 
-    /* Fields — one colour per project, for its card and the back of the
-       card (its case study). One lightness (OKLCH 0.76), low chroma,
-       blue held lower still, so they read as one muted set. Ink on each
-       is ≥ 7.8 : 1; secondary text is ink at 78% (≥ 5.1 : 1). */
-    --f-coral:    #E59C8F;
-    --f-orange:   #DBA475;
-    --f-mustard:  #CBAD6D;
-    --f-sage:     #9ABE87;
-    --f-teal:     #70C3B3;
-    --f-sky:      #86B8DA;
-    --on-field:   rgb(var(--ink-rgb) / 0.78);
-    --field-rule: rgb(var(--ink-rgb) / 0.3);
+    /* Fields — one colour per project, chosen against its screenshot
+       so the work stands out: the colour of its card and of the top of
+       its case study. Ink on each ≥ 6.7 : 1, ink at 78% ≥ 4.5 : 1.
+       Cobalt is the one dark field: type on it prints light (.on-dark,
+       grey on cobalt 6.4 : 1, at 82% 4.9 : 1). */
+    --f-sky:        #86B8DA;
+    --f-cobalt:     var(--cobalt);
+    --f-saffron:    #F3B63F;
+    --f-terracotta: #EA8B62;
+    --f-sage:       #9DC08E;
+    --f-khaki:      #ABA884;
+    --f-slate:      #99AACB;
+    /* Pairs — each case study's lower panels (the summary, the client's
+       words) take a counterpart to its field, the way the 1971 catalogue
+       pairs an orange cover with a khaki one. Same contrast rules. */
+    --p-sand:       #D9BC86;               /* with sky, with slate     */
+    --p-butter:     #E9CB80;               /* with cobalt              */
+    --p-slate:      #A3B3D2;               /* with saffron             */
+    --p-teal:       #8CC3B4;               /* with terracotta          */
+    --p-mauve:      #CDA3AE;               /* with sage                */
+    --p-orange:     #DBA475;               /* with khaki               */
+    /* Type on a field: black by default, light on a dark field. */
+    --on:           var(--ink);
+    --on-soft:      rgb(var(--ink-rgb) / 0.78);
+    --on-rule:      rgb(var(--ink-rgb) / 0.3);
 
     --font: 'Host Grotesk', 'Helvetica Neue', Arial, sans-serif;
 
-    /* Type scale — eight steps, nothing else. */
-    --t-label: 0.8125rem;                        /* 13  meta                 */
-    --t-small: 0.9375rem;                        /* 15  secondary text       */
-    --t-body:  1.0625rem;                        /* 17  body                 */
-    --t-lede:  1.3125rem;                        /* 21  ledes, list names    */
-    --t-h3:    1.625rem;                         /* 26  sub-heads            */
-    --t-h2:    clamp(1.9rem, 3.6vw, 2.6rem);     /* 30–42 section titles     */
-    --t-d2:    clamp(2.3rem, 4.8vw, 3.5rem);     /* 37–56 cover titles       */
-    --t-h1:    clamp(2.7rem, 6.6vw, 5.4rem);     /* 43–86 hero, contact      */
+    /* Type scale — seven tiers, one per role, nothing in between.
+       phone → desktop
+       h1     42 → 70   the one big line on a page: hero, case-study
+                        title, résumé name, "Say hello."
+       h2     30 → 42   a section or a project: section titles, the
+                        Work covers, case-study headings, the email
+       h3     22 → 26   an item in a list, or a quote: contents names,
+                        practice names, experiments, quotes, links
+       lede   19 → 21   the paragraph under a title; card titles (500)
+       body       17    reading text, nav, the contents of a table
+       small      15    secondary: section names, notes, captions, years
+       label      13    labels on tables, numbers on cards, buttons */
+    --t-label: 0.8125rem;
+    --t-small: 0.9375rem;
+    --t-body:  1.0625rem;
+    --t-lede:  clamp(1.1875rem, 1.6vw, 1.3125rem);
+    --t-h3:    clamp(1.4rem, 2.2vw, 1.625rem);
+    --t-h2:    clamp(1.9rem, 3.6vw, 2.6rem);
+    --t-h1:    clamp(2.6rem, 5vw, 4.4rem);
 
     --side:   5vw;                               /* page margin              */
     --maxw:   1240px;                            /* content width            */
@@ -81,6 +110,47 @@
     --colgap: clamp(1.5rem, 3.5vw, 3rem);        /* rail-to-content gutter   */
     --gap:    clamp(3.5rem, 8vw, 7rem);          /* vertical section rhythm  */
 }
+
+/* ---- Neutral (data-palette="neutral" on <html>) -------------------
+   The same site in Being Sound's colours, so the work speaks for
+   itself: a neutral grey ground, near-black ink, charcoal panels, and
+   one coral — bright on charcoal and in the sun, deeper on the grey
+   where it has to pass contrast (labels, hovers). Every card and every
+   case-study top is charcoal; the panels beneath are stone. */
+:root[data-palette="neutral"] {
+    --paper-rgb:  224 224 224;             /* #E0E0E0, Being Sound's ground */
+    --ink-rgb:    24 24 24;                /* #181818                13.5 : 1 */
+    --ink-soft:   #444444;                 /*                         7.4 : 1 */
+    --ink-faint:  #5C5C5C;                 /*                         5.1 : 1 */
+    --card:       #EBEBEB;
+    --cobalt-rgb: 24 24 24;                /* the frame prints in ink        */
+    --hair:       rgb(var(--ink-rgb) / 0.2);
+    --sun:        #E46B6C;                 /* Being Sound's coral            */
+    --label:      #9E3C39;                 /* coral, deep enough: 5.0 : 1,
+                                              4.6 : 1 on the back cover     */
+    --hover:      #9E3C39;
+    --back:       #D6D6D6;                 /* the back cover, a shade down  */
+    --hover-dark: #E46B6C;                 /* coral on charcoal: 5.3 : 1     */
+    --charcoal:   #1E1E1E;
+    --stone:      #CBCBCB;                 /* ink 10.9 : 1                   */
+    --f-sky: var(--charcoal); --f-cobalt: var(--charcoal); --f-saffron: var(--charcoal);
+    --f-terracotta: var(--charcoal); --f-sage: var(--charcoal); --f-khaki: var(--charcoal); --f-slate: var(--charcoal);
+    --p-sand: var(--stone); --p-butter: var(--stone); --p-slate: var(--stone);
+    --p-teal: var(--stone); --p-mauve: var(--stone); --p-orange: var(--stone);
+}
+/* Every card, case-study top and next card is charcoal: light type. */
+:root[data-palette="neutral"] .card,
+:root[data-palette="neutral"] .cs-head,
+:root[data-palette="neutral"] .cs-next-link {
+    --on:      var(--paper);
+    --on-soft: rgb(var(--paper-rgb) / 0.82);
+    --on-rule: rgb(var(--paper-rgb) / 0.4);
+}
+:root[data-palette="neutral"] .cs-head .eyebrow { color: var(--sun); }
+:root[data-palette="neutral"] .cs-next-link .blk { background: var(--paper); border-color: var(--paper); color: var(--ink); }
+:root[data-palette="neutral"] .cs-next-link:hover .blk { background: var(--sun); border-color: var(--sun); color: var(--ink); }
+:root[data-palette="neutral"] .card-img--window,
+:root[data-palette="neutral"] .cs-next-img--window { outline: 1px solid rgb(var(--paper-rgb) / 0.18); }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -117,7 +187,7 @@ button:focus-visible {
 .rail-label {
     font-size: var(--t-small);
     font-weight: 500;
-    color: var(--cobalt);
+    color: var(--label);
     margin: 0 0 1.1rem;
 }
 
@@ -147,10 +217,10 @@ button:focus-visible {
 .blk:hover,
 .btn:hover,
 .toc-row:hover .toc-go.blk,
-.cs-next-link:hover .blk { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.cs-next-link:hover .blk { background: var(--hover); border-color: var(--hover); color: var(--paper); }
 /* A second, quieter action beside a block. */
 .btn:not(.btn-primary) { background: transparent; color: var(--cobalt); }
-.btn:not(.btn-primary):hover { background: var(--ink); color: var(--paper); }
+.btn:not(.btn-primary):hover { background: var(--hover); color: var(--paper); }
 
 .out,
 .cover-links a:not(.blk),
@@ -168,7 +238,7 @@ button:focus-visible {
 }
 .out:hover,
 .cover-links a:not(.blk):hover,
-.project-links a:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.project-links a:hover { background: var(--hover); border-color: var(--hover); color: var(--paper); }
 
 /* The boxed outbound arrow from Being Sound, after every link that
    leaves the site — drawn as a mask so it is the same everywhere. */
@@ -222,13 +292,13 @@ a[download]::after {
     line-height: 1;
     text-decoration: none;
 }
-.wordmark:hover { color: var(--ink); }
+.wordmark:hover { color: var(--hover); }
 .header-right { display: flex; align-items: center; gap: clamp(1.2rem, 3vw, 2.2rem); }
 .site-nav { display: flex; align-items: center; gap: clamp(1.2rem, 3vw, 2.2rem); }
 .site-nav a { font-size: var(--t-body); text-decoration: none; color: var(--cobalt); }
-.site-nav a:hover { color: var(--ink); }
+.site-nav a:hover { color: var(--hover); }
 .site-nav a.nav-page { background: var(--cobalt); color: var(--paper); padding: 0.38em 0.72em 0.42em; margin: -0.38em 0; }
-.site-nav a.nav-page:hover { background: var(--ink); color: var(--paper); }
+.site-nav a.nav-page:hover { background: var(--hover); color: var(--paper); }
 
 /* Menu button — three thin lines that turn to an X */
 .nav-toggle {
@@ -270,7 +340,7 @@ a[download]::after {
     cursor: pointer;
     color: inherit;
 }
-.sound-toggle:hover { color: var(--ink); }
+.sound-toggle:hover { color: var(--hover); }
 .sound-toggle .orbits { display: block; width: 100%; height: 100%; overflow: visible; }
 .sound-toggle .ring { fill: none; stroke: currentColor; stroke-width: 1.5; opacity: 0.3; }
 .sound-toggle .dot { fill: currentColor; }
@@ -308,8 +378,8 @@ a[download]::after {
     background: var(--cobalt);
     color: var(--paper);
 }
-.cs-close:hover { color: var(--ink); }
-.cs-close:hover .cs-close-x { background: var(--ink); }
+.cs-close:hover { color: var(--hover); }
+.cs-close:hover .cs-close-x { background: var(--hover); }
 
 /* =================================================================
    THE GRID — every section hangs off one rail: labels, numbers and
@@ -369,11 +439,11 @@ a[download]::after {
     justify-self: start;
     padding: 0 0 0 0;
     margin: 0 0 0 0.85rem;
-    font-size: var(--t-h3);
+    font-size: var(--t-lede);
     font-weight: 400;
     line-height: 1;
     letter-spacing: -0.01em;
-    color: var(--cobalt);
+    color: var(--label);
 }
 .rail-label span {
     margin-block-start: 0;
@@ -427,7 +497,7 @@ a[download]::after {
 .hero-title {
     /* Sized to hold the line on one line on a laptop; if it must
        break (tablet, phone), it breaks into even halves. */
-    font-size: clamp(2.6rem, 5vw, 4.4rem);
+    font-size: var(--t-h1);
     text-wrap: balance;
     line-height: 1.02;
     letter-spacing: -0.025em;
@@ -468,7 +538,7 @@ a[download]::after {
     aspect-ratio: 4 / 5;
     padding: clamp(0.95rem, 1.6vw, 1.25rem) clamp(0.95rem, 1.6vw, 1.25rem) 0;
     background: var(--field);
-    color: var(--ink);
+    color: var(--on);
     text-decoration: none;
     overflow: hidden;
 }
@@ -476,8 +546,8 @@ a[download]::after {
     display: flex;
     justify-content: space-between;
     padding-bottom: 0.55rem;
-    border-bottom: 1px solid var(--ink);
-    font-size: var(--t-label);
+    border-bottom: 1px solid var(--on);
+    font-size: var(--t-small);
     font-variant-numeric: tabular-nums;
 }
 .card-no { font-weight: 500; }
@@ -495,7 +565,7 @@ a[download]::after {
     margin-top: 0.35rem;
     font-size: var(--t-small);
     line-height: 1.35;
-    color: var(--on-field);
+    color: var(--on-soft);
 }
 .card-img,
 .cs-next-img {
@@ -514,7 +584,7 @@ a[download]::after {
 .card:hover .card-title,
 .cs-next-link:hover .cs-next-name {
     text-decoration: underline;
-    text-decoration-color: var(--ink);
+    text-decoration-color: var(--on);
     text-decoration-thickness: 2px;
     text-underline-offset: 0.18em;
 }
@@ -545,21 +615,21 @@ a[download]::after {
     font-size: var(--t-small);
     color: var(--ink-faint);
 }
-.cover-no { font-weight: 500; color: var(--cobalt); }
+.cover-no { font-weight: 500; color: var(--label); }
 
 /* The title and its line run across the whole card; the contents and
    the picture sit side by side beneath. */
 .cover-text { display: contents; }
 .cover-title {
     grid-column: 1 / -1;
-    font-size: var(--t-d2);
-    line-height: 1.02;
-    letter-spacing: -0.02em;
+    font-size: var(--t-h2);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
     color: var(--cobalt);
     margin: 0 0 0.6rem;
 }
 .cover-title a { text-decoration: none; }
-.cover-title a:hover { color: var(--ink); }
+.cover-title a:hover { color: var(--hover); }
 .cover-toc { grid-column: 1; grid-row: 4; align-self: start; }
 .cover-links { grid-column: 1; grid-row: 5; align-self: start; }
 .cover-for {
@@ -581,7 +651,7 @@ a[download]::after {
     border-bottom: 1px solid var(--hair);
 }
 .cover-toc dt { text-align: right; font-size: var(--t-label); padding-top: 0.15rem; color: var(--ink-faint); }
-.cover-toc dd { margin: 0; font-size: var(--t-small); line-height: 1.55; max-width: 52ch; }
+.cover-toc dd { margin: 0; font-size: var(--t-body); line-height: 1.6; max-width: 56ch; }
 
 .cover-links,
 .project-links {
@@ -636,13 +706,13 @@ a[download]::after {
 /* The list closes on the next section's rule, not one of its own. */
 .toc li:last-child .toc-row { border-bottom: 0; }
 .toc-kind { text-align: right; font-size: var(--t-small); line-height: 1.4; color: var(--ink-soft); }
-.toc-name { font-size: var(--t-h3); line-height: 1.12; letter-spacing: -0.01em; color: var(--cobalt); }
+.toc-name { font-size: var(--t-h3); line-height: 1.2; letter-spacing: -0.01em; color: var(--cobalt); }
 .toc-year { font-size: var(--t-small); color: var(--ink-faint); white-space: nowrap; }
 .toc-go { justify-self: start; font-size: var(--t-label); font-weight: 500; color: var(--ink-soft); white-space: nowrap; }
 .toc-go.blk { color: var(--paper); }
-.toc-no { justify-self: end; font-size: var(--t-small); font-weight: 500; color: var(--cobalt); }
+.toc-no { justify-self: end; font-size: var(--t-small); font-weight: 500; color: var(--label); }
 .toc-row:hover .toc-name,
-.toc-row:hover .toc-go:not(.blk) { color: var(--ink); }
+.toc-row:hover .toc-go:not(.blk) { color: var(--hover); }
 
 /* =================================================================
    PRACTICE — listen, design, build
@@ -656,8 +726,8 @@ a[download]::after {
     gap: clamp(1.6rem, 4vw, 3rem);
 }
 .practice-col { border-top: 1px solid var(--cobalt); padding-top: 0.8rem; }
-.practice-no { font-size: var(--t-small); font-weight: 500; color: var(--cobalt); margin: 0 0 0.2rem; }
-.practice-name { font-size: var(--t-h2); line-height: 1.05; letter-spacing: -0.015em; color: var(--cobalt); margin: 0 0 1.1rem; }
+.practice-no { font-size: var(--t-small); font-weight: 500; color: var(--label); margin: 0 0 0.2rem; }
+.practice-name { font-size: var(--t-h3); line-height: 1.2; letter-spacing: -0.01em; color: var(--cobalt); margin: 0 0 1.1rem; }
 .practice-list { list-style: none; margin: 0; padding: 0; }
 .practice-list li { font-size: var(--t-small); color: var(--ink-soft); padding: 0.5rem 0; border-top: 1px solid var(--hair); }
 
@@ -706,12 +776,12 @@ a[download]::after {
     mix-blend-mode: multiply;
     pointer-events: none;
 }
-.about-title { font-size: var(--t-h2); line-height: 1.05; letter-spacing: -0.015em; color: var(--cobalt); margin: 0 0 1.3rem; }
+.about-title { font-size: var(--t-h2); line-height: 1.08; letter-spacing: -0.015em; color: var(--cobalt); margin: 0 0 1.3rem; }
 .about-text p { line-height: 1.7; color: var(--ink-soft); margin: 0 0 1.1rem; max-width: 62ch; }
 .about-text p:first-of-type { font-size: var(--t-lede); line-height: 1.5; color: var(--ink); max-width: none; text-wrap: pretty; }
 .nobr { white-space: nowrap; }
 .about-text a { color: var(--cobalt); text-decoration: underline; text-underline-offset: 3px; }
-.about-text a:hover { color: var(--ink); }
+.about-text a:hover { color: var(--hover); }
 .about-text > :last-child { margin-bottom: 0; }
 
 /* A client's words — the full width beneath, in cobalt, under a rule. */
@@ -729,7 +799,7 @@ a[download]::after {
    CONTACT — the back cover, printed in one ink: cobalt on grey, with
    a line of type running up the edge. Hover here turns black.
    ================================================================= */
-.contact { color: var(--cobalt); }
+.contact { background: var(--back); color: var(--cobalt); }
 .contact-inner {
     position: relative;
     max-width: var(--maxw);
@@ -740,9 +810,9 @@ a[download]::after {
     column-gap: var(--colgap);
 }
 .contact-edge { grid-column: 1; align-self: start; }
-.contact .rail-label { color: var(--cobalt); margin-bottom: 1.2rem; padding-top: 0; }
+.contact .rail-label { color: var(--label); margin-bottom: 1.2rem; padding-top: 0; }
 .contact-main { grid-column: 2; min-width: 0; }
-.contact-title { font-size: var(--t-h1); line-height: 1; letter-spacing: -0.025em; margin: 0 0 1.6rem; }
+.contact-title { font-size: var(--t-h1); line-height: 1.02; letter-spacing: -0.025em; margin: 0 0 1.6rem; }
 .contact-mail {
     display: flex;
     flex-wrap: wrap;
@@ -758,7 +828,7 @@ a[download]::after {
     color: var(--cobalt);
     border-bottom: 1px solid var(--cobalt);
 }
-.contact-mail a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+.contact-mail a:hover { color: var(--hover); border-bottom-color: var(--hover); }
 .copy-mail {
     font-family: var(--font);
     font-size: var(--t-label);
@@ -770,7 +840,7 @@ a[download]::after {
     padding: 0.75em 1.05em 0.72em;
     cursor: pointer;
 }
-.copy-mail:hover { background: var(--ink); }
+.copy-mail:hover { background: var(--hover); }
 .copy-mail.is-done { background: var(--ink); color: var(--grey); }
 
 .contact-cols {
@@ -785,16 +855,16 @@ a[download]::after {
 .contact-cols ul { list-style: none; margin: 0; padding: 0; }
 .contact-cols li { margin-bottom: 0.7rem; }
 .contact-cols li a { font-size: var(--t-h3); line-height: 1.2; text-decoration: none; color: var(--cobalt); }
-.contact-cols li a:hover { color: var(--ink); }
+.contact-cols li a:hover { color: var(--hover); }
 .contact .contact-cols li a.blk { font-size: var(--t-label); line-height: 1; background: var(--cobalt); border-color: var(--cobalt); color: var(--grey); }
-.contact .contact-cols li a.blk:hover { background: var(--ink); border-color: var(--ink); color: var(--grey); }
+.contact .contact-cols li a.blk:hover { background: var(--hover); border-color: var(--hover); color: var(--grey); }
 .colophon p:not(.contact-label) { font-size: var(--t-small); line-height: 1.65; margin: 0; max-width: 46ch; }
 .contact a:focus-visible,
 .contact button:focus-visible { outline-color: var(--ink); }
 
 /* Footer — the spine of the back cover, the same on every page. */
 .site-footer {
-    background: var(--grey);
+    background: var(--back);
     color: var(--cobalt);
     padding: 1.3rem var(--side);
     border-top: 1px solid var(--cobalt);
@@ -812,7 +882,7 @@ a[download]::after {
     margin: 0 auto;
     padding: clamp(2.6rem, 6vw, 4.5rem) var(--side) 4rem;
 }
-.cs > :not(.cs-head):not(.cs-next) { max-width: 820px; }
+.cs > :not(.cs-head):not(.cs-next):not(.cs-tldr):not(.cs-quote) { max-width: 820px; }
 .cs-head {
     display: flex;
     flex-direction: column;
@@ -820,41 +890,41 @@ a[download]::after {
     margin-bottom: clamp(2rem, 5vw, 3rem);
     padding: clamp(1.2rem, 3vw, 2rem) clamp(1.2rem, 3.5vw, 2.6rem) clamp(1.4rem, 3.5vw, 2.4rem);
     background: var(--field, var(--card));
-    color: var(--ink);
+    color: var(--on);
 }
 .cs-head .eyebrow {
     font-size: var(--t-small);
     font-weight: 400;
-    color: var(--ink);
+    color: var(--on);
     padding-top: 0.6rem;
-    border-top: 1px solid var(--ink);
+    border-top: 1px solid var(--on);
     margin-bottom: clamp(1.8rem, 5vw, 3.2rem);
 }
 .cs-no { font-weight: 500; margin-right: 0.6rem; }
 .cs-title { font-size: var(--t-h1); line-height: 1.02; letter-spacing: -0.025em; margin: 0 0 1rem; }
-.cs-sub { font-size: var(--t-lede); line-height: 1.5; color: var(--on-field); margin: 0 0 1.8rem; }
+.cs-sub { font-size: var(--t-lede); line-height: 1.5; color: var(--on-soft); margin: 0 0 1.8rem; }
 .cs-meta {
     display: flex;
     flex-wrap: wrap;
     gap: 0.8rem 2.6rem;
     margin: auto 0 1.4rem;
     padding: 1rem 0;
-    border-top: 1px solid var(--field-rule);
-    border-bottom: 1px solid var(--field-rule);
+    border-top: 1px solid var(--on-rule);
+    border-bottom: 1px solid var(--on-rule);
 }
-.cs-meta dt { font-size: var(--t-label); color: var(--on-field); margin-bottom: 0.15rem; }
+.cs-meta dt { font-size: var(--t-label); color: var(--on-soft); margin-bottom: 0.15rem; }
 .cs-meta dd { margin: 0; font-size: var(--t-small); }
 .cs-toplinks { margin: 0; }
 /* On a colour, cobalt type is too faint: buttons print in black there. */
-.cs-head .project-links a { color: var(--ink); }
-.cs-head .project-links a:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.cs-head .project-links a { color: var(--on); }
+.cs-head .project-links a:hover { background: var(--on); border-color: var(--on); color: var(--field); }
 
 .cs-figure { margin: 2rem 0; }
 .cs-figure img { width: 100%; outline: 1px solid var(--hair); }
 .cs-figure--lead { margin: clamp(1.5rem, 4vw, 2.5rem) 0 0; }
 .cs-cap { font-size: var(--t-small); color: var(--ink-faint); margin: 0.7rem 0 0; }
 .cs-cap a { color: var(--ink-soft); text-decoration: underline; text-decoration-color: var(--hair); text-underline-offset: 3px; }
-.cs-cap a:hover { color: var(--ink); }
+.cs-cap a:hover { color: var(--hover); }
 
 .cs-section { margin-top: clamp(2.6rem, 6vw, 4rem); }
 .cs-section > .eyebrow { margin-bottom: 0.8rem; }
@@ -865,7 +935,7 @@ a[download]::after {
 
 /* Pull-quote — a client's words, in the second ink, under a rule. */
 .cs-quote { margin: 2.6rem 0; padding-top: 1.2rem; border-top: 1px solid var(--cobalt); }
-.cs-quote p { font-size: var(--t-h2); line-height: 1.15; letter-spacing: -0.015em; color: var(--cobalt); margin: 0; }
+.cs-quote p { font-size: var(--t-h3); line-height: 1.35; letter-spacing: -0.01em; color: var(--cobalt); margin: 0; }
 .cs-quote cite { display: block; font-style: normal; font-size: var(--t-small); color: var(--ink-faint); margin-top: 1.1rem; }
 
 /* "In short" — the 60-second read, set as a table of contents. */
@@ -883,6 +953,45 @@ a[download]::after {
 .cs-tldr dd { margin: 0; line-height: 1.55; color: var(--ink-soft); max-width: 66ch; }
 .cs-tldr dd strong { color: var(--ink); }
 
+/* Light type on a dark field (cobalt). Panels and the next card set
+   their own type, so a dark top never leaks onto a light panel. */
+.on-dark {
+    --on:      var(--paper);
+    --on-soft: rgb(var(--paper-rgb) / 0.82);
+    --on-rule: rgb(var(--paper-rgb) / 0.4);
+}
+.cs-tldr, .cs-quote, .cs-next-link {
+    --on:      var(--ink);
+    --on-soft: rgb(var(--ink-rgb) / 0.78);
+    --on-rule: rgb(var(--ink-rgb) / 0.3);
+}
+.cs-next-link.on-dark {
+    --on:      var(--paper);
+    --on-soft: rgb(var(--paper-rgb) / 0.82);
+    --on-rule: rgb(var(--paper-rgb) / 0.4);
+}
+/* A block on a cobalt card turns paper, so it doesn't vanish. */
+.cs-next-link.on-dark .blk { background: var(--paper); border-color: var(--paper); color: var(--cobalt); }
+
+/* The lower panels: on a case study with a pair colour, the summary
+   and the client's words sit on that counterpart, full width, set like
+   the header above them — a rule, then the words, all in black. */
+.cs[style] .cs-tldr,
+.cs[style] .cs-quote {
+    background: var(--pair, transparent);
+    padding: clamp(1.2rem, 3vw, 2rem) clamp(1.2rem, 3.5vw, 2.6rem) clamp(1.4rem, 3.5vw, 2.4rem);
+    border-top: 0;
+}
+.cs[style] .cs-head + .cs-tldr { margin-top: calc(-1 * clamp(2rem, 5vw, 3rem) + clamp(0.8rem, 1.8vw, 1.25rem)); }
+.cs[style] .cs-tldr .eyebrow { color: var(--on); padding-top: 0.6rem; border-top: 1px solid var(--on); margin-bottom: 1.2rem; }
+.cs[style] .cs-tldr dl { border-top: 0; }
+.cs[style] .cs-tldr dl > div { border-bottom-color: var(--on-rule); }
+.cs[style] .cs-tldr dl > div:last-child { border-bottom: 0; padding-bottom: 0; }
+.cs[style] .cs-tldr dt { color: var(--on-soft); }
+.cs[style] .cs-tldr dd { color: var(--on); }
+.cs[style] .cs-quote p { color: var(--on); padding-top: 0.6rem; border-top: 1px solid var(--on); }
+.cs[style] .cs-quote cite { color: var(--on-soft); }
+
 /* Next — the next project's card, in its colour. */
 .cs-next { margin-top: clamp(3rem, 7vw, 5rem); }
 .cs-next-link {
@@ -891,18 +1000,18 @@ a[download]::after {
     column-gap: clamp(1.2rem, 4vw, 3rem);
     padding: clamp(1rem, 2.4vw, 1.6rem) clamp(1rem, 2.4vw, 1.6rem) 0;
     background: var(--field, var(--card));
-    color: var(--ink);
+    color: var(--on);
     text-decoration: none;
     overflow: hidden;
 }
 .cs-next-link > span:not(.cs-next-img) { grid-column: 1; }
-.cs-next-label { padding-bottom: 0.55rem; border-bottom: 1px solid var(--ink); font-size: var(--t-small); margin-bottom: 0.7rem; }
-.cs-next-name { font-size: var(--t-h2); line-height: 1.05; letter-spacing: -0.015em; }
-.cs-next-for { margin-top: 0.4rem; color: var(--on-field); }
+.cs-next-label { padding-bottom: 0.55rem; border-bottom: 1px solid var(--on); font-size: var(--t-small); margin-bottom: 0.7rem; }
+.cs-next-name { font-size: var(--t-h3); line-height: 1.2; letter-spacing: -0.01em; }
+.cs-next-for { margin-top: 0.4rem; color: var(--on-soft); }
 .cs-next-go { justify-self: start; margin: 1.4rem 0 clamp(1rem, 2.4vw, 1.6rem); }
 .cs-next-img { grid-column: 2; grid-row: 1 / span 4; align-self: end; margin-top: 1.2rem; transform: translateY(10%); }
 .cs-next-all { display: inline-block; margin-top: 1rem; font-size: var(--t-small); text-decoration: none; color: var(--cobalt); }
-.cs-next-all:hover { color: var(--ink); }
+.cs-next-all:hover { color: var(--hover); }
 
 /* ---- Compact list (No. 11, experiments) ------------------------- */
 .compact-list { border-top: 1px solid var(--cobalt); }
@@ -917,7 +1026,7 @@ a[download]::after {
 .compact-thumb { display: block; width: 76px; height: 54px; overflow: hidden; background: var(--card); }
 .compact-thumb::after { display: none !important; }
 .compact-thumb img { width: 100%; height: 100%; object-fit: cover; }
-.compact-name { font-size: var(--t-h3); line-height: 1.12; color: var(--cobalt); margin: 0 0 0.2rem; }
+.compact-name { font-size: var(--t-h3); line-height: 1.2; color: var(--cobalt); margin: 0 0 0.2rem; }
 .compact-one { font-size: var(--t-small); color: var(--ink-soft); margin: 0; max-width: 52ch; }
 .compact-stack { font-size: var(--t-label); color: var(--ink-faint); margin: 0.35rem 0 0; }
 .compact-links { margin: 0; white-space: nowrap; }
@@ -926,11 +1035,11 @@ a[download]::after {
    RÉSUMÉ (screen matches the site; print renders clean on white)
    ================================================================= */
 .resume { max-width: 820px; margin: 0 auto; padding: clamp(2.6rem, 6vw, 4.5rem) var(--side) 4rem; }
-.resume-name { font-size: var(--t-d2); line-height: 1; letter-spacing: -0.02em; color: var(--cobalt); margin: 0 0 0.9rem; }
+.resume-name { font-size: var(--t-h1); line-height: 1.02; letter-spacing: -0.025em; color: var(--cobalt); margin: 0 0 0.9rem; }
 .resume-contact { font-size: var(--t-small); color: var(--ink-soft); margin: 0 0 1.1rem; }
 .resume-contact a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--hair); }
 .resume-contact a::after { display: none !important; }
-.resume-contact a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+.resume-contact a:hover { color: var(--hover); border-bottom-color: var(--hover); }
 .resume-contact .sep { color: var(--ink-faint); margin: 0 0.5rem; }
 .resume-tagline { font-size: var(--t-lede); line-height: 1.45; margin: 0 0 1.6rem; }
 .resume-actions { display: flex; gap: 0.6rem; margin: 0 0 0.5rem; }
@@ -945,7 +1054,7 @@ a[download]::after {
 .resume-entry-meta { font-size: var(--t-small); color: var(--ink-soft); margin: 0.15rem 0 0.5rem; }
 .resume-entry-meta a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--hair); }
 .resume-entry-meta a::after { display: none !important; }
-.resume-entry-meta a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+.resume-entry-meta a:hover { color: var(--hover); border-bottom-color: var(--hover); }
 .resume-entry ul { margin: 0; padding-left: 1.1rem; font-size: var(--t-small); color: var(--ink-soft); line-height: 1.6; }
 .resume-entry ul li { margin-bottom: 0.3rem; }
 .resume-entry ul li::marker { color: var(--cobalt); }
@@ -1050,13 +1159,13 @@ a[download]::after {
         letter-spacing: 0;
         color: var(--grey);
     }
-    .site-nav.open a:hover { color: var(--ink); background: none; }
-    .site-nav.open a:hover::before { color: var(--ink); }
+    .site-nav.open a:hover { color: var(--hover-dark); background: none; }
+    .site-nav.open a:hover::before { color: var(--hover-dark); }
     /* The header joins the menu page while it is open. */
     .menu-open, .menu-open body { overflow: hidden; }
     .menu-open .site-header { background: var(--cobalt); color: var(--grey); border-bottom-color: rgb(228 227 232 / 0.55); }
     .menu-open .wordmark:hover,
-    .menu-open .sound-toggle:hover { color: var(--ink); }
+    .menu-open .sound-toggle:hover { color: var(--hover-dark); }
     .menu-open .sound-toggle[aria-pressed="true"] { color: var(--grey); }
 
     /* One column: the edge names lie down over a rule, and the rule
@@ -1092,7 +1201,6 @@ a[download]::after {
     .about > .section-head, .about-body { grid-row: auto; }
     #work > .section-head { grid-row: auto; }
     .duo { max-width: 420px; aspect-ratio: 1 / 1; min-height: 0; margin: 0; }
-    .about-quote p { font-size: var(--t-lede); }
 
     .contact-cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
     /* On a phone the edge line would sit right on top of "Contact". */

@@ -13,6 +13,10 @@ Transient Senses programme:
 - **The frame** — one cobalt rule runs down the left edge from the header to the
   footer; each section's name runs up beside it, as on the poster, and a cobalt rule
   crosses the top of each section. On small screens the names lie down over a rule.
+- **Type** — seven sizes, one per role (`--t-*` in `styles.css`): *h1* the one big line on a
+  page (hero, case-study title, résumé name, "Say hello."); *h2* a section or a project;
+  *h3* an item in a list, or a quote; *lede* the paragraph under a title; *body*; *small*
+  for secondary notes and section names; *label* for table labels, card numbers, buttons.
 - **Full-width lines** — titles and intros run the width of their column instead of
   breaking early; the hero line holds one line on a laptop.
 - **Cards** — each selected project is one flat colour card with the same anatomy:
@@ -22,7 +26,12 @@ Transient Senses programme:
   their contents and a picture of the work.
 - **Back** — the case study opens on the card's colour, flat, like the back of the
   card, and ends on the next project's card (01 → 05 → back to 01).
-- The colours (`--f-*`) share one lightness and a low chroma, so they read as one set.
+- The colours (`--f-*`) are chosen against each screenshot so the work stands out: cobalt
+  (01), saffron (02), terracotta (03), sage (04), khaki (05), slate (11). Cobalt is the one
+  dark colour, so its card, case-study header and next card add `.on-dark` for light type.
+- **Pairs** — below the header, a case study's summary ("In short") and pull-quote sit on
+  a counterpart colour (`--pair`, from `--p-*`), the way the 1971 catalogue pairs an
+  orange cover with a khaki one: cobalt/butter, saffron/slate, terracotta/teal, sage/mauve.
 - The hero picture is cut paper: a red sun rising behind a cobalt wave (inline SVG).
   The red is used nowhere else.
 - Anything you can press is cobalt and turns black on hover. On a colour card,
@@ -43,6 +52,18 @@ One link language throughout, with no arrow characters in the markup:
 
 Both marks are drawn as CSS masks, so they look the same on every machine. Nothing
 moves on hover, and nothing casts a shadow. Every text colour passes WCAG AA.
+
+## Neutral version (live)
+
+The live site runs the neutral theme: every page sets `data-palette="neutral"` on
+`<html>`. It is Being Sound's colours, so the work speaks for itself: a #E0E0E0 ground,
+#181818 ink, charcoal cards and case-study tops, stone panels beneath, the back cover a
+shade down (#D6D6D6), and coral (#E46B6C on charcoal and in the sun; #9E3C39 on the
+grey, where it must pass contrast). Everything described above as cobalt prints in ink.
+
+To return to the colour version (cobalt, saffron, terracotta, sage), remove the
+attribute from each page. The link-preview card and résumé PDF are generated from the
+neutral pages; regenerate them if you switch.
 
 ## Files
 
