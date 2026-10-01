@@ -2,21 +2,25 @@
    Stu Pender — Portfolio
    Design system: "Programme"
 
-   Printed matter, not an app. One typeface (Host Grotesk, after the
-   Indoek Gallery poster), two inks (black and cobalt), cream paper,
-   and a set of cards after the Transient Senses programme:
+   Printed matter, not an app — and printed like the back cover: cobalt
+   on a cool grey, everywhere. One typeface (Host Grotesk, after the
+   Indoek Gallery poster), two inks (cobalt for the frame — titles,
+   labels, rules, links, buttons — and black for reading), and a set
+   of colour cards after the Transient Senses programme.
 
+   · FRAME — every section hangs off one cobalt rule down the left edge,
+     its name running up beside it, as on the poster. Hairlines are
+     cobalt too.
    · CARDS — each selected project is one flat colour card with the
      same anatomy: number and year over a rule, the title, who it is
      for, and the work rising from the bottom edge.
    · BACK  — the case study opens on that same colour, like the back of
-     the card, and ends on the next project's card. The covers and
-     everything else stay on paper and white.
+     the card, and ends on the next project's card.
    · The picture in the hero is cut paper: a red sun rising behind a
      cobalt wave. The red is used nowhere else.
-   · Cobalt is the only interaction colour: links and buttons
-     turn cobalt on hover (on the cobalt back cover, they turn black).
-   · Sentence case throughout. Nothing moves on hover.
+   · Anything you can press is cobalt and turns black on hover.
+   · Titles run the full width of their column. Sentence case. Nothing
+     moves on hover.
 
    Editing tips:
    · Colour, type and rhythm live in :root. Sizes come ONLY from the
@@ -24,24 +28,26 @@
    · A selected project is a card in .cards-list (style="--field:…")
      and an <article class="cover">; its case study sets the same
      --field on <article class="cs">.
-   · Links: inside the site is a solid block (.blk); leaving the site is
-     an outlined box with the boxed arrow; a file is the download mark.
+   · Links: inside the site is a solid cobalt block (.blk); leaving the
+     site is the same box, outlined, with the boxed arrow; a file is the
+     download mark.
    ================================================================= */
 
 :root {
-    /* Paper, card and ink — every text colour passes WCAG AA. */
-    --paper-rgb:  242 238 228;
-    --ink-rgb:    27 26 23;
-    --paper:      rgb(var(--paper-rgb));   /* the page                     */
-    --card:       #FDFCF9;                 /* card fronts                  */
-    --ink:        rgb(var(--ink-rgb));     /* text, rules, blocks  15 : 1  */
-    --ink-soft:   #45423C;                 /* secondary text      8.6 : 1  */
-    --ink-faint:  #66625A;                 /* meta, numbers       5.2 : 1  */
-    --hair:       rgb(var(--ink-rgb) / 0.16);
+    /* The page is the back cover's grey; every text colour passes AA. */
+    --paper-rgb:  228 227 232;
+    --ink-rgb:    28 29 34;
+    --paper:      rgb(var(--paper-rgb));   /* the page (#E4E3E8)           */
+    --grey:       var(--paper);
+    --card:       #FAFAFC;                 /* white covers                 */
+    --ink:        rgb(var(--ink-rgb));     /* reading text        13 : 1   */
+    --ink-soft:   #43444C;                 /* secondary text     7.6 : 1   */
+    --ink-faint:  #5C5D66;                 /* meta, numbers      5.1 : 1   */
 
-    /* The second ink. Labels, quotes, and anything you touch. */
-    --cobalt:     #1F4BA0;                 /* 7.1 on paper · 6.4 on grey   */
-    --grey:       #E4E3E8;                 /* the back cover               */
+    /* Cobalt: the frame. Titles, labels, rules, links, buttons. */
+    --cobalt-rgb: 31 75 160;
+    --cobalt:     rgb(var(--cobalt-rgb));  /* 6.4 on the page, 7.8 on white */
+    --hair:       rgb(var(--cobalt-rgb) / 0.26);
     --sun:        #E24A2B;                 /* the sun in the picture only  */
 
     /* Fields — one colour per project, for its card and the back of the
@@ -71,7 +77,7 @@
 
     --side:   5vw;                               /* page margin              */
     --maxw:   1240px;                            /* content width            */
-    --rail:   clamp(5rem, 15vw, 12.5rem);        /* the left rail            */
+    --rail:   2.6rem;                            /* the edge: one line of type */
     --colgap: clamp(1.5rem, 3.5vw, 3rem);        /* rail-to-content gutter   */
     --gap:    clamp(3.5rem, 8vw, 7rem);          /* vertical section rhythm  */
 }
@@ -94,7 +100,7 @@ body {
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
-h1, h2, h3, h4 { text-wrap: balance; font-weight: 400; }
+h1, h2, h3, h4 { text-wrap: pretty; font-weight: 400; }
 strong { font-weight: 600; }
 /* Figures line up in columns; only where they are columns (tabular
    figures would also widen this face's hyphen). */
@@ -117,9 +123,9 @@ button:focus-visible {
 
 /* =================================================================
    LINK LANGUAGE
-   · Inside the site  → a solid black block (.blk). Hover: cobalt.
+   · Inside the site  → a solid cobalt block (.blk).
    · Leaves the site  → the same box, outlined, with the boxed arrow.
-                        Hover: cobalt. Every button is square.
+   · Both turn black on hover. Every button is square.
    · A file to save   → the download mark.
    ================================================================= */
 .blk,
@@ -130,9 +136,9 @@ button:focus-visible {
     font-weight: 500;
     line-height: 1;
     padding: 0.75em 1.05em 0.72em;
-    background: var(--ink);
+    background: var(--cobalt);
     color: var(--paper);
-    border: 1px solid var(--ink);
+    border: 1px solid var(--cobalt);
     border-radius: 0;
     text-decoration: none;
     white-space: nowrap;
@@ -141,10 +147,10 @@ button:focus-visible {
 .blk:hover,
 .btn:hover,
 .toc-row:hover .toc-go.blk,
-.cs-next-link:hover .blk { background: var(--cobalt); border-color: var(--cobalt); color: var(--paper); }
+.cs-next-link:hover .blk { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 /* A second, quieter action beside a block. */
-.btn:not(.btn-primary) { background: transparent; color: var(--ink); }
-.btn:not(.btn-primary):hover { background: var(--cobalt); color: var(--paper); }
+.btn:not(.btn-primary) { background: transparent; color: var(--cobalt); }
+.btn:not(.btn-primary):hover { background: var(--ink); color: var(--paper); }
 
 .out,
 .cover-links a:not(.blk),
@@ -156,13 +162,13 @@ button:focus-visible {
     padding: 0.75em 1.05em 0.72em;
     border: 1px solid currentColor;
     border-radius: 0;
-    color: var(--ink);
+    color: var(--cobalt);
     text-decoration: none;
     white-space: nowrap;
 }
 .out:hover,
 .cover-links a:not(.blk):hover,
-.project-links a:hover { background: var(--cobalt); border-color: var(--cobalt); color: var(--paper); }
+.project-links a:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 
 /* The boxed outbound arrow from Being Sound, after every link that
    leaves the site — drawn as a mask so it is the same everywhere. */
@@ -202,10 +208,11 @@ a[download]::after {
     align-items: center;
     justify-content: space-between;
     padding: clamp(1rem, 2.2vw, 1.45rem) var(--side);
-    border-bottom: 1px solid var(--ink);
+    border-bottom: 1px solid var(--cobalt);
     position: sticky;
     top: 0;
     background: var(--paper);
+    color: var(--cobalt);
     z-index: 50;
 }
 .wordmark {
@@ -215,13 +222,13 @@ a[download]::after {
     line-height: 1;
     text-decoration: none;
 }
-.wordmark:hover { color: var(--cobalt); }
+.wordmark:hover { color: var(--ink); }
 .header-right { display: flex; align-items: center; gap: clamp(1.2rem, 3vw, 2.2rem); }
 .site-nav { display: flex; align-items: center; gap: clamp(1.2rem, 3vw, 2.2rem); }
-.site-nav a { font-size: var(--t-body); text-decoration: none; color: var(--ink); }
-.site-nav a:hover { color: var(--cobalt); }
-.site-nav a.nav-page { background: var(--ink); color: var(--paper); padding: 0.38em 0.72em 0.42em; margin: -0.38em 0; }
-.site-nav a.nav-page:hover { background: var(--cobalt); color: var(--paper); }
+.site-nav a { font-size: var(--t-body); text-decoration: none; color: var(--cobalt); }
+.site-nav a:hover { color: var(--ink); }
+.site-nav a.nav-page { background: var(--cobalt); color: var(--paper); padding: 0.38em 0.72em 0.42em; margin: -0.38em 0; }
+.site-nav a.nav-page:hover { background: var(--ink); color: var(--paper); }
 
 /* Menu button — three thin lines that turn to an X */
 .nav-toggle {
@@ -263,7 +270,7 @@ a[download]::after {
     cursor: pointer;
     color: inherit;
 }
-.sound-toggle:hover { color: var(--cobalt); }
+.sound-toggle:hover { color: var(--ink); }
 .sound-toggle .orbits { display: block; width: 100%; height: 100%; overflow: visible; }
 .sound-toggle .ring { fill: none; stroke: currentColor; stroke-width: 1.5; opacity: 0.3; }
 .sound-toggle .dot { fill: currentColor; }
@@ -288,7 +295,7 @@ a[download]::after {
     gap: 0.7rem;
     font-size: var(--t-small);
     text-decoration: none;
-    color: var(--ink);
+    color: var(--cobalt);
 }
 .cs-close-x {
     display: inline-flex;
@@ -298,11 +305,11 @@ a[download]::after {
     height: 32px;
     font-size: var(--t-small);
     line-height: 1;
-    background: var(--ink);
+    background: var(--cobalt);
     color: var(--paper);
 }
-.cs-close:hover { color: var(--cobalt); }
-.cs-close:hover .cs-close-x { background: var(--cobalt); }
+.cs-close:hover { color: var(--ink); }
+.cs-close:hover .cs-close-x { background: var(--ink); }
 
 /* =================================================================
    THE GRID — every section hangs off one rail: labels, numbers and
@@ -318,15 +325,28 @@ a[download]::after {
     column-gap: var(--colgap);
 }
 .section > * { grid-column: 2; min-width: 0; }
-/* A hairline between sections, the width of the type. */
+/* The frame, after the poster: a cobalt rule across the top of each
+   section, and one down the left edge that runs on from section to
+   section, with the section's name running up beside it. */
 .hero + .section::before,
-.section + .section::before {
+.section + .section::before,
+.contact-inner::before {
     content: "";
     position: absolute;
     top: 0;
     left: var(--side);
     right: var(--side);
-    border-top: 1px solid var(--ink);
+    border-top: 1px solid var(--cobalt);
+}
+.hero::after,
+.section::after,
+.contact-inner::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--side);
+    border-left: 1px solid var(--cobalt);
 }
 
 .section-head {
@@ -338,12 +358,28 @@ a[download]::after {
 .section-head > * { grid-column: 2; }
 .section-head > .rail-label { grid-column: 1; grid-row: 1 / span 3; }
 
-.rail-label { grid-column: 1; margin: 0; padding-top: 0.6rem; align-self: start; }
-.rail-label span {
-    display: block;
-    font-size: var(--t-label);
+.rail-label { grid-column: 1; margin: 0; align-self: start; }
+/* Section names run up the edge, against the rule. */
+.hero > .rail-label,
+.section-head > .rail-label,
+.index > .rail-label,
+.contact-edge {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    justify-self: start;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0.85rem;
+    font-size: var(--t-h3);
     font-weight: 400;
-    margin-top: 0.2rem;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--cobalt);
+}
+.rail-label span {
+    margin-block-start: 0;
+    margin-inline-start: 0.5em;
+    font-size: var(--t-small);
+    font-weight: 400;
     color: var(--ink-faint);
 }
 
@@ -351,14 +387,13 @@ a[download]::after {
     font-size: var(--t-h2);
     line-height: 1.08;
     letter-spacing: -0.015em;
+    color: var(--cobalt);
     margin: 0;
-    max-width: 22ch;
 }
 .section-lede {
     font-size: var(--t-lede);
     line-height: 1.5;
     color: var(--ink-soft);
-    max-width: 44ch;
     margin: 1.3rem 0 0;
 }
 
@@ -367,20 +402,36 @@ a[download]::after {
    front per selected project.
    ================================================================= */
 .hero {
+    position: relative;
     max-width: var(--maxw);
     margin: 0 auto;
     padding: clamp(3rem, 8vh, 6rem) var(--side) clamp(3rem, 6vw, 4.5rem);
+    display: grid;
+    grid-template-columns: var(--rail) minmax(0, 1fr);
+    column-gap: var(--colgap);
 }
+.hero > * { grid-column: 2; min-width: 0; }
+.hero > .rail-label { grid-column: 1; grid-row: 1 / span 2; }
+/* The line runs the full width; the intro and the picture share the
+   row beneath it. */
 .hero-inner {
     display: grid;
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
     column-gap: var(--colgap);
-    align-items: center;
+    align-items: start;
 }
+.hero-copy { display: contents; }
+.hero-title { grid-column: 1 / -1; }
+.hero-lede { grid-column: 1; grid-row: 2; }
+.hero-art { grid-column: 2; grid-row: 2; }
 .hero-title {
-    font-size: var(--t-h1);
+    /* Sized to hold the line on one line on a laptop; if it must
+       break (tablet, phone), it breaks into even halves. */
+    font-size: clamp(2.6rem, 5vw, 4.4rem);
+    text-wrap: balance;
     line-height: 1.02;
     letter-spacing: -0.025em;
+    color: var(--cobalt);
     margin: 0;
 }
 .hero-lede {
@@ -388,10 +439,9 @@ a[download]::after {
     line-height: 1.5;
     color: var(--ink-soft);
     margin: clamp(1.4rem, 3vw, 2rem) 0 0;
-    max-width: 38ch;
     text-wrap: pretty;
 }
-.hero-art { margin: 0; }
+.hero-art { margin: clamp(1.4rem, 3vw, 2rem) 0 0; }
 .art { display: block; width: 100%; height: auto; }
 .art .wave { fill: var(--cobalt); }
 .art .sun { fill: var(--sun); }
@@ -464,10 +514,8 @@ a[download]::after {
 .cs-next-img--window { background: #1C1C1E; }
 .card:hover .card-title,
 .cs-next-link:hover .cs-next-name {
-    /* On a colour, cobalt text would be too faint to read; the cobalt
-       goes underneath instead. */
     text-decoration: underline;
-    text-decoration-color: var(--cobalt);
+    text-decoration-color: var(--ink);
     text-decoration-thickness: 2px;
     text-underline-offset: 0.18em;
 }
@@ -478,7 +526,7 @@ a[download]::after {
    contents and a picture of the work.
    ================================================================= */
 .cover {
-    grid-column: 1 / -1;
+    grid-column: 2;
     display: grid;
     grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
     column-gap: clamp(1.5rem, 4vw, 3.5rem);
@@ -495,26 +543,33 @@ a[download]::after {
     align-items: baseline;
     gap: 1rem;
     padding-top: 0.6rem;
-    border-top: 1px solid var(--ink);
+    border-top: 1px solid var(--cobalt);
     margin-bottom: clamp(1.6rem, 4vw, 3rem);
     font-size: var(--t-small);
     color: var(--ink-faint);
 }
-.cover-no { font-weight: 500; color: var(--ink); }
+.cover-no { font-weight: 500; color: var(--cobalt); }
 
-.cover-text { grid-column: 1; min-width: 0; }
+/* The title and its line run across the whole card; the contents and
+   the picture sit side by side beneath. */
+.cover-text { display: contents; }
 .cover-title {
+    grid-column: 1 / -1;
     font-size: var(--t-d2);
     line-height: 1.02;
     letter-spacing: -0.02em;
+    color: var(--cobalt);
     margin: 0 0 0.6rem;
 }
 .cover-title a { text-decoration: none; }
-.cover-title a:hover { color: var(--cobalt); }
+.cover-title a:hover { color: var(--ink); }
+.cover-toc { grid-column: 1; grid-row: 4; align-self: start; }
+.cover-links { grid-column: 1; grid-row: 5; align-self: start; }
 .cover-for {
     font-size: var(--t-lede);
     line-height: 1.35;
     color: var(--ink-soft);
+    grid-column: 1 / -1;
     margin: 0 0 clamp(1.4rem, 3vw, 2rem);
 }
 
@@ -542,15 +597,15 @@ a[download]::after {
 
 .cover-media {
     grid-column: 2;
-    grid-row: 2;
-    align-self: center;
+    grid-row: 4 / span 2;
+    align-self: start;
     display: block;
 }
 .cover-media img {
     width: 100%;
     height: auto;
     border-radius: 3px;
-    outline: 1px solid rgb(var(--ink-rgb) / 0.1);
+    outline: 1px solid var(--hair);
     box-shadow: 0 24px 46px -28px rgb(var(--ink-rgb) / 0.55);
 }
 /* A desktop window keeps its own rounded corners: shadow the shape. */
@@ -571,13 +626,12 @@ a[download]::after {
     grid-template-columns: subgrid;
     margin-top: clamp(4rem, 9vw, 7rem);
 }
-.index > .rail-label { padding-top: 1rem; }
 .toc {
     grid-column: 2;
     list-style: none;
     margin: 0;
     padding: 0;
-    border-top: 1px solid var(--ink);
+    border-top: 1px solid var(--cobalt);
 }
 .toc-row {
     display: grid;
@@ -590,13 +644,13 @@ a[download]::after {
 }
 .toc-row:focus-visible { outline-offset: -2px; }
 .toc-kind { text-align: right; font-size: var(--t-small); line-height: 1.4; color: var(--ink-soft); }
-.toc-name { font-size: var(--t-h3); line-height: 1.12; letter-spacing: -0.01em; }
+.toc-name { font-size: var(--t-h3); line-height: 1.12; letter-spacing: -0.01em; color: var(--cobalt); }
 .toc-year { font-size: var(--t-small); color: var(--ink-faint); white-space: nowrap; }
 .toc-go { justify-self: start; font-size: var(--t-label); font-weight: 500; color: var(--ink-soft); white-space: nowrap; }
 .toc-go.blk { color: var(--paper); }
 .toc-no { justify-self: end; font-size: var(--t-small); font-weight: 500; color: var(--cobalt); }
 .toc-row:hover .toc-name,
-.toc-row:hover .toc-go:not(.blk) { color: var(--cobalt); }
+.toc-row:hover .toc-go:not(.blk) { color: var(--ink); }
 
 /* =================================================================
    PRACTICE — listen, design, build
@@ -609,9 +663,9 @@ a[download]::after {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: clamp(1.6rem, 4vw, 3rem);
 }
-.practice-col { border-top: 1px solid var(--ink); padding-top: 0.8rem; }
+.practice-col { border-top: 1px solid var(--cobalt); padding-top: 0.8rem; }
 .practice-no { font-size: var(--t-small); font-weight: 500; color: var(--cobalt); margin: 0 0 0.2rem; }
-.practice-name { font-size: var(--t-h2); line-height: 1.05; letter-spacing: -0.015em; margin: 0 0 1.1rem; }
+.practice-name { font-size: var(--t-h2); line-height: 1.05; letter-spacing: -0.015em; color: var(--cobalt); margin: 0 0 1.1rem; }
 .practice-list { list-style: none; margin: 0; padding: 0; }
 .practice-list li { font-size: var(--t-small); color: var(--ink-soft); padding: 0.5rem 0; border-top: 1px solid var(--hair); }
 
@@ -652,14 +706,14 @@ a[download]::after {
     mix-blend-mode: multiply;
     pointer-events: none;
 }
-.about-title { font-size: var(--t-h2); line-height: 1.05; letter-spacing: -0.015em; margin: 0 0 1.3rem; }
-.about-text p { line-height: 1.7; color: var(--ink-soft); margin: 0 0 1.1rem; max-width: 50ch; }
-.about-text p:first-of-type { font-size: var(--t-lede); line-height: 1.5; color: var(--ink); max-width: 40ch; }
-.about-text a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--cobalt); text-underline-offset: 3px; }
-.about-text a:hover { color: var(--cobalt); }
+.about-title { font-size: var(--t-h2); line-height: 1.05; letter-spacing: -0.015em; color: var(--cobalt); margin: 0 0 1.3rem; }
+.about-text p { line-height: 1.7; color: var(--ink-soft); margin: 0 0 1.1rem; max-width: 62ch; }
+.about-text p:first-of-type { font-size: var(--t-lede); line-height: 1.5; color: var(--ink); max-width: none; }
+.about-text a { color: var(--cobalt); text-decoration: underline; text-underline-offset: 3px; }
+.about-text a:hover { color: var(--ink); }
 
 /* A client's words — in the second ink, under a rule. */
-.about-quote { margin: 2rem 0 0; padding: 1.1rem 0 0; border-top: 1px solid var(--ink); max-width: 50ch; }
+.about-quote { margin: 2rem 0 0; padding: 1.1rem 0 0; border-top: 1px solid var(--cobalt); }
 .about-text .about-quote p {
     font-size: var(--t-lede);
     line-height: 1.45;
@@ -673,8 +727,9 @@ a[download]::after {
    CONTACT — the back cover, printed in one ink: cobalt on grey, with
    a line of type running up the edge. Hover here turns black.
    ================================================================= */
-.contact { background: var(--grey); color: var(--cobalt); }
+.contact { color: var(--cobalt); }
 .contact-inner {
+    position: relative;
     max-width: var(--maxw);
     margin: 0 auto;
     padding: var(--gap) var(--side) clamp(3rem, 7vw, 5rem);
@@ -682,18 +737,7 @@ a[download]::after {
     grid-template-columns: var(--rail) minmax(0, 1fr);
     column-gap: var(--colgap);
 }
-.contact-edge {
-    grid-column: 1;
-    align-self: stretch;
-    justify-self: start;
-    margin: 0;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    font-size: var(--t-h3);
-    line-height: 1;
-    padding: 0 0.8rem 0.2rem 0;
-    border-right: 1px solid var(--cobalt);
-}
+.contact-edge { grid-column: 1; align-self: start; }
 .contact .rail-label { color: var(--cobalt); margin-bottom: 1.2rem; padding-top: 0; }
 .contact-main { grid-column: 2; min-width: 0; }
 .contact-title { font-size: var(--t-h1); line-height: 1; letter-spacing: -0.025em; margin: 0 0 1.6rem; }
@@ -786,7 +830,7 @@ a[download]::after {
 }
 .cs-no { font-weight: 500; margin-right: 0.6rem; }
 .cs-title { font-size: var(--t-h1); line-height: 1.02; letter-spacing: -0.025em; margin: 0 0 1rem; }
-.cs-sub { font-size: var(--t-lede); line-height: 1.5; color: var(--on-field); max-width: 48ch; margin: 0 0 1.8rem; }
+.cs-sub { font-size: var(--t-lede); line-height: 1.5; color: var(--on-field); margin: 0 0 1.8rem; }
 .cs-meta {
     display: flex;
     flex-wrap: wrap;
@@ -799,30 +843,33 @@ a[download]::after {
 .cs-meta dt { font-size: var(--t-label); color: var(--on-field); margin-bottom: 0.15rem; }
 .cs-meta dd { margin: 0; font-size: var(--t-small); }
 .cs-toplinks { margin: 0; }
+/* On a colour, cobalt type is too faint: buttons print in black there. */
+.cs-head .project-links a { color: var(--ink); }
+.cs-head .project-links a:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 
 .cs-figure { margin: 2rem 0; }
 .cs-figure img { width: 100%; outline: 1px solid var(--hair); }
 .cs-figure--lead { margin: clamp(1.5rem, 4vw, 2.5rem) 0 0; }
 .cs-cap { font-size: var(--t-small); color: var(--ink-faint); margin: 0.7rem 0 0; }
 .cs-cap a { color: var(--ink-soft); text-decoration: underline; text-decoration-color: var(--hair); text-underline-offset: 3px; }
-.cs-cap a:hover { color: var(--cobalt); }
+.cs-cap a:hover { color: var(--ink); }
 
 .cs-section { margin-top: clamp(2.6rem, 6vw, 4rem); }
 .cs-section > .eyebrow { margin-bottom: 0.8rem; }
-.cs-h2 { font-size: var(--t-h2); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 1rem; max-width: 24ch; }
+.cs-h2 { font-size: var(--t-h2); line-height: 1.08; letter-spacing: -0.015em; color: var(--cobalt); margin: 0 0 1rem; }
 .cs-p { line-height: 1.75; color: var(--ink-soft); max-width: 66ch; margin: 0 0 1.1rem; }
 .cs-p strong, .cs-p em { color: var(--ink); font-weight: 600; font-style: normal; }
 .cs-section .project-links { margin-top: 0.3rem; }
 
 /* Pull-quote — a client's words, in the second ink, under a rule. */
-.cs-quote { margin: 2.6rem 0; padding-top: 1.2rem; border-top: 1px solid var(--ink); }
-.cs-quote p { font-size: var(--t-h2); line-height: 1.15; letter-spacing: -0.015em; color: var(--cobalt); margin: 0; max-width: 24ch; }
+.cs-quote { margin: 2.6rem 0; padding-top: 1.2rem; border-top: 1px solid var(--cobalt); }
+.cs-quote p { font-size: var(--t-h2); line-height: 1.15; letter-spacing: -0.015em; color: var(--cobalt); margin: 0; }
 .cs-quote cite { display: block; font-style: normal; font-size: var(--t-small); color: var(--ink-faint); margin-top: 1.1rem; }
 
 /* "In short" — the 60-second read, set as a table of contents. */
 .cs-tldr { margin: clamp(2rem, 5vw, 3rem) 0; }
 .cs-tldr .eyebrow { margin-bottom: 0.9rem; }
-.cs-tldr dl { margin: 0; border-top: 1px solid var(--ink); }
+.cs-tldr dl { margin: 0; border-top: 1px solid var(--cobalt); }
 .cs-tldr dl > div {
     display: grid;
     grid-template-columns: 9rem minmax(0, 1fr);
@@ -852,11 +899,11 @@ a[download]::after {
 .cs-next-for { margin-top: 0.4rem; color: var(--on-field); }
 .cs-next-go { justify-self: start; margin: 1.4rem 0 clamp(1rem, 2.4vw, 1.6rem); }
 .cs-next-img { grid-column: 2; grid-row: 1 / span 4; align-self: end; margin-top: 1.2rem; transform: translateY(10%); }
-.cs-next-all { display: inline-block; margin-top: 1rem; font-size: var(--t-small); text-decoration: none; color: var(--ink-soft); }
-.cs-next-all:hover { color: var(--cobalt); }
+.cs-next-all { display: inline-block; margin-top: 1rem; font-size: var(--t-small); text-decoration: none; color: var(--cobalt); }
+.cs-next-all:hover { color: var(--ink); }
 
 /* ---- Compact list (No. 11, experiments) ------------------------- */
-.compact-list { border-top: 1px solid var(--ink); }
+.compact-list { border-top: 1px solid var(--cobalt); }
 .compact-item {
     display: grid;
     grid-template-columns: 76px minmax(0, 1fr) auto;
@@ -868,7 +915,7 @@ a[download]::after {
 .compact-thumb { display: block; width: 76px; height: 54px; overflow: hidden; background: var(--card); }
 .compact-thumb::after { display: none !important; }
 .compact-thumb img { width: 100%; height: 100%; object-fit: cover; }
-.compact-name { font-size: var(--t-h3); line-height: 1.12; margin: 0 0 0.2rem; }
+.compact-name { font-size: var(--t-h3); line-height: 1.12; color: var(--cobalt); margin: 0 0 0.2rem; }
 .compact-one { font-size: var(--t-small); color: var(--ink-soft); margin: 0; max-width: 52ch; }
 .compact-stack { font-size: var(--t-label); color: var(--ink-faint); margin: 0.35rem 0 0; }
 .compact-links { margin: 0; white-space: nowrap; }
@@ -877,16 +924,16 @@ a[download]::after {
    RÉSUMÉ (screen matches the site; print renders clean on white)
    ================================================================= */
 .resume { max-width: 820px; margin: 0 auto; padding: clamp(2.6rem, 6vw, 4.5rem) var(--side) 4rem; }
-.resume-name { font-size: var(--t-d2); line-height: 1; letter-spacing: -0.02em; margin: 0 0 0.9rem; }
+.resume-name { font-size: var(--t-d2); line-height: 1; letter-spacing: -0.02em; color: var(--cobalt); margin: 0 0 0.9rem; }
 .resume-contact { font-size: var(--t-small); color: var(--ink-soft); margin: 0 0 1.1rem; }
 .resume-contact a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--hair); }
 .resume-contact a::after { display: none !important; }
-.resume-contact a:hover { color: var(--cobalt); border-bottom-color: var(--cobalt); }
+.resume-contact a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 .resume-contact .sep { color: var(--ink-faint); margin: 0 0.5rem; }
-.resume-tagline { font-size: var(--t-lede); line-height: 1.45; max-width: 44ch; margin: 0 0 1.6rem; }
+.resume-tagline { font-size: var(--t-lede); line-height: 1.45; margin: 0 0 1.6rem; }
 .resume-actions { display: flex; gap: 0.6rem; margin: 0 0 0.5rem; }
 .resume-section { margin-top: clamp(2rem, 4vw, 2.8rem); }
-.resume-section > .eyebrow { padding-top: 0.6rem; margin-bottom: 1.2rem; border-top: 1px solid var(--ink); }
+.resume-section > .eyebrow { padding-top: 0.6rem; margin-bottom: 1.2rem; border-top: 1px solid var(--cobalt); }
 .resume-summary { font-size: var(--t-small); line-height: 1.6; color: var(--ink-soft); max-width: 70ch; margin: 0; }
 .resume-entry { margin-bottom: 1.3rem; }
 .resume-entry:last-child { margin-bottom: 0; }
@@ -896,7 +943,7 @@ a[download]::after {
 .resume-entry-meta { font-size: var(--t-small); color: var(--ink-soft); margin: 0.15rem 0 0.5rem; }
 .resume-entry-meta a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--hair); }
 .resume-entry-meta a::after { display: none !important; }
-.resume-entry-meta a:hover { color: var(--cobalt); border-bottom-color: var(--cobalt); }
+.resume-entry-meta a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 .resume-entry ul { margin: 0; padding-left: 1.1rem; font-size: var(--t-small); color: var(--ink-soft); line-height: 1.6; }
 .resume-entry ul li { margin-bottom: 0.3rem; }
 .resume-entry ul li::marker { color: var(--cobalt); }
@@ -946,14 +993,16 @@ a[download]::after {
    RESPONSIVE
    ================================================================= */
 @media (max-width: 980px) {
-    .hero-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 0.7fr); }
+    .hero-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 0.6fr); }
     .cards-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .card { aspect-ratio: 5 / 4; }
     .card-img { width: 78%; margin-left: auto; }
     .cover { grid-template-columns: minmax(0, 1fr); }
-    /* Stacked: number, then the picture, then the words. */
-    .cover-media { grid-column: 1; grid-row: auto; order: 1; margin-bottom: clamp(1.4rem, 4vw, 2rem); }
-    .cover-text { grid-row: auto; order: 2; }
+    /* Stacked: number, title, who it's for, the picture, the contents. */
+    .cover-title, .cover-for, .cover-toc, .cover-links, .cover-media { grid-column: 1; grid-row: auto; }
+    .cover-title { order: 1; } .cover-for { order: 2; } .cover-media { order: 3; }
+    .cover-toc { order: 4; } .cover-links { order: 5; }
+    .cover-media { margin-bottom: clamp(1.4rem, 4vw, 2rem); }
     .toc-row { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.3fr) 5.4rem 1.8rem; }
     .toc-go { display: none; }
 }
@@ -1008,15 +1057,30 @@ a[download]::after {
     .menu-open .sound-toggle:hover { color: var(--ink); }
     .menu-open .sound-toggle[aria-pressed="true"] { color: var(--grey); }
 
-    /* One column: the rail becomes a line above the content. */
+    /* One column: the edge names lie down over a rule, and the rule
+       down the left edge goes. */
     .section, .contact-inner { grid-template-columns: minmax(0, 1fr); }
     .section > *, .section-head > *, .section-head > .rail-label, .contact-main { grid-column: 1; }
     .section-head { grid-template-columns: minmax(0, 1fr); }
     .section-head > .rail-label { grid-row: auto; }
-    .rail-label { padding-top: 0; margin-bottom: 1rem; }
-    .rail-label span { display: inline; margin: 0 0 0 0.6rem; }
+    .hero, .hero-inner { grid-template-columns: minmax(0, 1fr); }
+    .hero > *, .hero > .rail-label { grid-column: 1; grid-row: auto; }
+    .hero::after, .section::after, .contact-inner::after { display: none; }
+    .hero > .rail-label,
+    .section-head > .rail-label,
+    .index > .rail-label,
+    .contact-edge {
+        writing-mode: horizontal-tb;
+        transform: none;
+        justify-self: stretch;
+        margin: 0 0 1.4rem;
+        padding: 0 0 0.6rem;
+        border-bottom: 1px solid var(--cobalt);
+        font-size: var(--t-lede);
+    }
 
     .hero-inner { grid-template-columns: minmax(0, 1fr); }
+    .hero-title, .hero-lede, .hero-art { grid-column: 1; grid-row: auto; }
     .hero-art { order: -1; width: min(62%, 320px); margin: 0 0 clamp(1.6rem, 5vw, 2.4rem) auto; }
 
     .index { grid-template-columns: minmax(0, 1fr); }
@@ -1027,17 +1091,6 @@ a[download]::after {
     .about > .section-head, .about-body { grid-row: auto; }
     .duo { max-width: 420px; aspect-ratio: 1 / 1; }
 
-    .contact-edge {
-        grid-column: 1;
-        writing-mode: horizontal-tb;
-        transform: none;
-        border-right: 0;
-        border-bottom: 1px solid var(--cobalt);
-        padding: 0 0 0.6rem;
-        margin-bottom: 2rem;
-        font-size: var(--t-lede);
-        justify-self: stretch;
-    }
     .contact-cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
     .colophon { grid-column: 1 / -1; }
     .cs-head { min-height: 0; }

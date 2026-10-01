@@ -4,10 +4,17 @@ Plain HTML/CSS/JS — no build step, no framework. Deploys as-is to GitHub Pages
 
 ## The design idea
 
-**Programme** — printed matter, not an app. One typeface (**Host Grotesk**, after the
-Indoek Gallery poster), two inks (black and cobalt), cream paper, sentence case, and a
-set of cards after the Transient Senses programme:
+**Programme** — printed matter, not an app, and printed like the back cover
+throughout: cobalt on a cool grey. One typeface (**Host Grotesk**, after the Indoek
+Gallery poster), two inks (cobalt for the frame — titles, labels, rules, links,
+buttons — and black for reading), sentence case, and colour cards after the
+Transient Senses programme:
 
+- **The frame** — one cobalt rule runs down the left edge from the header to the
+  footer; each section's name runs up beside it, as on the poster, and a cobalt rule
+  crosses the top of each section. On small screens the names lie down over a rule.
+- **Full-width lines** — titles and intros run the width of their column instead of
+  breaking early; the hero line holds one line on a laptop.
 - **Cards** — each selected project is one flat colour card with the same anatomy:
   number and year over a rule, the title (always two lines tall), who it's for, and
   the work rising from the bottom edge in an identical frame (`images/thumbs/`).
@@ -17,17 +24,17 @@ set of cards after the Transient Senses programme:
 - The colours (`--f-*`) share one lightness and a low chroma, so they read as one set.
 - The hero picture is cut paper: a red sun rising behind a cobalt wave (inline SVG).
   The red is used nowhere else.
-- Cobalt is the only interaction colour: links and buttons turn cobalt on hover
-  (on the cobalt-on-grey back cover, they turn black).
+- Anything you can press is cobalt and turns black on hover. On a colour card,
+  buttons print in black, since cobalt type is too faint there.
 - On small screens the menu is a page of its own: solid cobalt, links ruled off and
   numbered like a table of contents.
 
 The site is **one numbered catalogue** on one rail (labels left, content right):
 hero and card fronts, covers 01–04, contents 05–11 (kind, title, year, number),
-practice, about (a cobalt duotone portrait), and contact as the back cover.
+practice, about (a cobalt duotone portrait), and contact.
 
 One link language throughout, with no arrow characters in the markup:
-- **Inside the site** (case studies, the résumé, "See all", "Next") — a solid black
+- **Inside the site** (case studies, the résumé, "See all", "Next") — a solid cobalt
   block (`.blk`).
 - **Leaves the site** — the same square box, outlined, with the boxed outbound arrow
   from Being Sound.
