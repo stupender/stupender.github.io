@@ -26,10 +26,12 @@ Transient Senses programme:
   their contents and a picture of the work.
 - **Back** — the case study opens on the card's colour, flat, like the back of the
   card, and ends on the next project's card (01 → 05 → back to 01).
-- The colours (`--f-*`) share one lightness and a low chroma, so they read as one set.
+- The colours (`--f-*`) are chosen against each screenshot so the work stands out: cobalt
+  (01), saffron (02), terracotta (03), sage (04), khaki (05), slate (11). Cobalt is the one
+  dark colour, so its card, case-study header and next card add `.on-dark` for light type.
 - **Pairs** — below the header, a case study's summary ("In short") and pull-quote sit on
   a counterpart colour (`--pair`, from `--p-*`), the way the 1971 catalogue pairs an
-  orange cover with a khaki one: orange/khaki, sky/sand, teal/clay, coral/sage.
+  orange cover with a khaki one: cobalt/butter, saffron/slate, terracotta/teal, sage/mauve.
 - The hero picture is cut paper: a red sun rising behind a cobalt wave (inline SVG).
   The red is used nowhere else.
 - Anything you can press is cobalt and turns black on hover. On a colour card,

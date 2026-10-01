@@ -50,28 +50,31 @@
     --hair:       rgb(var(--cobalt-rgb) / 0.26);
     --sun:        #E24A2B;                 /* the sun in the picture only  */
 
-    /* Fields — one colour per project, for its card and the back of the
-       card (its case study). One lightness (OKLCH 0.76), low chroma,
-       blue held lower still, so they read as one muted set. Ink on each
-       is ≥ 7.8 : 1; secondary text is ink at 78% (≥ 5.1 : 1). */
-    --f-coral:    #E59C8F;
-    --f-orange:   #DBA475;
-    --f-mustard:  #CBAD6D;
-    --f-sage:     #9ABE87;
-    --f-teal:     #70C3B3;
-    --f-sky:      #86B8DA;
+    /* Fields — one colour per project, chosen against its screenshot
+       so the work stands out: the colour of its card and of the top of
+       its case study. Ink on each ≥ 6.7 : 1, ink at 78% ≥ 4.5 : 1.
+       Cobalt is the one dark field: type on it prints light (.on-dark,
+       grey on cobalt 6.4 : 1, at 82% 4.9 : 1). */
+    --f-sky:        #86B8DA;
+    --f-cobalt:     var(--cobalt);
+    --f-saffron:    #F3B63F;
+    --f-terracotta: #EA8B62;
+    --f-sage:       #9DC08E;
+    --f-khaki:      #ABA884;
+    --f-slate:      #99AACB;
     /* Pairs — each case study's lower panels (the summary, the client's
-       words) take a counterpart to its card colour, the way the 1971
-       catalogue pairs an orange cover with a khaki one. Same rules: ink
-       ≥ 6.9 : 1, ink at 78% ≥ 4.6 : 1. */
-    --p-khaki:    #ABA884;                 /* with orange  (01) */
-    --p-sand:     #D9BC86;                 /* with sky     (02) */
-    --p-clay:     #DE9F86;                 /* with teal    (03) */
-    --p-sage2:    #A5BC92;                 /* with coral   (04) */
-    --p-mauve:    #CDA3AE;                 /* with sage    (05) */
-    --p-slate:    #99AACB;                 /* with mustard (11) */
-    --on-field:   rgb(var(--ink-rgb) / 0.78);
-    --field-rule: rgb(var(--ink-rgb) / 0.3);
+       words) take a counterpart to its field, the way the 1971 catalogue
+       pairs an orange cover with a khaki one. Same contrast rules. */
+    --p-sand:       #D9BC86;               /* with sky, with slate     */
+    --p-butter:     #E9CB80;               /* with cobalt              */
+    --p-slate:      #A3B3D2;               /* with saffron             */
+    --p-teal:       #8CC3B4;               /* with terracotta          */
+    --p-mauve:      #CDA3AE;               /* with sage                */
+    --p-orange:     #DBA475;               /* with khaki               */
+    /* Type on a field: black by default, light on a dark field. */
+    --on:           var(--ink);
+    --on-soft:      rgb(var(--ink-rgb) / 0.78);
+    --on-rule:      rgb(var(--ink-rgb) / 0.3);
 
     --font: 'Host Grotesk', 'Helvetica Neue', Arial, sans-serif;
 
@@ -488,7 +491,7 @@ a[download]::after {
     aspect-ratio: 4 / 5;
     padding: clamp(0.95rem, 1.6vw, 1.25rem) clamp(0.95rem, 1.6vw, 1.25rem) 0;
     background: var(--field);
-    color: var(--ink);
+    color: var(--on);
     text-decoration: none;
     overflow: hidden;
 }
@@ -496,7 +499,7 @@ a[download]::after {
     display: flex;
     justify-content: space-between;
     padding-bottom: 0.55rem;
-    border-bottom: 1px solid var(--ink);
+    border-bottom: 1px solid var(--on);
     font-size: var(--t-small);
     font-variant-numeric: tabular-nums;
 }
@@ -515,7 +518,7 @@ a[download]::after {
     margin-top: 0.35rem;
     font-size: var(--t-small);
     line-height: 1.35;
-    color: var(--on-field);
+    color: var(--on-soft);
 }
 .card-img,
 .cs-next-img {
@@ -534,7 +537,7 @@ a[download]::after {
 .card:hover .card-title,
 .cs-next-link:hover .cs-next-name {
     text-decoration: underline;
-    text-decoration-color: var(--ink);
+    text-decoration-color: var(--on);
     text-decoration-thickness: 2px;
     text-underline-offset: 0.18em;
 }
@@ -840,34 +843,34 @@ a[download]::after {
     margin-bottom: clamp(2rem, 5vw, 3rem);
     padding: clamp(1.2rem, 3vw, 2rem) clamp(1.2rem, 3.5vw, 2.6rem) clamp(1.4rem, 3.5vw, 2.4rem);
     background: var(--field, var(--card));
-    color: var(--ink);
+    color: var(--on);
 }
 .cs-head .eyebrow {
     font-size: var(--t-small);
     font-weight: 400;
-    color: var(--ink);
+    color: var(--on);
     padding-top: 0.6rem;
-    border-top: 1px solid var(--ink);
+    border-top: 1px solid var(--on);
     margin-bottom: clamp(1.8rem, 5vw, 3.2rem);
 }
 .cs-no { font-weight: 500; margin-right: 0.6rem; }
 .cs-title { font-size: var(--t-h1); line-height: 1.02; letter-spacing: -0.025em; margin: 0 0 1rem; }
-.cs-sub { font-size: var(--t-lede); line-height: 1.5; color: var(--on-field); margin: 0 0 1.8rem; }
+.cs-sub { font-size: var(--t-lede); line-height: 1.5; color: var(--on-soft); margin: 0 0 1.8rem; }
 .cs-meta {
     display: flex;
     flex-wrap: wrap;
     gap: 0.8rem 2.6rem;
     margin: auto 0 1.4rem;
     padding: 1rem 0;
-    border-top: 1px solid var(--field-rule);
-    border-bottom: 1px solid var(--field-rule);
+    border-top: 1px solid var(--on-rule);
+    border-bottom: 1px solid var(--on-rule);
 }
-.cs-meta dt { font-size: var(--t-label); color: var(--on-field); margin-bottom: 0.15rem; }
+.cs-meta dt { font-size: var(--t-label); color: var(--on-soft); margin-bottom: 0.15rem; }
 .cs-meta dd { margin: 0; font-size: var(--t-small); }
 .cs-toplinks { margin: 0; }
 /* On a colour, cobalt type is too faint: buttons print in black there. */
-.cs-head .project-links a { color: var(--ink); }
-.cs-head .project-links a:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.cs-head .project-links a { color: var(--on); }
+.cs-head .project-links a:hover { background: var(--on); border-color: var(--on); color: var(--field); }
 
 .cs-figure { margin: 2rem 0; }
 .cs-figure img { width: 100%; outline: 1px solid var(--hair); }
@@ -903,6 +906,26 @@ a[download]::after {
 .cs-tldr dd { margin: 0; line-height: 1.55; color: var(--ink-soft); max-width: 66ch; }
 .cs-tldr dd strong { color: var(--ink); }
 
+/* Light type on a dark field (cobalt). Panels and the next card set
+   their own type, so a dark top never leaks onto a light panel. */
+.on-dark {
+    --on:      var(--paper);
+    --on-soft: rgb(var(--paper-rgb) / 0.82);
+    --on-rule: rgb(var(--paper-rgb) / 0.4);
+}
+.cs-tldr, .cs-quote, .cs-next-link {
+    --on:      var(--ink);
+    --on-soft: rgb(var(--ink-rgb) / 0.78);
+    --on-rule: rgb(var(--ink-rgb) / 0.3);
+}
+.cs-next-link.on-dark {
+    --on:      var(--paper);
+    --on-soft: rgb(var(--paper-rgb) / 0.82);
+    --on-rule: rgb(var(--paper-rgb) / 0.4);
+}
+/* A block on a cobalt card turns paper, so it doesn't vanish. */
+.cs-next-link.on-dark .blk { background: var(--paper); border-color: var(--paper); color: var(--cobalt); }
+
 /* The lower panels: on a case study with a pair colour, the summary
    and the client's words sit on that counterpart, full width, set like
    the header above them — a rule, then the words, all in black. */
@@ -913,14 +936,14 @@ a[download]::after {
     border-top: 0;
 }
 .cs[style] .cs-head + .cs-tldr { margin-top: calc(-1 * clamp(2rem, 5vw, 3rem) + clamp(0.8rem, 1.8vw, 1.25rem)); }
-.cs[style] .cs-tldr .eyebrow { color: var(--ink); padding-top: 0.6rem; border-top: 1px solid var(--ink); margin-bottom: 1.2rem; }
+.cs[style] .cs-tldr .eyebrow { color: var(--on); padding-top: 0.6rem; border-top: 1px solid var(--on); margin-bottom: 1.2rem; }
 .cs[style] .cs-tldr dl { border-top: 0; }
-.cs[style] .cs-tldr dl > div { border-bottom-color: var(--field-rule); }
+.cs[style] .cs-tldr dl > div { border-bottom-color: var(--on-rule); }
 .cs[style] .cs-tldr dl > div:last-child { border-bottom: 0; padding-bottom: 0; }
-.cs[style] .cs-tldr dt { color: var(--on-field); }
-.cs[style] .cs-tldr dd { color: var(--ink); }
-.cs[style] .cs-quote p { color: var(--ink); padding-top: 0.6rem; border-top: 1px solid var(--ink); }
-.cs[style] .cs-quote cite { color: var(--on-field); }
+.cs[style] .cs-tldr dt { color: var(--on-soft); }
+.cs[style] .cs-tldr dd { color: var(--on); }
+.cs[style] .cs-quote p { color: var(--on); padding-top: 0.6rem; border-top: 1px solid var(--on); }
+.cs[style] .cs-quote cite { color: var(--on-soft); }
 
 /* Next — the next project's card, in its colour. */
 .cs-next { margin-top: clamp(3rem, 7vw, 5rem); }
@@ -930,14 +953,14 @@ a[download]::after {
     column-gap: clamp(1.2rem, 4vw, 3rem);
     padding: clamp(1rem, 2.4vw, 1.6rem) clamp(1rem, 2.4vw, 1.6rem) 0;
     background: var(--field, var(--card));
-    color: var(--ink);
+    color: var(--on);
     text-decoration: none;
     overflow: hidden;
 }
 .cs-next-link > span:not(.cs-next-img) { grid-column: 1; }
-.cs-next-label { padding-bottom: 0.55rem; border-bottom: 1px solid var(--ink); font-size: var(--t-small); margin-bottom: 0.7rem; }
+.cs-next-label { padding-bottom: 0.55rem; border-bottom: 1px solid var(--on); font-size: var(--t-small); margin-bottom: 0.7rem; }
 .cs-next-name { font-size: var(--t-h3); line-height: 1.2; letter-spacing: -0.01em; }
-.cs-next-for { margin-top: 0.4rem; color: var(--on-field); }
+.cs-next-for { margin-top: 0.4rem; color: var(--on-soft); }
 .cs-next-go { justify-self: start; margin: 1.4rem 0 clamp(1rem, 2.4vw, 1.6rem); }
 .cs-next-img { grid-column: 2; grid-row: 1 / span 4; align-self: end; margin-top: 1.2rem; transform: translateY(10%); }
 .cs-next-all { display: inline-block; margin-top: 1rem; font-size: var(--t-small); text-decoration: none; color: var(--cobalt); }
