@@ -16,9 +16,7 @@
      for, and the work rising from the bottom edge.
    · BACK  — the case study opens on that same colour, like the back of
      the card, and ends on the next project's card.
-   · The picture in the hero is a zone plate: a still centre and nine
-     rings, one per loop of the ambient piece, each swelling with its
-     own loop when the sound is on.
+   · The hero's right-hand column is held for a photo.
    · Anything you can press is cobalt and turns black on hover.
    · Titles run the full width of their column. Sentence case. Nothing
      moves on hover.
@@ -55,7 +53,7 @@
     --label:      var(--cobalt);           /* section names, numbers       */
     --hover:      var(--ink);              /* anything you touch, on paper */
     --hover-dark: var(--ink);              /* …on the cobalt menu page     */
-    --sun:        #E24A2B;                 /* the sun in the picture only  */
+    --sun:        #E24A2B;                 /* the one warm accent          */
 
     /* Fields — one colour per project, chosen against its screenshot
        so the work stands out: the colour of its card and of the top of
@@ -469,8 +467,8 @@ a[download]::after {
 }
 
 /* =================================================================
-   HERO — the statement beside the cut-paper picture, then one card
-   front per selected project.
+   HERO — the statement, with its right-hand column held for a photo,
+   then one card per selected project.
    ================================================================= */
 .hero {
     position: relative;
@@ -488,15 +486,13 @@ a[download]::after {
 .hero-inner {
     display: grid;
     grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
-    grid-template-rows: auto auto 1fr;   /* the rings' extra height goes below the caption */
     column-gap: var(--colgap);
     align-items: start;
 }
 .hero-copy { display: contents; }
 .hero-title { grid-column: 1 / -1; }
 .hero-lede { grid-column: 1; grid-row: 2; }
-.hero-art { grid-column: 2; grid-row: 2 / span 2; justify-self: end; width: 100%; max-width: 21rem; }
-.art-cap { grid-column: 1; grid-row: 3; align-self: start; }
+.hero-art { grid-column: 2; grid-row: 2; }
 .hero-title {
     /* Sized to hold the line on one line on a laptop; if it must
        break (tablet, phone), it breaks into even halves. */
@@ -515,36 +511,8 @@ a[download]::after {
     text-wrap: pretty;
 }
 .hero-art { margin: clamp(1.4rem, 3vw, 2rem) 0 0; }
-.art { display: block; width: 100%; height: auto; }
-.art .sun { fill: var(--sun); }
-/* The rings — a zone plate, one ring per loop of the ambient piece;
-   script.js swells each one with its own loop. */
-.art-rings .ring { fill: none; stroke: var(--cobalt); }
-.art-cap {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem 0.9rem;
-    margin: clamp(1.2rem, 2.4vw, 1.6rem) 0 0;
-    font-size: var(--t-small);
-    color: var(--ink-soft);
-}
-.art-listen {
-    font-family: var(--font);
-    font-size: var(--t-label);
-    font-weight: 500;
-    line-height: 1;
-    padding: 0.75em 1.05em 0.72em;
-    min-width: 5.2em;
-    background: transparent;
-    color: var(--cobalt);
-    border: 1px solid currentColor;
-    border-radius: 0;
-    cursor: pointer;
-}
-.art-listen:hover,
-.art-listen[aria-pressed="true"] { background: var(--cobalt); border-color: var(--cobalt); color: var(--paper); }
-.art-listen[aria-pressed="true"]:hover { background: var(--hover); border-color: var(--hover); }
+/* Held for a photo (see the comment in index.html). */
+.hero-art img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
 
 /* ---- The cards ------------------------------------------------------
    One flat colour per project, after the Transient Senses programme,
@@ -1219,8 +1187,8 @@ a[download]::after {
         font-size: var(--t-lede);
     }   /* no underline: the section's own top rule already frames the name */
 
-    .hero-inner { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
-    .hero-title, .hero-lede, .hero-art, .art-cap { grid-column: 1; grid-row: auto; }
+    .hero-inner { grid-template-columns: minmax(0, 1fr); }
+    .hero-title, .hero-lede, .hero-art { grid-column: 1; grid-row: auto; }
     .hero-art { order: -1; width: min(62%, 320px); margin: 0 0 clamp(1.6rem, 5vw, 2.4rem) auto; }
 
     .index { grid-template-columns: minmax(0, 1fr); }
