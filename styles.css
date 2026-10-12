@@ -151,6 +151,90 @@
 :root[data-palette="neutral"] .card-img--window,
 :root[data-palette="neutral"] .cs-next-img--window { outline: 1px solid rgb(var(--paper-rgb) / 0.18); }
 
+/* ---- Paper (data-palette="paper" on <html>) -----------------------
+   After the "Form Research" posters: kraft paper with real grain, two
+   tones (ink on paper), one terracotta, and short titles in bold caps.
+   Same structure as the other palettes; colours, texture and the
+   treatment of titles are all that change. Every text colour passes AA
+   on the darkest patch of the paper as well as on its average. */
+:root[data-palette="paper"] {
+    --paper-rgb:  227 212 188;             /* #E3D4BC, kraft                  */
+    --ink-rgb:    27 26 24;                /* #1B1A18                11.9 : 1 */
+    --ink-soft:   #3B362F;                 /*                         8.2 : 1 */
+    --ink-faint:  #4A443B;                 /*  6.5 : 1, 4.9 on the darkest mottle */
+    --card:       #EBDFCB;
+    --cobalt-rgb: 27 26 24;                /* the frame prints in ink         */
+    --hair:       rgb(var(--ink-rgb) / 0.22);
+    --sun:        #B04B2E;                 /* terracotta, the one colour      */
+    --label:      #7A2F18;                 /* terracotta deep enough for type:
+                                              6.3 : 1, 4.8 on the darkest mottle */
+    --hover:      #7A2F18;
+    --hover-dark: #E07B55;                 /* terracotta on the ink cards 5.7 */
+    --back:       #D8C8AE;                 /* the back cover, a shade down    */
+    --charcoal:   #1F1D1A;
+    --stone:      #D2C1A6;                 /* ink 9.9 : 1                     */
+    --f-sky: var(--charcoal); --f-cobalt: var(--charcoal); --f-saffron: var(--charcoal);
+    --f-terracotta: var(--charcoal); --f-sage: var(--charcoal); --f-khaki: var(--charcoal); --f-slate: var(--charcoal);
+    --p-sand: var(--stone); --p-butter: var(--stone); --p-slate: var(--stone);
+    --p-teal: var(--stone); --p-mauve: var(--stone); --p-orange: var(--stone);
+    --grain: url("images/paper-grain.png");
+    --mottle: url("images/paper-mottle.png");
+}
+/* The paper itself: fine grain over slow mottling, on every ground. */
+:root[data-palette="paper"] body,
+:root[data-palette="paper"] .site-header,
+:root[data-palette="paper"] .contact,
+:root[data-palette="paper"] .site-footer,
+:root[data-palette="paper"] .site-nav.open {
+    background-image: var(--grain), var(--mottle);
+    background-size: 256px 256px, 1100px 1100px;
+}
+:root[data-palette="paper"] .card,
+:root[data-palette="paper"] .cs-head,
+:root[data-palette="paper"] .cs-next-link,
+:root[data-palette="paper"] .cs-tldr,
+:root[data-palette="paper"] .cs-quote { background-image: var(--grain); background-size: 256px 256px; }
+/* Ink cards, case-study tops and next cards: paper-coloured type. */
+:root[data-palette="paper"] .card,
+:root[data-palette="paper"] .cs-head,
+:root[data-palette="paper"] .cs-next-link {
+    --on:      #EFE5D4;
+    --on-soft: rgb(239 229 212 / 0.82);
+    --on-rule: rgb(239 229 212 / 0.4);
+}
+:root[data-palette="paper"] .cs-head .eyebrow { color: var(--hover-dark); }
+:root[data-palette="paper"] .cs-next-link .blk { background: #EFE5D4; border-color: #EFE5D4; color: var(--ink); }
+:root[data-palette="paper"] .cs-next-link:hover .blk { background: var(--hover-dark); border-color: var(--hover-dark); color: var(--ink); }
+:root[data-palette="paper"] .card-img--window,
+:root[data-palette="paper"] .cs-next-img--window { outline: 1px solid rgb(239 229 212 / 0.2); }
+/* Short titles in bold caps, tight, as on the poster's masthead. */
+:root[data-palette="paper"] .wordmark,
+:root[data-palette="paper"] .hero-title,
+:root[data-palette="paper"] .section-title,
+:root[data-palette="paper"] .practice-name,
+:root[data-palette="paper"] .about-title,
+:root[data-palette="paper"] .contact-title,
+:root[data-palette="paper"] .resume-name {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 0.98;
+}
+:root[data-palette="paper"] .wordmark { font-size: var(--t-body); line-height: 1.02; letter-spacing: 0; }
+:root[data-palette="paper"] .hero-title { font-size: clamp(2.4rem, 5.4vw, 4.6rem); }
+/* Project names stay in their own case: they are names, not headings. */
+:root[data-palette="paper"] .cover-title,
+:root[data-palette="paper"] .cs-title { font-weight: 500; }
+/* The hero form, after Form Research 8. */
+:root[data-palette="paper"] .art-form .band { fill: var(--ink); }
+:root[data-palette="paper"] .art-form .sun { fill: var(--sun); }
+.art-form { display: block; width: 100%; height: auto; }
+/* The form belongs to the paper palette; elsewhere the column stays empty. */
+:root:not([data-palette="paper"]) .hero-form { display: none; }
+.wordmark span { white-space: nowrap; }
+:root[data-palette="paper"] .wordmark span { display: block; }
+.hero-art:has(.art-form) { align-self: center; }
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 [id] { scroll-margin-top: clamp(5rem, 8vw, 6.5rem); }

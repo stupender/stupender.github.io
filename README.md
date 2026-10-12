@@ -65,6 +65,16 @@ To return to the colour version (cobalt, saffron, terracotta, sage), remove the
 attribute from each page. The link-preview card and résumé PDF are generated from the
 neutral pages; regenerate them if you switch.
 
+## Paper version
+
+A third palette, after the "Form Research" posters: kraft paper (#E3D4BC) with real
+grain (`images/paper-grain.png`) and mottling (`images/paper-mottle.png`, seamless),
+two tones (ink #1B1A18 on paper), one terracotta (#B04B2E for the form; #7A2F18 for type,
+deep enough to pass AA on the darkest mottle), and short titles in bold caps. The name
+stacks into two lines, like the poster's masthead, and the hero shows a split-ring form
+drawn after the poster (inline SVG). To use it, set `data-palette="paper"` on `<html>`
+on every page; the form and the stacked name appear only in this palette.
+
 ## Files
 
 | File | What it holds |
