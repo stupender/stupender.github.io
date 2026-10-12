@@ -68,12 +68,13 @@ neutral pages; regenerate them if you switch.
 ## Paper version
 
 A third palette, after the "Form Research" posters: kraft paper (#E3D4BC) with real
-grain (`images/paper-grain.png`) and mottling (`images/paper-mottle.png`, seamless),
+grain (`images/paper-grain.png`),
 two tones (ink #1B1A18 on paper), one terracotta (#B04B2E for the form; #7A2F18 for type,
-deep enough to pass AA on the darkest mottle), and short titles in bold caps. The name
-stacks into two lines, like the poster's masthead, and the hero shows a split-ring form
-drawn after the poster (inline SVG). To use it, set `data-palette="paper"` on `<html>`
-on every page; the form and the stacked name appear only in this palette.
+deep enough to pass AA). Type follows one standard: names and short titles in bold caps,
+labels in small spaced caps, sentences as written. The hero shows a circle of Lake
+Michigan from the portrait, printed as one ink (`images/hero-lake.png`, used as a mask).
+To use it, set `data-palette="paper"` on `<html>` on every page; the print appears only
+in this palette.
 
 ## Files
 
