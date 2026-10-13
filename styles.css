@@ -153,7 +153,7 @@
 
 /* ---- Paper (data-palette="paper" on <html>) -----------------------
    After the "Form Research" posters: kraft paper with real grain, two
-   tones (ink on paper), one terracotta, and titles in bold caps.
+   tones (ink on paper), one navy, and titles in bold caps.
    Same structure as the other palettes; colours, texture and the
    treatment of titles are all that change. Every text colour passes AA. */
 :root[data-palette="paper"] {
@@ -164,11 +164,10 @@
     --card:       #EBDFCB;
     --cobalt-rgb: 27 26 24;                /* the frame prints in ink         */
     --hair:       rgb(var(--ink-rgb) / 0.22);
-    --sun:        #B04B2E;                 /* terracotta, the one colour      */
-    --label:      #7A2F18;                 /* terracotta deep enough for type:
-                                              6.3 : 1, 5.4 on the back cover   */
-    --hover:      #7A2F18;
-    --hover-dark: #E07B55;                 /* terracotta on the ink cards 5.7 */
+    --sun:        #173D72;                 /* navy, from the circle prints    */
+    --label:      #173D72;                 /* navy type: 7.4 : 1, 6.6 on the back cover */
+    --hover:      #173D72;
+    --hover-dark: #8AABDB;                 /* light navy on the ink cards 7.2 */
     --back:       #D8C8AE;                 /* the back cover, a shade down    */
     --charcoal:   #1F1D1A;
     --stone:      #D2C1A6;                 /* ink 9.9 : 1                     */
@@ -315,7 +314,7 @@
 .hero-print .print {
     display: block;
     aspect-ratio: 1;
-    background: var(--grain), var(--ink);
+    background: var(--grain), var(--sun);
     -webkit-mask: url("images/hero-lake.png") center / contain no-repeat;
             mask: url("images/hero-lake.png") center / contain no-repeat;
 }
