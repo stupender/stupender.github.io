@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Case study — Fretboard Constellations</title>
-    <meta name="description" content="Case study: Fretboard Constellations — an interactive guitar-theory instrument designed for the teaching room. Product design and build by Stu Pender.">
+    <meta name="description" content="Case study: Fretboard Constellations — an interactive guitar-theory instrument designed for the teaching room, with a function engine that names what every chord is doing in a key. Product design and build by Stu Pender.">
 
     <!-- Link previews (Open Graph + Twitter/X) -->
     <meta property="og:type" content="article">
@@ -73,7 +73,7 @@
                     <div><dt>Stack</dt><dd>TypeScript · React · Vite · Web Audio · VexFlow</dd></div>
                 </dl>
                 <p class="project-links process-links cs-toplinks">
-                    <a href="https://stupender.github.io/method" target="_blank" rel="noopener">Live demo</a>
+                    <a href="https://beingsound.studio/fretboard-constellations/" target="_blank" rel="noopener">Live demo</a>
                     <a href="https://github.com/stupender/method" target="_blank" rel="noopener">Source</a>
                 </p>
             </header>
@@ -96,7 +96,7 @@
                     </div>
                     <div>
                         <dt>The outcome</dt>
-                        <dd>A deployed, in-use instrument on a <strong>theory-as-data engine</strong> (new scales, chords, and tunings are data files, not code) — scales, chords, and a live Harmony view, all playable across the neck with notation and TAB.</dd>
+                        <dd>A deployed, in-use instrument on a <strong>theory-as-data engine</strong> (new scales, chords, tunings — even a new instrument — are data files, not code), with a <strong>function engine</strong> that reads a progression and names what every chord is doing in the key.</dd>
                     </div>
                 </dl>
             </div>
@@ -181,6 +181,15 @@
                     candidates still in play, and what just narrowed them. The student watches the
                     engine run. It's the thing that makes it <em>this</em> app and not a chord chart.
                 </p>
+                <p class="cs-p">
+                    The band is built, in a lead-sheet workbench called Play that isn't switched
+                    on in the public version yet, and one decision made it teach. The chord-by-chord
+                    analysis does <em>not</em> live in the strip — it is drawn
+                    <strong>on the bars themselves</strong>, so an accented <code>V7/ii</code> sits
+                    directly under the A7 that is doing it, and changing which key you are reading
+                    in re-labels the whole score in place. Analysis in a side panel asks a student
+                    to hold two things at once; analysis on the chord is just a caption.
+                </p>
             </section>
 
             <!-- ============ CONSTELLATIONS ============ -->
@@ -202,6 +211,66 @@
                 </figure>
             </section>
 
+            <!-- ============ THE FUNCTION ENGINE ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">The analysis layer</p>
+                <h2 class="cs-h2">A key that bends instead of breaking</h2>
+                <p class="cs-p">
+                    The hardest problem wasn't drawing shapes — it was teaching the app to say what
+                    a chord is <em>doing</em>. Naming one chord's role is a lookup. Naming the roles
+                    across a whole progression means choosing a key first, and real music makes that
+                    a judgement call rather than a fact.
+                </p>
+                <p class="cs-p">
+                    The naive version fails in a way that is obvious the moment you teach with it:
+                    one chord from outside the key disqualifies the key, so a perfectly ordinary
+                    tune reports no key at all — or flips to a new one every other bar. So the
+                    engine <strong>ranks keys by how well they explain the whole progression</strong>
+                    rather than testing them for purity. An out-of-key chord reads as a
+                    <em>visitor</em>: it costs the key some confidence, it doesn't kill it. Each
+                    chord is then read nearest-first — diatonic, then secondary dominant, then
+                    borrowed, then tritone substitution — so the app reaches for the ordinary
+                    explanation before the exotic one, which is exactly what a teacher does.
+                </p>
+                <p class="cs-p">
+                    That tolerance is a pedagogical position, not a technical convenience. It lets
+                    the app hold several readings at once and show the student a
+                    <em>hypothesis being weighed</em> instead of a verdict being announced — and
+                    because every surface that names a function runs the same engine, the score, the
+                    strip and the reveal can never contradict each other.
+                </p>
+            </section>
+
+            <!-- ============ THE CONTROL GRAMMAR ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">The design system</p>
+                <h2 class="cs-h2">Two visual languages, sharing one box</h2>
+                <p class="cs-p">
+                    The app had a tidy rule: a rule under the word meant <em>pick exactly one</em>,
+                    a dot before it meant <em>pick any number</em>. Defensible on paper, and wrong in
+                    the panel — because a control box holding both marks read as two designs stacked
+                    in the same container. The mark was carrying information nobody needed at the
+                    cost of the thing everybody sees.
+                </p>
+                <p class="cs-p">
+                    Every choice now wears the same dot, lit like an indicator lamp when it's
+                    chosen. What's lost is that the mark no longer announces whether a row takes one
+                    answer or several — but <strong>the row already says so</strong>, because a
+                    pick-one row never has two dots lit. The dot was also the older, better-known
+                    convention sitting in plain sight: a radio button <em>is</em> a filled dot, and
+                    always has been.
+                </p>
+                <p class="cs-p">
+                    The same audit sorted the navigation into four scopes that had been quietly
+                    collapsed. A “Mode” row had been living <em>inside</em> the control panel while
+                    deciding which rows existed beneath it — a control that rewrites its own
+                    container can't sit inside it. Worse, in an app that teaches modes, a row called
+                    Mode that wasn't about modes is a collision you can't explain away. The rule that
+                    settled it: <strong>the navigation says what you're doing; the panel says what
+                    you're doing it to.</strong>
+                </p>
+            </section>
+
             <!-- ============ VISUAL DIRECTION ============ -->
             <section class="cs-section">
                 <p class="eyebrow">The look — “Paper &amp; Night”</p>
@@ -219,15 +288,32 @@
                 <p class="eyebrow">Where it is · what's next</p>
                 <h2 class="cs-h2">Deployed, and still growing</h2>
                 <p class="cs-p">
-                    Live and in active use. Today it renders scales as their seven playable
+                    Live, and in use in real lessons. It renders scales as their seven playable
                     position boxes, chords as voicing shapes with independent structure and
                     inversion, and a Harmony view of a key's diatonic chords with Roman numerals —
-                    every shape playable, across the neck, with TAB. Next: the context strip as a
-                    persistent band, and a self-guided course mode — in the spirit of Ableton's
-                    <em>Learning Synths</em> — that reuses the same engine.
+                    every shape playable across the neck, with proper engraved notation and TAB.
+                    Alongside the fretboard there's now <strong>Ear Training</strong>, which
+                    drills chord quality and function against the same theory data. A third area,
+                    <strong>Play</strong>, the lead-sheet workbench where the function engine reads
+                    a progression you've entered, is built but still behind a switch: it isn't in
+                    the public version yet.
+                </p>
+                <p class="cs-p">
+                    <strong>The data-driven bet paid off where it counts.</strong> Ukulele —
+                    baritone and tenor — shipped without the engine changing: a different number of
+                    strings, tuned differently, is a data file. That was the promise made on day one
+                    and it held up two hundred commits later, which is the only real test an
+                    architectural decision gets.
+                </p>
+                <p class="cs-p">
+                    Honest about where it is: it's still labelled beta, the visual grammar has been
+                    re-audited more than once, and the progressive-disclosure onboarding — the thing
+                    that would let a stranger use it without me in the room — is designed but not
+                    built. It's a tool built for the teaching room first, and it shows, in both
+                    directions.
                 </p>
                 <p class="project-links process-links">
-                    <a href="https://stupender.github.io/method" target="_blank" rel="noopener">Try it live</a>
+                    <a href="https://beingsound.studio/fretboard-constellations/" target="_blank" rel="noopener">Try it live</a>
                     <a href="https://github.com/stupender/method" target="_blank" rel="noopener">Source on GitHub</a>
                 </p>
             </section>
