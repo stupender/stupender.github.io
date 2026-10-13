@@ -1333,6 +1333,19 @@ a[download]::after {
         color: var(--grey);
     }
     .site-nav.open a:hover { color: var(--hover-dark); background: none; }
+    /* A map pin beside "Chicago", drawn like the site's other marks. */
+    .site-nav.open a[data-hint="Chicago"]::after {
+        content: "";
+        order: 2;
+        margin: 0 0.4em 0 auto;
+        width: 0.9rem;
+        height: 0.9rem;
+        align-self: center;
+        background-color: currentColor;
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E") center / contain no-repeat;
+                mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E") center / contain no-repeat;
+    }
+    .site-nav.open a[data-hint="Chicago"]::before { order: 3; }
     .site-nav.open a:hover::before { color: var(--hover-dark); }
     /* The header joins the menu page while it is open. */
     .menu-open, .menu-open body { overflow: hidden; }
