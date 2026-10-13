@@ -256,6 +256,16 @@
 
     window.addEventListener('popstate', function () { swapTo(location.href, false); });
 
+    /* The menu page only exists at phone width (820px, as in styles.css).
+       Widen the window past that with it open and it closes itself, so the
+       desktop nav never inherits an open menu's state or its scroll lock.
+       Set up once: setMenu finds whichever header is on screen, so this
+       keeps working after the router swaps pages. */
+    var phoneWidth = window.matchMedia('(max-width: 820px)');
+    function onWidthChange(e) { if (!e.matches) { setMenu(false); } }
+    if (phoneWidth.addEventListener) { phoneWidth.addEventListener('change', onWidthChange); }
+    else if (phoneWidth.addListener) { phoneWidth.addListener(onWidthChange); }
+
     /* ---- Boot ---- */
     initPage();
 })();

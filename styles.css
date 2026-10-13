@@ -294,9 +294,13 @@
 }
 :root[data-palette="paper"] .contact-cols li a:not(.blk):hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 :root[data-palette="paper"] .site-footer p { font-size: var(--t-fine); }
-/* The menu page: short titles in caps; hints as labels. */
-:root[data-palette="paper"] .site-nav.open a { font-size: var(--t-h2); font-weight: 600; letter-spacing: 0; }
-:root[data-palette="paper"] .site-nav.open a::before { font-size: var(--t-label); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+/* The menu page: short titles in caps; hints as labels. Scoped to the width
+   the menu page exists at, so a menu left open while the window widens can't
+   restyle the desktop nav. */
+@media (max-width: 820px) {
+    :root[data-palette="paper"] .site-nav.open a { font-size: var(--t-h2); font-weight: 600; letter-spacing: 0; }
+    :root[data-palette="paper"] .site-nav.open a::before { font-size: var(--t-label); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+}
 
 /* Selecting text (click and drag) marks it in the label terracotta at a
    quarter strength; the type keeps its own colour, on paper or ink. */
@@ -311,8 +315,10 @@
 :root[data-palette="paper"] .sound-toggle[aria-pressed="true"] { color: #EFE5D4; }
 :root[data-palette="paper"] .site-header .site-nav a.nav-page { background: #EFE5D4; color: var(--ink); }
 :root[data-palette="paper"] .site-header .site-nav a.nav-page:hover { background: var(--sun); color: #EFE5D4; }
-:root[data-palette="paper"] .site-header .site-nav.open a.nav-page { background: none; color: #EFE5D4; }
-:root[data-palette="paper"] .site-header .site-nav.open a:hover { color: #EFE5D4; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.15em; }
+@media (max-width: 820px) {
+    :root[data-palette="paper"] .site-header .site-nav.open a.nav-page { background: none; color: #EFE5D4; }
+    :root[data-palette="paper"] .site-header .site-nav.open a:hover { color: #EFE5D4; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.15em; }
+}
 
 /* The hero print: a circle of lake water from the portrait, one ink
    with the paper's grain in it, after screen-printed texture studies. */
@@ -1387,7 +1393,11 @@ a[download]::after {
     .site-nav.open a[data-hint="Chicago"]::before { order: 3; }
     .site-nav.open a:hover::before { color: var(--hover-dark); }
     /* The header joins the menu page while it is open. */
-    .menu-open, .menu-open body { overflow: hidden; }
+    /* Lock the page behind the menu on <html> only. Locking <body> too makes
+       the body its own scroll box, and the sticky header then sticks to the
+       body's top, which is scrolled away above the screen: the header and its
+       close button vanish whenever the menu is opened partway down a page. */
+    .menu-open { overflow: hidden; }
     .menu-open .site-header { background: var(--cobalt); color: var(--grey); border-bottom-color: rgb(228 227 232 / 0.55); }
     .menu-open .wordmark:hover,
     .menu-open .sound-toggle:hover { color: var(--hover-dark); }
