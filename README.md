@@ -41,7 +41,7 @@ Transient Senses programme:
 
 The site is **one numbered catalogue** on one rail (labels left, content right):
 hero and card fronts, covers 01–04, contents 05–12 (kind, title, year, number),
-practice, about (a cobalt duotone portrait), and contact.
+process, about (a cobalt duotone portrait), and contact.
 
 One link language throughout, with no arrow characters in the markup:
 - **Inside the site** (case studies, the résumé, "See all", "Next") — a solid cobalt
@@ -82,7 +82,7 @@ generated from the paper pages; regenerate them if you switch palettes.
 
 | File | What it holds |
 |------|---------------|
-| `index.html` | Hero + card fronts, the catalogue (covers + contents), practice, about, contact. |
+| `index.html` | Hero + card fronts, the catalogue (covers + contents), process, about, contact. |
 | `*-case-study.html`, `fretboard-constellations.html`, … | Case studies 01–06 (02 is `becoming.html`, 05 is `archive-case-study.html`). |
 | `archive.html` | No. 12 — experiments and early work. |
 | `resume.html` | Résumé; its print styles produce `Stu-Pender-Resume.pdf`. |
