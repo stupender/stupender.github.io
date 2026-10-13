@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-palette="neutral">
+<html lang="en" data-palette="paper">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
     <meta property="og:image" content="https://stupender.github.io/images/og-card.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Stu Pender, product designer — “Building tools to support embodied presence,” over four charcoal cards of his projects.">
+    <meta property="og:image:alt" content="Stu Pender, product designer — “Building tools to support embodied presence,” beside a circle of lake water printed in one ink, over four black cards of his projects.">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
@@ -26,7 +26,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="styles.css?v=20261001b">
+    <link rel="stylesheet" href="styles.css?v=20261013p">
 </head>
 <body>
 
@@ -40,11 +40,11 @@
                 <svg class="orbits" viewBox="0 0 40 40" aria-hidden="true"><circle class="ring" cx="20" cy="20" r="8.5"/><circle class="ring" cx="20" cy="20" r="15"/><g class="orb orb1"><circle class="dot" cx="20" cy="11.5" r="2.8"/></g><g class="orb orb2"><circle class="dot" cx="20" cy="5" r="2.8"/></g></svg>
             </button>
             <nav class="site-nav" id="site-nav" aria-label="Primary">
-                <a href="#work">Work</a>
-                <a href="#practice">Practice</a>
-                <a href="#about">About</a>
-                <a href="resume.html" class="nav-page">Résumé</a>
-                <a href="#contact">Contact</a>
+                <a href="#work" data-hint="01 – 11">Work</a>
+                <a href="#practice" data-hint="Listen · Design · Build">Practice</a>
+                <a href="#about" data-hint="Chicago">About</a>
+                <a href="resume.html" class="nav-page" data-hint="Experience">Résumé</a>
+                <a href="#contact" data-hint="Say hello">Contact</a>
             </nav>
             <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
                 <span></span><span></span><span></span>
@@ -59,7 +59,7 @@
         <!-- a photo), then one card per project.                      -->
         <!-- ========================================================= -->
         <section class="hero" aria-labelledby="hero-heading">
-            <p class="rail-label">Product designer · Chicago</p>
+            <p class="rail-label">Product designer · <span class="pin" aria-hidden="true"></span>Chicago</p>
             <div class="hero-inner">
                 <div class="hero-copy">
                     <h1 id="hero-heading" class="hero-title">Building tools to support embodied presence.</h1>
@@ -76,11 +76,10 @@
                          mid-session — made to support the process, then fall away as we return
                          to our work in the world. -->
                 </div>
-                <!-- The right-hand column is held for a photo. To add one, put it here:
-                     <figure class="hero-art">
-                         <img src="images/hero.jpg" alt="…" width="1200" height="1500">
-                     </figure>
-                     It sits beside the intro on wide screens and above the headline on phones. -->
+                <!-- The hero image: Lake Michigan from the portrait, printed as one ink in a
+                     circle (shown in the paper palette). A photo can replace it, as a
+                     figure.hero-art holding an img. -->
+                <figure class="hero-art hero-print" aria-hidden="true"><span class="print"></span></figure>
             </div>
 
             <!-- The four selected projects, one colour card each — the same colour
@@ -215,55 +214,55 @@
             </article>
 
             <!-- Contents 05–11 — set like a catalogue's table of contents:
-                 kind (right-aligned) · title · number -->
+                 title · what it is · year · link · number -->
             <div class="index" id="index">
                 <p class="rail-label">Contents <span>05–11</span></p>
                 <ol class="toc">
                     <li><a class="toc-row" href="ground-beneath-our-feet.html">
-                        <span class="toc-kind">Licensing site · UX, brand &amp; build</span>
                         <span class="toc-name">The Ground Beneath Our Feet</span>
+                        <span class="toc-kind">Licensing site · UX, brand &amp; build</span>
                         <span class="toc-year">2018</span>
                         <span class="toc-go blk">Case study</span>
                         <span class="toc-no">05</span>
                     </a></li>
                     <li><a class="toc-row" href="https://beingsound.studio" target="_blank" rel="noopener">
-                        <span class="toc-kind">My studio site · design &amp; build</span>
                         <span class="toc-name">Being Sound</span>
+                        <span class="toc-kind">My studio site · design &amp; build</span>
                         <span class="toc-year">2025 –</span>
                         <span class="toc-go">Live</span>
                         <span class="toc-no">06</span>
                     </a></li>
                     <li><a class="toc-row" href="https://www.figma.com/proto/LB2oM2wOwVF5kFjfLSy0I0/Expressionist-Wireframes?node-id=277-76&amp;page-id=0%3A1" target="_blank" rel="noopener">
-                        <span class="toc-kind">App concept · product design with a PM</span>
                         <span class="toc-name">Expressionist</span>
+                        <span class="toc-kind">App concept · product design with a PM</span>
                         <span class="toc-year">2018 – 20</span>
                         <span class="toc-go">Prototype</span>
                         <span class="toc-no">07</span>
                     </a></li>
                     <li><a class="toc-row" href="https://stupender.github.io/harmony-book/" target="_blank" rel="noopener">
-                        <span class="toc-kind">Interactive theory book · design &amp; build</span>
                         <span class="toc-name">Musical Harmony Book</span>
+                        <span class="toc-kind">Interactive theory book · design &amp; build</span>
                         <span class="toc-year">2020</span>
                         <span class="toc-go">Live</span>
                         <span class="toc-no">08</span>
                     </a></li>
                     <li><a class="toc-row" href="https://seedworldwide.com" target="_blank" rel="noopener">
-                        <span class="toc-kind">Brand landing page · client</span>
                         <span class="toc-name">Seed Worldwide</span>
+                        <span class="toc-kind">Brand landing page · client</span>
                         <span class="toc-year">—</span>
                         <span class="toc-go">Live</span>
                         <span class="toc-no">09</span>
                     </a></li>
                     <li><a class="toc-row" href="https://www.figma.com/design/qhfg5v8Ens7fYkdPN92jgA/Accordion?node-id=0-1" target="_blank" rel="noopener">
-                        <span class="toc-kind">UX study · research, prototyping, testing</span>
                         <span class="toc-name">Accordion</span>
+                        <span class="toc-kind">UX study · research, prototyping, testing</span>
                         <span class="toc-year">2017 – 18</span>
                         <span class="toc-go">Figma</span>
                         <span class="toc-no">10</span>
                     </a></li>
                     <li><a class="toc-row" href="archive.html">
-                        <span class="toc-kind">Generative music &amp; practice tools</span>
                         <span class="toc-name">Experiments</span>
+                        <span class="toc-kind">Generative music &amp; practice tools</span>
                         <span class="toc-year">c. 2020</span>
                         <span class="toc-go blk">See all</span>
                         <span class="toc-no">11</span>
@@ -361,7 +360,7 @@
         <!-- ========================================================= -->
         <section id="contact" class="contact" aria-labelledby="contact-heading">
             <div class="contact-inner">
-                <p class="contact-edge" aria-hidden="true">Stu Pender · Chicago · 2026</p>
+                <p class="contact-edge" aria-hidden="true">Stu Pender · <span class="pin" aria-hidden="true"></span>Chicago · 2026</p>
                 <div class="contact-main">
                     <p class="rail-label">Contact</p>
                     <h2 id="contact-heading" class="contact-title">Say hello.</h2>
@@ -384,16 +383,6 @@
                                 <li><a href="https://beingsound.studio" target="_blank" rel="noopener">Being Sound</a></li>
                             </ul>
                         </div>
-                        <div class="colophon">
-                            <p class="contact-label">Colophon</p>
-                            <p>
-                                Set in Host Grotesk. Built by hand in HTML, CSS and
-                                JavaScript, with Claude Code. The sound behind the orbit icon is a
-                                generative piece after Eno's <em>Music for Airports</em>, running in
-                                Web Audio.
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -401,9 +390,9 @@
     </main>
 
     <footer class="site-footer">
-        <p>© <span id="year"></span> Stu Pender · Designed &amp; built in Chicago</p>
+        <p>© <span id="year"></span> Stu Pender · Designed &amp; built in <span class="pin" aria-hidden="true"></span>Chicago</p>
     </footer>
 
-    <script src="script.js?v=20261001n"></script>
+    <script src="script.js?v=20261013p"></script>
 </body>
 </html>

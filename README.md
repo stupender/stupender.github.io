@@ -53,10 +53,9 @@ One link language throughout, with no arrow characters in the markup:
 Both marks are drawn as CSS masks, so they look the same on every machine. Nothing
 moves on hover, and nothing casts a shadow. Every text colour passes WCAG AA.
 
-## Neutral version (live)
+## Neutral version
 
-The live site runs the neutral theme: every page sets `data-palette="neutral"` on
-`<html>`. It is Being Sound's colours, so the work speaks for itself: a #E0E0E0 ground,
+The neutral theme (`data-palette="neutral"` on `<html>`) is Being Sound's colours, so the work speaks for itself: a #E0E0E0 ground,
 #181818 ink, charcoal cards and case-study tops, stone panels beneath, the back cover a
 shade down (#D6D6D6), and coral (#E46B6C on charcoal and in the sun; #9E3C39 on the
 grey, where it must pass contrast). Everything described above as cobalt prints in ink.
@@ -64,6 +63,20 @@ grey, where it must pass contrast). Everything described above as cobalt prints 
 To return to the colour version (cobalt, saffron, terracotta, sage), remove the
 attribute from each page. The link-preview card and résumé PDF are generated from the
 neutral pages; regenerate them if you switch.
+
+## Paper version (live)
+
+The live site runs this palette: every page sets `data-palette="paper"` on `<html>`.
+
+A third palette, after the "Form Research" posters: kraft paper (#E3D4BC) with real
+grain (`images/paper-grain.png`),
+two tones (ink #1B1A18 on paper), one terracotta (#7A2F18) used everywhere — as type and fills on the paper, and only as
+a fill on the ink bar and cards (type there stays paper-coloured). Type follows one standard, one size per job: names and short
+titles in bold caps; labels — and every link that is a button or menu item — in small
+spaced caps; sentences as written. The top bar is printed in ink, like the cards. The hero shows a circle of Lake
+Michigan from the portrait, printed as one ink (`images/hero-lake.png`, used as a mask).
+The print appears only in this palette. The link-preview card and résumé PDF are
+generated from the paper pages; regenerate them if you switch palettes.
 
 ## Files
 
