@@ -153,7 +153,7 @@
 
 /* ---- Paper (data-palette="paper" on <html>) -----------------------
    After the "Form Research" posters: kraft paper with real grain, two
-   tones (ink on paper), one navy, and titles in bold caps.
+   tones (ink on paper), one terracotta, and titles in bold caps.
    Same structure as the other palettes; colours, texture and the
    treatment of titles are all that change. Every text colour passes AA. */
 :root[data-palette="paper"] {
@@ -164,10 +164,11 @@
     --card:       #EBDFCB;
     --cobalt-rgb: 27 26 24;                /* the frame prints in ink         */
     --hair:       rgb(var(--ink-rgb) / 0.22);
-    --sun:        #173D72;                 /* navy, from the circle prints    */
-    --label:      #173D72;                 /* navy type: 7.4 : 1, 6.6 on the back cover */
-    --hover:      #173D72;
-    --hover-dark: #8AABDB;                 /* light navy on the ink cards 7.2 */
+    --sun:        #B04B2E;                 /* terracotta, the one colour      */
+    --label:      #7A2F18;                 /* terracotta deep enough for type:
+                                              6.3 : 1, 5.4 on the back cover   */
+    --hover:      #7A2F18;
+    --hover-dark: #E07B55;                 /* terracotta on the ink cards 5.7 */
     --back:       #D8C8AE;                 /* the back cover, a shade down    */
     --charcoal:   #1F1D1A;
     --stone:      #D2C1A6;                 /* ink 9.9 : 1                     */
@@ -314,7 +315,7 @@
 .hero-print .print {
     display: block;
     aspect-ratio: 1;
-    background: var(--grain), var(--sun);
+    background: var(--grain), var(--ink);
     -webkit-mask: url("images/hero-lake.png") center / contain no-repeat;
             mask: url("images/hero-lake.png") center / contain no-repeat;
 }
@@ -863,9 +864,9 @@ a[download]::after {
 }
 .toc-row {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) 5.6rem 6.4rem 2rem;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) 5.6rem 6.4rem 2rem;   /* title · what it is · year · link · number */
     column-gap: clamp(0.9rem, 2vw, 1.5rem);
-    align-items: baseline;
+    align-items: center;   /* every item centred on the row: title, notes, button, number */
     padding: 0.95rem 0;
     border-bottom: 1px solid var(--hair);
     text-decoration: none;
@@ -873,7 +874,7 @@ a[download]::after {
 .toc-row:focus-visible { outline-offset: -2px; }
 /* The list closes on the next section's rule, not one of its own. */
 .toc li:last-child .toc-row { border-bottom: 0; }
-.toc-kind { text-align: right; font-size: var(--t-small); line-height: 1.4; color: var(--ink-soft); }
+.toc-kind { text-align: left; font-size: var(--t-small); line-height: 1.4; color: var(--ink-soft); }
 .toc-name { font-size: var(--t-h3); line-height: 1.2; letter-spacing: -0.01em; color: var(--cobalt); }
 .toc-year { font-size: var(--t-small); color: var(--ink-faint); white-space: nowrap; }
 .toc-go { justify-self: start; font-size: var(--t-label); font-weight: 500; color: var(--ink-soft); white-space: nowrap; }
@@ -1175,7 +1176,7 @@ a[download]::after {
 .cs-next-label { padding-bottom: 0.55rem; border-bottom: 1px solid var(--on); font-size: var(--t-small); margin-bottom: 0.7rem; }
 .cs-next-name { font-size: var(--t-h3); line-height: 1.2; letter-spacing: -0.01em; }
 .cs-next-for { margin-top: 0.4rem; color: var(--on-soft); }
-.cs-next-go { justify-self: start; margin: 1.4rem 0 clamp(1rem, 2.4vw, 1.6rem); }
+.cs-next-go { justify-self: start; align-self: start; margin: 1.4rem 0 clamp(1rem, 2.4vw, 1.6rem); }
 .cs-next-img { grid-column: 2; grid-row: 1 / span 4; align-self: end; margin-top: 1.2rem; transform: translateY(10%); }
 .cs-next-all { display: inline-block; margin-top: 1rem; font-size: var(--t-small); text-decoration: none; color: var(--cobalt); }
 .cs-next-all:hover { color: var(--hover); }
@@ -1281,7 +1282,7 @@ a[download]::after {
     .cover-title { order: 1; } .cover-for { order: 2; } .cover-media { order: 3; }
     .cover-toc { order: 4; } .cover-links { order: 5; }
     .cover-media { margin-bottom: clamp(1.4rem, 4vw, 2rem); }
-    .toc-row { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.3fr) 5.4rem 1.8rem; }
+    .toc-row { grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.8fr) 5.4rem 1.8rem; }
     .toc-go { display: none; }
 }
 
@@ -1390,7 +1391,7 @@ a[download]::after {
     .card-img { width: 72%; margin-top: 1.2rem; }
     .cover-toc > div { grid-template-columns: minmax(0, 1fr); row-gap: 0.15rem; }
     .cover-toc dt { text-align: left; padding-top: 0; }
-    .toc-row { grid-template-columns: minmax(0, 1fr) auto; row-gap: 0.2rem; padding: 0.9rem 0; }
+    .toc-row { grid-template-columns: minmax(0, 1fr) auto; row-gap: 0.2rem; padding: 0.9rem 0; align-items: baseline; }   /* two lines: each pair shares a line */
     .toc-name { grid-column: 1; grid-row: 1; }
     .toc-no { grid-column: 2; grid-row: 1; }
     .toc-kind { grid-column: 1; grid-row: 2; text-align: left; }
