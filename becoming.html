@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" data-palette="paper">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case study — Becoming</title>
+    <meta name="description" content="Case study: Becoming — a local-first companion for life development that reports without grading. Money, the body, time and attention in one place, on a Mac and as a Home Screen app, with the data never leaving the device. Product design and build by Stu Pender.">
+
+    <!-- Link previews (Open Graph + Twitter/X) -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Stu Pender">
+    <meta property="og:title" content="Case study — Becoming">
+    <meta property="og:description" content="Case study: Becoming — a local-first companion for life development that reports without grading. Money, the body, time and attention in one place, on a Mac and as a Home Screen app, with the data never leaving the device. Product design and build by Stu Pender.">
+    <meta property="og:url" content="https://stupender.github.io/becoming.html">
+    <meta property="og:image" content="https://stupender.github.io/images/og-card.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Stu Pender, product designer — “Building tools to support embodied presence,” beside a circle of lake water printed in one ink, over four black cards of his projects.">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+    <link rel="apple-touch-icon" href="images/favicon-180.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css?v=20261013q">
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="index.html" class="wordmark">Stu Pender</a>
+        <div class="header-right">
+            <button class="sound-toggle" aria-label="Play ambient sound" aria-pressed="false" title="Ambient sound — Music for Airports">
+                <svg class="orbits" viewBox="0 0 40 40" aria-hidden="true"><circle class="ring" cx="20" cy="20" r="8.5"/><circle class="ring" cx="20" cy="20" r="15"/><g class="orb orb1"><circle class="dot" cx="20" cy="11.5" r="2.8"/></g><g class="orb orb2"><circle class="dot" cx="20" cy="5" r="2.8"/></g></svg>
+            </button>
+            <nav class="site-nav" id="site-nav" aria-label="Primary">
+                <a href="index.html#work" data-hint="01 – 12">Work</a>
+                <a href="index.html#practice" data-hint="Listen · Design · Build">Practice</a>
+                <a href="index.html#about" data-hint="Chicago">About</a>
+                <a href="resume.html" class="nav-page" data-hint="Experience">Résumé</a>
+                <a href="index.html#contact" data-hint="Say hello">Contact</a>
+            </nav>
+            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="top">
+        <div class="cs-closebar no-print">
+            <a class="cs-close" href="index.html#work" aria-label="Close — back to portfolio" title="Close — back to portfolio">
+                <span class="cs-close-x" aria-hidden="true">&#10005;</span>
+                <span>Close</span>
+            </a>
+        </div>
+        <article class="cs" style="--field:var(--f-sky); --pair:var(--p-sand)">
+
+            <!-- ============ HERO ============ -->
+            <header class="cs-head">
+                <p class="eyebrow"><span class="cs-no">No. 05</span> Case study · 2026 – present</p>
+                <h1 class="cs-title">Becoming</h1>
+                <p class="cs-sub">
+                    A local-first companion for life development — money, the body, time and
+                    attention in one place, designed to report without ever grading.
+                </p>
+                <dl class="cs-meta">
+                    <div class="cs-meta-for"><dt>For</dt><dd>A freelancer, on a bad month</dd></div>
+                    <div><dt>Role</dt><dd>Product design &amp; build (solo)</dd></div>
+                    <div><dt>Timeline</dt><dd>Aug 2026 – present · in daily use</dd></div>
+                    <div><dt>Stack</dt><dd>TypeScript · React · Express · SQLite · Electron · sql.js</dd></div>
+                </dl>
+            </header>
+
+            <!-- ============ TL;DR ============ -->
+            <div class="cs-tldr">
+                <p class="eyebrow">In short</p>
+                <dl>
+                    <div>
+                        <dt>The problem</dt>
+                        <dd>Tools that track a life mostly <strong>grade it</strong> — scores, streaks, a red number. For a freelancer with irregular income, that machinery produces the anxiety it claims to relieve.</dd>
+                    </div>
+                    <div>
+                        <dt>My role</dt>
+                        <dd>Sole designer and developer — research, IA, design system, data model, privacy architecture, and the Mac and Home Screen builds.</dd>
+                    </div>
+                    <div>
+                        <dt>The core constraint</dt>
+                        <dd><strong>Report, never grade</strong> — enforced at the API layer. The person's own words are never generated for them, and their data never leaves their device.</dd>
+                    </div>
+                    <div>
+                        <dt>The outcome</dt>
+                        <dd>A working app on a Mac and an iPad: 30 screens on one control grammar, statements reconciled to the penny, and the same code running with no server anywhere but inside the page.</dd>
+                    </div>
+                </dl>
+            </div>
+
+            <figure class="cs-figure cs-figure--lead">
+                <img src="images/case-study/becoming-today.jpg" alt="Becoming's day view: the date and a month calendar, the location over the weather and a sunrise-to-sunset dial, the day's astrology beside it, then the day's intention, a line of noticing, and the shape of the day as five time blocks">
+                <figcaption class="cs-cap">The day. Where you are and what the sky is doing, one intention in your own words, then the hours — before anything left undone. (Every screenshot here is a demo account with invented data.)</figcaption>
+            </figure>
+
+            <!-- ============ 1 · PROBLEM ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">01 · The problem</p>
+                <h2 class="cs-h2">Every tool in this category is an anxiety machine</h2>
+                <p class="cs-p">
+                    I'm a freelance sound artist and teacher. My income arrives in uneven pieces, and
+                    the tools meant to help were the opposite of help. Open a budgeting app and
+                    something is red. Open a habit tracker and a streak is about to break. The whole
+                    category's interaction model is <em>scoring</em> — and scoring a life produces the
+                    state that makes good decisions impossible. A ledger you avoid is worse than no
+                    ledger.
+                </p>
+                <p class="cs-p">
+                    Money also turned out to be only the loudest place energy goes. The body,
+                    attention, relationships and creative work are others, and they lived in five
+                    different apps that never spoke. So Becoming holds them together under one
+                    question: <em>is where my energy actually goes matching what I say matters?</em>
+                </p>
+                <p class="cs-p">
+                    What made it hard is that the honest answer is often “not this month.” The design
+                    problem was never “visualise personal data.” It was <strong>build an honest
+                    instrument that a person will still open on a bad month.</strong>
+                </p>
+                <figure class="cs-figure">
+                    <img src="images/case-study/becoming-vision.jpg" alt="The Vision gallery: four areas — Sound &amp; Listening, Immersive Art &amp; Tools, Home &amp; Studio, Vitality — each a grid of four pictures over one sentence">
+                    <figcaption class="cs-cap">Vision is where the question starts: each area of a life is a few pictures and one sentence the person wrote. The counts stay small, in a footer, under a hairline.</figcaption>
+                </figure>
+            </section>
+
+            <!-- ============ 2 · CONSTRAINTS ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">02 · Constraints</p>
+                <h2 class="cs-h2">Four limits, and the one I chose</h2>
+                <p class="cs-p">
+                    <strong>One person, no budget.</strong> I'm the designer, the developer and, at
+                    first, the only user. No paid Apple developer account, no hosting bill, no
+                    team — every feature had to be worth maintaining alone.
+                </p>
+                <p class="cs-p">
+                    <strong>The data is the most private there is.</strong> Bank statements,
+                    bloodwork, how I felt this morning. Local-first isn't a feature here; it's the
+                    premise. Nothing goes to a server I don't own — and as it turned out, nothing goes
+                    to a server at all.
+                </p>
+                <p class="cs-p">
+                    <strong>It has to work for someone who isn't me.</strong> Partway through, the
+                    brief widened: my partner wanted a copy, starting from empty. That meant no
+                    personal content in the shipped code, a first run that works on a blank database,
+                    and an install that needs no technical help.
+                </p>
+                <p class="cs-p">
+                    <strong>And the one I chose: report, never grade.</strong> A principle that lives
+                    in a style guide gets violated the first time a feature wants a progress bar, so
+                    this one lives where data is produced. The derived endpoints return
+                    <strong>counts, shares and ranges</strong> — never scores, targets or streaks. If
+                    the API can't emit a grade, no screen can accidentally render one.
+                </p>
+                <blockquote class="cs-quote">
+                    <p>“Reads compute, they do not grade.”</p>
+                    <cite>— the rule in the architecture doc that settles feature arguments</cite>
+                </blockquote>
+                <p class="cs-p">
+                    Two smaller rules come from the same place. <strong>The app never writes the
+                    person's words</strong> — vision statements, intentions and feeling notes are only
+                    ever theirs. And <strong>any interpretive text restates a source and cites
+                    it</strong>: the astrology readings quote the book and page they come from rather
+                    than inventing a softer line. The mirror can be wrong, but it can't make things up.
+                </p>
+                <figure class="cs-figure">
+                    <img src="images/case-study/becoming-astrology.jpg" alt="The Astrology page: a birth chart wheel with the planets in their signs and houses, and a list of placements beside it">
+                    <figcaption class="cs-cap">Astrology, for the people who read their days that way. A lens you can switch off; every meaning carries its source.</figcaption>
+                </figure>
+            </section>
+
+            <!-- ============ 3 · A DECISION ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">03 · A decision</p>
+                <h2 class="cs-h2">What I tried first, and what I'm proud of instead</h2>
+                <p class="cs-p">
+                    <strong>What didn't work: reaching the Mac from the iPad.</strong> The obvious
+                    way to get a desktop app onto a phone is to leave the desktop on and reach it over
+                    the network. I built exactly that — a private network tunnel, a passphrase door in
+                    front of the server, and a Home Screen icon pointing at it. It worked, and it was
+                    wrong. It meant a computer left running at home, a network to keep healthy, and a
+                    door that has to be right every time. After living with it, I wrote:
+                </p>
+                <blockquote class="cs-quote">
+                    <p>“I just want a functioning app that doesn't need all of this remote access stuff of leaving the computer on.”</p>
+                    <cite>— my own note, after living with it</cite>
+                </blockquote>
+                <p class="cs-p">
+                    <strong>What I'm proud of: the server runs inside the page.</strong> Instead of
+                    sending the iPad to the server, I sent the server to the iPad. The same server
+                    code that runs on the Mac is bundled into the web app, with small stand-ins
+                    underneath it: SQLite compiled to WebAssembly instead of a native database, the
+                    database file kept in the browser's own storage, the same PDF parser so a bank
+                    statement reads identically on both. The page's requests to <code>/api</code>
+                    never leave the device — they're answered in-process.
+                </p>
+                <p class="cs-p">
+                    The result installs from a link to the Home Screen, works offline, and needs no
+                    account, no cloud and no developer program. My partner's copy holds their data and
+                    nobody else's. And because it is one codebase rather than a port, every change I
+                    make on the Mac reaches the iPad on the next publish. It's the privacy promise
+                    made literal: there is no server to leak from, because there is no server.
+                </p>
+                <figure class="cs-figure cs-figure--pair">
+                    <div class="cs-pair">
+                        <img src="images/case-study/becoming-phone-head.jpg" alt="Becoming on a phone: the date, a month calendar, and the weather dial with the day's readings stacked beside it">
+                        <img src="images/case-study/becoming-phone-day.jpg" alt="Becoming on a phone: today's intention, a line of noticing, and the shape of the day as time blocks">
+                    </div>
+                    <figcaption class="cs-cap">The same app on a phone, installed from the Home Screen. Everything on it is stored on the device.</figcaption>
+                </figure>
+                <p class="cs-p">
+                    Smaller things didn't work either, and were taken out as quickly. A calendar moved
+                    into the side menu lasted an afternoon (“no, I don't like it, put the calendar
+                    back”). A new colour palette for time blocks was, in my own review, horrendous —
+                    so the colours went back to what they had been, warm to cool across the day, with
+                    a spectrum offered beside them as a choice rather than a replacement.
+                </p>
+            </section>
+
+            <!-- ============ 4 · THE INSIGHT ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">04 · The insight</p>
+                <h2 class="cs-h2">An empty stretch isn't a bad stretch — it's one not read yet</h2>
+                <p class="cs-p">
+                    The money view kept telling me I was falling short, and it took using it to see
+                    why. I don't type expenses in as they happen; I bring in statements on a couple of
+                    fixed days a month. So the current month always looked thin and the floor always
+                    looked missed. I wrote:
+                </p>
+                <blockquote class="cs-quote">
+                    <p>“I don't input my expenses until some day in the future, the money date. So this will always look like I'm not hitting the mark.”</p>
+                    <cite>— my own note, from using it on real months</cite>
+                </blockquote>
+                <p class="cs-p">
+                    That changed the model, not just the chart. Every money reading now asks one
+                    question first: <strong>is this stretch read in all the way, part of the way, or
+                    not at all?</strong> Only a stretch read in all the way is set against the floor
+                    or coloured as covered or short. The headline is the last <em>whole</em> month;
+                    the month still open is drawn as a dashed outline that says when it comes in,
+                    never as a bar that came up short. The week's and the day's pages say the same
+                    thing in words: <em>this week's money comes in with the money date, Oct 15.</em>
+                </p>
+                <figure class="cs-figure">
+                    <img src="images/case-study/becoming-money.jpg" alt="The Money page: September against the floor, $3,125 in of $2,400, covered; a bar chart of months in and out with the open month drawn as a dashed outline; runway and balances with the dates they're from">
+                    <figcaption class="cs-cap">The last whole month against the floor, the months before it as the trend, and the open month as an outline. Every figure is final, or says what it's waiting for.</figcaption>
+                </figure>
+                <p class="cs-p">
+                    The same lesson — design for how the person actually works, not how the data
+                    would like them to — moved the day around too. Unscheduled to-dos used to sit at
+                    the top. I asked for them to go below the hours, “so I'm not consumed so much by
+                    the unfinished, unscheduled things, and that my focus is first on what is on my
+                    calendar.” Weekly practices got their own days for the same reason: they appear
+                    on the days they belong to, and on other days only as a quiet line — still open
+                    this week — instead of a to-do that nags all seven.
+                </p>
+                <figure class="cs-figure">
+                    <img src="images/case-study/becoming-week.jpg" alt="The week page: a month calendar with the week highlighted, the week's weather and transits, then each weekly practice with its days marked Monday to Sunday">
+                    <figcaption class="cs-cap">A week opens with its practices on their days. A tap moves one for this week only; its usual days stay set on the practice.</figcaption>
+                </figure>
+            </section>
+
+            <!-- ============ CRAFT ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">The design system</p>
+                <h2 class="cs-h2">One control grammar, read as paper</h2>
+                <p class="cs-p">
+                    Growing fast across thirty screens, the app accumulated the ordinary disease:
+                    every page had invented its own way to add a row, remove one, or mark something
+                    done. The fix was a single vocabulary every surface builds from.
+                    <strong>Dot</strong> for a thing you tick — hollow is still yours to call, filled
+                    is done. <strong>Mark</strong> for a state that simply was — a square, because a
+                    circle reads as something you can press. <strong>Row</strong> for a ruled entry,
+                    never a card. Inputs are <strong>bare, sitting on a rule</strong> — a boxed field
+                    reads as a form to fill in, and this needed to read as a notebook. Native browser
+                    dialogs are banned outright, because a system alert breaks the page's voice
+                    mid-sentence.
+                </p>
+                <p class="cs-p">
+                    The feelings grid is that grammar under the most pressure. It's built on the
+                    Ekmans' <em>Atlas of Emotions</em> — five families, each holding states of
+                    different intensity, plus a row for the ordinary words outside them. It's
+                    multi-select, because a day is rarely one feeling, and tapping is the whole
+                    interaction. Saying what a feeling was <em>about</em> is a second, optional
+                    gesture, because a feeling alone is weather and a feeling with its object is
+                    material. Nothing is counted: no streak, no “days without anger.”
+                </p>
+                <figure class="cs-figure">
+                    <img src="images/case-study/becoming-feelings.jpg" alt="The feelings grid: rows for enjoyment, sadness, anger, fear, disgust and also, each a line of small square marks with words; two chosen feelings below, one with a note">
+                    <figcaption class="cs-cap">Five families and a sixth row for everything else. Each row ends in a field for a word of your own.</figcaption>
+                </figure>
+                <p class="cs-p">
+                    Night mode is its own palette, not an inversion: a near-black taken from this
+                    portfolio's charcoal, quieter rules, no paper grain, and the day's terracotta
+                    lifted just enough to hold against the dark.
+                </p>
+                <figure class="cs-figure">
+                    <img src="images/case-study/becoming-night.jpg" alt="The day view at night: near-black background, light grey text, terracotta accents on today's date and the to-do rings">
+                    <figcaption class="cs-cap">The same day, at night.</figcaption>
+                </figure>
+            </section>
+
+            <!-- ============ MESSY MIDDLE ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">The messy middle</p>
+                <h2 class="cs-h2">Two things I got wrong in my own promise</h2>
+                <p class="cs-p">
+                    <strong>The privacy promise was broken and nothing said so.</strong> The server
+                    bound every network interface by default, which meant that for a while anyone on
+                    the same wi-fi could have read the whole database just by knowing the address.
+                    Nothing in the interface hinted at it. It now listens to the machine it's on and
+                    nothing else — and the iPad version has no network surface at all.
+                </p>
+                <p class="cs-p">
+                    <strong>Onboarding lost the first thing someone wrote.</strong> Code written
+                    against my own full database assumed areas and settings existed. On an empty one
+                    it failed silently and dropped a new user's first vision statement, at exactly
+                    the moment trust is decided. First run is now tested on a blank database as its
+                    own case, because “works on my machine” and “works on an empty one” are different
+                    claims.
+                </p>
+            </section>
+
+            <!-- ============ 5 · OUTCOME ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">05 · Outcome</p>
+                <h2 class="cs-h2">Two devices, no server, and a number that balances</h2>
+                <!-- DRAFT (Stu): check every claim in this section; add a line from your partner if you have one. -->
+                <p class="cs-p">
+                    Becoming runs as a packaged Mac app and as a Home Screen web app that holds
+                    everything on the device. It's <strong>30 screens, 98 components and 68 server
+                    modules</strong> — about 57,000 lines of TypeScript across 230-odd commits since
+                    September — on one control grammar, with the architecture and the design system
+                    written down and kept current. It reads real bank and brokerage statements
+                    locally, deduplicates every row so re-importing never double-counts, and
+                    <strong>reconciles to each statement's own totals to the penny</strong>.
+                </p>
+                <p class="cs-p">
+                    What it enabled is simpler to say. I make money decisions from the ledger rather
+                    than from my nervous system, because the ledger no longer lies to me about the
+                    month that isn't in yet. And someone other than me now keeps their own copy on
+                    their own iPad, with nothing to set up and nothing that leaves it.
+                </p>
+                <p class="cs-p">
+                    The honest framing: it's in use by two people, not two thousand. It has no public
+                    source, because local-first is the premise. I won't claim adoption it doesn't
+                    have. What it shows is a product held to an unusual constraint long enough that the
+                    constraint shaped the data layer, the API, the component library and the copy.
+                </p>
+            </section>
+
+            <!-- ============ 6 · REFLECTION ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">06 · Reflection</p>
+                <h2 class="cs-h2">What I'd do differently, and what I'd keep</h2>
+                <!-- DRAFT (Stu): these are drafted from the build; rewrite in your own words. -->
+                <p class="cs-p">
+                    <strong>I'd have used it on real days sooner.</strong> The money-date insight was
+                    invisible on a screen of test data and obvious within a month of my own. The best
+                    design input on this project came from using it, not from thinking about it.
+                </p>
+                <p class="cs-p">
+                    <strong>I'd have asked “where does it run?” on day one.</strong> The tunnel solved
+                    the wrong problem well. Putting the server inside the page was
+                    available from the start; I just hadn't asked whether the person needed a server.
+                </p>
+                <p class="cs-p">
+                    <strong>Put the principle where it can be enforced.</strong> “Don't grade the
+                    user” survived contact with real features because the API can't emit a grade. A
+                    principle in a doc is a preference; a principle in a contract is a constraint.
+                </p>
+                <p class="cs-p">
+                    And the one that generalises furthest: <strong>a product's promise has an
+                    architecture, or it isn't a promise.</strong> “Your data stays with you” was a
+                    sentence on a settings page until the network said otherwise. Design that stops
+                    at the surface can't tell the difference — which is a large part of why I build
+                    the things I design.
+                </p>
+            </section>
+
+                        <nav class="cs-next no-print" aria-label="More work">
+                <a class="cs-next-link" href="ground-beneath-our-feet.html" style="--field:var(--f-khaki)">
+                    <span class="cs-next-label">No. 06</span>
+                    <span class="cs-next-name">The Ground Beneath Our Feet</span>
+                    <span class="cs-next-for">For a music supervisor, on deadline</span>
+                    <span class="cs-next-go blk">Next</span>
+                    <span class="cs-next-img"><img src="images/thumbs/ground.jpg" alt="" width="640" height="418" loading="lazy"></span>
+                </a>
+                <a class="cs-next-all" href="index.html#work">All work <span aria-hidden="true">↑</span></a>
+            </nav>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="year"></span> Stu Pender · Designed &amp; built in <span class="pin" aria-hidden="true"></span>Chicago</p>
+    </footer>
+
+    <script src="script.js?v=20261013q"></script>
+</body>
+</html>

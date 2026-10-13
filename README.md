@@ -25,13 +25,13 @@ Transient Senses programme:
   01–04 repeat below as *covers* set straight on the page (no box, no shadow) with
   their contents and a picture of the work.
 - **Back** — the case study opens on the card's colour, flat, like the back of the
-  card, and ends on the next project's card (01 → 05 → back to 01).
+  card, and ends on the next project's card (01 → 06 → back to 01).
 - The colours (`--f-*`) are chosen against each screenshot so the work stands out: cobalt
-  (01), saffron (02), terracotta (03), sage (04), khaki (05), slate (11). Cobalt is the one
+  (01), saffron (02), terracotta (03), sage (04), sky (05), khaki (06), slate (12). Cobalt is the one
   dark colour, so its card, case-study header and next card add `.on-dark` for light type.
 - **Pairs** — below the header, a case study's summary ("In short") and pull-quote sit on
   a counterpart colour (`--pair`, from `--p-*`), the way the 1971 catalogue pairs an
-  orange cover with a khaki one: cobalt/butter, saffron/slate, terracotta/teal, sage/mauve.
+  orange cover with a khaki one: cobalt/butter, saffron/slate, terracotta/teal, sage/mauve, sky/sand.
 - The hero is the statement alone for now; its right-hand column is held for a photo
   (the comment in `index.html` shows where it goes).
 - Anything you can press is cobalt and turns black on hover. On a colour card,
@@ -40,7 +40,7 @@ Transient Senses programme:
   numbered like a table of contents.
 
 The site is **one numbered catalogue** on one rail (labels left, content right):
-hero and card fronts, covers 01–04, contents 05–11 (kind, title, year, number),
+hero and card fronts, covers 01–04, contents 05–12 (kind, title, year, number),
 practice, about (a cobalt duotone portrait), and contact.
 
 One link language throughout, with no arrow characters in the markup:
@@ -83,8 +83,8 @@ generated from the paper pages; regenerate them if you switch palettes.
 | File | What it holds |
 |------|---------------|
 | `index.html` | Hero + card fronts, the catalogue (covers + contents), practice, about, contact. |
-| `*-case-study.html`, `fretboard-constellations.html`, … | Case studies 01–05. |
-| `archive.html` | No. 11 — experiments and early work. |
+| `*-case-study.html`, `fretboard-constellations.html`, … | Case studies 01–06 (05 is `becoming.html`). |
+| `archive.html` | No. 12 — experiments and early work. |
 | `resume.html` | Résumé; its print styles produce `Stu-Pender-Resume.pdf`. |
 | `styles.css` | All styling. Tokens (colour, type, rail width) live in `:root`. |
 | `script.js` | Page router (keeps the ambient audio playing), scroll reveal, menu, copy-email. |

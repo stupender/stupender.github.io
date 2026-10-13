@@ -1117,6 +1117,15 @@ a[download]::after {
 
 .cs-figure { margin: 2rem 0; }
 .cs-figure img { width: 100%; outline: 1px solid var(--hair); }
+/* Two phone screens side by side. Capped narrower than a full figure, so a
+   phone screenshot stays near phone size rather than growing to fill the
+   column. */
+.cs-figure--pair .cs-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(0.75rem, 3vw, 1.5rem);
+    max-width: 34rem;
+}
 .cs-figure--lead { margin: clamp(1.5rem, 4vw, 2.5rem) 0 0; }
 .cs-cap { font-size: var(--t-small); color: var(--ink-faint); margin: 0.7rem 0 0; }
 .cs-cap a { color: var(--ink-soft); text-decoration: underline; text-decoration-color: var(--hair); text-underline-offset: 3px; }
