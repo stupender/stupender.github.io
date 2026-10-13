@@ -1312,6 +1312,11 @@ a[download]::after {
     .hero-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 0.6fr); }
     .cards-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .card { aspect-ratio: 5 / 4; }
+    /* Room for a two-line "For" in every card, filled or not. A wider card has
+       slack below the title for a second line; this shorter one doesn't, so a
+       card whose line wraps would push its picture down and break the row of
+       identical frames. Reserving the line keeps all four pictures level. */
+    .card-for { min-height: 2.7em; }
     .card-img { width: 78%; margin-left: auto; }
     .cover { grid-template-columns: minmax(0, 1fr); }
     /* Stacked: number, title, who it's for, the picture, the contents. */
