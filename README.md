@@ -27,7 +27,7 @@ Transient Senses programme:
 - **Back** — the case study opens on the card's colour, flat, like the back of the
   card, and ends on the next project's card (01 → 06 → back to 01).
 - The colours (`--f-*`) are chosen against each screenshot so the work stands out: cobalt
-  (01), saffron (02), terracotta (03), sage (04), sky (05), khaki (06), slate (12). Cobalt is the one
+  (01), sky (02), terracotta (03), sage (04), saffron (05), khaki (06), slate (12). Cobalt is the one
   dark colour, so its card, case-study header and next card add `.on-dark` for light type.
 - **Pairs** — below the header, a case study's summary ("In short") and pull-quote sit on
   a counterpart colour (`--pair`, from `--p-*`), the way the 1971 catalogue pairs an
@@ -83,7 +83,7 @@ generated from the paper pages; regenerate them if you switch palettes.
 | File | What it holds |
 |------|---------------|
 | `index.html` | Hero + card fronts, the catalogue (covers + contents), practice, about, contact. |
-| `*-case-study.html`, `fretboard-constellations.html`, … | Case studies 01–06 (05 is `becoming.html`). |
+| `*-case-study.html`, `fretboard-constellations.html`, … | Case studies 01–06 (02 is `becoming.html`, 05 is `archive-case-study.html`). |
 | `archive.html` | No. 12 — experiments and early work. |
 | `resume.html` | Résumé; its print styles produce `Stu-Pender-Resume.pdf`. |
 | `styles.css` | All styling. Tokens (colour, type, rail width) live in `:root`. |
