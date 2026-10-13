@@ -164,11 +164,11 @@
     --card:       #EBDFCB;
     --cobalt-rgb: 27 26 24;                /* the frame prints in ink         */
     --hair:       rgb(var(--ink-rgb) / 0.22);
-    --sun:        #B04B2E;                 /* terracotta, the one colour      */
+    --sun:        #7A2F18;                 /* the one terracotta, everywhere  */
     --label:      #7A2F18;                 /* terracotta deep enough for type:
                                               6.3 : 1, 5.4 on the back cover   */
     --hover:      #7A2F18;
-    --hover-dark: #E07B55;                 /* terracotta on the ink cards 5.7 */
+    --hover-dark: #EFE5D4;                 /* on ink, terracotta is a fill only */
     --back:       #D8C8AE;                 /* the back cover, a shade down    */
     --charcoal:   #1F1D1A;
     --stone:      #D2C1A6;                 /* ink 9.9 : 1                     */
@@ -197,9 +197,9 @@
     --on-soft: rgb(239 229 212 / 0.82);
     --on-rule: rgb(239 229 212 / 0.4);
 }
-:root[data-palette="paper"] .cs-head .eyebrow { color: var(--hover-dark); }
+:root[data-palette="paper"] .cs-head .eyebrow { color: var(--on); }
 :root[data-palette="paper"] .cs-next-link .blk { background: #EFE5D4; border-color: #EFE5D4; color: var(--ink); }
-:root[data-palette="paper"] .cs-next-link:hover .blk { background: var(--hover-dark); border-color: var(--hover-dark); color: var(--ink); }
+:root[data-palette="paper"] .cs-next-link:hover .blk { background: var(--sun); border-color: var(--sun); color: #EFE5D4; }
 :root[data-palette="paper"] .card-img--window,
 :root[data-palette="paper"] .cs-next-img--window { outline: 1px solid rgb(239 229 212 / 0.2); }
 
@@ -300,19 +300,19 @@
 
 /* Selecting text (click and drag) marks it in the label terracotta at a
    quarter strength; the type keeps its own colour, on paper or ink. */
-:root[data-palette="paper"] ::selection { background: rgb(122 47 24 / 0.26); color: inherit; }
+:root[data-palette="paper"] ::selection { background: rgb(122 47 24 / 0.26); color: inherit; }   /* #7A2F18, the same terracotta */
 
 /* The top bar is printed in ink, like the cards. */
 :root[data-palette="paper"] .site-header { background-color: var(--charcoal); color: #EFE5D4; border-bottom-color: var(--charcoal); }
 :root[data-palette="paper"] .site-header .site-nav a { color: #EFE5D4; }
 :root[data-palette="paper"] .site-header .site-nav a:hover,
-:root[data-palette="paper"] .wordmark:hover,
+:root[data-palette="paper"] .wordmark:hover { color: #EFE5D4; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.3em; }
 :root[data-palette="paper"] .sound-toggle:hover,
-:root[data-palette="paper"] .sound-toggle[aria-pressed="true"] { color: var(--hover-dark); }
+:root[data-palette="paper"] .sound-toggle[aria-pressed="true"] { color: #EFE5D4; }
 :root[data-palette="paper"] .site-header .site-nav a.nav-page { background: #EFE5D4; color: var(--ink); }
-:root[data-palette="paper"] .site-header .site-nav a.nav-page:hover { background: var(--hover-dark); color: var(--ink); }
+:root[data-palette="paper"] .site-header .site-nav a.nav-page:hover { background: var(--sun); color: #EFE5D4; }
 :root[data-palette="paper"] .site-header .site-nav.open a.nav-page { background: none; color: #EFE5D4; }
-:root[data-palette="paper"] .site-header .site-nav.open a:hover { color: var(--hover-dark); }
+:root[data-palette="paper"] .site-header .site-nav.open a:hover { color: #EFE5D4; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.15em; }
 
 /* The hero print: a circle of lake water from the portrait, one ink
    with the paper's grain in it, after screen-printed texture studies. */
@@ -325,6 +325,30 @@
 }
 .hero-print { align-self: center; justify-self: end; width: 100%; max-width: 24rem; }
 :root:not([data-palette="paper"]) .hero-print { display: none; }
+
+:root { --pin: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M12 23s-8.5-6.6-8.5-13a8.5 8.5 0 0 1 17 0c0 6.4-8.5 13-8.5 13zm0-9.6a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4z'/%3E%3C/svg%3E"); }
+/* The map pin beside Chicago: solid, in the colour of the words beside it,
+   centred on their capitals. Turns with the edge labels it sits in. */
+.pin {
+    display: inline-block;
+    width: 0.85em;
+    height: 0.85em;
+    margin-inline-end: 0.3em;
+    vertical-align: -0.08em;
+    background-color: currentColor;
+    -webkit-mask: var(--pin) center / contain no-repeat;
+            mask: var(--pin) center / contain no-repeat;
+}
+@media print { .pin { display: none; } }
+/* Inside a label the pin is part of the words, not a note beside them. */
+.rail-label .pin,
+.contact-edge .pin { color: inherit; font-size: inherit; margin-block: 0; margin-inline: 0 0.3em; }
+/* In the labels that run up the edge, turn the pin with the letters. */
+@media (min-width: 821px) {
+    .hero > .rail-label .pin,
+    .section-head > .rail-label .pin,
+    .contact-edge .pin { transform: rotate(90deg); vertical-align: 0; }
+}
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -1343,8 +1367,8 @@ a[download]::after {
         align-self: baseline;
         transform: translateY(0.12rem);   /* centred on the capitals beside it */
         background-color: currentColor;
-        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M12 23s-8.5-6.6-8.5-13a8.5 8.5 0 0 1 17 0c0 6.4-8.5 13-8.5 13zm0-9.6a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4z'/%3E%3C/svg%3E") center / contain no-repeat;
-                mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M12 23s-8.5-6.6-8.5-13a8.5 8.5 0 0 1 17 0c0 6.4-8.5 13-8.5 13zm0-9.6a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4z'/%3E%3C/svg%3E") center / contain no-repeat;
+        -webkit-mask: var(--pin) center / contain no-repeat;
+                mask: var(--pin) center / contain no-repeat;
     }
     .site-nav.open a[data-hint="Chicago"]::before { order: 3; }
     .site-nav.open a:hover::before { color: var(--hover-dark); }
