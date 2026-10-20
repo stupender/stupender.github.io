@@ -165,6 +165,26 @@
         });
     }
 
+    /* Short clips in a case study play silently on a loop, like a moving
+       screenshot — unless the reader's system asks for less motion. Then
+       they keep their controls and wait to be played. The markup ships with
+       controls on, so without this script a clip is a poster and a play
+       button, never a dead frame. */
+    function setupClips() {
+        var still = window.matchMedia &&
+            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        document.querySelectorAll('video.cs-clip').forEach(function (v) {
+            if (v.dataset.wired) { return; }
+            v.dataset.wired = '1';
+            v.muted = true;
+            if (still) { return; }
+            var p = v.play();
+            if (p && p.then) {
+                p.then(function () { v.controls = false; }).catch(function () {});
+            }
+        });
+    }
+
     /* The small-screen menu is a page of its own: one solid colour,
        the links ruled off like a table of contents. */
     function setMenu(open) {
@@ -204,6 +224,7 @@
 
         setupCopy();
         setupReveal();
+        setupClips();
     }
 
     /* =============================================================

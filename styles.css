@@ -1123,6 +1123,9 @@ a[download]::after {
 
 .cs-figure { margin: 2rem 0; }
 .cs-figure img { width: 100%; outline: 1px solid var(--hair); }
+/* A short clip sits in a figure exactly like a screenshot: full width, the same
+   hairline, no player chrome until you ask for it. */
+.cs-figure video { display: block; width: 100%; height: auto; outline: 1px solid var(--hair); }
 /* Two phone screens side by side. Capped narrower than a full figure, so a
    phone screenshot stays near phone size rather than growing to fill the
    column. */

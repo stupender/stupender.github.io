@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Case study — Fretboard Constellations</title>
-    <meta name="description" content="Case study: Fretboard Constellations — an interactive guitar-theory instrument designed for the teaching room, with a function engine that names what every chord is doing in a key. Product design and build by Stu Pender.">
+    <meta name="description" content="Case study: Fretboard Constellations — a guitar theory instrument that lights every note of a key across the neck, built for the middle of a lesson. Product design and build by Stu Pender.">
 
     <!-- Link previews (Open Graph + Twitter/X) -->
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Stu Pender">
     <meta property="og:title" content="Case study — Fretboard Constellations">
-    <meta property="og:description" content="Case study: Fretboard Constellations — an interactive guitar-theory instrument designed for the teaching room. Product design and build by Stu Pender.">
+    <meta property="og:description" content="Case study: Fretboard Constellations — a guitar theory instrument that lights every note of a key across the neck, built for the middle of a lesson. Product design and build by Stu Pender.">
     <meta property="og:url" content="https://stupender.github.io/fretboard-constellations.html">
     <meta property="og:image" content="https://stupender.github.io/images/og-card.png?v=20261013">
     <meta property="og:image:width" content="1200">
@@ -26,7 +26,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="styles.css?v=20261013s">
+    <link rel="stylesheet" href="styles.css?v=20261019">
 </head>
 <body>
 
@@ -58,18 +58,22 @@
         </div>
         <article class="cs on-dark" style="--field:var(--f-cobalt); --pair:var(--p-butter)">
 
+            <!-- Sources for every claim on this page: CASE_STUDY.md in the method repo
+                 (footnoted to commits, lesson-transcript timestamps, or "Stu said").
+                 Students are quoted by initials. -->
+
             <!-- ============ HERO ============ -->
             <header class="cs-head">
-                <p class="eyebrow"><span class="cs-no">No. 01</span> Case study · 2025 – present</p>
+                <p class="eyebrow"><span class="cs-no">No. 01</span> Case study · 2026</p>
                 <h1 class="cs-title">Fretboard Constellations</h1>
                 <p class="cs-sub">
-                    An interactive theory instrument for guitar — built to teach the way an
-                    expert actually teaches: by seeing, hearing, and playing, not by reading.
+                    A theory instrument for the guitar lesson: every note of a key lit across the
+                    neck, and re-lit the moment the key changes.
                 </p>
                 <dl class="cs-meta">
-                    <div class="cs-meta-for"><dt>For</dt><dd>A teacher, mid-lesson</dd></div>
-                    <div><dt>Role</dt><dd>Product design &amp; build</dd></div>
-                    <div><dt>Timeline</dt><dd>2025 – present</dd></div>
+                    <div class="cs-meta-for"><dt>For</dt><dd>A guitar teacher, mid-lesson</dd></div>
+                    <div><dt>Role</dt><dd>Product design &amp; front-end build, with Claude Code</dd></div>
+                    <div><dt>Timeline</dt><dd>June – October 2026 · idea since 2016</dd></div>
                     <div><dt>Stack</dt><dd>TypeScript · React · Vite · Web Audio · VexFlow</dd></div>
                 </dl>
                 <p class="project-links process-links cs-toplinks">
@@ -84,233 +88,231 @@
                 <dl>
                     <div>
                         <dt>The problem</dt>
-                        <dd>Theory tools <strong>explain</strong>; a live guitar lesson needs one you can <strong>do</strong> — see, hear, and play a pattern, not read about it.</dd>
+                        <dd>Theory books are <strong>static</strong>. A live lesson needs one that moves with it: any pattern, in any key, without flipping pages or transposing by hand.</dd>
                     </div>
                     <div>
                         <dt>My role</dt>
-                        <dd>Sole product designer and developer — product thinking, UX, the visual system, and the TypeScript/React build.</dd>
+                        <dd>I designed it and set every musical rule; Claude Code wrote the code. <strong>82 of its 226 commits</strong> record a call or correction of mine.</dd>
                     </div>
                     <div>
                         <dt>The defining decision</dt>
-                        <dd>Design for the <strong>expert teaching live on a shared screen</strong>, not the lone learner — which cascaded into Lesson vs. Studio modes and disclosure by relevance, not level.</dd>
+                        <dd>Light <strong>every note of the key across the whole neck</strong>, instead of one box shape at a time. In one lesson, a student stuck in scale boxes went from running the scale to listening for what fit.</dd>
                     </div>
                     <div>
                         <dt>The outcome</dt>
-                        <dd>A deployed, in-use instrument on a <strong>theory-as-data engine</strong> (new scales, chords, tunings — even a new instrument — are data files, not code), with a <strong>function engine</strong> that reads a progression and names what every chord is doing in the key.</dd>
+                        <dd>Shipped on 1 September 2026, and in my lessons with four students since late August. No usage numbers yet: it has only gone out to a few guitar communities.</dd>
                     </div>
                 </dl>
             </div>
 
             <figure class="cs-figure cs-figure--lead">
-                <img src="images/projects/fretboard-constellations.png" alt="Fretboard Constellations — the colour-coded neck">
-                <figcaption class="cs-cap">The neck as a field of colour-coded “constellations” — every scale degree its own colour, playable, with notation and TAB.</figcaption>
+                <img src="images/case-study/fc-whole-neck.jpg" alt="Fretboard Constellations in E-flat major: the control panel with E-flat lit in the Key row, then the guitar neck with every note of the key lit across seventeen frets, each scale degree in its own colour, a colour key from 1 to 7, and the first scale run below in notation and TAB">
+                <figcaption class="cs-cap">Every note of E♭ major, everywhere on the neck — the view a student stuck in scale boxes soloed over.</figcaption>
             </figure>
 
             <!-- ============ OVERVIEW ============ -->
             <section class="cs-section">
                 <p class="eyebrow">Overview</p>
-                <h2 class="cs-h2">A living textbook for the guitar</h2>
+                <h2 class="cs-h2">A theory tool built by the teacher who needed it</h2>
                 <p class="cs-p">
-                    Fretboard Constellations renders music theory — scales, chords, harmony — as
-                    colour-coded shapes across the neck that you can <em>see</em>, <em>hear</em>,
-                    and <em>play</em>. I own it end to end: the product thinking, the UX, the
-                    visual system, and the TypeScript/React build. It grew out of a decade of
-                    teaching, rebuilt as software.
-                </p>
-            </section>
-
-            <!-- ============ THESIS ============ -->
-            <section class="cs-section">
-                <p class="eyebrow">The thesis</p>
-                <h2 class="cs-h2">Theory exists to free expression, not to be studied</h2>
-                <p class="cs-p">
-                    Most theory tools <em>explain</em>. This one lets you <em>do</em>. The idea
-                    underneath: technique and theory exist to free expression — one transferable
-                    pattern, applied across the instrument. The less you have to think, the more
-                    you can play. So the app never lectures; it shows the pattern and hands you
-                    back the instrument.
-                </p>
-            </section>
-
-            <!-- ============ WHO IT'S FOR ============ -->
-            <section class="cs-section">
-                <p class="eyebrow">The defining decision</p>
-                <h2 class="cs-h2">Designed for the teaching room, not the lone learner</h2>
-                <p class="cs-p">
-                    The hardest and most clarifying decision came first: who is the primary user?
-                    Not the self-directed learner most theory apps assume — but an
-                    <strong>expert teaching live, on a shared screen.</strong> That single choice
-                    cascaded through everything. An expert drives, so nothing is skill-gated —
-                    everything stays reachable. A student is watching, so the screen has to stay
-                    calm and legible. And disclosure happens by <em>relevance</em>, not by
-                    <em>level</em>.
+                    Fretboard Constellations shows music theory on the guitar neck. Each scale
+                    degree has its own colour. Scales, chords and inversions appear in every
+                    position, with notation and TAB, and all of it plays. Behind a switch sits a
+                    lead-sheet workbench that names what every chord in a progression is doing.
                 </p>
                 <p class="cs-p">
-                    It's why the app splits into a <strong>Lesson Mode</strong> — calm, the
-                    neck and score at maximum size, minimal chrome, the real primary state — and a
-                    <strong>Studio Mode</strong> with every control visible, for preparing alone.
-                    Designing for the room where teaching happens decluttered more than any amount
-                    of control-tidying could.
-                </p>
-            </section>
-
-            <!-- ============ ARCHITECTURE ============ -->
-            <section class="cs-section">
-                <p class="eyebrow">The core architecture</p>
-                <h2 class="cs-h2">Theory as data, not code</h2>
-                <p class="cs-p">
-                    Under the UX is a product decision: Fretboard Constellations is an
-                    <strong>engine that renders theory data.</strong> Scales, chords, voicings,
-                    tunings — even whole instruments — live as plain data files; the engine reads
-                    them and draws and plays them. Adding a scale, a chord, or a new tuning means
-                    adding a data file, not touching the engine. Small surface area, limitless
-                    content — and the reason the app can keep growing without collapsing under its
-                    own features.
-                </p>
-            </section>
-
-            <!-- ============ THE SEARCH MADE VISIBLE ============ -->
-            <section class="cs-section">
-                <p class="eyebrow">The load-bearing idea</p>
-                <h2 class="cs-h2">The app is a search tool, not a display</h2>
-                <p class="cs-p">
-                    Here's a chord → here are the keys it could live in → watch the space narrow as
-                    you add the melody note, the next chord, the mode. That's how theory actually
-                    gets used in a lesson — as reverse-engineering — and the app makes the search
-                    <em>visible</em>: a thin context band shows the current key hypotheses, the
-                    candidates still in play, and what just narrowed them. The student watches the
-                    engine run. It's the thing that makes it <em>this</em> app and not a chord chart.
+                    I've taught music for fifteen years. I designed the screens and ruled on the
+                    fingerings; Claude Code wrote the TypeScript. It's my first app built with
+                    Claude Code to ship: 226 commits between 15 June and 19 October 2026.
                 </p>
                 <p class="cs-p">
-                    The band is built, in a lead-sheet workbench called Play that isn't switched
-                    on in the public version yet, and one decision made it teach. The chord-by-chord
-                    analysis does <em>not</em> live in the strip — it is drawn
-                    <strong>on the bars themselves</strong>, so an accented <code>V7/ii</code> sits
-                    directly under the A7 that is doing it, and changing which key you are reading
-                    in re-labels the whole score in place. Analysis in a side panel asks a student
-                    to hold two things at once; analysis on the chord is just a caption.
+                    The thread through my work is a tool for someone in the middle of something,
+                    built to get out of their way. Here that someone is me, mid-lesson. Scroll to
+                    the music and the controls fold to one line, while the neck stays pinned.
                 </p>
-            </section>
-
-            <!-- ============ CONSTELLATIONS ============ -->
-            <section class="cs-section">
-                <p class="eyebrow">The signature view</p>
-                <h2 class="cs-h2">Externalizing the map an expert carries</h2>
-                <p class="cs-p">
-                    An experienced player holds a mental image of the neck — where the notes live,
-                    how shapes connect. Fretboard Constellations <strong>externalizes that
-                    image.</strong> Each scale degree gets a colour; every shape appears in all its
-                    positions across the neck as hoverable constellations, with standard notation
-                    and TAB, and all of it is playable — click a chord to strum it, a scale box to
-                    run it. When the harmonic context is ambiguous, overlapping constellations are
-                    colour-coded so the candidate keys read at a glance.
-                </p>
-                <figure class="cs-figure">
-                    <img src="images/case-study/fc-full.png" alt="The full anatomy — controls, the colour-coded neck, and notation with TAB for each mode">
-                    <figcaption class="cs-cap">The full anatomy: mode / key / scale / gravity controls, the colour-coded neck with its position box, and notation + TAB for each mode of the scale.</figcaption>
+                <figure class="cs-figure cs-figure--pair">
+                    <div class="cs-pair">
+                        <img src="images/case-study/fc-phone-key.jpg" alt="Fretboard Constellations on a phone: the folded control panel reading E-flat Major, 3NPS, over the neck with every note of the key lit, and the first scale run in notation and TAB">
+                        <img src="images/case-study/fc-phone-scrolled.jpg" alt="The same page scrolled deep into the scale runs on a phone: the control panel is still one line under the site name, the neck is pinned showing G Phrygian with its shape joined by lines, and notation scrolls beneath">
+                    </div>
+                    <figcaption class="cs-cap">On a phone. Scroll to the music and the controls stay one line, the neck stays pinned to the position you're reading.</figcaption>
                 </figure>
             </section>
 
-            <!-- ============ THE FUNCTION ENGINE ============ -->
+            <!-- ============ 1 · THE PROBLEM ============ -->
             <section class="cs-section">
-                <p class="eyebrow">The analysis layer</p>
-                <h2 class="cs-h2">A key that bends instead of breaking</h2>
+                <p class="eyebrow">01 · The problem</p>
+                <h2 class="cs-h2">Theory books hold still. A lesson doesn't.</h2>
                 <p class="cs-p">
-                    The hardest problem wasn't drawing shapes — it was teaching the app to say what
-                    a chord is <em>doing</em>. Naming one chord's role is a lookup. Naming the roles
-                    across a whole progression means choosing a key first, and real music makes that
-                    a judgement call rather than a fact.
+                    A lesson moves. A student brings a song in an awkward key, or a chord we
+                    haven't covered, and the material has to follow. Books and handouts are drawn
+                    in one key, so I would stop teaching to transpose.
                 </p>
                 <p class="cs-p">
-                    The naive version fails in a way that is obvious the moment you teach with it:
-                    one chord from outside the key disqualifies the key, so a perfectly ordinary
-                    tune reports no key at all — or flips to a new one every other bar. So the
-                    engine <strong>ranks keys by how well they explain the whole progression</strong>
-                    rather than testing them for purity. An out-of-key chord reads as a
-                    <em>visitor</em>: it costs the key some confidence, it doesn't kill it. Each
-                    chord is then read nearest-first — diatonic, then secondary dominant, then
-                    borrowed, then tritone substitution — so the app reaches for the ordinary
-                    explanation before the exotic one, which is exactly what a teacher does.
+                    I said it plainly to JA in August: “In the past… you have to write out, like,
+                    12 sets of these for every key.” In July, mid-lesson, I lost my place working
+                    out a chord pair: “This is why we need the app. Chord pair, give me all the
+                    inversions.”
                 </p>
                 <p class="cs-p">
-                    That tolerance is a pedagogical position, not a technical convenience. It lets
-                    the app hold several readings at once and show the student a
-                    <em>hypothesis being weighed</em> instead of a verdict being announced — and
-                    because every surface that names a function runs the same engine, the score, the
-                    strip and the reveal can never contradict each other.
+                    I'd had the idea since 2016, along with an ear-training quiz. In 2020 I started
+                    designing the visuals in Figma, page by page, as handouts. A handout still has
+                    to be redrawn for every key.
+                </p>
+                <figure class="cs-figure">
+                    <video class="cs-clip" src="images/case-study/fc-key-change.mp4" poster="images/case-study/fc-key-change-poster.jpg" width="1040" height="900" muted loop playsinline controls preload="metadata" aria-label="The key changes from E-flat to A-flat, D-flat, G and C; on each change the whole neck re-lights, the colour key updates and the notation re-engraves"></video>
+                    <figcaption class="cs-cap">Five keys in six seconds. The neck, the colour key and the notation all follow — what a page of handouts can't do.</figcaption>
+                </figure>
+            </section>
+
+            <!-- ============ 2 · CONSTRAINTS ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">02 · Constraints</p>
+                <h2 class="cs-h2">Thirty days of commits, a token limit, and code a small model could maintain</h2>
+                <p class="cs-p">
+                    I had a light coding background and design skills, but never the time for a
+                    project this size. Claude Code made fast prototyping possible, and I iterated
+                    with it from there — “pretty much running through my tokens always.”
+                </p>
+                <p class="cs-p">
+                    It took 11 weeks from first commit to v1, with commits on 24 of those days and
+                    almost none from mid-July to late August. The brief on day one called me a
+                    “novice coder” and set a rule: the code “must be maintainable later by a small
+                    local AI model.” Boring, conventional, heavily commented, small files.
+                </p>
+                <p class="cs-p">
+                    That rule shaped the architecture. <strong>Theory is data, not code</strong>: a
+                    scale, chord, tuning or instrument is a data file the engine reads. There's no
+                    backend; it's a static site.
+                </p>
+                <p class="cs-p">
+                    The ear-training quiz — the other half of the 2016 idea — reads the same data.
+                    It only asks about chords that can occur in the keys and scales you've put in
+                    play. Honestly, I've barely used it in lessons yet.
+                </p>
+                <figure class="cs-figure">
+                    <img src="images/case-study/fc-ear-training.jpg" alt="The Ear Training area: the control panel with the key of C, the Major scale and three triad qualities selected at Easy difficulty, and below it the ear training test — a play button over a soft wash of colour, the question “What quality did you hear?” and three answers waiting for a chord to be played">
+                    <figcaption class="cs-cap">Ear Training draws its questions from the same control panel as the neck. Built in June and live — but so far, rarely part of my lessons.</figcaption>
+                </figure>
+            </section>
+
+            <!-- ============ 3 · THE INSIGHT ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">03 · The insight</p>
+                <h2 class="cs-h2">The name came out of a lesson, six days before the code</h2>
+                <p class="cs-p">
+                    On 9 June I was transcribing Quincy Jones with SF. I said a player almost has to
+                    “see the fretboard lit up as like a little constellation” of the notes in the
+                    key. Two candidate keys might show as “your red color and… your blue color.”
+                </p>
+                <p class="cs-p">
+                    SF answered: “I haven't developed that relationship with the fretboard yet…”
+                    That's the person the app is for, saying what's missing. The first commit was
+                    six days later.
+                </p>
+                <p class="cs-p">
+                    The brief's first line was “a living textbook.” I wanted the screen to do what a
+                    sheet of paper used to, then hand the guitar back.
                 </p>
             </section>
 
-            <!-- ============ THE CONTROL GRAMMAR ============ -->
+            <!-- ============ 4 · THE DECISION ============ -->
             <section class="cs-section">
-                <p class="eyebrow">The design system</p>
-                <h2 class="cs-h2">Two visual languages, sharing one box</h2>
+                <p class="eyebrow">04 · The decision</p>
+                <h2 class="cs-h2">Light the whole key, not one box</h2>
                 <p class="cs-p">
-                    The app had a tidy rule: a rule under the word meant <em>pick exactly one</em>,
-                    a dot before it meant <em>pick any number</em>. Defensible on paper, and wrong in
-                    the panel — because a control box holding both marks read as two designs stacked
-                    in the same container. The mark was carrying information nobody needed at the
-                    cost of the thing everybody sees.
+                    Guitarists usually learn scales as box shapes, one hand position at a time. The
+                    app offers those — CAGED, and three, four or five notes per string. But it opens
+                    on every note of the key, everywhere on the neck, and the boxes are a scroll
+                    away. I gave up the familiar starting point to get the whole map.
                 </p>
                 <p class="cs-p">
-                    Every choice now wears the same dot, lit like an indicator lamp when it's
-                    chosen. What's lost is that the mark no longer announces whether a row takes one
-                    answer or several — but <strong>the row already says so</strong>, because a
-                    pick-one row never has two dots lit. The dot was also the older, better-known
-                    convention sitting in plain sight: a radio button <em>is</em> a filled dot, and
-                    always has been.
+                    The evidence came on 30 August. JJ-B improvised in E♭ with every note lit: “It
+                    feels good. Just being able to just take a look here and… see what different
+                    intervals sound like together.” I heard him going for far more variety.
                 </p>
                 <p class="cs-p">
-                    The same audit sorted the navigation into four scopes that had been quietly
-                    collapsed. A “Mode” row had been living <em>inside</em> the control panel while
-                    deciding which rows existed beneath it — a control that rewrites its own
-                    container can't sit inside it. Worse, in an app that teaches modes, a row called
-                    Mode that wasn't about modes is a collision you can't explain away. The rule that
-                    settled it: <strong>the navigation says what you're doing; the panel says what
-                    you're doing it to.</strong>
+                    Twenty minutes later he described the change himself. He'd started “just going
+                    through the scale.” Now he was “starting to hear… what you're playing,” and
+                    looking for “something that kind of meshes with that.” By October he was
+                    explaining target notes back to me.
+                </p>
+                <!-- DRAFT (Stu): confirm SF, JJ-B, RV and JA are happy to be quoted, even by initials. -->
+                <blockquote class="cs-quote">
+                    <p>“I don't think I've ever seen, like, a chart with, like, you know, the colors, and then, like… the intervals right there.”</p>
+                    <cite>— JJ-B, guitar student, comparing it to guitar books</cite>
+                </blockquote>
+            </section>
+
+            <!-- ============ 5 · WHAT DIDN'T WORK ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">05 · What didn't work</p>
+                <h2 class="cs-h2">Too much at once, and not yet self-explanatory</h2>
+                <p class="cs-p">
+                    Showing a chord on every string set at once overwhelmed RV: “The plot last week
+                    was overwhelming, it was like, I bit off more than I could actually…” I cut it
+                    to one string set a week, and sent him that one box as a screenshot.
+                </p>
+                <figure class="cs-figure">
+                    <img src="images/case-study/fc-one-string-set.jpg" alt="An A major triad in the Harmony view: the neck shows root position on the low E, A and D strings, and below it one boxed section for the E-A-D strings holds root position, first and second inversion in notation and TAB with their fret positions">
+                    <figcaption class="cs-cap">One chord, one string set, three inversions — the single page that replaced “overwhelming.”</figcaption>
+                </figure>
+                <p class="cs-p">
+                    The screen still needs me to explain it. SF had to ask “How do you see the
+                    degree?” — although the colour key was already on the neck. Later he asked
+                    “What do the lines in the fretboard mean?” From the first demo, the open
+                    question was the flow: why you'd reach for it, and when. It still is.
+                </p>
+                <p class="cs-p">
+                    The data rule leaked, too. The brief said never hard-code six strings. When
+                    ukulele arrived on 1 September, two hidden six-string assumptions broke it: TAB
+                    height, and scale boxes that asked for two octaves. Both were fixed that day.
+                    The theory layer took the new instrument as pure data.
                 </p>
             </section>
 
-            <!-- ============ VISUAL DIRECTION ============ -->
+            <!-- ============ 6 · OUTCOME ============ -->
             <section class="cs-section">
-                <p class="eyebrow">The look — “Paper &amp; Night”</p>
-                <h2 class="cs-h2">An art-book, not a dashboard</h2>
+                <p class="eyebrow">06 · Outcome</p>
+                <h2 class="cs-h2">Four students, one breakthrough on record, no numbers yet</h2>
                 <p class="cs-p">
-                    The visual direction is literary, not utilitarian: a serif (Newsreader) for
-                    display, a clean grotesque (Karla) for everything operational, and a warm paper
-                    ground that stays calm and legible projected on a wall in a lesson. A
-                    <strong>Night</strong> mode carries the same system into the dark.
+                    It shipped on 1 September as an installable web app. Since late August I've
+                    used it in lessons with four students. SF was first: he saw it the day after
+                    the first commit, asked me to send it, and offered to be the beta tester. His
+                    heat-map idea went into the backlog three days later and shipped in two weeks.
+                </p>
+                <p class="cs-p">
+                    JA worked through inversions on screen. On 24 September he realised the C chord
+                    he plays most is an inversion. By 15 October: “I'm gonna actually do some more
+                    diving in it myself.” RV asks for screenshots, so he can print them.
+                </p>
+                <p class="cs-p">
+                    What isn't known is how many people use it. There's no analytics. An email
+                    sign-up shipped, and I've sent it to a few guitar communities. I won't claim
+                    adoption it doesn't have.
                 </p>
             </section>
 
-            <!-- ============ STATUS / NEXT ============ -->
+            <!-- ============ 7 · REFLECTION ============ -->
             <section class="cs-section">
-                <p class="eyebrow">Where it is · what's next</p>
-                <h2 class="cs-h2">Deployed, and still growing</h2>
+                <p class="eyebrow">07 · Reflection</p>
+                <h2 class="cs-h2">The next feature is a lock</h2>
                 <p class="cs-p">
-                    Live, and in use in real lessons. It renders scales as their seven playable
-                    position boxes, chords as voicing shapes with independent structure and
-                    inversion, and a Harmony view of a key's diatonic chords with Roman numerals —
-                    every shape playable across the neck, with proper engraved notation and TAB.
-                    Alongside the fretboard there's now <strong>Ear Training</strong>, which
-                    drills chord quality and function against the same theory data. A third area,
-                    <strong>Play</strong>, the lead-sheet workbench where the function engine reads
-                    a progression you've entered, is built but still behind a switch: it isn't in
-                    the public version yet.
+                    My students mostly got screenshots and PDFs, not the app. That was partly my
+                    hesitation to share it before it was ready, and before I was committed to it.
+                    I wouldn't change that.
                 </p>
                 <p class="cs-p">
-                    <strong>The data-driven bet paid off where it counts.</strong> Ukulele —
-                    baritone and tenor — shipped without the engine changing: a different number of
-                    strings, tuned differently, is a data file. That was the promise made on day one
-                    and it held up two hundred commits later, which is the only real test an
-                    architectural decision gets.
+                    What I'd add is a focused exercise for one student, locked to one setting, so
+                    they practise instead of clicking around. Half of it exists: a link that opens
+                    the app in an exact setting. The lock doesn't.
                 </p>
                 <p class="cs-p">
-                    Honest about where it is: it's still labelled beta, the visual grammar has been
-                    re-audited more than once, and the progressive-disclosure onboarding — the thing
-                    that would let a stranger use it without me in the room — is designed but not
-                    built. It's a tool built for the teaching room first, and it shows, in both
-                    directions.
+                    This is how I'd work with AI on a team. The model writes the code; I bring the
+                    rules it can't know, and check them against the instrument. One correction is in
+                    the log verbatim: “It is clearly not that fingering for the 5 Shapes on E
+                    phrygian.” I'm not always right either. I once read a line-drawing bug as wrong
+                    notes, and a check of 71,540 shapes proved me wrong.
                 </p>
                 <p class="project-links process-links">
                     <a href="https://beingsound.studio/fretboard-constellations/" target="_blank" rel="noopener">Try it live</a>
@@ -336,6 +338,6 @@
         <p>© <span id="year"></span> Stu Pender · Designed &amp; built in <span class="pin" aria-hidden="true"></span>Chicago</p>
     </footer>
 
-    <script src="script.js?v=20261013s"></script>
+    <script src="script.js?v=20261019"></script>
 </body>
 </html>
