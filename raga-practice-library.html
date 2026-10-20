@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" data-palette="paper">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case study — Raga Practice Library</title>
+    <meta name="description" content="Case study: Raga Practice Library — a private practice room for Silvia Nakkach's raga class, with every raga's notes, recordings and imagery in one place, and a player built to loop and sing along. Product design and build by Stu Pender.">
+
+    <!-- Link previews (Open Graph + Twitter/X) -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Stu Pender">
+    <meta property="og:title" content="Case study — Raga Practice Library">
+    <meta property="og:description" content="Case study: Raga Practice Library — a private practice room for Silvia Nakkach's raga class, with every raga's notes, recordings and imagery in one place, and a player built to loop and sing along. Product design and build by Stu Pender.">
+    <meta property="og:url" content="https://stupender.github.io/raga-practice-library.html">
+    <meta property="og:image" content="https://stupender.github.io/images/og-card.png?v=20261019">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Stu Pender, product designer — “Building tools to support embodied presence,” beside a circle of lake water printed in one ink, over four black cards of his projects.">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=lake">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png?v=lake">
+    <link rel="apple-touch-icon" href="images/favicon-180.png?v=lake">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css?v=20261019">
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="index.html" class="wordmark">Stu Pender</a>
+        <div class="header-right">
+            <button class="sound-toggle" aria-label="Play ambient sound" aria-pressed="false" title="Ambient sound — Music for Airports">
+                <svg class="orbits" viewBox="0 0 40 40" aria-hidden="true"><circle class="ring" cx="20" cy="20" r="8.5"/><circle class="ring" cx="20" cy="20" r="15"/><g class="orb orb1"><circle class="dot" cx="20" cy="11.5" r="2.8"/></g><g class="orb orb2"><circle class="dot" cx="20" cy="5" r="2.8"/></g></svg>
+            </button>
+            <nav class="site-nav" id="site-nav" aria-label="Primary">
+                <a href="index.html#work" data-hint="01 – 13">Work</a>
+                <a href="index.html#process" data-hint="Listen · Design · Build">Process</a>
+                <a href="index.html#about" data-hint="Chicago">About</a>
+                <a href="resume.html" class="nav-page" data-hint="Experience">Résumé</a>
+                <a href="index.html#contact" data-hint="Say hello">Contact</a>
+            </nav>
+            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="top">
+        <div class="cs-closebar no-print">
+            <a class="cs-close" href="index.html#work" aria-label="Close — back to portfolio" title="Close — back to portfolio">
+                <span class="cs-close-x" aria-hidden="true">&#10005;</span>
+                <span>Close</span>
+            </a>
+        </div>
+        <article class="cs" style="--field:var(--f-sage); --pair:var(--p-mauve)">
+
+            <!-- ============ HERO ============ -->
+            <header class="cs-head">
+                <p class="eyebrow"><span class="cs-no">No. 03</span> Case study · 2026 – present</p>
+                <h1 class="cs-title">Raga Practice Library</h1>
+                <p class="cs-sub">
+                    A private practice room for one raga class — every raga's notes, recordings and
+                    imagery in one place, and a player built to loop and sing along.
+                </p>
+                <dl class="cs-meta">
+                    <div class="cs-meta-for"><dt>For</dt><dd>A raga student, practising between classes</dd></div>
+                    <div><dt>Role</dt><dd>Product design &amp; build, with Claude Code</dd></div>
+                    <div><dt>Timeline</dt><dd>Oct 2026 – present · launching end of October</dd></div>
+                    <div><dt>Stack</dt><dd>TypeScript · React · Express · SQLite · Web Audio</dd></div>
+                </dl>
+            </header>
+
+            <!-- ============ TL;DR ============ -->
+            <div class="cs-tldr">
+                <p class="eyebrow">In short</p>
+                <dl>
+                    <div>
+                        <dt>The problem</dt>
+                        <dd>I study ragas in Silvia Nakkach's Thursday evening class. I had years of recordings and notes, and <strong>I never went back to practise with them</strong>.</dd>
+                    </div>
+                    <div>
+                        <dt>My role</dt>
+                        <dd>Sole designer. I set the brief and made every decision; Claude Code wrote the code from it, in one session.</dd>
+                    </div>
+                    <div>
+                        <dt>The defining decision</dt>
+                        <dd><strong>Organise everything by raga</strong>, as a living textbook, instead of staying in Drive — and build it fast from parts of my own apps.</dd>
+                    </div>
+                    <div>
+                        <dt>The outcome</dt>
+                        <dd>17 ragas, 69 class notes and 137 hours of recordings in one place. I practise with it; the group hasn't yet, and it isn't online.</dd>
+                    </div>
+                </dl>
+            </div>
+
+            <figure class="cs-figure cs-figure--lead">
+                <img src="images/case-study/raga-library.jpg" alt="The library at 8:51 PM: the word Evening, ragas for this hour — Bhupali, Kedar and Yaman — then the day drawn as eight prahars from dawn to late night, and filters for mood, thaat, notes, teacher and kind" width="1800" height="1125">
+                <figcaption class="cs-cap">The library opens on the hour: what to sing now, and the whole day drawn as eight prahars, from dawn to late night.</figcaption>
+            </figure>
+
+            <!-- ============ OVERVIEW ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">Overview</p>
+                <h2 class="cs-h2">A living textbook for one class</h2>
+                <p class="cs-p">
+                    I've studied with Silvia Nakkach for many years — in her Thursday evening raga
+                    group, in her Integrative Sound &amp; Music Institute at the New York Open Center,
+                    and in a residency with her, Walking Distance. This library is how I get to know
+                    those ragas with familiarity. It's also how I'll share them with my classmates.
+                </p>
+                <p class="cs-p">
+                    Each raga has a page: its time of day, mood and scale; its notes as coloured dots
+                    you can press to hear; and every recording, class note and composition. A player
+                    along the bottom loops a phrase, slows it down, and moves it into your own Sa.
+                </p>
+            </section>
+
+            <!-- ============ PROBLEM ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">The problem</p>
+                <h2 class="cs-h2">The recordings existed. I just never went back to them.</h2>
+                <p class="cs-p">
+                    I didn't return to the recordings to practise. I couldn't tell which recording
+                    held which raga. There was so much information, in so many places, about so many
+                    ragas, that getting started felt overwhelming.
+                </p>
+                <p class="cs-p">
+                    The class shared everything over email — notes as Pages documents, recordings as
+                    Zoom links. I'd gathered copies into a Drive folder, one folder per raga. It was
+                    organised, but it was still folders. The friction was in getting started, not in
+                    missing features.
+                </p>
+                <blockquote class="cs-quote">
+                    <p>“This year I really want to get to know these ragas, their particular energies, to intuitively know which one is needed in a given moment.”</p>
+                    <cite>— my own words, in a note to Silvia</cite>
+                </blockquote>
+                <p class="cs-p">
+                    The library's opening screen asks the same question: which ragas belong to this hour.
+                </p>
+            </section>
+
+            <!-- ============ CONSTRAINTS ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">Constraints</p>
+                <h2 class="cs-h2">Fast, from a folder I already had, and private</h2>
+                <p class="cs-p">
+                    <strong>Fast.</strong> I wanted it built from the folder I'd already made, not
+                    designed from scratch. That forced reuse: the look, the editor, the player and the
+                    sign-in all come from my own earlier projects.
+                </p>
+                <p class="cs-p">
+                    <strong>Private.</strong> The recordings are Silvia's classes, for the people in
+                    the group. Nothing shows until you sign in. An admin adds people by email, and each
+                    gets a one-time link to choose their own password — nobody sends a password to
+                    anybody. The 137 hours stream straight from the original folder, which the app
+                    never copies or changes.
+                </p>
+                <p class="cs-p">
+                    <strong>Two editors, not one.</strong> I'm close to the class's teaching
+                    assistant: I take the notes and transcripts and keep the recordings. In my work
+                    with Silvia, back-and-forth on the same document has always been key. So she can
+                    edit every page, and every save keeps the version before it, with who wrote it.
+                </p>
+                <figure class="cs-figure cs-figure--pair">
+                    <div class="cs-pair">
+                        <img src="images/case-study/raga-classes-phone.jpg" alt="On a phone: Kedar's ten class notes listed by date, two series a year apart, from February 2024 to March 2025" width="780" height="1688">
+                        <img src="images/case-study/raga-swaras-phone.jpg" alt="On a phone: Bhupali's aroha and avaroha as coloured swara dots, each with a play button" width="780" height="1688">
+                    </div>
+                    <figcaption class="cs-cap">On a phone: two years of Kedar classes in one list, each a page Silvia and I can both edit — and Bhupali's swaras, ready to press.</figcaption>
+                </figure>
+            </section>
+
+            <!-- ============ INSIGHT ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">The insight</p>
+                <h2 class="cs-h2">Most of it already existed — in the notes and in my own apps</h2>
+                <p class="cs-p">
+                    Every raga's notes already opened with the same header: thaat, aroha and avaroha,
+                    vadi and samvadi, time of day, mood. So I didn't design a data model from nothing.
+                    An importer reads that header into each raga's facts, and each class into its own
+                    dated page. Even the time, written as “Evening, 6–9 PM,” becomes an hour the
+                    library can sort by.
+                </p>
+                <p class="cs-p">
+                    The parts came from my own work. <strong>Becoming's</strong> library player was
+                    already written for raga classes. <strong>Archive</strong> gave it loops.
+                    <strong>Fretboard Constellations</strong> gave seven colours, one per scale degree —
+                    here, Sa Re Ga Ma Pa Dha Ni. And this portfolio gave the paper, the type and the
+                    cards. Reuse is why it could be built in an afternoon.
+                </p>
+                <figure class="cs-figure">
+                    <img src="images/case-study/raga-practice-map.jpg" alt="Yaman's recordings with the player docked below: a two-hour class, its loop marked, and a practice map of three saved parts with how many times each plays" width="1800" height="1125">
+                    <figcaption class="cs-cap">A two-hour class becomes a setlist: each saved part plays its number of times, then the next begins. (The three parts were placed for this screenshot.)</figcaption>
+                </figure>
+            </section>
+
+            <!-- ============ DECISION ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">The decision</p>
+                <h2 class="cs-h2">A custom living textbook, not better folders</h2>
+                <p class="cs-p">
+                    Staying in Drive was a real option. But I'm a very visual person, and I wanted a
+                    custom, integrated living textbook of this music.
+                </p>
+                <p class="cs-p">
+                    So the library opens on the hour, and the day is drawn as eight prahars — which is
+                    also the filter, beside mood, thaat, number of notes and your own tags. Every swara
+                    is a dot in its own colour: komal drawn as a ring, tivra Ma and the octaves marked
+                    the way Bhatkhande notation marks them. Each raga also has a constellation — its
+                    notes round the twelve, its ascent drawn between them. A straight raga draws a calm
+                    shape; a zig-zag one crosses itself.
+                </p>
+                <figure class="cs-figure">
+                    <img src="images/case-study/raga-swaras.jpg" alt="Yaman's aroha, avaroha and scale as rows of coloured swara dots with play buttons, a tanpura control, and its constellation: seven notes round a circle, joined by the ascent" width="1800" height="1125">
+                    <figcaption class="cs-cap">Yaman's swaras, each in its own colour. Komal is a ring, tivra a stroke above, and the vadi wears a ring of its own.</figcaption>
+                </figure>
+                <p class="cs-p">
+                    What I gave up: Drive's free storage, and a place the group already knew. Hosting
+                    the large audio is now my problem to solve — and Drive's own player can't loop or
+                    transpose inside the app.
+                </p>
+            </section>
+
+            <!-- ============ WHAT DIDN'T WORK ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">What didn't work</p>
+                <h2 class="cs-h2">Opening a page rewrote it</h2>
+                <p class="cs-p">
+                    While testing, I opened an imported class note and closed it without typing. It
+                    saved anyway — with a backslash before every square bracket. The cause was in the
+                    editor code I'd reused from Becoming. It compared two documents in a way that is
+                    never true between the editor and the importer, so any page with a <code>[</code>,
+                    <code>*</code> or <code>_</code> looked changed. The fix was one small function.
+                    Becoming still has the original code.
+                </p>
+                <p class="cs-p">
+                    Two smaller rough edges came from the import. Only two of Uday Bhawalkar's six
+                    masterclass handouts got a date, because only two say “Date:”. And Raga Bhatiyar's
+                    notes mention reference recordings its folder doesn't have.
+                </p>
+            </section>
+
+            <!-- ============ OUTCOME ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">Outcome</p>
+                <h2 class="cs-h2">Built, filled, and in my own practice — not yet shared</h2>
+                <p class="cs-p">
+                    The library holds <strong>17 ragas, 112 pages — 69 of them class notes — and 75
+                    recordings</strong>: 137 hours from 2021 to 2026, including all six sessions of
+                    Uday Bhawalkar's June 2026 masterclass.
+                </p>
+                <p class="cs-p">
+                    I'm using it, and I recognise the ragas better — and which to practise at what
+                    time of day. Silvia has seen screenshots and seems excited; we haven't used it
+                    together yet. It isn't online, and no one else has an account. What it changes for
+                    the group isn't known yet.
+                </p>
+            </section>
+
+            <!-- ============ REFLECTION ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">Reflection</p>
+                <h2 class="cs-h2">The hard parts are still ahead</h2>
+                <p class="cs-p">
+                    I can't judge it fully until it launches, at the end of October. Two design
+                    decisions are still open, and they're the real ones: where the large audio files
+                    live, and how a teacher and a student work on the same notes. The pieces are
+                    built — roles, invitations, shared loops and a history on every page — but they
+                    haven't been tested with Silvia.
+                </p>
+                <p class="cs-p">
+                    It fits the thread of my work: a tool for someone in the middle of something,
+                    built to get out of the way. Here, that's a student singing along with a class. The
+                    player keeps going while you read the notes, and every control has a key. One
+                    caveat: it's built for practice at home, not for the class itself.
+                </p>
+            </section>
+
+            <nav class="cs-next no-print" aria-label="More work">
+                <a class="cs-next-link" href="yoga-of-the-voice.html" style="--field:var(--f-terracotta)">
+                    <span class="cs-next-label">No. 04</span>
+                    <span class="cs-next-name">Yoga of the Voice</span>
+                    <span class="cs-next-for">For a newcomer, meeting a thirty-year practice</span>
+                    <span class="cs-next-go blk">Next</span>
+                    <span class="cs-next-img"><img src="images/thumbs/vox.jpg" alt="" width="640" height="436" loading="lazy"></span>
+                </a>
+                <a class="cs-next-all" href="index.html#work">All work <span aria-hidden="true">↑</span></a>
+            </nav>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="year"></span> Stu Pender · Designed &amp; built in <span class="pin" aria-hidden="true"></span>Chicago</p>
+    </footer>
+
+    <script src="script.js?v=20261019"></script>
+</body>
+</html>

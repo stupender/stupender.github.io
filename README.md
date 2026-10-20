@@ -25,7 +25,7 @@ Transient Senses programme:
   01–04 repeat below as *covers* set straight on the page (no box, no shadow) with
   their contents and a picture of the work.
 - **Back** — the case study opens on the card's colour, flat, like the back of the
-  card, and ends on the next project's card (01 → 06 → back to 01).
+  card, and ends on the next project's card (01 → 07 → back to 01).
 - The colours (`--f-*`) are chosen against each screenshot so the work stands out: cobalt
   (01), sky (02), terracotta (03), sage (04), saffron (05), khaki (06), slate (12). Cobalt is the one
   dark colour, so its card, case-study header and next card add `.on-dark` for light type.
@@ -40,7 +40,7 @@ Transient Senses programme:
   numbered like a table of contents.
 
 The site is **one numbered catalogue** on one rail (labels left, content right):
-hero and card fronts, covers 01–04, contents 05–12 (kind, title, year, number),
+hero and card fronts, covers 01–04, contents 05–13 (kind, title, year, number),
 process, about (a cobalt duotone portrait), and contact.
 
 One link language throughout, with no arrow characters in the markup:
@@ -83,8 +83,8 @@ generated from the paper pages; regenerate them if you switch palettes.
 | File | What it holds |
 |------|---------------|
 | `index.html` | Hero + card fronts, the catalogue (covers + contents), process, about, contact. |
-| `*-case-study.html`, `fretboard-constellations.html`, … | Case studies 01–06 (02 is `becoming.html`, 05 is `archive-case-study.html`). |
-| `archive.html` | No. 12 — experiments and early work. |
+| `*-case-study.html`, `fretboard-constellations.html`, … | Case studies 01–07 (02 is `becoming.html`, 03 is `raga-practice-library.html`, 06 is `archive-case-study.html`). |
+| `archive.html` | No. 13 — experiments and early work. |
 | `resume.html` | Résumé; its print styles produce `Stu-Pender-Resume.pdf`. |
 | `styles.css` | All styling. Tokens (colour, type, rail width) live in `:root`. |
 | `script.js` | Page router (keeps the ambient audio playing), scroll reveal, menu, copy-email. |

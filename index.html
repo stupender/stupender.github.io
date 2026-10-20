@@ -40,7 +40,7 @@
                 <svg class="orbits" viewBox="0 0 40 40" aria-hidden="true"><circle class="ring" cx="20" cy="20" r="8.5"/><circle class="ring" cx="20" cy="20" r="15"/><g class="orb orb1"><circle class="dot" cx="20" cy="11.5" r="2.8"/></g><g class="orb orb2"><circle class="dot" cx="20" cy="5" r="2.8"/></g></svg>
             </button>
             <nav class="site-nav" id="site-nav" aria-label="Primary">
-                <a href="#work" data-hint="01 – 12">Work</a>
+                <a href="#work" data-hint="01 – 13">Work</a>
                 <a href="#process" data-hint="Listen · Design · Build">Process</a>
                 <a href="#about" data-hint="Chicago">About</a>
                 <a href="resume.html" class="nav-page" data-hint="Experience">Résumé</a>
@@ -98,17 +98,17 @@
                         <span class="card-for">For time, energy and money aligned with your values</span>
                         <span class="card-img"><img src="images/thumbs/becoming.jpg" alt="" width="640" height="436" loading="lazy"></span>
                     </a></li>
+                    <li><a class="card" href="#raga" style="--field:var(--f-sage)">
+                        <span class="card-top"><span class="card-no">03</span><span class="card-year">2026 –</span></span>
+                        <span class="card-title">Raga Practice Library</span>
+                        <span class="card-for">For a raga student, practising between classes</span>
+                        <span class="card-img"><img src="images/thumbs/raga.jpg" alt="" width="640" height="400" loading="lazy"></span>
+                    </a></li>
                     <li><a class="card" href="#vox" style="--field:var(--f-terracotta)">
-                        <span class="card-top"><span class="card-no">03</span><span class="card-year">2026</span></span>
+                        <span class="card-top"><span class="card-no">04</span><span class="card-year">2026</span></span>
                         <span class="card-title">Yoga of the Voice</span>
                         <span class="card-for">For a newcomer, meeting a practice</span>
                         <span class="card-img"><img src="images/thumbs/vox.jpg" alt="" width="640" height="436" loading="lazy"></span>
-                    </a></li>
-                    <li><a class="card" href="#joan" style="--field:var(--f-sage)">
-                        <span class="card-top"><span class="card-no">04</span><span class="card-year">2026</span></span>
-                        <span class="card-title">Joan Gutiérrez</span>
-                        <span class="card-for">For a visitor who arrives tender</span>
-                        <span class="card-img"><img src="images/thumbs/joan.jpg" alt="" width="640" height="436" loading="lazy"></span>
                     </a></li>
                 </ol>
             </nav>
@@ -116,7 +116,7 @@
 
         <!-- ========================================================= -->
         <!-- WORK — 01–04 as covers (details set as a table of         -->
-        <!-- contents), then 05–12 as the contents list.               -->
+        <!-- contents), then 05–13 as the contents list.               -->
         <!-- ========================================================= -->
         <section id="work" class="section" aria-labelledby="work-heading">
             <header class="section-head">
@@ -167,9 +167,30 @@
                 </a>
             </article>
 
-            <!-- 03 · Yoga of the Voice -->
+            <!-- 03 · Raga Practice Library -->
+            <article class="cover" id="raga">
+                <div class="cover-top"><span class="cover-no">03</span><span class="cover-when">2026 – present · launching October</span></div>
+                <div class="cover-text">
+                    <h3 class="cover-title"><a href="raga-practice-library.html">Raga Practice Library</a></h3>
+                    <p class="cover-for">For a raga student, practising between classes</p>
+                    <dl class="cover-toc">
+                        <div><dt>What</dt><dd>A private practice library for Silvia Nakkach's raga class: every raga's notes, recordings and imagery in one place, with a player built to loop and sing along.</dd></div>
+                        <div><dt>Decision</dt><dd>Organise by raga instead of by folder — and build it from parts of my own apps, in one afternoon.</dd></div>
+                        <div><dt>Role</dt><dd>Product design &amp; build, with Claude Code</dd></div>
+                        <div><dt>Stack</dt><dd>TypeScript · React · Express · SQLite · Web Audio</dd></div>
+                    </dl>
+                    <p class="cover-links">
+                        <a class="blk" href="raga-practice-library.html">Case study</a>
+                    </p>
+                </div>
+                <a class="cover-media" href="raga-practice-library.html" tabindex="-1" aria-hidden="true">
+                    <img src="images/case-study/raga-cards.jpg" alt="" loading="lazy" width="1800" height="1125">
+                </a>
+            </article>
+
+            <!-- 04 · Yoga of the Voice -->
             <article class="cover" id="vox">
-                <div class="cover-top"><span class="cover-no">03</span><span class="cover-when">2026 · Client · live</span></div>
+                <div class="cover-top"><span class="cover-no">04</span><span class="cover-when">2026 · Client · live</span></div>
                 <div class="cover-text">
                     <h3 class="cover-title"><a href="yoga-of-the-voice.html">Yoga of the Voice</a></h3>
                     <p class="cover-for">For a newcomer, meeting a thirty-year practice</p>
@@ -189,89 +210,73 @@
                 </a>
             </article>
 
-            <!-- 04 · Joan Gutiérrez -->
-            <article class="cover" id="joan">
-                <div class="cover-top"><span class="cover-no">04</span><span class="cover-when">2026 · Client · live</span></div>
-                <div class="cover-text">
-                    <h3 class="cover-title"><a href="joan-gutierrez.html">Joan Gutiérrez</a></h3>
-                    <p class="cover-for">For a visitor who arrives tender</p>
-                    <dl class="cover-toc">
-                        <div><dt>What</dt><dd>A brand and marketing site for an intimacy, embodiment and nervous-system educator — calm enough to feel safe, clear enough to invite one small step.</dd></div>
-                        <div><dt>Decision</dt><dd>Tone is the product: a dusty-rose ground, a literary serif, and “begin with a conversation” as the main action instead of a hard sell.</dd></div>
-                        <div><dt>Role</dt><dd>Design &amp; front-end build</dd></div>
-                        <div><dt>Stack</dt><dd>HTML · CSS · JavaScript</dd></div>
-                    </dl>
-                    <p class="cover-links">
-                        <a class="blk" href="joan-gutierrez.html">Case study</a>
-                        <a href="https://joangutz.github.io/joangutierrez-website/" target="_blank" rel="noopener">Live</a>
-                        <a href="https://github.com/joangutz/joangutierrez-website" target="_blank" rel="noopener">Source</a>
-                    </p>
-                </div>
-                <a class="cover-media" href="joan-gutierrez.html" tabindex="-1" aria-hidden="true">
-                    <img src="images/projects/joan-gutierrez.png" alt="" loading="lazy" width="1320" height="900">
-                </a>
-            </article>
-
-            <!-- Contents 05–12 — set like a catalogue's table of contents:
+            <!-- Contents 05–13 — set like a catalogue's table of contents:
                  title · what it is · year · link · number -->
             <div class="index" id="index">
-                <p class="rail-label">Contents <span>05–12</span></p>
+                <p class="rail-label">Contents <span>05–13</span></p>
                 <ol class="toc">
+                    <li><a class="toc-row" href="joan-gutierrez.html">
+                        <span class="toc-name">Joan Gutiérrez</span>
+                        <span class="toc-kind">Brand &amp; marketing site · client</span>
+                        <span class="toc-year">2026</span>
+                        <span class="toc-go blk">Case study</span>
+                        <span class="toc-no">05</span>
+                    </a></li>
                     <li><a class="toc-row" href="archive-case-study.html">
                         <span class="toc-name">Archive</span>
                         <span class="toc-kind">macOS app for a music library · design &amp; build</span>
                         <span class="toc-year">2025 –</span>
                         <span class="toc-go blk">Case study</span>
-                        <span class="toc-no">05</span>
+                        <span class="toc-no">06</span>
                     </a></li>
                     <li><a class="toc-row" href="ground-beneath-our-feet.html">
                         <span class="toc-name">The Ground Beneath Our Feet</span>
                         <span class="toc-kind">Licensing site · UX, brand &amp; build</span>
                         <span class="toc-year">2018</span>
                         <span class="toc-go blk">Case study</span>
-                        <span class="toc-no">06</span>
+                        <span class="toc-no">07</span>
                     </a></li>
                     <li><a class="toc-row" href="https://beingsound.studio" target="_blank" rel="noopener">
                         <span class="toc-name">Being Sound</span>
                         <span class="toc-kind">My studio site · design &amp; build</span>
                         <span class="toc-year">2025 –</span>
                         <span class="toc-go">Live</span>
-                        <span class="toc-no">07</span>
+                        <span class="toc-no">08</span>
                     </a></li>
                     <li><a class="toc-row" href="https://www.figma.com/proto/LB2oM2wOwVF5kFjfLSy0I0/Expressionist-Wireframes?node-id=277-76&amp;page-id=0%3A1" target="_blank" rel="noopener">
                         <span class="toc-name">Expressionist</span>
                         <span class="toc-kind">App concept · product design with a PM</span>
                         <span class="toc-year">2018 – 20</span>
                         <span class="toc-go">Prototype</span>
-                        <span class="toc-no">08</span>
+                        <span class="toc-no">09</span>
                     </a></li>
                     <li><a class="toc-row" href="https://stupender.github.io/harmony-book/" target="_blank" rel="noopener">
                         <span class="toc-name">Musical Harmony Book</span>
                         <span class="toc-kind">Interactive theory book · design &amp; build</span>
                         <span class="toc-year">2020</span>
                         <span class="toc-go">Live</span>
-                        <span class="toc-no">09</span>
+                        <span class="toc-no">10</span>
                     </a></li>
                     <li><a class="toc-row" href="https://seedworldwide.com" target="_blank" rel="noopener">
                         <span class="toc-name">Seed Worldwide</span>
                         <span class="toc-kind">Brand landing page · client</span>
                         <span class="toc-year">—</span>
                         <span class="toc-go">Live</span>
-                        <span class="toc-no">10</span>
+                        <span class="toc-no">11</span>
                     </a></li>
                     <li><a class="toc-row" href="https://www.figma.com/design/qhfg5v8Ens7fYkdPN92jgA/Accordion?node-id=0-1" target="_blank" rel="noopener">
                         <span class="toc-name">Accordion</span>
                         <span class="toc-kind">UX study · research, prototyping, testing</span>
                         <span class="toc-year">2017 – 18</span>
                         <span class="toc-go">Figma</span>
-                        <span class="toc-no">11</span>
+                        <span class="toc-no">12</span>
                     </a></li>
                     <li><a class="toc-row" href="archive.html">
                         <span class="toc-name">Experiments</span>
                         <span class="toc-kind">Generative music &amp; practice tools</span>
                         <span class="toc-year">c. 2020</span>
                         <span class="toc-go blk">See all</span>
-                        <span class="toc-no">12</span>
+                        <span class="toc-no">13</span>
                     </a></li>
                 </ol>
             </div>
