@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Case study — Becoming</title>
-    <meta name="description" content="Case study: Becoming — a local-first companion for life development that reports without grading. Money, the body, time and attention in one place, on a Mac and as a Home Screen app, with the data never leaving the device. Product design and build by Stu Pender.">
+    <meta name="description" content="Case study: Becoming — a local-first companion that puts vision, projects and the day&#39;s hours on one ladder, so you can see whether your time went where your values are. On a Mac and as a Home Screen app, with the data never leaving the device. Product design and build by Stu Pender.">
 
     <!-- Link previews (Open Graph + Twitter/X) -->
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Stu Pender">
     <meta property="og:title" content="Case study — Becoming">
-    <meta property="og:description" content="Case study: Becoming — a local-first companion for life development that reports without grading. Money, the body, time and attention in one place, on a Mac and as a Home Screen app, with the data never leaving the device. Product design and build by Stu Pender.">
+    <meta property="og:description" content="Case study: Becoming — a local-first companion that puts vision, projects and the day&#39;s hours on one ladder, so you can see whether your time went where your values are. On a Mac and as a Home Screen app, with the data never leaving the device. Product design and build by Stu Pender.">
     <meta property="og:url" content="https://stupender.github.io/becoming.html">
     <meta property="og:image" content="https://stupender.github.io/images/og-card.png?v=20261019">
     <meta property="og:image:width" content="1200">
@@ -63,14 +63,15 @@
                 <p class="eyebrow"><span class="cs-no">No. 02</span> Case study · 2026 – present</p>
                 <h1 class="cs-title">Becoming</h1>
                 <p class="cs-sub">
-                    A local-first companion for life development — money, the body, time and
-                    attention in one place, designed to report without ever grading.
+                    A local-first companion that shows whether your time is going where your
+                    values are — vision, projects and the day's hours on one ladder.
                 </p>
                 <dl class="cs-meta">
-                    <div class="cs-meta-for"><dt>For</dt><dd>Time, energy and money aligned with your values</dd></div>
-                    <div><dt>Role</dt><dd>Product design &amp; build (solo)</dd></div>
-                    <div><dt>Timeline</dt><dd>Aug 2026 – present · in daily use</dd></div>
+                    <div class="cs-meta-for"><dt>For</dt><dd>Someone with more intentions than hours, at the start of a day</dd></div>
+                    <div><dt>Role</dt><dd>Product design &amp; build, solo — with AI doing the typing</dd></div>
+                    <div><dt>Timeline</dt><dd>A spreadsheet, Aug 2026 · an app since Sep · in daily use</dd></div>
                     <div><dt>Stack</dt><dd>TypeScript · React · Express · SQLite · Electron · sql.js</dd></div>
+                    <div><dt>Links</dt><dd>No live link, no public source — the data is the point</dd></div>
                 </dl>
             </header>
 
@@ -80,19 +81,19 @@
                 <dl>
                     <div>
                         <dt>The problem</dt>
-                        <dd>Tools that track a life mostly <strong>grade it</strong> — scores, streaks, a red number. For a freelancer with irregular income, that machinery produces the anxiety it claims to relieve.</dd>
+                        <dd>I couldn't tell where my time actually went. As I put it to a guitar student a month before I designed any of this: <em>“I'm not a reliable accountant of my time and experience.”</em></dd>
                     </div>
                     <div>
                         <dt>My role</dt>
-                        <dd>Sole designer and developer — research, IA, design system, data model, privacy architecture, and the Mac and Home Screen builds.</dd>
+                        <dd>Sole designer and builder. AI wrote most of the code; I decided the structure, and rewrote the words until they said something exact.</dd>
                     </div>
                     <div>
-                        <dt>The core constraint</dt>
-                        <dd><strong>Report, never grade</strong> — enforced at the API layer. The person's own words are never generated for them, and their data never leaves their device.</dd>
+                        <dt>The defining decision</dt>
+                        <dd>Vision, project and action became <strong>one kind of page at three sizes</strong>, so an hour has an address — and the work can be traced to the thing it was supposedly for.</dd>
                     </div>
                     <div>
                         <dt>The outcome</dt>
-                        <dd>A working app on a Mac and an iPad: 30 screens on one control grammar, statements reconciled to the penny, and the same code running with no server anywhere but inside the page.</dd>
+                        <dd>Open on 58 of the last 60 days. A second person has used it on her own iPad since October. A guitar student has asked for a copy — and wants the one feature the app refuses to build.</dd>
                     </div>
                 </dl>
             </div>
@@ -105,14 +106,29 @@
             <!-- ============ 1 · PROBLEM ============ -->
             <section class="cs-section">
                 <p class="eyebrow">01 · The problem</p>
-                <h2 class="cs-h2">Every tool in this category is an anxiety machine</h2>
+                <h2 class="cs-h2">I was an unreliable witness to my own time</h2>
                 <p class="cs-p">
-                    I'm a freelance sound artist and teacher. My income arrives in uneven pieces, and
-                    the tools meant to help were the opposite of help. Open a budgeting app and
-                    something is red. Open a habit tracker and a streak is about to break. The whole
-                    category's interaction model is <em>scoring</em> — and scoring a life produces the
-                    state that makes good decisions impossible. A ledger you avoid is worse than no
-                    ledger.
+                    I'm a freelance sound artist and teacher. Nothing told me where a week went. I
+                    could finish a week certain a project was failing and be wrong, because the
+                    judgment came from my mood rather than from anything I could look at. I said this
+                    out loud in a guitar lesson in September, before any of it was designed:
+                </p>
+                <blockquote class="cs-quote">
+                    <p>“Sometimes I feel like I'm a bad… I'm not a reliable accountant of my time and experience. Depending on my mood and a million other factors, I could be like, this project sucks, and it's failing.”</p>
+                    <cite>— me, in a lesson, 29 September 2026</cite>
+                </blockquote>
+                <p class="cs-p">
+                    My student answered <em>“I know exactly what you mean.”</em> That exchange is the
+                    brief. Not a tracker — something that makes a week legible enough that I stop
+                    guessing at it. It began as an income and expense spreadsheet, to check whether my
+                    spending matched what I said I valued; the question turned out not to be about
+                    money. Money is only the part that arrives with numbers attached.
+                </p>
+                <p class="cs-p">
+                    The tools meant to help were the opposite of help. Open a budgeting app and
+                    something is red. Open a habit tracker and a streak is about to break. Scoring a
+                    life produces the state that makes good decisions impossible. A ledger you avoid
+                    is worse than no ledger.
                 </p>
                 <p class="cs-p">
                     Money also turned out to be only the loudest place energy goes. The body,
@@ -134,7 +150,7 @@
             <!-- ============ 2 · CONSTRAINTS ============ -->
             <section class="cs-section">
                 <p class="eyebrow">02 · Constraints</p>
-                <h2 class="cs-h2">Four limits, and the one I chose</h2>
+                <h2 class="cs-h2">Private data, one person, and someone who isn't me</h2>
                 <p class="cs-p">
                     <strong>One person, no budget.</strong> I'm the designer, the developer and, at
                     first, the only user. No paid Apple developer account, no hosting bill, no
@@ -153,15 +169,25 @@
                     and an install that needs no technical help.
                 </p>
                 <p class="cs-p">
-                    <strong>And the one I chose: report, never grade.</strong> A principle that lives
-                    in a style guide gets violated the first time a feature wants a progress bar, so
-                    this one lives where data is produced. The derived endpoints return
-                    <strong>counts, shares and ranges</strong> — never scores, targets or streaks. If
-                    the API can't emit a grade, no screen can accidentally render one.
+                    <strong>So the server runs inside the page.</strong> I first did the obvious
+                    thing — left the Mac on and reached it from the iPad over a private tunnel, with
+                    a passphrase door in front. It worked and it was wrong: a computer running at
+                    home, a network to keep healthy, a door that has to be right every time. So I
+                    sent the server to the iPad instead. The same server code is bundled into the web
+                    app, with SQLite compiled to WebAssembly and the database in the browser's own
+                    storage. Requests to <code>/api</code> never leave the device; they're answered
+                    in-process. There is no server to leak from, because there is no server.
+                </p>
+                <p class="cs-p">
+                    <strong>And one rule, kept in the code.</strong> Derived reads return counts,
+                    shares and ranges — never scores. An area holding nothing <em>is not failing</em>;
+                    it may simply be a stretch nobody has read yet. The rule lives where data is
+                    produced, so no screen can render a grade by accident. It's a guardrail, not the
+                    point. The point is seeing where the time went.
                 </p>
                 <blockquote class="cs-quote">
-                    <p>“Reads compute, they do not grade.”</p>
-                    <cite>— the rule in the architecture doc that settles feature arguments</cite>
+                    <p>“It reports; it does not grade. An area with nothing in it is not failing.”</p>
+                    <cite>— the comment above the code that computes it</cite>
                 </blockquote>
                 <p class="cs-p">
                     Two smaller rules come from the same place. <strong>The app never writes the
@@ -174,65 +200,83 @@
                     <img src="images/case-study/becoming-astrology.jpg" alt="The Astrology page: a birth chart wheel with the planets in their signs and houses, and a list of placements beside it">
                     <figcaption class="cs-cap">Astrology, for the people who read their days that way. A lens you can switch off; every meaning carries its source.</figcaption>
                 </figure>
-            </section>
-
-            <!-- ============ 3 · A DECISION ============ -->
-            <section class="cs-section">
-                <p class="eyebrow">03 · A decision</p>
-                <h2 class="cs-h2">What I tried first, and what I'm proud of instead</h2>
-                <p class="cs-p">
-                    <strong>What didn't work: reaching the Mac from the iPad.</strong> The obvious
-                    way to get a desktop app onto a phone is to leave the desktop on and reach it over
-                    the network. I built exactly that — a private network tunnel, a passphrase door in
-                    front of the server, and a Home Screen icon pointing at it. It worked, and it was
-                    wrong. It meant a computer left running at home, a network to keep healthy, and a
-                    door that has to be right every time. After living with it, I wrote:
-                </p>
-                <blockquote class="cs-quote">
-                    <p>“I just want a functioning app that doesn't need all of this remote access stuff of leaving the computer on.”</p>
-                    <cite>— my own note, after living with it</cite>
-                </blockquote>
-                <p class="cs-p">
-                    <strong>What I'm proud of: the server runs inside the page.</strong> Instead of
-                    sending the iPad to the server, I sent the server to the iPad. The same server
-                    code that runs on the Mac is bundled into the web app, with small stand-ins
-                    underneath it: SQLite compiled to WebAssembly instead of a native database, the
-                    database file kept in the browser's own storage, the same PDF parser so a bank
-                    statement reads identically on both. The page's requests to <code>/api</code>
-                    never leave the device — they're answered in-process.
-                </p>
-                <p class="cs-p">
-                    The result installs from a link to the Home Screen, works offline, and needs no
-                    account, no cloud and no developer program. My partner's copy holds their data and
-                    nobody else's. And because it is one codebase rather than a port, every change I
-                    make on the Mac reaches the iPad on the next publish. It's the privacy promise
-                    made literal: there is no server to leak from, because there is no server.
-                </p>
                 <figure class="cs-figure cs-figure--pair">
                     <div class="cs-pair">
                         <img src="images/case-study/becoming-phone-head.jpg" alt="Becoming on a phone: the date, a month calendar, and the weather dial with the day's readings stacked beside it">
                         <img src="images/case-study/becoming-phone-day.jpg" alt="Becoming on a phone: today's intention, a line of noticing, and the shape of the day as time blocks">
                     </div>
-                    <figcaption class="cs-cap">The same app on a phone, installed from the Home Screen. Everything on it is stored on the device.</figcaption>
+                    <figcaption class="cs-cap">The same app on a phone, installed from the Home Screen — one codebase, no account, no cloud. Everything on it is stored on the device.</figcaption>
                 </figure>
+            </section>
+
+            <!-- ============ 3 · THE DECISION ============ -->
+            <section class="cs-section">
+                <p class="eyebrow">03 · The decision</p>
+                <h2 class="cs-h2">One page at three sizes, so the day can point upward</h2>
                 <p class="cs-p">
-                    Smaller things didn't work either, and were taken out as quickly. A calendar moved
-                    into the side menu lasted an afternoon (“no, I don't like it, put the calendar
-                    back”). A new colour palette for time blocks was, in my own review, horrendous —
-                    so the colours went back to what they had been, warm to cool across the day, with
-                    a spectrum offered beside them as a choice rather than a replacement.
+                    The app could show where my hours went. It could not show what they were
+                    <em>for</em>. Vision lived on one page, projects on another, the day on a third,
+                    and nothing joined them except my memory — which is the faculty that started
+                    this whole problem.
+                </p>
+                <p class="cs-p">
+                    So vision, project and action became <strong>three sizes of the same page</strong>.
+                    Each sits inside exactly one thing above it, which makes the way back a single
+                    line: the <em>trail</em> at the top of every page —
+                    <em>Work › A studio that sustains itself › Song Catalog</em>. An hour now has an
+                    address. The time it took reaches the vision it serves without my having to
+                    remember the chain, which is the entire question the app exists to answer.
+                </p>
+                <p class="cs-p">
+                    <strong>What I gave up was a clean taxonomy.</strong> A project is finite: stages,
+                    dates, a price. A collection never finishes — a song catalog, a set of students.
+                    I expected that line to be obvious and in use it isn't. So the kind is a switch,
+                    with <em>“nothing is lost — switch back any time”</em> printed beside it. Naming
+                    the ambiguity in the interface was cheaper and more honest than pretending I
+                    could resolve it for everybody.
+                </p>
+                <p class="cs-p">
+                    One rule underneath keeps it from lying. An hour can serve more than one page,
+                    but it is <strong>counted in exactly one</strong>. The pages that gather an hour
+                    and the figures that count it read from different places, so an hour of study
+                    that also serves a second project is still one hour, in one column. A tool whose
+                    purpose is an honest account cannot double-count the thing it accounts for.
                 </p>
             </section>
 
             <!-- ============ 4 · THE INSIGHT ============ -->
             <section class="cs-section">
                 <p class="eyebrow">04 · The insight</p>
-                <h2 class="cs-h2">An empty stretch isn't a bad stretch — it's one not read yet</h2>
+                <h2 class="cs-h2">Rewriting the labels was how I found the design</h2>
                 <p class="cs-p">
-                    The money view kept telling me I was falling short, and it took using it to see
-                    why. I don't type expenses in as they happen; I bring in statements on a couple of
-                    fixed days a month. So the current month always looked thin and the floor always
-                    looked missed. I wrote:
+                    AI wrote most of the code here, and it writes fluent, vague copy. A field that
+                    chose which project a task served was labelled <strong>“Serves.”</strong> It
+                    reads like meaning and decides nothing. Rewriting it was the design work, not
+                    tidying up after it. “Serves” became <strong>Project</strong> — named for the
+                    page it selects from, because that is what the person is actually choosing.
+                    “To-do” became <strong>Action</strong>. Every time a label came out vague,
+                    something underneath it was undecided.
+                </p>
+                <p class="cs-p">
+                    One sentence I wrote while trying to say what two lists were for became an
+                    entire feature:
+                </p>
+                <blockquote class="cs-quote">
+                    <p>“What's Happening Today is just unscheduled, and the Shape of the Day is scheduled.”</p>
+                    <cite>— my own note, 29 September 2026, now quoted in the code it produced</cite>
+                </blockquote>
+                <p class="cs-p">
+                    Before it, the day was one undifferentiated list. After it, the day has two
+                    halves that behave differently — hours you committed to, and work not yet placed
+                    in time — and the distinction spread into practices, projects and the archive. I
+                    read all 1,190 strings in the app in one pass and rewrote 28 of them. The copy
+                    audit was a design audit wearing other clothes.
+                </p>
+                <p class="cs-p">
+                    <strong>The same discipline caught a lie in the money model.</strong> It kept
+                    telling me I was falling short. I don't type expenses in as they happen; I bring
+                    in statements on a couple of fixed days a month, so the current month always
+                    looked thin and the floor always looked missed. I wrote:
                 </p>
                 <blockquote class="cs-quote">
                     <p>“I don't input my expenses until some day in the future, the money date. So this will always look like I'm not hitting the mark.”</p>
@@ -308,14 +352,38 @@
 
             <!-- ============ MESSY MIDDLE ============ -->
             <section class="cs-section">
-                <p class="eyebrow">The messy middle</p>
-                <h2 class="cs-h2">Two things I got wrong in my own promise</h2>
+                <p class="eyebrow">What didn't work</p>
+                <h2 class="cs-h2">The app lost my own writing</h2>
                 <p class="cs-p">
-                    <strong>The privacy promise was broken and nothing said so.</strong> The server
+                    In October I dragged an image into a note and everything below it disappeared.
+                    The editor had no handling for a file drop, so it replaced the selection with a
+                    node it couldn't build, and took the text under the caret with it.
+                </p>
+                <p class="cs-p">
+                    The fix is two-part: the editor now refuses pictures outright rather than
+                    half-accepting them, and every prose field keeps its last twenty versions before
+                    any save. A save that truncates can no longer be the only copy.
+                </p>
+                <p class="cs-p">
+                    The tail of that evening's notes was not recoverable. I went through the
+                    write-ahead log, the freed pages, 54 backups and the journal files, and it was
+                    gone. Local-first means nobody else has a copy either — the premise working
+                    exactly as designed, and it cuts both ways. I had written that guarantee down
+                    many times without once reading it as a risk.
+                </p>
+                <p class="cs-p">
+                    <strong>Two more, in the same promise.</strong> The server
                     bound every network interface by default, which meant that for a while anyone on
                     the same wi-fi could have read the whole database just by knowing the address.
                     Nothing in the interface hinted at it. It now listens to the machine it's on and
                     nothing else — and the iPad version has no network surface at all.
+                </p>
+                <p class="cs-p">
+                    Smaller things failed and came out as fast. A calendar moved into the side menu
+                    lasted an afternoon (“no, I don't like it, put the calendar back”). A new palette
+                    for time blocks was, in my own review, horrendous — so the colours went back to
+                    warm-to-cool across the day, with the new spectrum offered beside them as a
+                    choice rather than a replacement.
                 </p>
                 <p class="cs-p">
                     <strong>Onboarding lost the first thing someone wrote.</strong> Code written
@@ -330,49 +398,74 @@
             <!-- ============ 5 · OUTCOME ============ -->
             <section class="cs-section">
                 <p class="eyebrow">05 · Outcome</p>
-                <h2 class="cs-h2">Two devices, no server, and a number that balances</h2>
-                <!-- DRAFT (Stu): check every claim in this section; add a line from your partner if you have one. -->
+                <h2 class="cs-h2">Open on 58 of the last 60 days — and one request I can't grant</h2>
                 <p class="cs-p">
                     Becoming runs as a packaged Mac app and as a Home Screen web app that holds
-                    everything on the device. It's <strong>30 screens, 98 components and 68 server
-                    modules</strong> — about 57,000 lines of TypeScript across 230-odd commits since
+                    everything on the device. It's <strong>30 screens, 113 components and 74 server
+                    modules</strong> — about 63,000 lines of TypeScript across 293 commits since
                     September — on one control grammar, with the architecture and the design system
-                    written down and kept current. It reads real bank and brokerage statements
-                    locally, deduplicates every row so re-importing never double-counts, and
+                    written down and kept current. It reads bank and brokerage statements locally,
+                    deduplicates every row so re-importing never double-counts, and
                     <strong>reconciles to each statement's own totals to the penny</strong>.
                 </p>
                 <p class="cs-p">
-                    What it enabled is simpler to say. I make money decisions from the ledger rather
-                    than from my nervous system, because the ledger no longer lies to me about the
-                    month that isn't in yet. And someone other than me now keeps their own copy on
-                    their own iPad, with nothing to set up and nothing that leaves it.
+                    I open it on <strong>58 of the last 60 days</strong>. My partner has her own copy
+                    on her own iPad, holding her data and nobody else's. Her use is the best design
+                    input I've had, and almost none of it is praise. The onboarding questions were
+                    vague about where an answer would land, so each one now says — the last one saves
+                    a first vision, word for word. She doesn't open the money section at all, which
+                    tells me something is in the way there that I can't see, because I built it.
                 </p>
                 <p class="cs-p">
-                    The honest framing: it's in use by two people, not two thousand. It has no public
-                    source, because local-first is the premise. I won't claim adoption it doesn't
-                    have. What it shows is a product held to an unusual constraint long enough that the
-                    constraint shaped the data layer, the API, the component library and the copy.
+                    And a guitar student has asked for a copy, because the question is the one we
+                    already work on in lessons. He wants something specific:
+                </p>
+                <blockquote class="cs-quote">
+                    <p>“I know the stuff that I'm working on in my head, but it would be nice to be able to, like, visualize… almost see, like, a progress bar.”</p>
+                    <cite>— a guitar student, 29 September 2026</cite>
+                </blockquote>
+                <p class="cs-p">
+                    A progress bar is the one thing the app refuses to build. My first outside
+                    request pulls directly against my central rule, and I don't think he's wrong.
+                    That is unresolved, and it is the most useful thing anyone has told me about it.
+                </p>
+                <p class="cs-p">
+                    The honest framing: two people use this, not two thousand. No public source,
+                    because local-first is the premise. I won't claim adoption it doesn't have. What
+                    it shows is a product held to one constraint long enough that the constraint
+                    shaped the data layer, the API, the components and the copy.
                 </p>
             </section>
 
             <!-- ============ 6 · REFLECTION ============ -->
             <section class="cs-section">
                 <p class="eyebrow">06 · Reflection</p>
-                <h2 class="cs-h2">What I'd do differently, and what I'd keep</h2>
-                <!-- DRAFT (Stu): these are drafted from the build; rewrite in your own words. -->
+                <h2 class="cs-h2">I built it for one person, and that was the limit</h2>
+                <p class="cs-p">
+                    <strong>I'd design for more than myself from the start.</strong> I made a tool
+                    for me. Watching someone else use it showed me how much of it could serve other
+                    people, and that I hadn't thought big enough about what it could be. The student
+                    asking for a copy made that plain.
+                </p>
+                <p class="cs-p">
+                    <strong>The planning can become the avoidance.</strong> My partner spends a long
+                    time adding pictures to her projects and visions, making the pages beautiful. I
+                    recognise it, because I do it too: the arranging feels like the work and isn't.
+                    The app currently rewards it. I don't yet know how to design against that without
+                    turning the thing into a nag, which would break the one rule I care about. That's
+                    the open problem.
+                </p>
+                <p class="cs-p">
+                    <strong>Say what things are.</strong> The most useful tool I had was refusing
+                    vague words. When a label wouldn't come out plain, the design underneath it
+                    wasn't finished. With an AI producing fluent copy on demand, that stopped being a
+                    style preference and became the main way I found the decisions.
+                </p>
                 <p class="cs-p">
                     <strong>I'd have used it on real days sooner.</strong> The money-date insight was
-                    invisible on a screen of test data and obvious within a month of my own. The best
-                    design input on this project came from using it, not from thinking about it.
-                </p>
-                <p class="cs-p">
-                    <strong>I'd have asked “where does it run?” on day one.</strong> The tunnel solved
-                    the wrong problem well. Putting the server inside the page was
-                    available from the start; I just hadn't asked whether the person needed a server.
-                </p>
-                <p class="cs-p">
-                    <strong>Put the principle where it can be enforced.</strong> “Don't grade the
-                    user” survived contact with real features because the API can't emit a grade. A
+                    invisible on test data and obvious within a month of my own. And
+                    <strong>put the principle where it can be enforced</strong> — “don't grade the
+                    person” survived contact with real features because the API can't emit a grade. A
                     principle in a doc is a preference; a principle in a contract is a constraint.
                 </p>
                 <p class="cs-p">
